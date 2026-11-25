@@ -1,0 +1,22 @@
+{
+  "target": "https://vibeui.top/?lang=zh",
+  "kind": "url",
+  "fullPage": true,
+  "generatedAt": "2026-10-23T15:00:42.790Z",
+  "dir": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-230009-vibeui-probe",
+  "browser": "Chrome/155.0.8059.85",
+  "viewports": [
+    {
+      "label": "w1440",
+      "width": 1440,
+      "height": 900,
+      "file": "w1440.png",
+      "path": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-230009-vibeui-probe\\w1440.png",
+      "dimensions": "1440×9452",
+      "contentHeight": 9452,
+      "headFile": "w1440-viewport.png",
+      "headPath": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-230009-vibeui-probe\\w1440-viewport.png",
+      "headDimensions": "1440×900"
+    }
+  ]
+}

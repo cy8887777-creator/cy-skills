@@ -1,0 +1,33 @@
+{
+  "$comment": "台账问题条目字段契约。每条必含 cause（病因类，展示名：css=样式css、js=脚本js）与 cause_detail；nature/confidence 由仲裁阶段填写；fix_certainty 两态决定子代理施工方式。状态流转：待处理 → 已驳回|已确认 → 已修复 → 已复验。",
+  "finding": {
+    "id": "示例页-f003",
+    "page": "示例/页面.html",
+    "探查层": "脚本机检",
+    "能力": "布局几何",
+    "维度": "空间·留白失衡",
+    "severity": "P1",
+    "selector": "示例选择器",
+    "measured": { "超出像素": 37, "视口": "390" },
+    "criteria": "判据条款（契约章节或常识线名）",
+    "context": {
+      "self": { "标签": "div", "文本": "…", "关键样式": "…" },
+      "所在区块": { "职责": "…", "文本": "…" },
+      "同组元素": ["…"]
+    },
+    "cause": "css",
+    "cause_detail": "头部固定宽行撑破容器",
+    "suggested_fix": "改自适应宽度并允许收缩",
+    "fix_certainty": "具体修法",
+    "nature": "缺陷",
+    "confidence": "高",
+    "status": "待处理",
+    "改动": null,
+    "复验时间": null
+  },
+  "状态机": ["待处理", "已驳回", "已确认", "已修复", "已复验"],
+  "病因类": ["css", "数据", "内容", "js", "资源", "设计意图", "误报"],
+  "severity 级别": ["P0", "P1", "P2", "P3"],
+  "fix_certainty 两态": ["具体修法", "仅问题区域（子代理自行评估）"],
+  "exemptions_file": "exemptions.json"
+}

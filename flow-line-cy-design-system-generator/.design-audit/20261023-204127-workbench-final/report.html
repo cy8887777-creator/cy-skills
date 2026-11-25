@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设计审查报告 — C:\Users\admin\.claude\skills\design-system-generator\examples\workbench.html</title>
+<style>
+
+    :root {
+      --bg: #ffffff; --fg: #111827; --muted: #6b7280; --line: #e5e7eb;
+      --card: #fafafa; --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 32px 24px 64px; background: var(--bg); color: var(--fg);
+      font: 15px/1.65 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.02em; }
+    h2 { font-size: 20px; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+    h3 { font-size: 16px; margin: 24px 0 8px; }
+    p { margin: 0 0 16px; max-width: 72ch; }
+    ul { margin: 16px 0; padding-left: 24px; }
+    .meta { color: var(--muted); font-size: 13px; margin-bottom: 24px; max-width: 72ch; }
+    .meta code { font-family: var(--mono); background: var(--card); padding: 1px 5px; border-radius: 4px; }
+    .stats { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 8px; }
+    .stat { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-top: 16px; align-items: start; }
+    .shot { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+    .shot a { display: block; }
+    /* 首屏图按比例自适应，并限高：整页长图缩进后不可读，故内嵌图一律用首屏图 */
+    .shot img { display: block; width: auto; max-width: 100%; height: auto; max-height: 520px; margin: 0 auto; }
+    .shot figcaption { font-size: 12px; color: var(--muted); padding: 8px 12px; border-top: 1px solid var(--line); }
+    .finding { border: 1px solid var(--line); border-left-width: 4px; border-radius: 8px;
+      padding: 16px; margin: 16px 0; background: #fff; }
+    .finding .head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .finding .rule { font-weight: 600; }
+    .badge { font-size: 11px; font-weight: 600; border-radius: 999px; padding: 4px 8px; }
+    .kv { display: grid; grid-template-columns: 64px 1fr; gap: 4px 12px; margin: 12px 0 0; font-size: 14px; }
+    .kv dt { color: var(--muted); }
+    .kv dd { margin: 0; max-width: 72ch; }
+    dd code, .sel { font-family: var(--mono); font-size: 12.5px; background: var(--card); padding: 1px 5px; border-radius: 4px; }
+    pre { background: #0f172a; color: #e2e8f0; padding: 12px 16px; border-radius: 8px;
+      overflow-x: auto; font-family: var(--mono); font-size: 12.5px; line-height: 1.55; margin: 12px 0 8px; }
+    .note { color: var(--muted); font-size: 13px; border-left: 2px solid var(--line); padding-left: 12px; margin: 0 0 16px; max-width: 72ch; }
+    .empty { background: var(--card); border: 1px dashed var(--line); border-radius: 8px; padding: 16px; color: var(--muted); }
+    footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; max-width: 72ch; }
+    /* 窄屏：代码块换行而非横向裁切，避免静态阅读（截图/打印）时丢信息 */
+    @media (max-width: 640px) {
+      body { padding: 24px 16px 48px; }
+      pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+    }
+    @media print { body { padding: 0; } .finding { break-inside: avoid; } pre { white-space: pre-wrap; } }
+  
+</style>
+</head>
+<body><main class="wrap">
+<h1>设计审查报告</h1>
+<div class="meta">目标 <code>C:\Users\admin\.claude\skills\design-system-generator\examples\workbench.html</code>　·　2026-10-23T12:41:40.032Z　·　视口 1440×900、390×844　·　Chrome/155.0.8059.82</div>
+<div class="stats">
+<span class="stat">问题总数 <strong>2</strong></span>
+<span class="stat" style="background:#fee2e2;color:#b91c1c;border-color:transparent">高 1</span>
+<span class="stat" style="background:#fef3c7;color:#b45309;border-color:transparent">中 1</span>
+<span class="stat">无障碍 1</span>
+<span class="stat">排版 1</span>
+</div>
+<h2>截图</h2>
+<p class="note">内嵌为<strong>首屏图</strong>（整页长图缩进后不可读）；点图可打开完整长图。</p>
+<div class="shots">
+<figure class="shot"><a href="w1440.png" target="_blank" rel="noopener"><img src="w1440-viewport.png" alt="w1440 首屏截图" width="1440" height="900"></a><figcaption>w1440　首屏 1440×900　整页 1440×1158</figcaption></figure>
+<figure class="shot"><a href="w390.png" target="_blank" rel="noopener"><img src="w390-viewport.png" alt="w390 首屏截图" width="390" height="844"></a><figcaption>w390　首屏 390×844　整页 390×2450</figcaption></figure>
+</div>
+<h2>无障碍（1）</h2>
+<div class="finding" style="border-left-color:#b91c1c">
+<div class="head"><span class="rule">WCAG 1.4.3 对比度（最低）</span><span class="badge" style="background:#fee2e2;color:#b91c1c">高</span><span class="badge" style="background:#f3f4f6;color:#4b5563">18 处</span></div>
+<dl class="kv">
+<dt>位置</dt><dd><span class="sel">div &gt; div:nth-of-type(2) &gt; span:nth-of-type(1)</span></dd>
+<dt>实测</dt><dd>2.38:1（rgb(255, 255, 255) on rgb(7, 193, 96)，11px）</dd>
+<dt>判据</dt><dd>≥ 4.5:1</dd>
+<dt>说明</dt><dd>18 处文本对比度不足：div &gt; div:nth-of-type(2) &gt; span:nth-of-type(1) 2.38:1；div &gt; div:nth-of-type(2) &gt; span:nth-of-type(1) 2.38:1；div.stepside:nth-of-type(1) &gt; div.step.todo:nth-of-type(10) &gt; span.st 2.4:1；div.ccard:nth-of-type(1) &gt; div.chead:nth-of-type(1) &gt; span.cno:nth-of-type(1) 2.46:1；div.ccard:nth-of-type(2) &gt; div.chead:nth-of-type(1) &gt; span.cno 2.46:1</dd>
+</dl>
+<pre>div &gt; div:nth-of-type(2) &gt; span:nth-of-type(1) {
+  color: #3b3b3b; /* 2.38:1 → 4.7:1（判据 4.5:1） */
+}
+
+div.stepside:nth-of-type(1) &gt; div.step.todo:nth-of-type(10) &gt; span.st {
+  color: #000000; /* 2.4:1 → 1.61:1（判据 4.5:1） */
+}
+
+div.ccard:nth-of-type(1) &gt; div.chead:nth-of-type(1) &gt; span.cno:nth-of-type(1) {
+  color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */
+}
+
+div.ccard:nth-of-type(2) &gt; div.chead:nth-of-type(1) &gt; span.cno {
+  color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */
+}
+
+div.ccard:nth-of-type(3) &gt; div.chead:nth-of-type(1) &gt; span.cno {
+  color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */
+}
+
+div.step.todo:nth-of-type(10) &gt; div.stx &gt; div.stt:nth-of-type(1) {
+  color: #000000; /* 2.87:1 → 1.35:1（判据 4.5:1） */
+}
+
+div.step.todo:nth-of-type(10) &gt; div.stx &gt; div.ssub:nth-of-type(2) {
+  color: #000000; /* 2.87:1 → 1.35:1（判据 4.5:1） */
+}
+
+div.cands:nth-of-type(2) &gt; div.ccard:nth-of-type(1) &gt; div.cact:nth-of-type(3) {
+  color: #6a717b; /* 3.11:1 → 4.93:1（判据 4.5:1） */
+}
+
+div.cands:nth-of-type(2) &gt; div.ccard:nth-of-type(2) &gt; div.cact:nth-of-type(3) {
+  color: #6a717b; /* 3.11:1 → 4.93:1（判据 4.5:1） */
+}</pre>
+<p class="note">建议色是按当前色算出来的达标值（逐步加深直到越过判据线）。能用设计令牌（如 --color-text-muted）替代硬编码色值时优先用令牌，并把令牌本身提到达标值，而不是逐处覆盖。</p>
+</div>
+<h2>排版（1）</h2>
+<div class="finding" style="border-left-color:#b45309">
+<div class="head"><span class="rule">WCAG 1.4.12 文本间距（行高）</span><span class="badge" style="background:#fef3c7;color:#b45309">中</span><span class="badge" style="background:#f3f4f6;color:#4b5563">2 处</span></div>
+<dl class="kv">
+<dt>位置</dt><dd><span class="sel">div.wb &gt; div.carea:nth-of-type(2) &gt; p.curhint</span></dd>
+<dt>实测</dt><dd>line-height 1.2（14.4px / 12px）</dd>
+<dt>判据</dt><dd>段落行高 ≥ 1.5；绝对下限 1.3</dd>
+<dt>说明</dt><dd>2 处多行文本行高过紧，最紧 1.2：body &gt; div.top:nth-of-type(1) &gt; b；div.wb &gt; div.carea:nth-of-type(2) &gt; p.curhint</dd>
+</dl>
+<pre>body &gt; div.top:nth-of-type(1) &gt; b {
+  line-height: 1.5; /* 由 1.2 提升 */
+}
+
+div.wb &gt; div.carea:nth-of-type(2) &gt; p.curhint {
+  line-height: 1.5; /* 由 1.2 提升 */
+}</pre>
+<p class="note">行高用无单位数值（1.5）而非 px，避免子元素继承后被固定死。</p>
+</div>
+<h2>未覆盖</h2><ul>
+<li>审美与视觉层级（需要模型看图判断，不在确定性判据内）</li>
+<li>真实交互态（hover / focus / disabled 的视觉表现）</li>
+<li>内容与信息架构（文案质量、流程合理性）</li>
+<li>性能指标（LCP/CLS 需真实采样，本工具只检查图片尺寸预留这类静态风险）</li>
+</ul>
+<footer>由 dsh-design-audit 生成：测量在页面侧（CDP + 计算样式），判据在插件侧（WCAG / 平台指南）。估算类判据已在条目内标注，请以实测值为准复核。</footer>
+</main></body></html>

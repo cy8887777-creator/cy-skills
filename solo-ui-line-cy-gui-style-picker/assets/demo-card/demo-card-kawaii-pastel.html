@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可爱粉彩 · 风格比稿卡 demo</title>
+<style>
+/* ============ 全局令牌（色值取自风格卡真值） ============ */
+:root{
+  --pink:      #FFB7C5;  /* 樱粉 · 主色 */
+  --blush:     #FFB3C6;  /* 腮红粉 */
+  --blush-deep:#FFA3B8;  /* 腮红（比底色深半档，签名规则） */
+  --pink-soft: #FFD9E2;
+  --pink-mist: #FFE3EA;
+  --bg:        #FFF0F5;  /* 樱贝白 · 底 */
+  --yellow:    #FFE082;  /* 奶黄 · 星星 */
+  --yellow-soft:#FFF0C2;
+  --blue:      #BDE3FF;  /* 奶蓝 · 辅色 */
+  --blue-soft: #D9EEFF;
+  --ink:       #5C5470;  /* 灰紫 · 五官文字 */
+  --ink-72:rgba(92,84,112,.72);
+  --ink-45:rgba(92,84,112,.45);
+  --ink-28:rgba(92,84,112,.28);
+  --ink-16:rgba(92,84,112,.16);
+  --font-round:"M PLUS Rounded 1c","M PLUS Rounded 1p","ZCOOL KuaiLe","YouYuan","幼圆","Yuanti SC","PingFang SC","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
+  --shadow-soft:0 12px 28px rgba(255,158,178,.28);
+  --shadow-card:0 18px 44px rgba(255,158,178,.32);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--font-round);
+  color:var(--ink);
+  background-color:var(--bg);
+  /* 极浅圆点纹 · 软化底面 */
+  background-image:radial-gradient(rgba(255,185,200,.22) 2.6px,transparent 2.6px);
+  background-size:30px 30px;
+  padding:36px 28px 48px;
+  display:flex;justify-content:center;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ============ 卡壳 ============ */
+.demo-card{
+  width:1236px;max-width:100%;
+  background:#fff;
+  border-radius:36px;
+  box-shadow:var(--shadow-card);
+  border:2px solid #FFEBF0;
+  padding:34px 34px 40px;
+  position:relative;
+  overflow:hidden;
+}
+.demo-card::before{ /* 卡壳右上角的柔光晕 · 无锐角装饰 */
+  content:"";position:absolute;top:-120px;right:-100px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,224,130,.20),transparent 70%);pointer-events:none;
+}
+
+/* ============ 卡头 ============ */
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;position:relative}
+.head-left h1{font-size:30px;font-weight:800;letter-spacing:1px;display:flex;align-items:baseline;gap:12px}
+.head-left .en{font-size:14px;font-weight:500;color:var(--ink-45);letter-spacing:.5px}
+.head-left .vibe{margin-top:10px;font-size:15px;color:var(--ink-72);letter-spacing:.5px}
+.head-badge{
+  flex-shrink:0;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--yellow-soft);
+  border:2px solid #FFE9A8;
+  color:var(--ink);font-size:13px;font-weight:700;
+  padding:8px 16px;border-radius:999px;
+}
+.head-star{position:absolute;left:-6px;top:-18px}
+
+/* ============ 骨架图集 ============ */
+.skeleton-bank{
+  margin-top:26px;
+  background:#FFF8FB;
+  border:2px dashed #FFD9E2;
+  border-radius:28px;
+  padding:26px 22px;
+  display:flex;gap:16px;justify-content:center;
+  flex-wrap:wrap;
+}
+.frame-slot{width:270px;height:585px;border-radius:26px;overflow:hidden;position:relative;
+  box-shadow:0 10px 26px rgba(255,158,178,.25);border:2px solid #FFECF1;flex-shrink:0}
+.frame{
+  width:375px;height:812px;
+  transform:scale(.72);transform-origin:top left;
+  background:var(--bg);
+  position:relative;overflow:hidden;
+}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:112px;height:24px;border-radius:999px;background:var(--ink-16);z-index:9}
+.statusbar{display:flex;justify-content:space-between;padding:14px 26px 4px;align-items:center}
+
+/* —— 通用骨架词汇（零文字 · 全色块） —— */
+.tl{display:block;border-radius:999px;background:var(--ink)}
+.dot{display:block;border-radius:50%}
+.pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px}
+.card-soft{background:#fff;border-radius:26px;box-shadow:var(--shadow-soft)}
+.sticker{filter:drop-shadow(0 4px 8px rgba(255,158,178,.35))}
+
+/* 几何表情脸：圆 + 点眼 + 微笑弧 + 腮红（纯形态 · 无文字） */
+.face{display:block;position:relative;border-radius:50%;background:linear-gradient(160deg,#FFD0DA,#FFB7C5);flex-shrink:0}
+.f-eye{position:absolute;width:3.5px;height:10px;background:var(--ink);border-radius:99px;top:34%}
+.f-eye.l{left:27%}.f-eye.r{right:27%}
+.f-smile{position:absolute;width:13px;height:6px;border-bottom:2.6px solid var(--ink);border-radius:0 0 12px 12px;left:50%;transform:translateX(-50%);top:48%}
+.f-blush{position:absolute;width:10px;height:5.5px;background:var(--blush-deep);opacity:.75;border-radius:50%;top:50%}
+.f-blush.l{left:7%}.f-blush.r{right:7%}
+
+/* 星星（圆角五角星：同色描边 round join 让尖角变圆） */
+.svg-star{fill:var(--yellow);stroke:var(--yellow);stroke-width:2.6;stroke-linejoin:round}
+.svg-star-line{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* 心 / 云 / 通用线性图标 */
+.svg-ink{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.svg-heart-fill{fill:var(--pink);stroke:var(--pink);stroke-width:2;stroke-linejoin:round}
+.svg-heart-line{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* —— 底部胶囊 tab —— */
+.tabbar{
+  position:absolute;left:22px;right:22px;bottom:18px;height:64px;
+  background:#fff;border-radius:999px;box-shadow:var(--shadow-soft);
+  display:flex;align-items:center;justify-content:space-around;padding:0 10px;z-index:8;
+}
+.tab{width:52px;height:40px;display:flex;align-items:center;justify-content:center;position:relative;border-radius:999px}
+.tab.on::before{content:"";position:absolute;inset:0;border-radius:999px;background:var(--pink-soft)}
+
+/* ============ 页1 · 首页路线流 ============ */
+.toprow{display:flex;justify-content:space-between;align-items:center;padding:8px 20px 0}
+.city-pill{background:#fff;box-shadow:var(--shadow-soft);padding:9px 14px}
+.search{
+  margin:16px 20px 0;height:48px;border-radius:999px;background:#fff;
+  box-shadow:var(--shadow-soft);display:flex;align-items:center;gap:12px;padding:0 20px;
+}
+.dots{display:flex;justify-content:center;gap:7px;margin:14px 0 16px}
+.dots .dot{width:7px;height:7px;background:var(--ink-28)}
+.dots .dot.on{width:20px;background:var(--pink)}
+.route-card{margin:0 20px;border-radius:28px;background:#fff;box-shadow:var(--shadow-soft);overflow:hidden}
+.rc-media{height:216px;position:relative}
+.media-chip{
+  position:absolute;top:14px;left:14px;background:rgba(255,255,255,.88);
+  border-radius:999px;padding:6px 12px;display:flex;align-items:center;gap:7px;
+}
+.blush-patch{position:absolute;width:64px;height:30px;border-radius:50%;background:var(--blush);opacity:.5;right:14px;bottom:16px}
+.mini-ava{position:absolute;left:14px;bottom:12px;width:30px;height:30px;border:3px solid #fff;border-radius:50%;background:linear-gradient(160deg,#FFD0DA,#FFB7C5)}
+.rc-body{padding:16px 18px 18px}
+.rc-line1{display:flex;align-items:center;justify-content:space-between}
+.heart-btn{width:32px;height:32px;border-radius:50%;background:var(--pink-mist);display:flex;align-items:center;justify-content:center}
+.rc-chips{display:flex;gap:8px;margin-top:12px}
+.chip{background:var(--pink-mist);border-radius:999px;padding:6px 11px;display:flex;align-items:center;gap:6px}
+.chip.b{background:var(--blue-soft)}
+.chip.y{background:var(--yellow-soft)}
+.route-card.peek{margin-top:16px}
+.route-card.peek .rc-media{height:120px}
+
+/* ============ 页2 · 路线详情 ============ */
+.det-media{height:300px;position:relative;border-radius:0 0 36px 36px;overflow:hidden}
+.round-btn{
+  position:absolute;width:40px;height:40px;border-radius:50%;background:#fff;
+  box-shadow:var(--shadow-soft);display:flex;align-items:center;justify-content:center;
+}
+.cloud{position:absolute;background:rgba(255,255,255,.55);border-radius:999px}
+.cloud::before,.cloud::after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud.c1{width:64px;height:22px;top:52px;right:44px}
+.cloud.c1::before{width:26px;height:26px;top:-12px;left:10px}
+.cloud.c1::after{width:18px;height:18px;top:-8px;left:36px}
+.cloud.c2{width:48px;height:17px;top:96px;left:36px}
+.cloud.c2::before{width:20px;height:20px;top:-9px;left:8px}
+.cloud.c2::after{width:14px;height:14px;top:-6px;left:27px}
+.det-head{padding:18px 22px 6px}
+.det-rate{display:flex;align-items:center;gap:5px;margin-top:10px}
+.det-sub{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.fare-pill{background:var(--yellow-soft);border-radius:999px;padding:7px 12px;display:flex;align-items:center;gap:7px}
+.tl-list{padding:10px 22px 0}
+.tl-item{display:flex;gap:14px;align-items:center;padding:11px 0;position:relative}
+.tl-item::before{
+  content:"";position:absolute;left:16px;top:44px;bottom:-8px;width:3px;
+  border-radius:99px;background:var(--pink-soft);
+}
+.tl-item:last-child::before{display:none}
+.tl-node{
+  width:34px;height:34px;border-radius:50%;background:#fff;border:3px solid var(--pink-soft);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;
+}
+.tl-thumb{width:46px;height:46px;border-radius:18px;flex-shrink:0}
+.review-card{margin:14px 22px 0;background:#FFF6F9;border-radius:24px;padding:16px;display:flex;gap:13px;align-items:center}
+.det-cta{position:absolute;left:22px;right:22px;bottom:20px;display:flex;gap:12px}
+.cta-main{
+  flex:1;height:58px;border-radius:999px;background:var(--pink);box-shadow:var(--shadow-soft);
+  display:flex;align-items:center;justify-content:center;gap:11px;
+}
+.cta-round{width:58px;height:58px;border-radius:50%;background:#fff;box-shadow:var(--shadow-soft);display:flex;align-items:center;justify-content:center}
+
+/* ============ 页3 · 记录中 ============ */
+.rec-top{display:flex;justify-content:space-between;align-items:center;padding:40px 22px 0}
+.rec-status{background:var(--yellow-soft);border-radius:999px;padding:9px 16px;display:flex;align-items:center;gap:9px}
+.rec-map{margin:16px 22px 0;height:246px;border-radius:30px;position:relative;overflow:hidden;
+  background:linear-gradient(168deg,#E9F6FF,#D4EBFF)}
+.loc{position:absolute;border-radius:50%}
+.ring-wrap{display:flex;justify-content:center;margin-top:24px;position:relative}
+.ring{width:158px;height:158px;border-radius:50%;
+  background:conic-gradient(var(--pink) 0 68%,var(--pink-mist) 68% 100%);
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft)}
+.ring-in{width:118px;height:118px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px}
+.ring-star{position:absolute;top:-6px;right:calc(50% - 96px);transform:rotate(12deg)}
+.rec-stats{display:flex;gap:12px;margin:22px 22px 0}
+.stat{flex:1;background:#fff;border-radius:22px;box-shadow:var(--shadow-soft);padding:13px 10px;display:flex;flex-direction:column;align-items:center;gap:9px}
+.stat-ico{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rec-stop{
+  position:absolute;left:22px;right:22px;bottom:22px;height:62px;border-radius:999px;
+  background:var(--pink);box-shadow:var(--shadow-card);
+  display:flex;align-items:center;justify-content:center;gap:12px;
+}
+
+/* ============ 页4 · 个人主页 ============ */
+.profile-top{display:flex;flex-direction:column;align-items:center;padding:36px 22px 0;position:relative}
+.profile-ava{width:94px;height:94px;border:4px solid #fff;box-shadow:var(--shadow-soft)}
+.profile-ava .f-eye{width:5px;height:14px;top:36%}
+.profile-ava .f-smile{width:18px;height:9px;border-bottom-width:3px;top:47%}
+.profile-ava .f-blush{width:14px;height:7.5px;top:49%}
+.ava-star{position:absolute;top:26px;left:calc(50% + 30px);transform:rotate(-14deg)}
+.profile-badges{display:flex;gap:10px;margin-top:13px}
+.pbadge{border-radius:999px;padding:7px 13px;display:flex;align-items:center;gap:7px}
+.ach-row{display:flex;gap:12px;margin:20px 20px 0}
+.ach{flex:1;background:#fff;border-radius:24px;box-shadow:var(--shadow-soft);padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.ach-ico{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.sec-row{display:flex;justify-content:space-between;align-items:center;margin:22px 20px 14px}
+.add-btn{width:28px;height:28px;border-radius:50%;background:var(--pink-mist);display:flex;align-items:center;justify-content:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 20px}
+.g-card{background:#fff;border-radius:24px;box-shadow:var(--shadow-soft);overflow:hidden}
+.g-media{height:98px;position:relative}
+.g-body{padding:11px 13px 13px}
+.g-meta{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.g-like{display:flex;align-items:center;gap:5px}
+
+/* ============ 载体样本条 ============ */
+.carrier-bar{
+  margin-top:28px;background:#fff;border:2px solid #FFECF1;border-radius:28px;
+  padding:26px 28px 30px;display:flex;flex-wrap:wrap;gap:30px 38px;align-items:flex-start;
+}
+.cb-sec{min-width:190px}
+.cb-tag{
+  display:inline-block;font-size:12.5px;font-weight:700;color:var(--ink);
+  background:var(--pink-mist);border-radius:999px;padding:5px 13px;margin-bottom:15px;letter-spacing:1px;
+}
+.swatches{display:grid;grid-template-columns:repeat(3,64px);gap:12px}
+.swatch .sw-chip{width:64px;height:42px;border-radius:15px;border:2px solid rgba(92,84,112,.06)}
+.swatch .sw-name{font-size:11.5px;margin-top:6px;color:var(--ink-72);text-align:center;line-height:1.45}
+.swatch .sw-name b{display:block;font-size:11px;color:var(--ink);font-weight:700}
+/* 字体阶梯 */
+.type-scale .ts-title{font-size:25px;font-weight:800;letter-spacing:1px}
+.type-scale .ts-body{font-size:14.5px;font-weight:400;color:var(--ink-72);margin-top:9px;line-height:1.8}
+.type-scale .ts-note{font-size:11.5px;color:var(--ink-45);margin-top:12px;line-height:1.6}
+/* 成文排版 */
+.prose h3{font-size:17.5px;font-weight:800;letter-spacing:.8px}
+.prose p{font-size:13.5px;line-height:2;color:var(--ink-72);margin-top:8px;max-width:340px}
+.prose blockquote{
+  margin-top:11px;font-size:12.5px;color:var(--ink-45);
+  border-left:4px solid var(--pink);border-radius:2px 999px 999px 2px;padding-left:12px;
+}
+/* 组件形态 */
+.comp-row{display:flex;flex-direction:column;gap:14px}
+.comp-label{font-size:11.5px;color:var(--ink-45);margin-top:6px}
+.btn-pill{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  width:170px;height:50px;border-radius:999px;background:var(--pink);color:#fff;
+  font-size:15.5px;font-weight:700;letter-spacing:1px;box-shadow:var(--shadow-soft);
+}
+.mini-card{width:170px;border-radius:22px;box-shadow:var(--shadow-soft);overflow:hidden;background:#fff}
+.mini-card .mc-media{height:64px;background:linear-gradient(155deg,#FFD9E2,#FFB7C5)}
+.mini-card .mc-body{padding:10px 13px 13px}
+.input-pill{
+  display:flex;align-items:center;gap:10px;width:170px;height:46px;border-radius:999px;
+  background:#FFF6F9;border:2px solid var(--pink-mist);padding:0 16px;
+  font-size:13px;color:var(--ink-45);
+}
+/* 图标 */
+.icon-row{display:flex;gap:18px;flex-wrap:wrap;max-width:300px}
+.icon-cell{display:flex;flex-direction:column;align-items:center;gap:8px}
+.icon-cell .ic-plate{width:52px;height:52px;border-radius:18px;background:#FFF6F9;display:flex;align-items:center;justify-content:center}
+.icon-cell span{font-size:11.5px;color:var(--ink-45)}
+</style>
+</head>
+<body>
+<article class="demo-card">
+
+  <!-- ═══ 卡头（标定区 · 可含文字） ═══ -->
+  <header class="card-head">
+    <div class="head-left">
+      <h1>可爱粉彩 <span class="en">Kawaii / Pastel</span></h1>
+      <p class="vibe">圆脸加腮红再撒点星星——温柔也是一种设计世界观。</p>
+    </div>
+    <span class="head-badge">
+      <svg class="head-star" width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+      方案示意 · demo
+    </span>
+  </header>
+
+  <!-- ═══ 骨架图集（零文字区 · textContent 必须为 0） ═══ -->
+  <section class="skeleton-bank" id="skeletonBank">
+
+    <div class="frame-slot"><div class="frame">
+      <div class="notch"></div>
+      <div class="statusbar">
+        <span class="tl" style="width:44px;height:6px;opacity:.5"></span>
+        <span class="tl" style="width:36px;height:6px;opacity:.22"></span>
+      </div>
+      <div class="toprow">
+        <div class="pill city-pill">
+          <span class="dot" style="width:9px;height:9px;background:var(--pink)"></span>
+          <span class="tl" style="width:42px;height:6px;opacity:.55"></span>
+          <svg width="12" height="12" viewBox="0 0 24 24"><path class="svg-ink" style="stroke-width:3" d="M5 9l7 7 7-7"/></svg>
+        </div>
+        <span class="face" style="width:38px;height:38px;border:3px solid #fff;box-shadow:var(--shadow-soft)">
+          <span class="f-eye l"></span><span class="f-eye r"></span><span class="f-smile"></span>
+          <span class="f-blush l"></span><span class="f-blush r"></span>
+        </span>
+      </div>
+      <div class="search">
+        <svg width="17" height="17" viewBox="0 0 24 24"><circle class="svg-ink" cx="10.5" cy="10.5" r="6.5"/><path class="svg-ink" d="M15.5 15.5L21 21"/></svg>
+        <span class="tl" style="width:118px;height:6px;opacity:.26"></span>
+      </div>
+      <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+
+      <div class="route-card">
+        <div class="rc-media" style="background:linear-gradient(158deg,#FFDFE7,#FFC2CF 55%,#FFB3C6)">
+          <svg width="100%" height="100%" viewBox="0 0 375 216" preserveAspectRatio="none" style="position:absolute;inset:0">
+            <path d="M40 186 C 90 186, 70 120, 130 116 S 220 150, 250 96 S 320 60, 330 42"
+                  fill="none" stroke="rgba(255,255,255,.75)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 12"/>
+            <circle cx="40" cy="186" r="8" fill="#fff"/>
+            <circle cx="40" cy="186" r="3.2" fill="#5C5470"/>
+          </svg>
+          <span class="media-chip">
+            <svg width="12" height="12" viewBox="0 0 24 24"><circle class="svg-ink" cx="12" cy="12" r="8.5"/><path class="svg-ink" d="M12 7.5V12l3.2 2"/></svg>
+            <span class="tl" style="width:30px;height:5px;opacity:.4"></span>
+          </span>
+          <svg class="sticker" style="position:absolute;top:16px;right:16px" width="26" height="26" viewBox="0 0 24 24">
+            <path class="svg-star" style="stroke:#fff;stroke-width:4" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/>
+          </svg>
+          <span class="blush-patch"></span>
+          <span class="mini-ava"></span>
+        </div>
+        <div class="rc-body">
+          <div class="rc-line1">
+            <span class="tl" style="width:152px;height:13px;opacity:.72"></span>
+            <span class="heart-btn"><svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-heart-fill" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg></span>
+          </div>
+          <span class="tl" style="width:116px;height:7px;opacity:.3;margin-top:9px"></span>
+          <div class="rc-chips">
+            <span class="chip"><span class="dot" style="width:6px;height:6px;background:var(--pink)"></span><span class="tl" style="width:26px;height:5px;opacity:.38"></span></span>
+            <span class="chip b"><span class="dot" style="width:6px;height:6px;background:var(--blue)"></span><span class="tl" style="width:34px;height:5px;opacity:.38"></span></span>
+            <span class="chip y"><span class="dot" style="width:6px;height:6px;background:var(--yellow)"></span><span class="tl" style="width:22px;height:5px;opacity:.38"></span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="route-card peek">
+        <div class="rc-media" style="background:linear-gradient(158deg,#E7F5FF,#C8E5FF)">
+          <svg width="100%" height="100%" viewBox="0 0 375 120" preserveAspectRatio="none" style="position:absolute;inset:0">
+            <path d="M60 96 C 120 96, 110 40, 190 44 S 300 80, 322 30"
+                  fill="none" stroke="rgba(255,255,255,.8)" stroke-width="4" stroke-linecap="round" stroke-dasharray="1 12"/>
+            <circle cx="60" cy="96" r="7" fill="#fff"/>
+          </svg>
+          <span class="media-chip"><span class="tl" style="width:38px;height:5px;opacity:.35"></span></span>
+        </div>
+      </div>
+
+      <nav class="tabbar">
+        <span class="tab on"><svg width="22" height="22" viewBox="0 0 24 24"><path class="svg-ink" style="stroke-width:2.4" d="M4.5 11L12 4.2 19.5 11v7.3a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/><path class="svg-ink" d="M9.5 20v-5.5h5V20"/></svg></span>
+        <span class="tab"><svg width="22" height="22" viewBox="0 0 24 24"><path class="svg-heart-line" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg></span>
+        <span class="tab"><svg width="23" height="23" viewBox="0 0 24 24"><ellipse class="svg-ink" style="fill:var(--ink)" cx="12" cy="15.5" rx="4.6" ry="3.8"/><circle class="svg-ink" style="fill:var(--ink)" cx="5.8" cy="10.4" r="2.1"/><circle class="svg-ink" style="fill:var(--ink)" cx="18.2" cy="10.4" r="2.1"/><circle class="svg-ink" style="fill:var(--ink)" cx="9.2" cy="6.9" r="2.1"/><circle class="svg-ink" style="fill:var(--ink)" cx="14.8" cy="6.9" r="2.1"/></svg></span>
+        <span class="tab"><svg width="22" height="22" viewBox="0 0 24 24"><circle class="svg-ink" cx="12" cy="8.2" r="3.9"/><path class="svg-ink" d="M4.8 20a7.2 7.2 0 0 1 14.4 0"/></svg></span>
+      </nav>
+    </div></div>
+
+    <div class="frame-slot"><div class="frame">
+      <div class="notch"></div>
+      <div class="det-media" style="background:linear-gradient(170deg,#E9F6FF 5%,#C9E5FF 70%,#BDE3FF)">
+        <svg width="100%" height="100%" viewBox="0 0 375 300" preserveAspectRatio="none" style="position:absolute;inset:0">
+          <path d="M56 262 C 110 262, 96 190, 158 184 S 246 210, 262 150 S 240 92, 300 74"
+                fill="none" stroke="rgba(255,255,255,.85)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 13"/>
+          <circle cx="56" cy="262" r="9" fill="#fff"/>
+          <circle cx="56" cy="262" r="3.5" fill="#5C5470"/>
+        </svg>
+        <span class="cloud c1"></span><span class="cloud c2"></span>
+        <svg class="sticker" style="position:absolute;top:118px;right:88px" width="30" height="30" viewBox="0 0 24 24">
+          <path class="svg-star" style="stroke:#fff;stroke-width:4" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/>
+        </svg>
+        <span class="loc" style="top:136px;right:96px;width:34px;height:34px;background:var(--pink);opacity:.35"></span>
+        <span class="round-btn" style="top:52px;left:20px"><svg width="16" height="16" viewBox="0 0 24 24"><path class="svg-ink" style="stroke-width:2.8" d="M14.5 5.5L8 12l6.5 6.5"/></svg></span>
+        <span class="round-btn" style="top:52px;right:20px"><svg width="16" height="16" viewBox="0 0 24 24"><circle class="svg-ink" cx="7" cy="12" r="2.6"/><circle class="svg-ink" cx="17" cy="6" r="2.6"/><circle class="svg-ink" cx="17" cy="18" r="2.6"/><path class="svg-ink" d="M9.3 10.8l5.4-3.4M9.3 13.2l5.4 3.4"/></svg></span>
+        <span class="media-chip" style="top:auto;bottom:16px;left:50%;transform:translateX(-50%)">
+          <svg width="13" height="13" viewBox="0 0 24 24"><path class="svg-ink" d="M12 20.5s-6.8-4.4-8.6-8.1C2 9.4 3.8 6.3 6.9 6.3c1.8 0 3.4 1 5.1 2.9 1.7-1.9 3.3-2.9 5.1-2.9 3.1 0 4.9 3.1 3.5 6.1-1.8 3.7-8.6 8.1-8.6 8.1z"/></svg>
+          <span class="tl" style="width:34px;height:5px;opacity:.4"></span>
+        </span>
+      </div>
+
+      <div class="det-head">
+        <span class="tl" style="width:196px;height:14px;opacity:.72"></span>
+        <div class="det-rate">
+          <svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" style="fill:var(--pink-mist);stroke:var(--pink-mist)" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          <span class="tl" style="width:30px;height:6px;opacity:.3;margin-left:4px"></span>
+        </div>
+        <div class="det-sub">
+          <span class="tl" style="width:132px;height:7px;opacity:.32"></span>
+          <span class="fare-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+            <span class="tl" style="width:26px;height:5px;opacity:.4"></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="tl-list">
+        <div class="tl-item">
+          <span class="tl-node"><span class="dot" style="width:8px;height:8px;background:var(--pink)"></span></span>
+          <span class="tl-thumb" style="background:linear-gradient(155deg,#FFD9E2,#FFB7C5)"></span>
+          <span style="display:flex;flex-direction:column;gap:7px">
+            <span class="tl" style="width:84px;height:8px;opacity:.58"></span>
+            <span class="tl" style="width:58px;height:6px;opacity:.26"></span>
+          </span>
+        </div>
+        <div class="tl-item">
+          <span class="tl-node"><span class="dot" style="width:8px;height:8px;background:var(--blue)"></span></span>
+          <span class="tl-thumb" style="background:linear-gradient(155deg,#DFF1FF,#BDE3FF)"></span>
+          <span style="display:flex;flex-direction:column;gap:7px">
+            <span class="tl" style="width:96px;height:8px;opacity:.58"></span>
+            <span class="tl" style="width:64px;height:6px;opacity:.26"></span>
+          </span>
+        </div>
+        <div class="tl-item">
+          <span class="tl-node"><span class="dot" style="width:8px;height:8px;background:var(--yellow)"></span></span>
+          <span class="tl-thumb" style="background:linear-gradient(155deg,#FFF0C2,#FFE082)"></span>
+          <span style="display:flex;flex-direction:column;gap:7px">
+            <span class="tl" style="width:72px;height:8px;opacity:.58"></span>
+            <span class="tl" style="width:52px;height:6px;opacity:.26"></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <span class="face" style="width:36px;height:36px">
+          <span class="f-eye l"></span><span class="f-eye r"></span><span class="f-smile"></span>
+          <span class="f-blush l"></span><span class="f-blush r"></span>
+        </span>
+        <span style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <span class="tl" style="width:76px;height:8px;opacity:.55"></span>
+          <span class="tl" style="width:150px;height:6px;opacity:.24"></span>
+        </span>
+        <span style="display:flex;gap:3px">
+          <svg width="12" height="12" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+        </span>
+      </div>
+
+      <div class="det-cta">
+        <div class="cta-main">
+          <svg width="17" height="17" viewBox="0 0 24 24"><path style="fill:none;stroke:#fff;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round" d="M7.5 4.5v15M7.5 5.5h8.5l-2.6 3.2 2.6 3.2H7.5"/></svg>
+          <span class="tl" style="width:64px;height:10px;background:#fff;opacity:.95"></span>
+        </div>
+        <span class="cta-round">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+        </span>
+      </div>
+    </div></div>
+
+    <div class="frame-slot"><div class="frame">
+      <div class="notch"></div>
+      <div class="rec-top">
+        <span class="rec-status">
+          <span class="dot" style="width:9px;height:9px;background:var(--yellow)"></span>
+          <span class="tl" style="width:52px;height:6px;opacity:.45"></span>
+        </span>
+        <span class="round-btn" style="position:static"><svg width="16" height="16" viewBox="0 0 24 24"><circle class="svg-ink" cx="12" cy="12" r="6.5"/><circle class="svg-ink" style="fill:var(--ink)" cx="12" cy="12" r="2.2"/><path class="svg-ink" d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg></span>
+      </div>
+
+      <div class="rec-map">
+        <svg width="100%" height="100%" viewBox="0 0 375 246" preserveAspectRatio="none" style="position:absolute;inset:0">
+          <path d="M48 200 C 96 200, 84 140, 146 132 S 232 158, 252 106 S 300 70, 330 52"
+                fill="none" stroke="#FFB7C5" stroke-width="5" stroke-linecap="round"/>
+          <path d="M330 52 C 344 44, 350 36, 352 24"
+                fill="none" stroke="rgba(255,255,255,.9)" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="1 12"/>
+          <circle cx="252" cy="106" r="6" fill="#fff" opacity=".9"/>
+        </svg>
+        <span class="cloud c1" style="top:30px;right:36px"></span>
+        <span class="loc" style="top:96px;left:222px;width:36px;height:36px;background:var(--pink);opacity:.3"></span>
+        <span class="loc" style="top:105px;left:231px;width:18px;height:18px;background:var(--pink);border:3.5px solid #fff;box-shadow:0 4px 10px rgba(255,158,178,.4)"></span>
+        <svg class="sticker" style="position:absolute;top:36px;left:30px" width="22" height="22" viewBox="0 0 24 24">
+          <path class="svg-star" style="stroke:#fff;stroke-width:4" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/>
+        </svg>
+        <span class="blush-patch" style="right:20px;bottom:18px;width:56px;height:26px;background:var(--blue);opacity:.35"></span>
+      </div>
+
+      <div class="ring-wrap">
+        <div class="ring">
+          <div class="ring-in">
+            <span class="tl" style="width:46px;height:13px;opacity:.72"></span>
+            <span class="tl" style="width:28px;height:7px;opacity:.26"></span>
+          </div>
+        </div>
+        <svg class="ring-star sticker" width="28" height="28" viewBox="0 0 24 24">
+          <path class="svg-star" style="stroke:#fff;stroke-width:4" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/>
+        </svg>
+      </div>
+
+      <div class="rec-stats">
+        <div class="stat">
+          <span class="stat-ico" style="background:var(--blue-soft)"><svg width="15" height="15" viewBox="0 0 24 24"><circle class="svg-ink" cx="12" cy="12" r="8.5"/><path class="svg-ink" d="M12 7.5V12l3.2 2"/></svg></span>
+          <span class="tl" style="width:32px;height:6px;opacity:.4"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-ico" style="background:var(--pink-mist)"><svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-heart-line" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg></span>
+          <span class="tl" style="width:38px;height:6px;opacity:.4"></span>
+        </div>
+        <div class="stat">
+          <span class="stat-ico" style="background:var(--yellow-soft)"><svg width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" style="stroke-width:2.2" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg></span>
+          <span class="tl" style="width:30px;height:6px;opacity:.4"></span>
+        </div>
+      </div>
+
+      <div class="rec-stop">
+        <svg width="18" height="18" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="3.5" style="fill:#fff"/></svg>
+        <span class="tl" style="width:70px;height:11px;background:#fff;opacity:.95"></span>
+      </div>
+    </div></div>
+
+    <div class="frame-slot"><div class="frame">
+      <div class="notch"></div>
+      <div class="profile-top">
+        <span class="face profile-ava">
+          <span class="f-eye l"></span><span class="f-eye r"></span><span class="f-smile"></span>
+          <span class="f-blush l"></span><span class="f-blush r"></span>
+        </span>
+        <svg class="ava-star sticker" width="26" height="26" viewBox="0 0 24 24" style="position:absolute">
+          <path class="svg-star" style="stroke:#fff;stroke-width:4" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/>
+        </svg>
+        <span class="tl" style="width:124px;height:13px;opacity:.72;margin-top:14px"></span>
+        <div class="profile-badges">
+          <span class="pbadge" style="background:var(--blue-soft)">
+            <span class="dot" style="width:6px;height:6px;background:var(--blue)"></span>
+            <span class="tl" style="width:30px;height:5px;opacity:.38"></span>
+          </span>
+          <span class="pbadge" style="background:var(--yellow-soft)">
+            <span class="dot" style="width:6px;height:6px;background:var(--yellow)"></span>
+            <span class="tl" style="width:38px;height:5px;opacity:.38"></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="ach-row">
+        <div class="ach">
+          <span class="ach-ico" style="background:var(--pink-mist)"><svg width="16" height="16" viewBox="0 0 24 24"><path class="svg-ink" d="M6 20c2-1.5 4-2 6-2s4 .5 6 2M12 4.5c-2.4 0-4 1.7-4 3.6 0 2.7 1.8 4.4 4 4.4s4-1.7 4-4.4c0-1.9-1.6-3.6-4-3.6z"/></svg></span>
+          <span class="tl" style="width:36px;height:9px;opacity:.6"></span>
+          <span class="tl" style="width:26px;height:5px;opacity:.24"></span>
+        </div>
+        <div class="ach">
+          <span class="ach-ico" style="background:var(--blue-soft)"><svg width="16" height="16" viewBox="0 0 24 24"><path class="svg-ink" d="M4.5 12.5c3.5-5 11.5-5 15 0M7.5 16.5c2-2.6 7-2.6 9 0"/></svg></span>
+          <span class="tl" style="width:36px;height:9px;opacity:.6"></span>
+          <span class="tl" style="width:26px;height:5px;opacity:.24"></span>
+        </div>
+        <div class="ach">
+          <span class="ach-ico" style="background:var(--yellow-soft)"><svg width="16" height="16" viewBox="0 0 24 24"><path class="svg-star" style="stroke-width:2.4" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg></span>
+          <span class="tl" style="width:36px;height:9px;opacity:.6"></span>
+          <span class="tl" style="width:26px;height:5px;opacity:.24"></span>
+        </div>
+      </div>
+
+      <div class="sec-row">
+        <span class="tl" style="width:66px;height:10px;opacity:.6"></span>
+        <span class="add-btn"><svg width="13" height="13" viewBox="0 0 24 24"><path class="svg-ink" style="stroke-width:3" d="M12 5.5v13M5.5 12h13"/></svg></span>
+      </div>
+
+      <div class="grid">
+        <div class="g-card">
+          <div class="g-media" style="background:linear-gradient(152deg,#FFDFE7,#FFBFD0)">
+            <svg class="sticker" style="position:absolute;top:10px;right:10px" width="16" height="16" viewBox="0 0 24 24"><path class="svg-star" style="stroke:#fff;stroke-width:4.5" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          </div>
+          <div class="g-body">
+            <span class="tl" style="width:92px;height:8px;opacity:.58"></span>
+            <div class="g-meta">
+              <span style="display:flex;align-items:center;gap:6px">
+                <span class="dot" style="width:6px;height:6px;background:var(--blue)"></span>
+                <span class="tl" style="width:34px;height:5px;opacity:.26"></span>
+              </span>
+              <span class="g-like">
+                <svg width="11" height="11" viewBox="0 0 24 24"><path class="svg-heart-fill" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg>
+                <span class="tl" style="width:18px;height:5px;opacity:.3"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-media" style="background:linear-gradient(152deg,#E7F5FF,#C4E3FF)">
+            <span class="blush-patch" style="left:12px;bottom:12px;right:auto;width:44px;height:20px;background:var(--blue);opacity:.35"></span>
+          </div>
+          <div class="g-body">
+            <span class="tl" style="width:76px;height:8px;opacity:.58"></span>
+            <div class="g-meta">
+              <span style="display:flex;align-items:center;gap:6px">
+                <span class="dot" style="width:6px;height:6px;background:var(--pink)"></span>
+                <span class="tl" style="width:28px;height:5px;opacity:.26"></span>
+              </span>
+              <span class="g-like">
+                <svg width="11" height="11" viewBox="0 0 24 24"><path class="svg-heart-fill" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg>
+                <span class="tl" style="width:18px;height:5px;opacity:.3"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-media" style="background:linear-gradient(152deg,#FFF3C8,#FFDD88)">
+            <svg class="sticker" style="position:absolute;top:12px;left:12px" width="15" height="15" viewBox="0 0 24 24"><path class="svg-star" style="stroke:#fff;stroke-width:4.5" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg>
+          </div>
+          <div class="g-body">
+            <span class="tl" style="width:84px;height:8px;opacity:.58"></span>
+            <div class="g-meta">
+              <span style="display:flex;align-items:center;gap:6px">
+                <span class="dot" style="width:6px;height:6px;background:var(--yellow)"></span>
+                <span class="tl" style="width:32px;height:5px;opacity:.26"></span>
+              </span>
+              <span class="g-like">
+                <svg width="11" height="11" viewBox="0 0 24 24"><path class="svg-heart-fill" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg>
+                <span class="tl" style="width:18px;height:5px;opacity:.3"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="g-card">
+          <div class="g-media" style="background:linear-gradient(152deg,#FFE3EA,#FFC9D6)">
+            <span class="mini-ava" style="position:absolute;top:10px;left:10px"></span>
+          </div>
+          <div class="g-body">
+            <span class="tl" style="width:68px;height:8px;opacity:.58"></span>
+            <div class="g-meta">
+              <span style="display:flex;align-items:center;gap:6px">
+                <span class="dot" style="width:6px;height:6px;background:var(--pink)"></span>
+                <span class="tl" style="width:26px;height:5px;opacity:.26"></span>
+              </span>
+              <span class="g-like">
+                <svg width="11" height="11" viewBox="0 0 24 24"><path class="svg-heart-fill" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg>
+                <span class="tl" style="width:18px;height:5px;opacity:.3"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="tabbar">
+        <span class="tab"><svg width="22" height="22" viewBox="0 0 24 24"><path class="svg-ink" style="stroke-width:2.4" d="M4.5 11L12 4.2 19.5 11v7.3a1.8 1.8 0 0 1-1.8 1.8H6.3a1.8 1.8 0 0 1-1.8-1.8z"/><path class="svg-ink" d="M9.5 20v-5.5h5V20"/></svg></span>
+        <span class="tab"><svg width="22" height="22" viewBox="0 0 24 24"><path class="svg-heart-line" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg></span>
+        <span class="tab"><svg width="23" height="23" viewBox="0 0 24 24"><ellipse class="svg-ink" style="fill:var(--ink)" cx="12" cy="15.5" rx="4.6" ry="3.8"/><circle class="svg-ink" style="fill:var(--ink)" cx="5.8" cy="10.4" r="2.1"/><circle class="svg-ink" style="fill:var(--ink)" cx="18.2" cy="10.4" r="2.1"/><circle class="svg-ink" style="fill:var(--ink)" cx="9.2" cy="6.9" r="2.1"/><circle class="svg-ink" style="fill:var(--ink)" cx="14.8" cy="6.9" r="2.1"/></svg></span>
+        <span class="tab on"><svg width="22" height="22" viewBox="0 0 24 24"><circle class="svg-ink" cx="12" cy="8.2" r="3.9"/><path class="svg-ink" d="M4.8 20a7.2 7.2 0 0 1 14.4 0"/></svg></span>
+      </nav>
+    </div></div>
+
+  </section>
+
+  <!-- ═══ 载体样本条（标定区 · 五节齐全） ═══ -->
+  <section class="carrier-bar">
+
+    <!-- ① 色板 -->
+    <div class="cb-sec">
+      <span class="cb-tag">01 · 色板</span>
+      <div class="swatches">
+        <div class="swatch"><div class="sw-chip" style="background:#FFB7C5"></div><div class="sw-name"><b>#FFB7C5</b>樱粉 · 主色</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#FFB3C6"></div><div class="sw-name"><b>#FFB3C6</b>腮红 · 深半档</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#FFE082"></div><div class="sw-name"><b>#FFE082</b>奶黄 · 星星</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#BDE3FF"></div><div class="sw-name"><b>#BDE3FF</b>奶蓝 · 辅色</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#FFF0F5;border-color:#FFD9E2"></div><div class="sw-name"><b>#FFF0F5</b>樱贝白 · 底</div></div>
+        <div class="swatch"><div class="sw-chip" style="background:#5C5470"></div><div class="sw-name"><b>#5C5470</b>灰紫 · 五官文字</div></div>
+      </div>
+    </div>
+
+    <!-- ② 字体阶梯 -->
+    <div class="cb-sec">
+      <span class="cb-tag">02 · 字体阶梯</span>
+      <div class="type-scale">
+        <div class="ts-title">软软的圆体标题</div>
+        <div class="ts-body">正文读起来像棉花糖，一句话慢慢地讲完，不着急。</div>
+        <div class="ts-note">家族：M PLUS Rounded 1c → 站酷快乐体 → 幼圆 / YouYuan → 系统圆体回退<br>笔画全圆头，转角无锐利切面</div>
+      </div>
+    </div>
+
+    <!-- ③ 成文排版 -->
+    <div class="cb-sec" style="min-width:300px;flex:1">
+      <span class="cb-tag">03 · 成文排版</span>
+      <div class="prose">
+        <h3>圆圆的，软软的，慢慢来</h3>
+        <p>圆角是给眼睛的棉花糖，留白是给心情的深呼吸。所有急促的念头，都会被这一层粉色滤镜轻轻放慢，再轻轻放下。</p>
+        <blockquote>把最软的一句话，留到最后再说。</blockquote>
+      </div>
+    </div>
+
+    <!-- ④ 组件形态 -->
+    <div class="cb-sec">
+      <span class="cb-tag">04 · 组件形态</span>
+      <div class="comp-row">
+        <div>
+          <div class="btn-pill">轻轻一点
+            <svg width="15" height="15" viewBox="0 0 24 24"><path style="fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round" d="M8 12h7M12.5 7.5L17 12l-4.5 4.5"/></svg>
+          </div>
+          <div class="comp-label">主按钮 · 全胶囊 / 软粉阴影</div>
+        </div>
+        <div>
+          <div class="mini-card">
+            <div class="mc-media"></div>
+            <div class="mc-body">
+              <div style="height:9px;width:96px;border-radius:99px;background:rgba(92,84,112,.6)"></div>
+              <div style="height:6px;width:64px;border-radius:99px;background:rgba(92,84,112,.24);margin-top:8px"></div>
+            </div>
+          </div>
+          <div class="comp-label">卡片 · 圆角 22 / 大留白</div>
+        </div>
+        <div>
+          <div class="input-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24"><circle class="svg-ink" style="stroke-width:2.4" cx="10.5" cy="10.5" r="6.5"/><path class="svg-ink" style="stroke-width:2.4" d="M15.5 15.5L20.5 20.5"/></svg>
+            写点开心的…
+          </div>
+          <div class="comp-label">输入框 · 全胶囊 / 浅粉底</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ 图标 -->
+    <div class="cb-sec">
+      <span class="cb-tag">05 · 图标</span>
+      <div class="icon-row">
+        <div class="icon-cell"><div class="ic-plate"><svg width="26" height="26" viewBox="0 0 24 24"><path class="svg-star" d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.5l5.8-.8z"/></svg></div><span>星星</span></div>
+        <div class="icon-cell"><div class="ic-plate"><svg width="26" height="26" viewBox="0 0 24 24"><path class="svg-heart-fill" d="M12 20.4l-1.5-1.4C5.7 14.7 2.6 11.9 2.6 8.5c0-2.7 2.1-4.9 4.9-4.9 1.6 0 3.1.7 4.5 2.3 1.4-1.6 2.9-2.3 4.5-2.3 2.8 0 4.9 2.2 4.9 4.9 0 3.4-3.1 6.2-7.9 10.5z"/></svg></div><span>爱心</span></div>
+        <div class="icon-cell"><div class="ic-plate"><svg width="26" height="26" viewBox="0 0 24 24"><path style="fill:var(--blue)" d="M7.2 18.5h9.6a4.2 4.2 0 0 0 .9-8.3 5.8 5.8 0 0 0-11.2-1.2 4.6 4.6 0 0 0 .7 9.5z"/></svg></div><span>云朵</span></div>
+        <div class="icon-cell"><div class="ic-plate"><svg width="26" height="26" viewBox="0 0 24 24"><path style="fill:var(--pink);stroke:var(--pink);stroke-width:2.4;stroke-linejoin:round" d="M11 12L4.6 8.4C3.5 7.8 2.2 8.6 2.2 9.8v4.4c0 1.2 1.3 2 2.4 1.4L11 12zM13 12l6.4-3.6c1.1-.6 2.4.2 2.4 1.4v4.4c0 1.2-1.3 2-2.4 1.4L13 12z"/><circle cx="12" cy="12" r="3" style="fill:var(--blush-deep)"/></svg></div><span>蝴蝶结</span></div>
+        <div class="icon-cell"><div class="ic-plate"><svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" style="fill:var(--pink)"/><path d="M8.6 9.4v3.4M15.4 9.4v3.4" style="stroke:#5C5470;stroke-width:2.2;stroke-linecap:round"/><path d="M9.4 14.4c.9 1 1.7 1.4 2.6 1.4s1.7-.4 2.6-1.4" style="fill:none;stroke:#5C5470;stroke-width:2;stroke-linecap:round"/><ellipse cx="6.7" cy="13.4" rx="1.7" ry="1" style="fill:#FFA3B8;opacity:.8"/><ellipse cx="17.3" cy="13.4" rx="1.7" ry="1" style="fill:#FFA3B8;opacity:.8"/></svg></div><span>圆脸</span></div>
+      </div>
+    </div>
+
+  </section>
+</article>
+</body>
+</html>

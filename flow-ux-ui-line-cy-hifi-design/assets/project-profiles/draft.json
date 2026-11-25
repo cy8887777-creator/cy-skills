@@ -1,0 +1,20 @@
+{
+  "id": "draft",
+  "title": "设计稿预览档（V06 阶段4/6 产物壳）",
+  "status": "active",
+  "defaultEnabled": false,
+  "registeredAt": "2026-11-10",
+  "registeredBy": "V06-③ 壳子 draft 档（v06-shell-draft-profile.md）",
+  "description": "同一壳子两种解锁深度中的预览档：纯看图+批注。编辑入口（去编辑/口令）隐藏、首开绑定弹窗延后到写盘动作、批注面板默认收起由顶栏「批注」手动开关、不生成 AGENTS.md 指南。转化版（附加A）不带 --profile draft 即恢复全部编辑能力，机制=body 注入 ed-draft 类 + 壳内建 draft CSS/JS 分支，不删能力只切形态。",
+  "usage": "build.py ... --profile draft（设计稿预览包）；编辑器版（附加A）构建不带该参数",
+  "inject": {
+    "styleBlockId": "project-profile-css",
+    "attribute": "data-project-profile",
+    "marker": "PROJECT_PROFILE:draft",
+    "cssVar": "--project-profile",
+    "hookClass": "prototype-profile-draft",
+    "bodyClass": "ed-draft",
+    "brandSubtitle": "设计稿预览 · 可查看与批注"
+  },
+  "skipAgentsGuide": true
+}

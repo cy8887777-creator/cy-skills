@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<!-- 设计稿预览壳 = 左侧页面列表 + 手机框画布（框里套画师的效果图）。纯静态，不跑 build。
+     用法：
+     1. 加一页 = 复制一整段 <section class="screen">…</section>（含 device/viewport 两层壳），
+        改 data-screen（英文id）和 data-name（中文名），页面内容写在 <div class="viewport"> 里；
+     2. 侧栏对应加一个列表项 <button class="pg-item" data-go="英文id">中文名</button>；
+     3. 当前显示的页面 section 和它的列表项各带 class on（其余不带）。
+     桌面端项目：把 device 的 mobile 换成 desktop。
+     页面结构 section > .device > .viewport 与编辑器壳同构——转化成编辑器版时页面块直接搬。
+     标准交互（行为由壳 JS 统一接管，画师只写结构标注、禁自造交互 JS）：
+     - 跳转：页面内任何可点元素标 data-go="目标页id"（值=某 section 的 data-screen），点击即切页；
+     - 弹层：触发元素标 data-sheet="open"；遮罩/关闭钮标 data-sheet="close"；弹层面板标 data-sheet-panel
+       （默认隐藏，壳出现 .sheet-open 时显示——显隐由壳管，面板的位置/背景/样式由画师按风格写）；
+       点击弹层面板内部不误关，点遮罩/关闭钮才关；切页时自动收起；
+     - 分段切换：容器标 data-seg，选项标 data-tab="面板id"，面板标 data-panel="面板id"；
+       默认显示的选项和面板手工加 class on（壳不管理初始态）；同页多组时 data-tab 值须全页唯一；
+     定制行为（如输入计数）画师可写 JS，登记交付说明；
+     - 旁批：每页可在 viewport 里放 <aside class="anno" hidden>（内容结构见旁批技能 page-annotation-writer），
+       壳右缘「旁批」把手展开面板显示当前页内容，无 aside 的页显示"本页无旁批"。 -->
+<style>
+  :root{--pg-bg:#f4f4f6;--pg-surface:#fff;--pg-line:#e4e4ea;--pg-text:#1c1c1e;--pg-muted:#8e8e93;--pg-accent:#7c5cff;--pg-accent-soft:#f0edff}
+  *{box-sizing:border-box}
+  body{margin:0;display:flex;min-height:100vh;background:var(--pg-bg);color:var(--pg-text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}
+  nav{width:220px;flex:none;background:var(--pg-surface);border-right:1px solid var(--pg-line);padding:14px 10px;position:sticky;top:0;height:100vh;overflow:auto}
+  .pg-title{font-size:13px;font-weight:700;color:var(--pg-muted);padding:0 8px 10px;letter-spacing:.02em}
+  .pg-item{display:block;width:100%;text-align:left;font-size:13px;padding:8px 10px;margin:2px 0;border:0;border-radius:8px;background:transparent;color:var(--pg-text);cursor:pointer}
+  .pg-item:hover{background:var(--pg-accent-soft)}
+  .pg-item.on{background:var(--pg-accent-soft);color:var(--pg-accent);font-weight:700}
+  main{flex:1;padding:32px 24px;display:flex;justify-content:center;align-items:flex-start}
+  .screen{display:none}
+  .screen.on{display:block}
+  /* 手机框画布（参数取自编辑器壳，不追 1:1） */
+  .device{background:#fff;position:relative;overflow:hidden}
+  .device.mobile{width:375px;height:812px;border-radius:34px;border:10px solid #16181d;box-shadow:0 20px 40px -24px rgba(16,24,40,.45),0 2px 6px rgba(16,24,40,.1)}
+  .device.mobile::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:118px;height:24px;background:#16181d;border-radius:0 0 14px 14px;z-index:3}
+  .device.desktop{width:1200px;height:800px;border-radius:12px;border:1px solid var(--pg-line);box-shadow:0 16px 40px -26px rgba(16,24,40,.35)}
+  .viewport{position:relative;overflow:auto;background:#fff;height:100%}
+  .device.mobile .viewport{padding-top:34px}
+  /* 标准交互默认显隐（只管开关；面板/弹层的位置背景样式细化归画师按风格写） */
+  [data-panel]{display:none}
+  [data-panel].on{display:block}
+  [data-seg] [data-tab].on{font-weight:700}
+  [data-sheet-panel]{display:none}
+  .device.sheet-open [data-sheet-panel]{display:flex;flex-direction:column;position:absolute;inset:0;z-index:5}
+  /* 旁批面板（壳自带；内容=当前页 aside.anno，由旁批技能/画师按页写入） */
+  .anno-handle{position:fixed;right:0;top:56px;z-index:21;writing-mode:vertical-rl;letter-spacing:.12em;padding:12px 6px;border:1px solid var(--pg-line);border-right:0;border-radius:8px 0 0 8px;background:var(--pg-surface);color:var(--pg-muted);font-size:13px;cursor:pointer}
+  .anno-handle:hover{color:var(--pg-accent);background:var(--pg-accent-soft)}
+  body.anno-open .anno-handle{display:none}
+  .anno-panel{position:fixed;top:0;right:0;bottom:0;width:340px;max-width:86vw;background:var(--pg-surface);border-left:1px solid var(--pg-line);box-shadow:-12px 0 32px -24px rgba(16,24,40,.35);transform:translateX(102%);transition:transform .2s ease;z-index:20;display:flex;flex-direction:column}
+  body.anno-open .anno-panel{transform:none}
+  .anno-head{flex:none;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--pg-line);font-size:13px;font-weight:700;color:var(--pg-muted)}
+  .anno-close{border:0;background:none;color:var(--pg-muted);font-size:15px;cursor:pointer;padding:2px 6px}
+  .anno-body{flex:1;overflow:auto;padding:16px 18px;font-size:15px;line-height:1.75;color:var(--pg-text)}
+  .anno-body p{margin:0 0 8px}
+  .anno-body .anno-no{display:inline-block;font-size:12px;font-weight:700;color:var(--pg-accent);background:var(--pg-accent-soft);padding:2px 8px;border-radius:4px;margin:14px 0 6px}
+  .anno-body .anno-no:first-child{margin-top:0;color:var(--pg-muted);background:var(--pg-line)}
+  .anno-body .anno-empty{color:var(--pg-muted)}
+</style>
+</head>
+<body>
+<nav>
+  <div class="pg-title">页面列表</div>
+  <button class="pg-item on" data-go="page-1">页面一</button>
+</nav>
+<button class="anno-handle" id="annoHandle" title="旁批">旁批</button>
+<aside class="anno-panel" id="annoPanel">
+  <div class="anno-head">旁批 · <span id="annoPageName"></span><button class="anno-close" id="annoClose">✕</button></div>
+  <div class="anno-body" id="annoBody"></div>
+</aside>
+<main id="stage">
+  <section class="screen on" data-screen="page-1" data-name="页面一">
+    <div class="device mobile">
+      <div class="viewport">
+        <!-- 此处放该页效果图内容 -->
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  (function(){
+    var items = document.querySelectorAll('.pg-item'), pages = document.querySelectorAll('.screen');
+    function goTo(id){
+      pages.forEach(function(p){ p.classList.toggle('on', p.getAttribute('data-screen') === id); });
+      items.forEach(function(o){ o.classList.toggle('on', o.getAttribute('data-go') === id); });
+      /* 切页时收起所有打开的弹层（防状态残留） */
+      document.querySelectorAll('.device.sheet-open').forEach(function(d){ d.classList.remove('sheet-open'); });
+      var cur = document.querySelector('.screen.on .viewport');
+      if (cur) cur.scrollTop = 0;
+      window.scrollTo(0, 0);
+      renderAnno();
+    }
+    /* 标准交互接管：事件委托，页面内容元素写标注即得行为（画师禁自造交互 JS）
+       优先级：data-go 最高（命中即返回）；弹层面板内的点击不参与开/关判定 */
+    document.addEventListener('click', function(e){
+      var t = e.target;
+      var go = t.closest('[data-go]');
+      if (go) { goTo(go.getAttribute('data-go')); return; }
+      var sh = t.closest('[data-sheet]');
+      if (sh) {
+        var dev = sh.closest('.device');
+        if (dev) dev.classList.toggle('sheet-open', sh.getAttribute('data-sheet') === 'open');
+        return;
+      }
+      if (t.closest('[data-sheet-panel]')) return;
+      var seg = t.closest('[data-seg]'), tab = t.closest('[data-tab]');
+      if (seg && tab) {
+        var segTabs = seg.querySelectorAll('[data-tab]');
+        var ids = [].map.call(segTabs, function(b){ return b.getAttribute('data-tab'); });
+        var scope = seg.closest('.screen') || document;
+        scope.querySelectorAll('[data-panel]').forEach(function(p){
+          var v = p.getAttribute('data-panel');
+          if (ids.indexOf(v) !== -1) p.classList.toggle('on', v === tab.getAttribute('data-tab'));
+        });
+      }
+    });
+    /* 旁批面板：内容=当前页 aside.anno（旁批技能按页写入），壳只管显隐与切页刷新 */
+    var annoBody = document.getElementById('annoBody');
+    function renderAnno(){
+      if (!annoBody) return;
+      var any = document.querySelector('aside.anno');
+      var handle = document.getElementById('annoHandle');
+      if (handle) handle.style.display = any ? '' : 'none';
+      var cur = document.querySelector('.screen.on aside.anno');
+      annoBody.innerHTML = cur ? cur.innerHTML : '<p class="anno-empty">本页无旁批。</p>';
+      var pn = document.getElementById('annoPageName');
+      if (pn) { var s = document.querySelector('.screen.on'); pn.textContent = s ? (s.getAttribute('data-name') || '') : ''; }
+    }
+    document.getElementById('annoHandle').addEventListener('click', function(){ document.body.classList.toggle('anno-open'); });
+    document.getElementById('annoClose').addEventListener('click', function(){ document.body.classList.remove('anno-open'); });
+    renderAnno();
+    /* 有旁批内容的产物默认展开面板（用户裁决：旁批默认打开）；无 aside 不展开且把手隐藏 */
+    if (document.querySelector('aside.anno')) document.body.classList.add('anno-open');
+    /* 壳侧栏导航（原有能力） */
+    items.forEach(function(it){
+      it.addEventListener('click', function(){
+        goTo(it.getAttribute('data-go'));
+      });
+    });
+  })();
+</script>
+</body>
+</html>

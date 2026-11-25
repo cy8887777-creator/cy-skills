@@ -1,0 +1,79 @@
+.free-canvas{position:relative!important;display:block!important;gap:0!important;padding:0!important;min-height:720px;overflow:visible!important;flex:none!important}
+.free-canvas>[data-free-item]{position:absolute!important;flex:none!important;box-sizing:border-box;margin:0!important;min-width:24px;min-height:24px;touch-action:none}
+.free-canvas>.btns[data-free-item]{display:flex!important;padding:0}.free-canvas>.btns[data-free-item]>.b{width:100%;height:100%;min-height:0;box-sizing:border-box;justify-content:center;flex:1}
+.free-editor-ui{position:fixed;z-index:170;pointer-events:none;box-sizing:border-box}.free-box{border:1px solid #f07735;outline:1px solid #fff8}.free-box[hidden]{display:none!important}
+.free-resize{position:absolute;display:block;width:12px;height:12px;border:2px solid white;background:#f07735;pointer-events:auto;box-sizing:border-box;touch-action:none}
+.free-nw{left:-6px;top:-6px;cursor:nwse-resize}.free-n{left:calc(50% - 6px);top:-6px;cursor:ns-resize}.free-ne{right:-6px;top:-6px;cursor:nesw-resize}.free-e{right:-6px;top:calc(50% - 6px);cursor:ew-resize}.free-se{right:-6px;bottom:-6px;cursor:nwse-resize}.free-s{left:calc(50% - 6px);bottom:-6px;cursor:ns-resize}.free-sw{left:-6px;bottom:-6px;cursor:nesw-resize}.free-w{left:-6px;top:calc(50% - 6px);cursor:ew-resize}
+.free-canvas>[data-editor-placeholder]{position:absolute;left:24px;right:24px;top:24px;min-height:130px;pointer-events:none}
+#freeProperties .g2:where(:not(#canvas *)) label{font-size:11px;color:var(--muted)}#freeProperties input{width:100%;box-sizing:border-box}
+.topbar:where(:not(#canvas *)){min-height:58px;height:auto!important}.topbar:where(:not(#canvas *)) .tools{flex-wrap:wrap}.topbar:where(:not(#canvas *)) .ed-brand{flex-shrink:1}.palette:where(:not(#canvas *)){z-index:180}.inspector:where(:not(#canvas *)){z-index:190}
+/* One viewport shell. Only the canvas and panel scroll; tools never widen the document. */
+html{--ed-bar-height:58px;--ed-nav-width:214px;--ed-panel-width:336px;height:100%;overflow:hidden}
+html body{height:100%;overflow:hidden;width:100%;margin:0}
+html body .topbar:where(:not(#canvas *)){position:fixed;left:0;right:0;top:0;width:auto;max-width:100vw;min-height:58px;padding:8px 12px;gap:10px;align-items:center;z-index:220}
+html body .topbar:where(:not(#canvas *)) .ed-brand{max-width:245px;min-width:120px;flex:0 1 245px}
+html body .topbar:where(:not(#canvas *)) .tools{flex:1 1 0;min-width:0;max-width:100%;flex-wrap:wrap;gap:6px}
+html body .canvas:where(:not(#canvas *)){position:fixed;left:var(--ed-nav-width);right:0;top:var(--ed-bar-height);bottom:0;margin:0;width:auto;height:auto;min-width:0;overflow:auto;padding:26px 26px 60px!important;scroll-padding:26px;overscroll-behavior:contain}
+html body.has-inspector .canvas:where(:not(#canvas *)){right:var(--ed-panel-width)}
+html body .tabs:where(:not(#canvas *)){position:fixed;top:var(--ed-bar-height);bottom:0;left:0;width:var(--ed-nav-width);height:auto;overflow-y:auto;overflow-x:hidden}
+html body .inspector:where(:not(#canvas *)){top:var(--ed-bar-height);width:var(--ed-panel-width);bottom:0;right:0;min-height:0;overflow:hidden}
+html body .ed-ins-b{min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain}
+html body .dbg:where(:not(#canvas *)){top:var(--ed-bar-height);max-height:calc(100vh - var(--ed-bar-height));z-index:210}
+html body .topbar:where(:not(#canvas *)) #btnNotes,html body .topbar:where(:not(#canvas *)) #btnGhost{display:inline-flex}html body .topbar:where(:not(#canvas *)) .ed-zbox,html body .topbar:where(:not(#canvas *)) #themeBox{display:flex}
+html body .palette:where(:not(#canvas *)){top:calc(var(--ed-bar-height) + 8px);max-height:calc(100vh - var(--ed-bar-height) - 20px);overflow:auto;right:12px}
+html body.has-inspector .palette:where(:not(#canvas *)){right:calc(var(--ed-panel-width) + 12px)}
+#annotationField{padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--accent-soft)}
+#annotationField .hint:where(:not(#canvas *)){font-size:11px;line-height:1.6}
+body:not(.ed-editing) #btnAnnotate,body:not(.ed-editing) #btnFreeLayout{display:none}
+#annotationDialog{width:min(640px,94vw);max-height:86vh;overflow:auto;border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface);color:var(--text);box-shadow:0 24px 90px #10203044}
+#annotationDialog::backdrop{background:#14243466}.annotation-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.annotation-head h2{font-size:18px;margin:0}.annotation-head button{flex:none}
+#annotationTarget{font-size:12px;color:var(--muted);overflow-wrap:anywhere}#annotationEditor label{display:flex;flex-direction:column;gap:5px;font-size:12px;margin:12px 0}
+#annotationEditor select,#annotationEditor textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);font:inherit}#annotationEditor textarea{resize:vertical}.annotation-actions{display:flex;gap:8px;flex-wrap:wrap}
+.annotation-entry{display:flex;flex-direction:column;gap:5px;width:100%;text-align:left;padding:12px;margin:8px 0;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--text)}.annotation-entry strong{font-size:12px;color:var(--accent)}.annotation-entry span{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}
+#annotationTooltip{position:fixed;z-index:230;width:max-content;max-width:min(320px,90vw);max-height:220px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#18222f;color:#fff;padding:10px 13px;border-radius:9px;box-shadow:0 10px 35px #0003;font-size:12px;pointer-events:none}
+@media(max-width:1450px){html body .topbar:where(:not(#canvas *)) .ed-brand{max-width:170px;min-width:140px;flex:0 1 170px}} /* 批1f：不再隐藏文件名（定稿要求顶栏左侧显示），改为缩窄截断 */
+@media(max-width:850px){html{--ed-nav-width:150px;--ed-panel-width:300px}html body .topbar:where(:not(#canvas *)) .tools .tb{font-size:11px;padding:0 7px;height:28px}html body .topbar:where(:not(#canvas *)) .tools{gap:4px}html body .topbar:where(:not(#canvas *)){padding:6px 8px}}
+html body .topbar:where(:not(#canvas *)) #btnAnnotate{display:inline-flex}
+body.annotating .canvas:where(:not(#canvas *)) .viewport *{cursor:crosshair!important}
+body.annotating .annotation-hover{outline:2px dashed #e9692d!important;outline-offset:2px}
+#annotationModeHint{position:fixed;left:calc(var(--ed-nav-width) + 16px);bottom:54px;max-width:calc(100vw - var(--ed-nav-width) - 32px);z-index:215;background:#183346;color:white;padding:10px 14px;border-radius:10px;font-size:12px;pointer-events:none}
+#annotationModeHint[hidden]{display:none!important}
+.annotation-pin{position:fixed;z-index:205;width:22px;height:22px;min-height:22px;padding:0;border:2px solid white;border-radius:50%;background:#e9692d;color:white;font:600 11px/18px sans-serif;box-shadow:0 2px 7px #0003;cursor:pointer;touch-action:manipulation}
+.annotation-pin:hover{transform:scale(1.15)}
+#annotationDialog{width:min(900px,94vw)}
+.annotation-description-tools,.annotation-index-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.annotation-description-tools select{flex:1;min-width:180px!important;width:auto!important}.annotation-description-tools button{flex:none}
+.annotation-index-tools input{flex:1;min-width:200px}.annotation-index-tools select{max-width:140px}.annotation-index-tools input,.annotation-index-tools select{padding:8px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--surface);color:var(--text)}
+#annotationMatches{width:100%;font-size:12px;color:var(--muted)}
+.annotation-description-preview{padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--soft);line-height:1.8;max-height:340px;overflow:auto;overflow-wrap:anywhere}
+.annotation-description-preview h4{font-size:13px;margin:16px 0 6px;color:var(--accent)}.annotation-description-preview p{white-space:pre-wrap;font-size:12px;margin:5px 0}.annotation-description-preview h4:first-child{margin-top:0}
+.annotation-description-preview[hidden]{display:none!important}
+@media(min-width:760px){#annotationEditor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}#annotationEditor .annotation-description-tools,#annotationEditor .annotation-type-field,#annotationEditor .annotation-actions{grid-column:1/-1}.annotation-description-preview{max-height:410px;align-self:start;margin-top:12px}#annotationEditor .annotation-raw-field{margin:12px 0}#annotationEditor textarea{min-height:340px}}
+#annotationDialog.annotation-readonly .annotation-raw-field{display:none}#annotationDialog.annotation-readonly .annotation-description-preview{grid-column:1/-1;max-height:52vh;margin-top:0}
+#annotationDialog{padding:0;overflow:hidden;max-height:calc(100dvh - 36px)}
+#annotationDialog[open]{display:flex;flex-direction:column}
+#annotationDialog>.annotation-head{flex:none;padding:14px 20px;background:var(--surface);border-bottom:1px solid var(--line)}
+.annotation-dialog-body{min-height:0;overflow:auto;padding:16px 20px;overscroll-behavior:contain}
+#annotationTooltip{max-height:none;overflow:visible;font-size:11px;line-height:1.65}
+body.anchored-annotations .viewport [data-note]::before{display:none!important}
+html body.has-annotation-card .canvas:where(:not(#canvas *)){padding-left:calc(var(--annotation-card-width,330px) + 40px)!important;scroll-padding-left:calc(var(--annotation-card-width,330px) + 40px)}
+html body.has-annotation-card.annotation-right .canvas:where(:not(#canvas *)){padding-left:26px!important;padding-right:calc(var(--annotation-card-width,330px) + 40px)!important;scroll-padding-left:26px;scroll-padding-right:calc(var(--annotation-card-width,330px) + 40px)}
+html body.has-annotation-card.annotation-drawer .canvas:where(:not(#canvas *)){padding-left:26px!important;padding-right:26px!important;scroll-padding-left:26px;scroll-padding-right:26px}
+#annotationCardSide{min-width:0;width:auto;padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--muted);font:11px inherit;margin-left:auto}
+#annotationCard{position:fixed;z-index:212;display:flex;flex-direction:column;box-sizing:border-box;background:var(--surface);color:var(--text);border:1px solid var(--line);border-left:4px solid #e9692d;border-radius:12px;box-shadow:0 8px 28px #10203022}
+#annotationCard[hidden],#annotationCard [hidden]{display:none!important}
+#annotationCard header{flex:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line)}
+#annotationCardContext{flex:none;margin:0;padding:8px 14px;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.annotation-card-body{min-height:0;overflow:auto;padding:0 14px 12px;overscroll-behavior:contain}
+#annotationCardRead{font-size:12px;line-height:1.8;overflow-wrap:anywhere}#annotationCardRead h4{color:var(--accent);font-size:12px;margin:16px 0 5px}#annotationCardRead p{white-space:pre-wrap;margin:6px 0}
+#annotationCardText{width:100%;box-sizing:border-box;min-height:230px;resize:vertical;padding:10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:12px;line-height:1.75;background:var(--surface);color:var(--text)}
+#annotationCard footer{flex:none;padding:10px 14px;border-top:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap}#annotationCard footer .tb:where(:not(#canvas *)){font-size:11px;height:28px;padding:0 8px}#annotationCardStatus{width:100%;font-size:10px;color:var(--muted)}
+#annotationConnector{position:fixed;inset:0;width:100%;height:100%;z-index:201;pointer-events:none;overflow:visible}
+@media(max-width:1099px){html body.has-annotation-card .canvas:where(:not(#canvas *)),html body.has-annotation-card.annotation-right .canvas:where(:not(#canvas *)){padding-left:26px!important;padding-right:26px!important;scroll-padding-left:26px;scroll-padding-right:26px}}
+
+/* Direct geometry tools apply to normal pages as well as explicit free canvases. */
+[data-direct-item]{touch-action:none;box-sizing:border-box}
+.free-radius{position:absolute;top:-6px;display:block;width:12px;height:12px;border:2px solid #fff;background:#26a989;transform:rotate(45deg);box-sizing:border-box;pointer-events:auto;cursor:nesw-resize;touch-action:none}
+.direct-controls{display:grid;gap:9px;margin-top:12px}.direct-controls label{font-size:12px;display:grid;gap:5px}.direct-controls select{width:100%;padding:7px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--text)}
+#annotationField textarea{width:100%;min-height:80px;resize:vertical;font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;box-sizing:border-box}
+#annotationCardRead{cursor:text}#annotationCardRead:empty::before{content:'双击填写当前功能的说明';color:var(--muted)}

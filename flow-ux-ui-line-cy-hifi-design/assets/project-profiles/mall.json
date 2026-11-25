@@ -1,0 +1,68 @@
+{
+  "id": "mall",
+  "title": "商城专项（历史项目 profile）",
+  "status": "registered-placeholder",
+  "rulesMigrated": false,
+  "migrationOwner": "T03/T04/T07",
+  "defaultEnabled": false,
+  "registeredAt": "2026-11-01",
+  "registeredBy": "T01（运行时集成人R）",
+  "description": "机械配件商城时代的专项规则登记。默认绝不启用：仅当构建显式 --profile mall 时注入受控规则标记（CSS 变量/类开关占位）；非商城同名页（如同名 home/profile 页）不得因此自动启用。真实规则从 seed/chooser 移除并落为本 profile 资产的迁移属 T03/T04/T07——本轮只建立 profile 机制与登记，不改 seed/chooser 本身。",
+  "freezeRef": "T00-冻结单 §4（chooser 已接入族：间距 p.space 仅 .mall-content＝商城专项）、§6 装配层段",
+  "sources": [
+    {
+      "file": "assets/editor-seed.html",
+      "lines": "658-682",
+      "note": "seed 内四商城主导航页（home/category/cart/profile）的 mobile 固定壳 812px/viewport 滚动收纳/app 内滚动/tabbar 吸底 56px/cart-settle-bar 吸底规则；T03/T04 移除对象，本轮只读登记（行号为文件 \\n 口径）。"
+    },
+    {
+      "file": "assets/style-chooser.js",
+      "lines": "24,31-66,76",
+      "note": "chooser 预设注入 CSS 的 mall 选择器族（运行时字符串，含 .mall-content 间距 p.space 专项）与示例文案「商城 · 商品列表」；移除属 T03/T04。"
+    }
+  ],
+  "selectors": {
+    "seedScreenFamily": [
+      "body #canvas .screen:is([data-screen=\"home\"],[data-screen=\"category\"],[data-screen=\"cart\"],[data-screen=\"profile\"]):not([data-layout=\"free\"]):not(:has(.free-canvas)) > .device.mobile  （height/min-height 812px !important）",
+      "同上前缀 > .device.mobile > .viewport  （height 100%/overflow hidden 收纳）",
+      "同上前缀 > .device.mobile > .viewport > .app  （flex:1/min-height:0/overflow auto/padding-bottom:0/scrollbar-width:none）",
+      "同上前缀 > .device.mobile > .viewport > .app::-webkit-scrollbar  （display:none）",
+      "同上前缀 > .device.mobile > .viewport > .app > *  （flex-shrink:0）",
+      "同上前缀 > .device.mobile > .viewport > .app > .tabbar  （position:sticky bottom:0 height:56px z-index:40）",
+      "body #canvas .screen[data-screen=\"cart\"]:not([data-layout=\"free\"]):not(:has(.free-canvas)) > .device.mobile > .viewport > .app > [data-eid=\"cart-settle-bar\"]  （sticky bottom:56px margin-top:auto）",
+      "body #canvas .screen[data-screen=\"cart\"]:…同前缀 > .device.mobile > .viewport > .app > .tabbar  （margin-top:0）"
+    ],
+    "chooserFamily": [
+      ".mall-modal（overlay 根，sc:24）",
+      ".mall-content,.mall-admin,.mall-admin-main（背景族，sc:31）",
+      ".mall-bottom,.mall-admin-top（导航族，sc:32；dark 模式变体 sc:65）",
+      ".mall-product,.mall-cart-line,.mall-order-card,.mall-address,.mall-manual,.mall-record,.mall-table-wrap,.mall-table-scroll,.mall-cart-summary,.mall-grid-form,.mall-stats>div,.mall-chat .bubble（卡片族，sc:33）",
+      ".mall-product-info,.mall-summary（文本/边框族，sc:34）",
+      ".mall-field input,.mall-field select,.mall-field textarea,.mall-history button,.mall-cart-ops button（圆角族，sc:35-36）",
+      ".mall-methods .b.selected,.mall-chat .bubble.mine（强调族，sc:40）",
+      ".mall-content（间距 p.space＋gap＝冻结单点名的商城专项，sc:44）",
+      ".mall-hero,.mall-profile,.mall-wallet,.mall-poster（hero 族，sc:45；h1/p/strong 白字 sc:46、sc:66）",
+      ".mall-hero .b:not(.pri)（hero 次按钮，sc:47）",
+      ".mall-admin-side,.side（侧栏族，sc:48-50）",
+      ".mall-admin table,.mall-admin th,.mall-admin td（表格族，sc:51）",
+      ".mall-stats>div（sc:53）",
+      ".mall-chart>div（sc:54）",
+      ".mall-badge（sc:55）",
+      ".mall-detail-image,.mall-cart-line img,.mall-product img（图盒族，sc:56）",
+      ".mall-price,.mall-detail-price（价格色，sc:57）",
+      ".mall-note（sc:58）",
+      ".mall-product-info small,.mall-sub,.mall-field,.mall-history（弱化族，sc:60）"
+    ],
+    "chooserSampleCopy": [
+      "style-chooser.js:76 预设卡片示例文案「商城 · 商品列表」（属 chooser 资产，G/T03 责，本 profile 仅登记）"
+    ]
+  },
+  "inject": {
+    "styleBlockId": "project-profile-css",
+    "attribute": "data-project-profile",
+    "marker": "PROJECT_PROFILE:mall",
+    "cssVar": "--project-profile",
+    "hookClass": "prototype-profile-mall",
+    "note": "构建期注入占位：:root 变量 + hook 类空规则。真实规则迁移后由 T03/T04/T07 在本机制上落 CSS/JS。"
+  }
+}

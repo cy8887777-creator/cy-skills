@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hifi 设计技能包 · 图解与修订</title>
+<style>
+:root{
+  --bg:#0b0c10; --panel:#14161b; --panel2:#1a1d24;
+  --hair:rgba(255,255,255,.09); --hair2:rgba(255,255,255,.16);
+  --ink:#e8eaee; --mut:#9aa0aa; --dim:#6b7280;
+  --c:#2fd39a; --c-soft:rgba(47,211,154,.12);
+  --blue:#5aa2ff; --amber:#f0a24a; --slate:#8b95a6; --red:#ff5d5d;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,Consolas,"Cascadia Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.8 var(--sans);-webkit-font-smoothing:antialiased;
+ background-image:radial-gradient(1100px 500px at 70% -120px,rgba(47,211,154,.16),transparent 62%);background-repeat:no-repeat}
+.ic{display:inline-block;width:17px;height:17px;vertical-align:-3.5px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ic svg{width:100%;height:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 44px 110px}
+.hero{padding:76px 0 30px}
+.hero .eyebrow{font:12px var(--mono);color:var(--dim);letter-spacing:.18em}
+.hero h1{font-size:46px;font-weight:750;line-height:1.32;margin:18px 0 20px;max-width:26ch}
+.hero h1 em{font-style:normal;color:var(--c)}
+.hero p.lead{color:var(--mut);font-size:16.5px;max-width:70ch;margin-bottom:34px}
+.dgraph{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding:6px 0 10px}
+.dnode{flex:1;min-width:150px;position:relative;background:var(--panel);border:1px solid var(--hair2);border-radius:9px;padding:14px 15px}
+.dnode::after{content:"";position:absolute;right:-13px;top:50%;width:12px;height:1.5px;background:var(--hair2)}
+.dnode::before{content:"";position:absolute;right:-16px;top:50%;transform:translateY(-50%);border:4px solid transparent;border-left-color:var(--hair2);z-index:1}
+.dnode:last-child::after,.dnode:last-child::before{display:none}
+.dnode .num{font:11.5px var(--mono);color:var(--dim);letter-spacing:.1em}
+.dnode .who{display:inline-block;font:11px var(--mono);color:var(--c);background:var(--c-soft);border-radius:3px;padding:0 7px;margin-left:8px;vertical-align:1px}
+.dnode .who.b{color:var(--blue);background:rgba(90,162,255,.12)}
+.dnode .who.a{color:var(--amber);background:rgba(240,162,74,.12)}
+.dnode b{display:block;font-size:15.5px;font-weight:700;margin:4px 0 5px}
+.dnode small{color:var(--mut);font-size:13px;line-height:1.6;display:block}
+.dnode.hot{border-color:rgba(47,211,154,.55);background:linear-gradient(180deg,rgba(47,211,154,.08),var(--panel))}
+.dnode.hot b{color:var(--c)}
+.dnode.risk{border-color:rgba(255,93,93,.5)}
+.dnode.risk b{color:var(--red)}
+.dnode .seal{position:absolute;top:-11px;right:10px;border:1.5px solid var(--red);color:var(--red);font-size:10.5px;font-weight:800;padding:1px 7px;background:var(--bg);transform:rotate(-4deg)}
+.dnode .wip{position:absolute;top:-11px;right:10px;border:1px dashed var(--dim);color:var(--dim);font-size:10.5px;padding:1px 7px;background:var(--bg)}
+.dnode .gate{display:inline-block;margin-top:7px;font:12px var(--mono);color:var(--dim);border:1px solid var(--hair);border-radius:3px;padding:1px 7px}
+.dnode.gateOK .gate{color:var(--c);border-color:rgba(47,211,154,.4)}
+h2.sec{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:750;margin:64px 0 6px;padding-top:34px;border-top:1px solid var(--hair)}
+h2.sec .no{font:12px var(--mono);color:var(--c);letter-spacing:.14em;font-weight:400}
+h2.sec .ic{color:var(--c);width:19px;height:19px}
+.seclabel{color:var(--dim);font-size:14px;max-width:90ch;margin-bottom:18px}
+.status{display:flex;gap:16px;font-size:13.5px;color:var(--mut);margin-top:16px}
+.status .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:8px;vertical-align:0}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tcol{background:var(--panel);border:1px solid var(--hair);border-radius:9px;padding:16px 16px 12px}
+.tcol .th{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;padding-bottom:10px;border-bottom:1px solid var(--hair);margin-bottom:12px}
+.tcol .th .ic{color:var(--c);width:16px;height:16px}
+.tcol .th small{margin-left:auto;font:10px var(--mono);color:var(--dim)}
+.vchain{position:relative;padding-left:24px}
+.vchain::before{content:"";position:absolute;left:10px;top:10px;bottom:10px;width:1.5px;background:var(--hair2)}
+.vstep{position:relative;padding:6px 0}
+.vstep::before{content:"";position:absolute;left:-18px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1.5px solid var(--c)}
+.vstep b{font-size:14.5px;font-weight:650;display:block}
+.vstep small{color:var(--dim);font-size:13px;line-height:1.6;display:block}
+.vstep.hot b{color:var(--c)}
+.trees{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.treetb{background:var(--panel);border:1px solid var(--hair);border-radius:9px;overflow:hidden}
+.treetb .tt{font:12px var(--mono);color:var(--dim);letter-spacing:.1em;padding:9px 16px;border-bottom:1px solid var(--hair)}
+.treetb pre{padding:16px 20px;font:13.5px/2 var(--mono);color:var(--mut);overflow:auto;margin:0}
+.treetb .d{color:var(--c)}
+.treetb .r{color:var(--red)}
+.treetb .g{color:var(--ink)}
+.treetb .w{color:var(--amber)}
+.fmt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.fmt .panel{background:var(--panel);border:1px solid var(--hair);border-radius:9px;padding:16px 18px}
+.fmt h5{font-size:14.5px;font-weight:700;margin-bottom:5px}
+.fmt p{color:var(--mut);font-size:14px;margin-bottom:9px}
+.fmt code{display:block;font:13.5px/1.9 var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--hair);border-radius:6px;padding:11px 14px;white-space:pre}
+.fmt code .g{color:var(--c)}.fmt code .m{color:var(--dim)}
+.tl{position:relative;padding-left:34px;margin-top:18px}
+.tl::before{content:"";position:absolute;left:10px;top:10px;bottom:10px;width:1.5px;background:var(--hair2)}
+.tli{position:relative;padding:12px 0 20px}
+.tli::before{content:"";position:absolute;left:-29px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:1.5px solid var(--c)}
+.tli .date{font:12px var(--mono);color:var(--dim);letter-spacing:.08em}
+.tli .t{font-size:17px;font-weight:700;margin:4px 0 5px;display:flex;align-items:center;gap:11px}
+.tli .t .who{font:12.5px var(--sans);color:var(--mut);border:1px solid var(--hair2);border-radius:4px;padding:1px 9px;font-weight:500}
+.tli .t .dot{display:inline-block;width:8px;height:8px;border-radius:50%}
+.tli p{color:var(--mut);font-size:15px;max-width:88ch}
+/* 整体技能包流程图（用户布局） */
+.sysmap{display:grid;grid-template-columns:1fr 252px;gap:44px;margin-top:16px;align-items:start}
+.mainline{border:1px solid var(--hair2);border-radius:8px;padding:26px 22px;display:flex;flex-direction:column;align-items:center}
+.mnode{width:320px;background:var(--panel2);border:1px solid var(--hair2);border-radius:7px;padding:13px 16px;text-align:center;position:relative}
+.mnode.head{border-color:rgba(47,211,154,.45)}
+.mnode.end{border-color:rgba(240,162,74,.45)}
+.mnode.end2{border-color:rgba(240,162,74,.45)}
+.mnode b{display:block;font-size:14.5px;font-weight:700}
+.mnode .out{display:block;font-size:12.5px;color:var(--mut);margin-top:3px}
+.mnode .who{display:inline-block;margin-top:8px;font:11px var(--mono);color:var(--dim);border:1px solid var(--hair);border-radius:3px;padding:1px 9px}
+.mnode .who.atom{color:var(--c);border-color:rgba(47,211,154,.45)}
+.mnode .who.post{color:var(--amber);border-color:rgba(240,162,74,.45)}
+.mnode+.mnode{margin-top:24px}
+.mnode+.mnode::before{content:"";position:absolute;left:50%;top:-17px;transform:translateX(-50%);width:1.5px;height:11px;background:var(--hair2)}
+.mnode+.mnode::after{content:"";position:absolute;left:50%;top:-7px;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--hair2)}
+.fork-t{height:22px;position:relative;width:420px;margin:0 auto}
+.fork-t::before{content:"";position:absolute;left:50%;top:0;width:1.5px;height:12px;background:var(--hair2)}
+.fork-t::after{content:"";position:absolute;left:80px;right:80px;top:12px;height:1.5px;background:var(--hair2)}
+.fork-t i{position:absolute;top:12px;width:1.5px;height:10px;background:var(--hair2)}
+.fork-t i.l{left:80px}.fork-t i.r{right:80px}
+.forkrow{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.sidecol{position:relative;padding-left:26px}
+.sidecol::before{content:"";position:absolute;left:0;top:64px;bottom:30px;width:1px;background:var(--hair2)}
+.sidecol .sh{font:11px var(--mono);color:var(--dim);letter-spacing:.12em;margin-bottom:16px}
+.snode{background:var(--panel);border:1px solid var(--hair2);border-radius:6px;padding:11px 14px;margin-bottom:16px;position:relative}
+.snode::before{content:"";position:absolute;left:-27px;top:50%;width:26px;height:1px;background:var(--hair2)}
+.snode b{font-size:13.5px;font-weight:700;display:block}
+.snode .out{display:block;font-size:12px;color:var(--mut);margin-top:2px}
+.snode .who{display:inline-block;margin-top:7px;font:10.5px var(--mono);color:var(--slate);border:1px solid var(--hair);border-radius:3px;padding:0 8px}
+@media (max-width:1100px){.sysmap{grid-template-columns:1fr}.sidecol{padding-left:0}.sidecol::before{display:none}.forkrow{grid-template-columns:1fr}.fork-t{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <div class="eyebrow">HIFI DESIGN SYSTEM / 图解与修订 · 26 条</div>
+  <h1>把一包需求和一份风格，<br>变成<em>可评审、可交付</em>的高保真设计稿。</h1>
+  <p class="lead">业务先问清再动笔；每一页过机器与人工的检查；交互标注真点能活；旁批把功能逻辑讲给人听；收口欠账有门禁管着。</p>
+
+  <div class="dgraph">
+    <div class="dnode"><span class="num">IN</span><b>进来</b><small>需求材料 · 客户 VI 如有<br>其余靠开放盘问问出</small></div>
+    <div class="dnode"><span class="num">01</span><b>收口盘问</b><small>开放提问 · 三必问签字<br>落盘 0.1 开工文档</small></div>
+    <div class="dnode"><span class="num">02</span><b>风格选型</b><small>比稿卡并行 · 用户拍板<br>宁停勿错</small></div>
+    <div class="dnode hot"><span class="num">03</span><b>代表页精修</b><small>全精度手画 · 五道收口<br>定调后才铺量</small></div>
+    <div class="dnode"><span class="num">04</span><b>全量铺量</b><small>一代理一条链路<br>矩阵 + 盲校 + 压测</small></div>
+    <div class="dnode hot"><span class="num">05</span><b>功能旁批</b><small>15 条行文规则<br>aside 进页 · 壳面板展示</small></div>
+    <div class="dnode"><span class="num">OUT</span><b>风格目录整包</b><small>HTML + assets + 旁批<br>file:// 双击即完整预览</small></div>
+  </div>
+  <div class="status">
+    <span><span class="dot" style="background:var(--amber)"></span>编辑版转化在建</span>
+    <span><span class="dot" style="background:var(--blue)"></span>旁批管线已通</span>
+    <span><span class="dot" style="background:var(--red)"></span>收口门禁 · 铁律 9</span>
+  </div>
+</div>
+
+<h2 class="sec"><span class="no">01</span><span class="ic" data-i="pipeline"></span>整体技能包 · 流程总图</h2>
+<p class="seclabel">按你画的布局 1:1：主轴七段（主技能工作流 / 原子技能）→ 末端并排双终点（转化 / 旁批，都是后置原子技能）；右侧五个独立技能，画师自由绘制时按需调用。</p>
+<div class="sysmap">
+  <div class="mainline">
+    <div class="mnode head"><b>收口盘问</b><span class="out">出开工文档 0.1</span><span class="who">主技能工作流</span></div>
+    <div class="mnode"><b>开工文档质检</b><span class="out">完善开工文档</span><span class="who">主技能工作流</span></div>
+    <div class="mnode"><b>风格选型</b><span class="out">出样张做对比</span><span class="who atom">原子技能 · 选型技能</span></div>
+    <div class="mnode"><b>画师自由绘制</b><span class="out">出精修后效果图</span><span class="who atom">原子技能 · 绘制技能</span></div>
+    <div class="mnode"><b>完善整体文档</b><span class="out">出完整开工文档</span><span class="who">主技能工作流</span></div>
+    <div class="mnode"><b>全量无编辑器版本能出图</b><span class="out">边策划功能，边跑批制作</span><span class="who">主技能工作流</span></div>
+    <div class="fork-t"><i class="l"></i><i class="r"></i></div>
+    <div class="forkrow">
+      <div class="mnode end"><b>转化为带编辑器的版本</b><span class="out">跑批转化</span><span class="who post">后置原子技能</span></div>
+      <div class="mnode end2"><b>加旁批</b><span class="out">跑批</span><span class="who post">后置原子技能</span></div>
+    </div>
+  </div>
+  <div class="sidecol">
+    <div class="sh">INDEPENDENT · 按需调用</div>
+    <div class="snode"><b>UI 走查</b><span class="out">出报告做修复</span><span class="who">独立技能</span></div>
+    <div class="snode"><b>生成图标</b><span class="out">出图标或者小 svg 套包</span><span class="who">独立技能</span></div>
+    <div class="snode"><b>百炼生成图片</b><span class="out">补图画或者 c4d</span><span class="who">独立技能</span></div>
+    <div class="snode"><b>去 AI 精修</b><span class="out">修复 AI 细节</span><span class="who">独立技能</span></div>
+    <div class="snode"><b>动效精修</b><span class="out">出页面微动效</span><span class="who">独立技能</span></div>
+  </div>
+</div>
+<p class="seclabel">贯穿铁律：<b style="color:var(--ink)">收口清账才交棒</b>——④ 的收口欠账（四层自查 / 文字盲校 / 压力测试 / 审美评审+盲测）没清完，⑤⑥⑦ 和旁批、转化都不许开工；跳过必须你明示并登记进交付说明。静默跳段 = 违规。</p>
+
+<h2 class="sec"><span class="no">02</span><span class="ic" data-i="brush"></span>绘制技能 · 收口循环大图</h2>
+<p class="seclabel">阶段 4/6 的执行者。左边它碰的文件，右边它的循环——<b style="color:var(--ink)">渲染实看和定调是两个绿框关键步</b>。</p>
+<div class="trees">
+  <div class="treetb"><div class="tt">读写文件 · gui-style-to-hifi-design</div>
+<pre>读  intake/开工文档 · 用户输入
+读  风格提示词 · <span class="r">去骨架副本（禁原始骨架）</span>
+读  端型约束（微信 / iOS / 安卓 / 平板 / PC）
+写  <span class="g">&lt;风格id&gt;/&lt;风格id&gt;.html</span>
+写  <span class="g">&lt;风格id&gt;/assets/</span> images·icons·fonts
+写  design/页面地图扩展.md
+写  design/设计资产与动效规范.md
+写  交付说明.md   <span class="w">← 每页"画了什么"= 旁批喂料</span>
+存  shots/       <span class="w">← 每轮实看截图 · 证据区</span></pre></div>
+  <div class="treetb"><div class="tt">收口循环 · 每页走完才许交</div>
+<pre><span class="g">写码 → 落盘</span>   <span class="w">防上下文耗尽零产出</span>
+<span class="g">DOM 自查脚本</span>  溢出/遮挡/字号/死链 · 零截图
+<span class="g">渲染实看 ≤3 次</span> 形状崩坏 / 色调失衡 / 密度观感
+<span class="g">走查硬检</span>      ui-walkthrough · 退出码裁定
+<span class="g">unslop 精修</span>   只修实看看出的 AI 味 · 动效不做
+<span class="g">四层交稿自检</span>  视觉 / 风格 / 文字 / 交互
+<span class="r">交用户定调</span>    不过不铺量 · 定调页 = 复用基准</pre></div>
+</div>
+
+<h2 class="sec"><span class="no">03</span><span class="ic" data-i="chat"></span>旁批 · 选型 · 转化 三线</h2>
+<p class="seclabel">三个技能一列一图：节点链就是它们的内部工作流。</p>
+<div class="trio">
+  <div class="tcol">
+    <div class="th"><span class="ic" data-i="chat"></span>旁批技能<small>page-annotation-writer</small></div>
+    <div class="vchain">
+      <div class="vstep"><b>读产物 + 材料</b><small>产物第一参照；材料补界面看不出来的</small></div>
+      <div class="vstep"><b>逐页对齐功能点</b><small>页面地图 + 开工文档功能点清单</small></div>
+      <div class="vstep hot"><b>一个对话逐页写</b><small>15 条行文规则 · 首条"页面说明"</small></div>
+      <div class="vstep"><b>aside 写进各页</b><small>黑话当场解释 · 数值分写死/可配</small></div>
+      <div class="vstep hot"><b>覆盖对账</b><small>推演条目标注待核 · 不许空着</small></div>
+    </div>
+  </div>
+  <div class="tcol">
+    <div class="th"><span class="ic" data-i="branch"></span>选型技能<small>uxui-style-picker</small></div>
+    <div class="vchain">
+      <div class="vstep"><b>读开工文档受众组</b><small>逐组挑代表页浇样张</small></div>
+      <div class="vstep"><b>子代理并行比稿</b><small>比稿卡 = 示意骨架 + 真实载体两张皮</small></div>
+      <div class="vstep"><b>去骨架副本进材料链</b><small>禁原始骨架 · 客户 VI 如有则适配</small></div>
+      <div class="vstep hot"><b>用户拍板回传</b><small>确定值给代表页当起点</small></div>
+    </div>
+  </div>
+  <div class="tcol">
+    <div class="th"><span class="ic" data-i="palette"></span>编辑版转化<small>附加 A · 在建</small></div>
+    <div class="vchain">
+      <div class="vstep"><b>产线已铸好</b><small>壳 + 构建 + 验证 + 测试在位</small></div>
+      <div class="vstep"><b>拆屏 + 交互映射</b><small>机械映射 70-85% · 4 处例外人工</small></div>
+      <div class="vstep"><b>CSS 令牌化 + 风格槽</b><small>切换与配色真实生效的前提</small></div>
+      <div class="vstep hot"><b>试点屏走通全链</b><small>正式构建链 · --check 假绿避开</small></div>
+    </div>
+  </div>
+</div>
+
+<h2 class="sec"><span class="no">04</span><span class="ic" data-i="folder"></span>产出物 · 文件树</h2>
+<p class="seclabel">一棵树看全。<b style="color:var(--ink)">琥珀色 = 谁来消费</b>；树后附关键文件格式样块。</p>
+<div class="treetb" style="margin-top:0"><div class="tt">工程产出物 · 项目根（琥珀 = 谁来消费）</div>
+<pre>intake/
+├─ <span class="g">开工文档.md</span>      <span class="w">← 主依据（0.1 用户确认 → 1.0 冻结）</span>
+├─ 用户输入.md      <span class="w">← 冲突仲裁</span>
+└─ ledger.md
+<span class="d">&lt;风格id&gt;/</span>                 <span class="c">—— 交付主产物 · 整目录打包</span>
+├─ <span class="g">&lt;风格id&gt;.html</span>    壳 = 页面列表 + 手机框 + 旁批面板 + 标准交互
+└─ <span class="d">assets/</span>  images · icons · fonts  <span class="w">← 相对引用 · 零网络 · 字体真装配 woff2</span>
+<span class="d">design/</span>
+├─ <span class="g">页面地图扩展.md</span>   <span class="w">← 跑批的种子</span>
+├─ <span class="g">设计资产与动效规范.md</span> <span class="w">← 跑批的抄写参照表</span>
+└─ 交付说明.md      <span class="w">← 旁批的喂料</span>
+<span class="d">fragments/  shots/</span>   <span class="w">← 片段 · 证据区</span>
+交付 = <span class="g">&lt;风格id&gt;/</span> 整目录打包 · <span class="r">零网络 · file:// 双击即完整预览</span></pre></div>
+<div class="fmt">
+  <div class="panel"><h5>旁批 · 每页一个隐藏块</h5><p>首条"页面说明"总述不占序号，其后批注按区域编号。</p><code>&lt;<span class="g">aside</span> <span class="m">class</span>="anno" <span class="m">hidden</span>&gt;
+  &lt;<span class="g">p</span> <span class="m">class</span>="anno-no"&gt;页面说明&lt;/<span class="g">p</span>&gt;&lt;<span class="g">p</span>&gt;…&lt;/<span class="g">p</span>&gt;
+  &lt;<span class="g">p</span> <span class="m">class</span>="anno-no"&gt;批注一&lt;/<span class="g">p</span>&gt;&lt;<span class="g">p</span>&gt;…&lt;/<span class="g">p</span>&gt;
+&lt;/<span class="g">aside</span>&gt;</code></div>
+  <div class="panel"><h5>交互标注 · 三类 + 系统行为</h5><p>行为由壳标准 JS 统一接管，画师只写标注。</p><code><span class="m">跳转</span>   <span class="g">data-go</span>="页id"
+<span class="m">弹层</span>   <span class="g">data-sheet</span>="open|close"
+<span class="m">分段</span>   容器 <span class="g">data-seg</span> · 选项 <span class="g">data-tab</span> · 面板 <span class="g">data-panel</span>
+<span class="m">系统</span>   &lt;<span class="m">!--</span> 系统渲染: 拨号 <span class="m">--&gt;</span> + 真实入口</code></div>
+  <div class="panel"><h5>修订条目 · 本页自己的格式</h5><p>日期 + 谁改的 + 事项 + 解决什么，可回溯到会话原文。</p><code>{ <span class="m">d</span>: <span class="g">"11-19"</span>, <span class="m">who</span>: <span class="g">"主管线"</span>,
+  <span class="m">t</span>: <span class="g">"事项"</span>, <span class="m">b</span>: <span class="g">"解决什么"</span> }</code></div>
+  <div class="panel"><h5>设计资产 · 实取值</h5><p>跑批照引用抄实物，禁重新发明。</p><code><span class="m">颜色</span>  #2FD39A（主）/ #E8EAEE（字）
+<span class="m">字体</span>  Inter 400 / 650 / 750
+<span class="m">部件</span>  工单卡片 → 代表页.html .job-card
+<span class="m">动效</span>  150-200ms 微动 · 零弹跳</code></div>
+</div>
+
+<h2 class="sec"><span class="no">05</span><span class="ic" data-i="history"></span>修订时间线 · 26 条</h2>
+<p class="seclabel">一条线，最新在上。每条：日期 + 谁改的 + 改了哪里 + 解决什么。全部来自改技能的会话记录，可回溯。</p>
+<div class="tl" id="tl"></div>
+</div>
+
+<script>
+var ICONS={
+ pipeline:'<rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/>',
+ brush:'<path d="m11 10l3 3m-7.5 8A3.5 3.5 0 1 0 3 17.5a2.62 2.62 0 0 1-.708 1.792A1 1 0 0 0 3 21z"/><path d="M9.969 17.031L21.378 5.624a1 1 0 0 0-3.002-3.002L6.967 14.031"/>',
+ chat:'<path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>',
+ folder:'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
+ history:'<path d="M3 12a9 9 0 1 0 9-9a9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5m4-1v5l4 2"/>',
+ branch:'<path d="M15 6a9 9 0 0 0-9 9V3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>',
+ palette:'<path d="M12 22a1 1 0 0 1 0-20a10 9 0 0 1 10 9a5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/>'
+};
+document.querySelectorAll('.ic[data-i]').forEach(function(el){el.innerHTML='<svg viewBox="0 0 24 24">'+(ICONS[el.getAttribute('data-i')]||'')+'</svg>'});
+
+var CHANGES=[
+ {d:'11-19',c:'#2fd39a',who:'主管线',t:'转化线调研定案',b:'两轮调研（一轮被推翻重来）：编辑器产线六份规范、构建、验证、测试全部在位且实测可用——产物真实片段过构建校验一次通过。三层不兼容被修正：结构差距是条数级、交互 250+ 处是机械映射、真正的人工只有 CSS 令牌化例外裁决和 4 处分段决策，自动化估 70-85%。试点屏定为 page-home + page-submit。'},
+ {d:'11-19',c:'#5aa2ff',who:'绘制技能',t:'收口门禁（铁律 9）',b:'下游环节开工前，代表页收口欠账必须先清——补完，或经用户明示跳过并在交付说明登记。起因：这个项目里交互和旁批都在收口前就跑了，没有任何机制拦。'},
+ {d:'11-19',c:'#f0a24a',who:'旁批技能',t:'批注面板默认打开 + 首轮实跑纠偏',b:'验收时提出面板该默认是打开的，改了。57 屏实跑后按裁决修三处：每页第一条独立叫"页面说明"不占批注序号；稿子本身是第一参照，材料只补界面看不出来的；材料不齐按合理逻辑推演并标注待核，不许空着不写。'},
+ {d:'11-19',c:'#8b95a6',who:'全体系',t:'独立审查修复批',b:'审查代理（没参与改动）挑出 3 个缺口 8 条建议，全部修复：无壳截图其实漏了壳刘海、纯静态稿会卡死交互检查、任务书断句、粮草编号断链、导航表 motion-design 残留等。'},
+ {d:'11-19',c:'#2fd39a',who:'主管线',t:'说明文档（本页）上线',b:'按案例文档 1:1 形态新增：图解 + 修订时间线合一。各技能带文件读写结构与流程图；启动节按真实盘问逻辑重写（开放提问，VI 移出必收清单）。'},
+ {d:'11-18',c:'#f0a24a',who:'旁批技能',t:'旁批技能新建',b:'按三层素材（14 条纠偏原话 → 12 条终版 → 补 7 处）定稿 15 条行文规则 + 调用契约。要点：讲功能不讲实现、黑话当场解释、数值分"写死 / 可配置"两类、材料缺就按合理逻辑推演不许空着。只产文字内容，面板容器归壳管。'},
+ {d:'11-18',c:'#5aa2ff',who:'绘制技能',t:'壳内置批注面板',b:'产物壳自带右缘"旁批"把手 + 展开面板，切页自动刷新，没有旁批的稿子不显示入口。主技能里旁批"勿调"解除，管线全通。'},
+ {d:'11-18',c:'#5aa2ff',who:'绘制技能',t:'壳标准交互 JS 修复',b:'四个真 bug：点弹层内部会误关、同页多组分段互相打架、切页不收弹层、面板内关闭按钮被拦。修完 13 项真点实测全过。'},
+ {d:'11-18',c:'#5aa2ff',who:'绘制技能',t:'交稿按钮检查全量化',b:'以前收尾只抽几个按钮点点，支付宝稿一整批死按钮漏网。改成脚本逐屏全查（隐藏屏逐屏激活再测），一个死按钮都不许有；纯静态稿豁免此项。'},
+ {d:'11-18',c:'#5aa2ff',who:'绘制技能',t:'页面上该放什么字',b:'两稿查出 63 处文案病：给评审看的设计说明被画上屏、还有编造的字段。定规矩：页面上只放产品上线后用户会看到的字；每个字段要有出处，编的删。'},
+ {d:'11-18',c:'#5aa2ff',who:'绘制技能',t:'死按钮四类出口',b:'每个可点元素必有落点：站内跳转连线；拨号 / 客服类写固定注释 + 真实入口；缺页面补页并确认；看着能点其实不该点的，把可点暗示撤掉。'},
+ {d:'11-18',c:'#8b95a6',who:'端型约束',t:'微信真机导航对照',b:'稿子里的 tab 页跳转，真机必须用 switchTab，照普通页写会报错。在端型约束里加了对照表，防开发照稿误写。'},
+ {d:'11-18',c:'#5aa2ff',who:'绘制技能',t:'无壳截图口径',b:'盲测和审美评审的截图，截之前先隐藏壳刘海——元素截图会把它截进去。灵动岛两次被当成页面控件误报，就是这个坑。'},
+ {d:'11-18',c:'#2fd39a',who:'主管线',t:'启动确认升级',b:'交互档 / 动效档 / 端型三必问写进开工文档签字；设计资产规范首节固定 Direction 结论（性格词 / 世界 / 签名细节），跑批代理直接吃，禁重新推导。'},
+ {d:'11-17',c:'#5aa2ff',who:'绘制技能',t:'壳标准交互 JS 预置',b:'跳转 / 弹层 / 分段的行为全部由壳统一接管，画师只写标注（data-go 等），禁自造交互 JS。从根上消灭"每份稿子壳写法不一样"。'},
+ {d:'11-17',c:'#5aa2ff',who:'绘制技能',t:'产物资产化',b:'一个风格一个目录：HTML + assets 相对引用、运行期零网络、禁 base64 大资产、品牌字体真装配（woff2 进 assets/fonts）。'},
+ {d:'11-16',c:'#5aa2ff',who:'绘制技能',t:'交互档三档定案',b:'"收口没跑完就去做交互"暴露交互深度没有档位可依。定了 a 静态 / b 导航 / c 演示三档进开工文档；壳标准 JS 统一接管行为同批定案。'},
+ {d:'11-13',c:'#5aa2ff',who:'绘制技能',t:'端型约束库建档',b:'微信小程序的宿主规则（胶囊、订阅授权、绑定语义）画师根本不知道——建了五份端型文件 + 操作真实性三问 + 违例教训登记。同日"信息先行"首次实践：详情页从 9000px 长砍到 1.5 屏。'},
+ {d:'11-12',c:'#2fd39a',who:'主管线',t:'功能覆盖矩阵 + 两道外部关',b:'用户否掉一版堆料详情页（页长 9000px、臆造卡片）后定案：信息过于繁杂是硬伤；文档↔稿子双向覆盖矩阵，没矩阵不验收；审美评审 + 盲测两道关；文案三分类、易读优先于全面。'},
+ {d:'11-11',c:'#2fd39a',who:'主管线',t:'draft 档 + 盘问协议',b:'编辑器壳加 draft 预览形态（编辑隐藏、批注面板保留）；盘问协议定稿：每个问题对着开工文档的合格线生成；比稿卡规格转正（骨架区零文字、去颜色化命名）。'},
+ {d:'11-11',c:'#5aa2ff',who:'绘制技能',t:'三轮照抄事故批',b:'画师照抄样张骨架连翻三次车，定了一串规矩：去骨架副本（只给卡头+载体条，禁看原始骨架）、透题判据（每个设计决定指回源文档）、长文案压力测试、共享数据锚废案（各代理自编数据）。'},
+ {d:'11-10',c:'#2fd39a',who:'主管线',t:'V06 实施 + 首跑事故 11 条修订',b:'第一次实跑暴露 0.1 被写成设计稿。定了权威二分（业务归开工文档、视觉归风格提示词）、页面地图五节、出处铁则、精修改 Polish 模式、产物路线 A（画师直产风格 HTML）。'},
+ {d:'11-09',c:'#2fd39a',who:'主管线',t:'五风格对照实验 → V06 七段定案',b:'对照实验证明：自由裸写 HTML 质量最高且稳，编辑器直出版下限塌。全案转向七段管线 + 第一性文档禁转写；退役编辑器直出路线。'},
+ {d:'11-07',c:'#2fd39a',who:'主管线',t:'换肤模块 P0 落地',b:'令牌硬编码 lint（AI 硬编码 px 是唯一系统性死法）、受控块门禁、风格切换面板定为右侧抽屉——居中弹窗盖住画布没法看切换效果，你画草图定的。'},
+ {d:'11-05',c:'#2fd39a',who:'主管线',t:'选型技能定稿',b:'流程定稿：读需求 → 适配报告 → 用户拍板 → 并行比稿。比稿卡 = 示意级骨架 + 真实级风格载体两张皮；废掉"从大厂框架剥纯 HTML"的两条死路。'},
+ {d:'11-04',c:'#2fd39a',who:'主管线',t:'换肤模块起因',b:'实例生成暴露两个死结：风格切换只切几个 CSS 参数，组件不带风格。催生三层皮肤、组件包、受控块思路——编辑器转化线的起点。'}
+];
+var tl=document.getElementById('tl');
+tl.innerHTML=CHANGES.map(function(c){
+  return '<div class="tli"><div class="date">'+c.d+' · '+c.who+'</div><div class="t"><span class="dot" style="background:'+c.c+'"></span>'+c.t+'<span class="who">'+c.who+'</span></div><p>'+c.b+'</p></div>';
+}).join('');
+</script>
+</body>
+</html>

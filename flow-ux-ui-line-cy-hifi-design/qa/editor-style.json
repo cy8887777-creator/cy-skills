@@ -1,0 +1,59 @@
+{
+  "kind": "audit",
+  "reportVersion": 1,
+  "checkerVersion": "verify-editor/0.1.0-t06.1",
+  "station": "U5",
+  "phase": null,
+  "scope": null,
+  "inputDigest": "04ca0f1523322db9085d2edf84fcc615af542be57d570c57a1bcc9b5c9b688be",
+  "inputs": [
+    {
+      "path": "C:\\Users\\admin\\.zcode\\skills\\hifi-editable-gui-ux-design\\build-qa\\baseline.html",
+      "sha256": "6b8d3337e848a2a433ab2f6dd005626cf1acfbcdbfded766c22ae0d36704fc34"
+    }
+  ],
+  "result": "passed",
+  "findings": [
+    {
+      "ruleId": "PASS-SMOKE-SCREEN-DECL",
+      "file": "C:\\Users\\admin\\.zcode\\skills\\hifi-editable-gui-ux-design\\build-qa\\baseline.html",
+      "line": null,
+      "page": null,
+      "eid": null,
+      "featureId": null,
+      "expected": "deliverable declares screens via class=\"screen\"",
+      "actual": "class=\"screen\" x 4",
+      "severity": "pass"
+    },
+    {
+      "ruleId": "PASS-SMOKE-SEED-TOKEN-DEFAULTS",
+      "file": "C:\\Users\\admin\\.zcode\\skills\\hifi-editable-gui-ux-design\\build-qa\\baseline.html",
+      "line": null,
+      "page": null,
+      "eid": null,
+      "featureId": null,
+      "expected": "deliverable :root carries every --sp-* static default (token-keys.json)",
+      "actual": "23 defaults present",
+      "severity": "pass"
+    }
+  ],
+  "coverage": {
+    "suite": "style",
+    "checksRun": 2,
+    "smoke": {
+      "name": "screen-decl",
+      "passed": true,
+      "hits": 4
+    },
+    "seedTokens": {
+      "name": "seed-token-defaults",
+      "passed": true,
+      "checked": 23,
+      "missing": []
+    },
+    "casesPlannedT062": [
+      "style"
+    ]
+  },
+  "generatedAt": "2026-11-07T08:36:49.703Z"
+}

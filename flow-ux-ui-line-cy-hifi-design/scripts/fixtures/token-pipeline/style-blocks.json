@@ -1,0 +1,160 @@
+{
+  "STYLE-REGISTRY": {
+    "schemaVersion": 1,
+    "domBases": [
+      {"domBaseId": "db-main", "pages": 1}
+    ],
+    "families": [
+      {"familyId": "fam-a", "domBaseId": "db-main", "label": "样板族", "members": ["pk-a", "pk-b"]}
+    ]
+  },
+  "STYLE-PACK": {
+    "schemaVersion": 1,
+    "packs": [
+      {
+        "packId": "pk-a",
+        "familyId": "fam-a",
+        "identity": {"styleId": "style-token-a", "styleName": "暖调样板", "origin": "generated", "mood": "暖色高对比样板"},
+        "tokens": {
+          "primary": "#d9480f",
+          "bg": "#fdf6f0",
+          "surface": "#fffaf5",
+          "surface-alt": "#f9efe4",
+          "text-primary": "#4a2c17",
+          "text-secondary": "#8c6a52",
+          "border": "#ecd9c6",
+          "success": "#2f9e44",
+          "danger": "#e03131",
+          "warning": "#f08c00",
+          "hero": "#c2255c",
+          "nav": "#fff1e6",
+          "font-head": "Georgia, 'Times New Roman', serif",
+          "font-body": "Verdana, 'Microsoft YaHei', sans-serif",
+          "font-num": "Consolas, Menlo, monospace",
+          "size-title": "21px",
+          "size-head": "16.5px",
+          "size-body": "13px",
+          "size-caption": "12.5px",
+          "weight-head": 700,
+          "weight-body": 500,
+          "line-height-head": 1.4,
+          "line-height-body": 1.9,
+          "radius-sm": "6px",
+          "radius-md": "18px",
+          "radius-lg": "26px",
+          "space-1": "6px",
+          "space-2": "11px",
+          "space-3": "15px",
+          "space-4": "19px",
+          "size-ctl-sm": "27px",
+          "size-ctl-md": "33px",
+          "size-ctl-lg": "44px",
+          "shadow-sm": "0 1px 3px rgba(217,72,15,.16)",
+          "shadow-md": "0 2px 6px rgba(217,72,15,.18), 0 12px 30px -12px rgba(217,72,15,.28)",
+          "border-width": "0.5px",
+          "motion-duration-base": "240ms",
+          "motion-easing-base": "cubic-bezier(.4,0,.2,1)",
+          "density": "compact",
+          "grid-cols": 6,
+          "dark": {"bg": "#241a12", "surface": "#32251a", "text": "#f5ece2", "muted": "#c9b39f", "line": "#59453a"},
+          "glass-blur": "7px"
+        },
+        "palettes": [
+          {"paletteId": "pal-default", "label": "默认",
+           "swatches": ["#d9480f", "#fdf6f0", "#4a2c17", "#fffaf5"],
+           "line": "#ecd9c6", "muted": "#8c6a52", "hero": "#c2255c"}
+        ],
+        "iconSet": "default",
+        "l2Overrides": []
+      },
+      {
+        "packId": "pk-b",
+        "familyId": "fam-a",
+        "identity": {"styleId": "style-token-b", "styleName": "青调样板", "origin": "generated", "mood": "青色清爽样板"},
+        "tokens": {
+          "primary": "#0ca678",
+          "bg": "#f0faf7",
+          "surface": "#ffffff",
+          "surface-alt": "#e6f5f0",
+          "text-primary": "#0b3d2e",
+          "text-secondary": "#5f8f7f",
+          "border": "#cce8de",
+          "success": "#94d82d",
+          "danger": "#f76707",
+          "warning": "#fcc419",
+          "hero": "#1971c2",
+          "nav": "#e7f5f4",
+          "font-head": "'Palatino Linotype', 'Songti SC', serif",
+          "font-body": "'Segoe UI', 'Microsoft YaHei', sans-serif",
+          "font-num": "'SF Mono', Menlo, monospace",
+          "size-title": "20px",
+          "size-head": "17px",
+          "size-body": "13.5px",
+          "size-caption": "11.5px",
+          "weight-head": 650,
+          "weight-body": 430,
+          "line-height-head": 1.6,
+          "line-height-body": 1.6,
+          "radius-sm": "10px",
+          "radius-md": "22px",
+          "radius-lg": "30px",
+          "space-1": "9px",
+          "space-2": "13px",
+          "space-3": "17px",
+          "space-4": "21px",
+          "size-ctl-sm": "30px",
+          "size-ctl-md": "36px",
+          "size-ctl-lg": "48px",
+          "shadow-sm": "0 1px 4px rgba(12,166,120,.2)",
+          "shadow-md": "0 2px 8px rgba(12,166,120,.18), 0 14px 34px -12px rgba(12,166,120,.3)",
+          "border-width": "2px",
+          "motion-duration-base": "360ms",
+          "motion-easing-base": "cubic-bezier(.34,1.56,.64,1)",
+          "density": "loose",
+          "grid-cols": 12,
+          "dark": {"bg": "#06251c", "surface": "#0d3a2c", "text": "#e8f7f0", "muted": "#9fc9ba", "line": "#2c5c4c"},
+          "glass-blur": "11px"
+        },
+        "palettes": [
+          {"paletteId": "pal-default", "label": "默认",
+           "swatches": ["#0ca678", "#f0faf7", "#0b3d2e", "#ffffff"],
+           "line": "#cce8de", "muted": "#5f8f7f", "hero": "#1971c2"}
+        ],
+        "iconSet": "default",
+        "l2Overrides": []
+      }
+    ]
+  },
+  "COMPONENT-PACK": {
+    "schemaVersion": 1,
+    "packFor": "pk-a",
+    "components": [
+      {"compId": "comp-btn-pri", "name": "主按钮", "html": "<span class=\"b pri\">主按钮</span>"},
+      {"compId": "comp-btn-sec", "name": "次按钮", "html": "<span class=\"b sec\">次按钮</span>"},
+      {"compId": "comp-card", "name": "卡片", "html": "<div class=\"card\"><div class=\"card-h\"><span class=\"ct\">卡片</span></div><div class=\"card-b\"><p>卡片内容</p></div></div>"},
+      {"compId": "comp-field", "name": "输入框", "html": "<div class=\"fi\"><div class=\"lb\">名称</div><div class=\"ipt\">请输入</div></div>"},
+      {"compId": "comp-tag", "name": "标签", "html": "<span class=\"tag\">标签</span>"},
+      {"compId": "comp-chip", "name": "胶囊", "html": "<span class=\"chip\">胶囊</span>"},
+      {"compId": "comp-note", "name": "提示条", "html": "<div class=\"note\">提示内容</div>"},
+      {"compId": "comp-stat", "name": "统计卡", "html": "<div class=\"stat\"><b>0</b><span>指标</span></div>"},
+      {"compId": "comp-list", "name": "列表", "html": "<div class=\"list flat\"><div class=\"li\"><span>条目一</span></div><div class=\"li\"><span>条目二</span></div></div>"},
+      {"compId": "comp-hero", "name": "横幅", "html": "<div class=\"hero\"><div class=\"ht\">横幅标题</div><div class=\"hs\">横幅说明</div></div>"},
+      {"compId": "comp-bar", "name": "进度条", "html": "<div class=\"bar\"><i style=\"width:40%;background:var(--accent)\"></i></div>"}
+    ]
+  },
+  "STYLE-CONTRACT": {
+    "schemaVersion": 1,
+    "domBaseId": "db-main",
+    "styleOrigin": {"styleId": "style-token-a", "mood": "样板族基调"},
+    "pages": [
+      {"pageId": "home", "form": "mobile",
+       "regions": [
+         {"region": "header", "shape": "appbar", "count": 1},
+         {"region": "hero", "shape": "hero", "count": 1},
+         {"region": "content", "shape": "card", "count": 1}
+       ]}
+    ],
+    "motion": {"tier": "standard", "tokens": {"duration": "280ms", "easing": "cubic-bezier(.22,.9,.3,1)"}},
+    "density": "regular"
+  }
+}

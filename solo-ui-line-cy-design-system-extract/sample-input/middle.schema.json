@@ -1,0 +1,303 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://design-system-extract/middle.schema.json",
+  "title": "Design System Middle Schema",
+  "description": "6 类输入汇成的统一中间表契约。所有引擎（A/B/C/D）产出必须符合此 schema。",
+  "type": "object",
+  "required": [
+    "meta",
+    "tokens"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "source_type",
+        "source_id",
+        "extracted_at",
+        "schema_version"
+      ],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "A_image_pack",
+            "B1_html",
+            "B1_figma_export",
+            "B2_url",
+            "C1_figma",
+            "C2_text",
+            "D_lanhu"
+          ],
+          "description": "输入类型 6 选 1"
+        },
+        "source_id": {
+          "type": "string",
+          "description": "输入标识：图包路径 / HTML 文件名 / URL / Figma key / 文本 hash"
+        },
+        "extracted_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 时间戳"
+        },
+        "schema_version": {
+          "type": "string",
+          "const": "2.0.0"
+        },
+        "supplementary_notes": {
+          "type": "string",
+          "description": "混合输入时非主流程引擎的额外信息"
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "required": [
+        "primitive",
+        "semantic",
+        "component",
+        "metric"
+      ],
+      "description": "四段 token 架构（与 references/token-architecture.md 对齐）",
+      "properties": {
+        "primitive": {
+          "type": "object",
+          "description": "基础层 19：主色 2 + 主色辅助 3 + 中性 8 + 功能 6",
+          "additionalProperties": {
+            "$ref": "#/definitions/colorToken"
+          }
+        },
+        "semantic": {
+          "type": "object",
+          "description": "语义层 17：颜色 6 + 输入 2 + 焦点 1 + 字族 1 + 行高 1 + icon 3 + 行动色 1 + 描边色 2",
+          "additionalProperties": {
+            "$ref": "#/definitions/semanticToken"
+          }
+        },
+        "component": {
+          "type": "object",
+          "description": "组件层 6：button×3 + input×1 + tag×1 + danger-hover×1",
+          "additionalProperties": {
+            "$ref": "#/definitions/componentToken"
+          }
+        },
+        "metric": {
+          "type": "object",
+          "description": "度量 43：间距 7 + 圆角 4 + 阴影 5 + 字号 6 + 行高 5 + padding 4 + stroke_width 4 + opacity 3 + z-index 5",
+          "additionalProperties": {
+            "$ref": "#/definitions/metricToken"
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "description": "组件清单（**项目实测数量**，不硬编码；component-anatomy.md 25 类仅作归类参考）",
+      "items": {
+        "$ref": "#/definitions/component"
+      }
+    },
+    "patterns": {
+      "type": "object",
+      "description": "模式级（表单校验时机、加载策略选择、危险操作确认等）",
+      "additionalProperties": true
+    },
+    "raw_evidence": {
+      "type": "object",
+      "description": "原始证据（CSS 变量原值、DOM class 频次、像素采样点等），供反查",
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "colorToken": {
+      "type": "object",
+      "required": [
+        "value",
+        "role",
+        "usage",
+        "prohibition"
+      ],
+      "properties": {
+        "value": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "primary",
+            "primary_tint",
+            "neutral",
+            "functional"
+          ]
+        },
+        "usage": {
+          "type": "string"
+        },
+        "prohibition": {
+          "type": "string"
+        }
+      }
+    },
+    "semanticToken": {
+      "type": "object",
+      "required": [
+        "value",
+        "category",
+        "usage",
+        "prohibition"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "text",
+            "bg",
+            "border",
+            "input",
+            "focus",
+            "action",
+            "font_family",
+            "line_height",
+            "icon",
+            "stroke_color"
+          ]
+        },
+        "usage": {
+          "type": "string"
+        },
+        "prohibition": {
+          "type": "string"
+        }
+      }
+    },
+    "componentToken": {
+      "type": "object",
+      "required": [
+        "value",
+        "owner",
+        "usage",
+        "prohibition"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string",
+          "description": "归属组件"
+        },
+        "usage": {
+          "type": "string"
+        },
+        "prohibition": {
+          "type": "string"
+        }
+      }
+    },
+    "metricToken": {
+      "type": "object",
+      "required": [
+        "value",
+        "category",
+        "usage"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "spacing",
+            "radius",
+            "shadow",
+            "font_size",
+            "font_weight",
+            "line_height",
+            "padding",
+            "stroke_width",
+            "opacity",
+            "z_index"
+          ]
+        },
+        "usage": {
+          "type": "string"
+        }
+      }
+    },
+    "component": {
+      "type": "object",
+      "required": [
+        "name",
+        "variants",
+        "states"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "Button",
+            "Tag",
+            "Input",
+            "Select",
+            "Checkbox",
+            "Radio",
+            "Switch",
+            "Upload",
+            "Table",
+            "Card",
+            "List",
+            "Descriptions",
+            "Tabs",
+            "Breadcrumb",
+            "Badge",
+            "Avatar",
+            "Modal",
+            "Drawer",
+            "Toast",
+            "Alert",
+            "Empty",
+            "Loading",
+            "Progress",
+            "Pagination",
+            "Menu"
+          ]
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "default",
+              "hover",
+              "pressed",
+              "focus",
+              "disabled",
+              "loading",
+              "error",
+              "empty",
+              "selected"
+            ]
+          }
+        },
+        "key_specs": {
+          "type": "object",
+          "description": "关键尺寸约束（高 / 圆角 / 内边距 / 字号等）",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

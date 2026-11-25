@@ -1,0 +1,77 @@
+[
+ {
+  "id": "shadcn",
+  "ok": false,
+  "err": "未定位",
+  "hint": [
+   "/share-document.tsx",
+   "/docs-nav.tsx",
+   "/framework-docs.tsx",
+   "/docs.ts",
+   "/nav-documents.tsx"
+  ]
+ },
+ {
+  "id": "daisyui",
+  "ok": false,
+  "err": "未定位",
+  "hint": [
+   "/packages.docs.instructions.md",
+   "/documentation-issue.yml",
+   "/deploy-docs.yml",
+   "/Dock.svelte",
+   "/ComponentCopyDocsDropdown.svelte"
+  ]
+ },
+ {
+  "id": "antd-spec",
+  "ok": false,
+  "err": "未定位",
+  "hint": [
+   "/docs.mdc",
+   "/DocAnchor.tsx",
+   "/DocMeta.tsx",
+   "/.dockerignore"
+  ]
+ },
+ {
+  "id": "vant",
+  "ok": false,
+  "err": "未定位",
+  "hint": []
+ },
+ {
+  "id": "tdesign",
+  "ok": false,
+  "err": "tree 403"
+ },
+ {
+  "id": "element",
+  "ok": false,
+  "err": "未定位",
+  "hint": [
+   "/pr-docs-build.yml",
+   "/pr-docs-deploy.yml",
+   "/pr-docs-start.yml",
+   "/publish-docs-deploy.yml",
+   "/publish-docs-deploy-manual.yml"
+  ]
+ },
+ {
+  "id": "semi",
+  "ok": false,
+  "err": "tree 403"
+ },
+ {
+  "id": "mantine",
+  "ok": false,
+  "err": "未定位",
+  "hint": [
+   "/docs_report.yml",
+   "/DocsMobileNavbar.tsx",
+   "/DocsNavbar.module.css",
+   "/DocsNavbar.tsx",
+   "/DocsHeader.module.css"
+  ]
+ }
+]

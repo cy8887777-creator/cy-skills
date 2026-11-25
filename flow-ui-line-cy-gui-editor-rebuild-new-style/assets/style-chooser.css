@@ -1,0 +1,96 @@
+/*STYLE_CHOOSER_CSS_START*/
+/* 风格面板 UI V3（ed-sp- 全前缀；注意与 editor-seed 侧栏树的 ed-sp-sec/lib/h/add/tree/split/tabs/resize 不同类，无碰撞）。
+   形态：右侧抽屉（用户定稿）——非模态、推开画布、左缘可拖宽（280–620px）并记住宽度；
+   打开时顶栏之下占据右缘，批注栏（.inspector）暂时让位，关闭后原样恢复。
+   版式（用户草图）：卡片=左缩略图右名称/介绍，下「风格令牌」一行，再下「配色版」3 色块胶囊平铺；
+   勾打在当前应用的胶囊上（勾角标+描边高亮），只有当前卡有勾。 */
+.ed-sp-drawer{position:fixed;z-index:214;top:var(--ed-bar-height,58px);right:0;bottom:0;width:var(--ed-sp-width,360px);box-sizing:border-box;display:flex;flex-direction:column;padding:0;border:none;border-left:1px solid var(--ed-line,var(--line));background:var(--ed-surface,var(--surface));color:var(--ed-text,var(--text));box-shadow:-18px 0 50px #10203026;white-space:normal;font:inherit}
+/* 左缘拖宽握把：9px 热区，悬停/拖动中显色 */
+.ed-sp-grip{position:absolute;left:-4px;top:0;bottom:0;width:9px;cursor:col-resize;z-index:3;touch-action:none}
+.ed-sp-grip::after{content:"";position:absolute;left:3px;top:0;bottom:0;width:3px;border-radius:2px;background:transparent;transition:background .15s}
+.ed-sp-drawer:hover .ed-sp-grip::after,body.ed-sp-resizing .ed-sp-grip::after{background:var(--ed-accent,var(--accent))}
+body.ed-sp-resizing{user-select:none;-webkit-user-select:none;cursor:col-resize}
+/* 打开时把画布/组件浮层推离抽屉（本文件在 free-editor.css 之后注入，同特异性此处胜出）；
+   批注栏暂时让位（抽屉盖住其位置），关闭即恢复 */
+html[data-sp-open] body .canvas:where(:not(#canvas *)){right:var(--ed-sp-width,360px)}
+html[data-sp-open] body .inspector:where(:not(#canvas *)){display:none}
+html[data-sp-open] body .palette:where(:not(#canvas *)),html[data-sp-open] body.has-inspector .palette:where(:not(#canvas *)){right:calc(var(--ed-sp-width,360px) + 12px)}
+.ed-sp-drawer header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 22px;border-bottom:1px solid var(--ed-line,var(--line));flex:none}
+.ed-sp-drawer header strong{font-size:18px}
+/* 页签 */
+.ed-sp-ptabs{display:flex;gap:6px;padding:12px 22px 0;flex:none}
+.ed-sp-tab{border:1px solid var(--ed-line,var(--line));background:transparent;color:var(--ed-muted,var(--muted));font:inherit;font-size:13px;border-radius:9px;padding:7px 14px;cursor:pointer}
+.ed-sp-tab:hover{border-color:var(--ed-accent,var(--accent));color:var(--ed-text,var(--text))}
+.ed-sp-tab.on{background:var(--ed-accent,var(--accent));border-color:var(--ed-accent,var(--accent));color:#fff;font-weight:600}
+/* 主体 */
+.ed-sp-body{padding:14px 22px 18px;overflow:auto;flex:1;overscroll-behavior:contain}
+.ed-sp-page{display:none}
+.ed-sp-page.on{display:block}
+/* 底栏：恢复原方案（低调文字按钮）+ 当前状态 */
+.ed-sp-drawer footer{font-size:12px;color:var(--ed-muted,var(--muted));padding:11px 22px;border-top:1px solid var(--ed-line,var(--line));flex:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ed-sp-restore{border:none;background:transparent;color:var(--ed-muted,var(--muted));font:inherit;font-size:12px;cursor:pointer;padding:4px 6px;border-radius:6px;text-decoration:underline dotted;text-underline-offset:3px}
+.ed-sp-restore:hover{color:var(--ed-accent,var(--accent))}
+.ed-sp-restore[disabled]{opacity:.45;cursor:not-allowed;text-decoration:none}
+.ed-sp-status{font-size:11.5px;color:var(--ed-muted,var(--muted));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 风格组 */
+.ed-sp-grp{margin-bottom:20px}
+.ed-sp-grp:last-child{margin-bottom:2px}
+.ed-sp-grph{margin:0 0 10px}
+.ed-sp-grph b{font-size:14px}
+.ed-sp-empty{font-size:13px;color:var(--ed-muted,var(--muted));padding:26px 0;text-align:center}
+.ed-sp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:14px;align-items:start}
+/* 风格卡 */
+.ed-sp-card{position:relative;display:flex;flex-direction:column;gap:9px;text-align:left;border:1px solid var(--ed-line,var(--line));border-radius:14px;padding:12px;background:var(--ed-surface,var(--surface));color:var(--ed-text,var(--text));font:inherit;cursor:pointer;min-width:0}
+.ed-sp-card:hover,.ed-sp-card:focus-visible{border-color:var(--ed-accent,var(--accent));outline:none;box-shadow:0 0 0 2px var(--ed-accent-soft,var(--accent-soft))}
+.ed-sp-card.is-on{border-color:var(--ed-accent,var(--accent));box-shadow:0 0 0 1px var(--ed-accent,var(--accent))}
+.ed-sp-card.is-regen .ed-sp-head{padding-right:84px}
+.ed-sp-regen{position:absolute;top:10px;right:10px;z-index:2;font-size:10px;font-style:normal;color:#8a5300;background:#ffe9c2;border:1px solid #f0c987;border-radius:6px;padding:2px 7px;line-height:1.5}
+/* 卡头：左缩略图（96×64 真截图/色板条降级）右名称/介绍 */
+.ed-sp-head{display:flex;gap:10px;align-items:flex-start;min-width:0}
+.ed-sp-thumb{flex:none;width:96px;height:64px;border-radius:10px;overflow:hidden;border:1px solid var(--ed-line,var(--line));background:var(--ed-soft,var(--soft))}
+.ed-sp-shot{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.ed-sp-palbar{display:flex;width:100%;height:100%}
+.ed-sp-palbar i{flex:1;display:block}
+.ed-sp-meta{display:flex;flex-direction:column;gap:4px;min-width:0;justify-content:center}
+.ed-sp-name{font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-sp-mood{font-size:12px;color:var(--ed-muted,var(--muted));font-style:normal;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 风格令牌行（人话特征词） */
+.ed-sp-tokens{font-size:11.5px;color:var(--ed-muted,var(--muted));border-top:1px dashed var(--ed-line,var(--line));padding-top:8px;line-height:1.6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-sp-tokens i{font-style:normal;opacity:.75;margin-right:6px}
+/* 配色版胶囊组：3 色块胶囊平铺，选中=勾角标+描边高亮 */
+.ed-sp-palsec{display:flex;flex-direction:column;gap:6px}
+.ed-sp-palslabel{font-size:11px;font-style:normal;color:var(--ed-muted,var(--muted))}
+.ed-sp-pals{display:flex;flex-wrap:wrap;gap:8px;padding:2px}
+.ed-sp-pal{position:relative;display:inline-flex;align-items:center;border:1px solid var(--ed-line,var(--line));border-radius:9px;padding:5px 7px;background:var(--ed-surface,var(--surface));cursor:pointer;font:inherit;line-height:0}
+.ed-sp-pal:hover{border-color:var(--ed-accent,var(--accent))}
+.ed-sp-pal.on{border-color:var(--ed-accent,var(--accent));box-shadow:0 0 0 2px var(--ed-accent-soft,var(--accent-soft))}
+.ed-sp-palsw{display:inline-flex;gap:3px}
+.ed-sp-palsw i{width:14px;height:14px;border-radius:4px;border:1px solid #9aa1ad44}
+.ed-sp-palcheck{position:absolute;top:-7px;right:-7px;width:16px;height:16px;border-radius:50%;background:var(--ed-accent,var(--accent));color:#fff;font-size:10px;line-height:16px;text-align:center;font-style:normal;box-shadow:0 2px 6px #10182855}
+/* 2026-11-21 死样式清理：页 2 撤除后的 .ed-sp-prompt 系与 .ed-sp-skillbar 系（7 行）随本轮删除 */
+.ed-sp-skillwrap{display:inline-flex;align-items:center;gap:8px}
+.ed-sp-skillbtn{display:inline-flex;align-items:center;border:1px solid var(--ed-accent,var(--accent));background:var(--ed-accent,var(--accent));color:#fff;font:inherit;font-size:12.5px;font-weight:600;border-radius:8px;padding:6px 12px;text-decoration:none;cursor:pointer}
+a.ed-sp-skillbtn:hover{filter:brightness(1.06);color:#fff}
+.ed-sp-skillbtn[disabled]{border-color:var(--ed-line,var(--line));background:var(--ed-surface,var(--surface));color:var(--ed-muted,var(--muted));cursor:not-allowed;font-weight:400}
+.ed-sp-skillhint{font-size:11px;font-style:normal;color:var(--ed-muted,var(--muted))}
+@media(max-width:740px){.ed-sp-body{padding:12px 14px}.ed-sp-drawer header{padding:13px 14px}.ed-sp-ptabs{padding:10px 14px 0}.ed-sp-drawer footer{padding:10px 14px}.ed-sp-grid{grid-template-columns:repeat(auto-fill,minmax(228px,1fr))}}
+/*STYLE_CHOOSER_CSS_END*/
+/* 2026-11-21 换风格弹窗（点「更多风格方向」页签弹出）：竖向时间线四步（打开库→选+复制→装→执行） */
+dialog.ed-sp-dialog{border:1px solid var(--ed-line,var(--line));border-radius:14px;padding:0;max-width:520px;width:92vw;box-shadow:0 24px 64px -24px rgba(0,0,0,.45)}
+dialog.ed-sp-dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog.ed-sp-dialog header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--ed-line,var(--line));font-size:15px}
+dialog.ed-sp-dialog .ed-sp-dialog-body{padding:14px 18px;display:flex;flex-direction:column;gap:12px}
+dialog.ed-sp-dialog .ed-sp-dialog-lead{margin:0;font-size:12.5px;line-height:1.6;color:var(--ed-text,#333)}
+dialog.ed-sp-dialog .ed-sp-dialog-steps{display:flex;flex-direction:column}
+dialog.ed-sp-dialog .ed-sp-step{position:relative;padding:0 0 16px 34px}
+dialog.ed-sp-dialog .ed-sp-step:last-child{padding-bottom:2px}
+dialog.ed-sp-dialog .ed-sp-step::before{content:'';position:absolute;left:11px;top:26px;bottom:4px;width:2px;border-radius:1px;background:var(--ed-line,var(--line))}
+dialog.ed-sp-dialog .ed-sp-step:last-child::before{display:none}
+dialog.ed-sp-dialog .ed-sp-stepno{position:absolute;left:0;top:0;box-sizing:border-box;width:24px;height:24px;border-radius:50%;border:2px solid var(--ed-accent,#6366f1);color:var(--ed-accent,#6366f1);background:var(--ed-surface,#fff);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+dialog.ed-sp-dialog .ed-sp-stepmain{min-width:0}
+dialog.ed-sp-dialog .ed-sp-stepmain>b{display:block;font-size:13.5px;color:var(--ed-text,#111);margin-bottom:3px}
+dialog.ed-sp-dialog .ed-sp-stepd{font-size:12.5px;line-height:1.6;color:var(--ed-muted,#666)}
+dialog.ed-sp-dialog .ed-sp-wikilink{color:var(--ed-accent,#6366f1)}
+dialog.ed-sp-dialog .ed-sp-stepact{margin-top:8px}
+dialog.ed-sp-dialog .ed-sp-dialog-note{border-top:1px solid var(--ed-line,var(--line));padding-top:10px;font-size:12px;color:var(--ed-muted,#777);line-height:1.6}
+dialog.ed-sp-dialog footer{padding:10px 18px 14px;display:flex;justify-content:flex-end}

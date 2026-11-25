@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格比稿 · 候选合集</title>
+<!--
+  合集页壳模板（uxui-style-picker / templates/collection-shell.html）
+  用法：主进程复制本模板为合集页，替换 {{PROJECT}}/{{AUDIENCE}} 与卡槽区。
+  每卡槽=单列锁宽 1200px：iframe src=单卡文件（相对路径），iframe style height=该卡实测全页高度
+  （playwright 量 document.documentElement.scrollHeight；禁 lazy、禁固定值——lazy 视口外不加载，固定值截断长卡）。
+  锁宽原因：iframe 宽度随窗口变化会导致卡内重排、实测高度失效（裁切/留白）。
+  页名标签行 position:sticky，放在 iframe 之前（放在之后吸不住）——滚动长卡时页名恒可见；无序号；
+  通俗页名（如"商品列表/订单详情"这类人话名，以卡内说明条为准，禁泛化名如"动态表单页"）；
+  顺序=卡内骨架图顺序，由主进程按 V0.1 页清单填写。
+  每卡带「在新标签打开」链接（iframe 内交互细节看全屏更清楚）。
+  壳只做容器与标定，不含任何选择交互（选择在对话里说）。
+-->
+<style>
+  :root{
+    --shell-bg:#f5f6f8; --shell-card:#ffffff; --shell-line:#e4e6ea;
+    --shell-text:#1f2329; --shell-muted:#8a8f99; --shell-accent:#4c6ef5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--shell-bg);color:var(--shell-text);
+    font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    padding:32px 40px 64px}
+  .shell-head{max-width:1200px;margin:0 auto 8px}
+  .shell-title{font-size:22px;font-weight:700}
+  .shell-meta{font-size:13px;color:var(--shell-muted);margin-top:6px}
+  .shell-note{font-size:12px;color:var(--shell-muted);margin-top:14px;
+    padding:10px 14px;background:var(--shell-card);border:1px solid var(--shell-line);border-radius:8px}
+  /* 单列锁宽 1200px：iframe 宽度恒定 → 卡内不重排、实测高度始终有效 */
+  .shell-grid{max-width:1200px;margin:24px auto 0;display:flex;flex-direction:column;gap:36px}
+  .slot{background:var(--shell-card);border:1px solid var(--shell-line);border-radius:14px;
+    padding:18px;box-shadow:0 1px 3px rgba(16,24,40,.04)}
+  .slot-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .slot-head b{font-size:14px}
+  /* 自创卡（origin=ai-generated）卡槽头加此角标，与库卡来源可辨 */
+  .slot-ai{font-size:12px;font-weight:600;color:#b54708;background:#fff4e5;
+    border:1px solid #fbd9a5;border-radius:999px;padding:2px 10px;margin-left:8px}
+  .slot-open{font-size:12px;color:var(--shell-accent);text-decoration:none;
+    border:1px solid var(--shell-line);border-radius:8px;padding:4px 12px}
+  .slot-open:hover{background:var(--shell-bg)}
+  .slot iframe{width:100%;border:0;border-radius:8px;display:block;
+    background:#fff}
+  /* 页名标签吸顶：滚动长卡时页名恒可见（无序号；通俗页名以卡内说明条为准） */
+  .slot-pages{position:sticky;top:8px;z-index:2;display:flex;flex-wrap:wrap;gap:8px;
+    padding:7px 12px;margin-bottom:12px;background:var(--shell-card);
+    border:1px solid var(--shell-line);border-radius:999px;
+    box-shadow:0 1px 3px rgba(16,24,40,.06)}
+  .slot-pages span{font-size:12px;color:var(--shell-muted);
+    border-radius:999px;padding:2px 10px}
+  .slot-pages span.on{color:var(--shell-accent);font-weight:600}
+</style>
+</head>
+<body>
+  <header class="shell-head">
+    <div class="shell-title">{{PROJECT}} · 风格比稿</div>
+    <div class="shell-meta">受众组：{{AUDIENCE}} · 候选 {{COUNT}} 个 · 方案示意，非最终效果图</div>
+    <div class="shell-note">每张卡=一个风格方向：骨架图展示结构与密度情绪，底部样本条展示该风格的色板/字体/组件/图标真实载体。看方向、选感觉；文字内容与图片均为占位，选定后按真实需求生成。滚动时顶部的页名标签提示当前看到哪一页；细节可点「在新标签打开」。</div>
+  </header>
+
+  <main class="shell-grid">
+    <!-- 卡槽 ×N（顺序与适配报告编号一致；页名标签顺序=卡内骨架图顺序，通俗页名以卡内说明条为准）
+       两处必填：iframe src=单卡文件（相对路径）；iframe style height=该卡实测全页高度
+       （playwright 量 document.documentElement.scrollHeight；禁 lazy、禁固定值） -->
+    <section class="slot">
+      <div class="slot-head">
+        <div><b>候选1 · 风格名</b><!-- 自创卡在 b 后加 <span class="slot-ai">AI 新创</span> --></div>
+        <a class="slot-open" href="demo-card-xxx.html" target="_blank">在新标签打开</a>
+      </div>
+      <div class="slot-pages"><span>页名一</span><span>页名二</span><span>页名三</span><span>页名四</span></div>
+      <iframe src="demo-card-xxx.html" title="候选1 · 风格名"></iframe>
+    </section>
+    <!-- …更多卡槽… -->
+  </main>
+</body>
+</html>

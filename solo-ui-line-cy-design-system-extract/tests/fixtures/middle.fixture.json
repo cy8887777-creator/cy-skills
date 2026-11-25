@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "source_type": "B1_html",
+    "source_id": "tests/fixtures/minimal-fixture",
+    "extracted_at": "2026-10-15T00:00:00Z",
+    "schema_version": "2.0.0",
+    "supplementary_notes": "测试素材：模拟一个真实小项目的**实测计数**（2/1/1/4=8，不是 85）+ **名实一致命名**（紫叫 purple）——专测紧身衣拆除后管线不逼迫凑数。"
+  },
+  "tokens": {
+    "primitive": {
+      "purple-600": { "value": "#7F60EF", "role": "primary", "usage": "品牌主紫：CTA / 选中态", "prohibition": "正文文字" },
+      "gray-900": { "value": "#18181B", "role": "neutral", "usage": "主文本", "prohibition": "非文本场景" }
+    },
+    "semantic": {
+      "color-text-primary": { "value": "gray-900", "category": "text", "usage": "主文本", "prohibition": "非文本场景" }
+    },
+    "component": {
+      "button-bg-primary": { "value": "purple-600", "owner": "Button", "usage": "主按钮底色", "prohibition": "次按钮" }
+    },
+    "metric": {
+      "space-4": { "value": "16px", "category": "spacing", "usage": "组件之间" },
+      "radius-md": { "value": "8px", "category": "radius", "usage": "按钮、输入框" },
+      "font-size-body": { "value": "14px / 22 / 400", "category": "font_size", "usage": "正文" },
+      "z-modal": { "value": "1300", "category": "z_index", "usage": "模态弹窗" }
+    }
+  },
+  "components": [
+    { "name": "Button", "variants": ["primary", "default"], "states": ["default", "hover", "disabled"], "key_specs": { "height": "36px", "radius": "8px" } }
+  ],
+  "patterns": {
+    "form_validation": "失焦校验单字段、提交全量校验"
+  },
+  "raw_evidence": {
+    "css_rules_scanned": 120,
+    "classes_seen": { "btn": 8 }
+  }
+}

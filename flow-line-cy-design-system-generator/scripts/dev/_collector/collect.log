@@ -1,0 +1,353 @@
+[14:18:47] === DISCOVERY: fetching package trees from data.jsdelivr.com ===
+[14:19:12] [tabler] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:19:37] [phosphor] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:19:43] [heroicons] form outline-24   prefix=optimized/24/outline/        files=324 bytes=154228 (first: optimized/24/outline/academic-cap.svg)
+[14:19:43] [heroicons] form solid-24     prefix=optimized/24/solid/          files=324 bytes=198700 (first: optimized/24/solid/academic-cap.svg)
+[14:19:43] [heroicons] form solid-20     prefix=optimized/20/solid/          files=324 bytes=179743 (first: optimized/20/solid/academic-cap.svg)
+[14:19:43] [heroicons] plan: 972 files to download (fullTotal=972, sampled=False)
+[14:20:31] [material-symbols] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:20:55] [bootstrap] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:21:20] [remixicon] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:21:43] [feather] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:22:12] [boxicons] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:22:38] [solar] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:22:38] === TOTAL files planned: 972 | approx ETA at ~4.8 req/s: 00:03:22 ===
+[14:22:38] PROBLEMS:
+[14:22:38]   - [tabler] tree fetch failed for npm @tabler/icons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@tabler/icons@latest?structure=flat (HTTP 404)
+[14:22:38]   - [phosphor] tree fetch failed for npm @phosphor-icons/core: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@phosphor-icons/core@latest?structure=flat (HTTP 404)
+[14:22:38]   - [material-symbols] tree fetch failed for npm @material-symbols/svg-400: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@material-symbols/svg-400@latest?structure=flat (HTTP 404)
+[14:22:38]   - [material-symbols] tree fetch failed for npm @material-symbols/svg-400-fill: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@material-symbols/svg-400-fill@latest?structure=flat (HTTP 404)
+[14:22:38]   - [bootstrap] tree fetch failed for npm bootstrap-icons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/bootstrap-icons@latest?structure=flat (HTTP 404)
+[14:22:38]   - [remixicon] tree fetch failed for npm remixicon: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/remixicon@latest?structure=flat (HTTP 404)
+[14:22:38]   - [feather] tree fetch failed for npm feather-icons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/feather-icons@latest?structure=flat (HTTP 404)
+[14:22:38]   - [boxicons] tree fetch failed for npm boxicons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/boxicons@latest?structure=flat (HTTP 404)
+[14:22:38]   - [solar] tree fetch failed for gh 240h/solar-icons@master: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/gh/240h/solar-icons@master?structure=flat (HTTP 404)
+[14:25:28] === DISCOVERY: fetching package trees from data.jsdelivr.com ===
+[14:25:56] [tabler] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:26:21] [phosphor] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:26:21] [heroicons] form outline-24   prefix=optimized/24/outline/        files=324 bytes=154228 (first: optimized/24/outline/academic-cap.svg)
+[14:26:21] [heroicons] form solid-24     prefix=optimized/24/solid/          files=324 bytes=198700 (first: optimized/24/solid/academic-cap.svg)
+[14:26:21] [heroicons] form solid-20     prefix=optimized/20/solid/          files=324 bytes=179743 (first: optimized/20/solid/academic-cap.svg)
+[14:26:21] [heroicons] plan: 972 files to download (fullTotal=972, sampled=False)
+[14:35:52] [material-symbols] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:36:18] [bootstrap] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:36:43] [remixicon] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:37:08] [feather] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:37:34] [boxicons] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:38:17] [solar] NO FORMS CONFIGURED - svg dir histogram for gh 480-Design/Solar-icon-set@main:
+[14:38:17]       139  icons/SVG/Bold Duotone/Essentional, UI
+[14:38:17]       139  icons/SVG/Bold/Essentional, UI
+[14:38:17]       139  icons/SVG/Broken/Essentional, UI
+[14:38:17]       139  icons/SVG/Line Duotone/Essentional, UI
+[14:38:17]       139  icons/SVG/Linear/Essentional, UI
+[14:38:17]       139  icons/SVG/Outline/Essentional, UI
+[14:38:17]       103  icons/SVG/Bold Duotone/Video, Audio, Sound
+[14:38:17]       103  icons/SVG/Bold/Video, Audio, Sound
+[14:38:17]       103  icons/SVG/Broken/Video, Audio, Sound
+[14:38:17]       103  icons/SVG/Line Duotone/Video, Audio, Sound
+[14:38:17]       103  icons/SVG/Linear/Video, Audio, Sound
+[14:38:17]       103  icons/SVG/Outline/Video, Audio, Sound
+[14:38:17]        89  icons/SVG/Bold Duotone/Electronic, Devices
+[14:38:17]        89  icons/SVG/Bold/Electronic, Devices
+[14:38:17]        89  icons/SVG/Broken/Electronic, Devices
+[14:38:17]        89  icons/SVG/Line Duotone/Electronic, Devices
+[14:38:17]        89  icons/SVG/Linear/Electronic, Devices
+[14:38:17]        89  icons/SVG/Outline/Electronic, Devices
+[14:38:17]        67  icons/SVG/Bold Duotone/Arrows
+[14:38:17]        67  icons/SVG/Bold/Arrows
+[14:38:17]        67  icons/SVG/Broken/Arrows
+[14:38:17]        67  icons/SVG/Line Duotone/Arrows
+[14:38:17]        67  icons/SVG/Linear/Arrows
+[14:38:17]        67  icons/SVG/Outline/Arrows
+[14:38:17]        58  icons/SVG/Bold Duotone/Arrows Action
+[14:38:17] [solar] total svg files in package: 7330
+[14:38:17] [solar] plan: 0 files to download (fullTotal=0, sampled=False)
+[14:38:17] === TOTAL files planned: 972 | approx ETA at ~4.8 req/s: 00:03:22 ===
+[14:38:17] PROBLEMS:
+[14:38:17]   - [tabler] tree fetch failed for npm @tabler/icons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@tabler/icons@3.49.0@latest?structure=flat (HTTP 400)
+[14:38:17]   - [phosphor] tree fetch failed for npm @phosphor-icons/core: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@phosphor-icons/core@2.1.1@latest?structure=flat (HTTP 400)
+[14:38:17]   - [material-symbols] tree fetch failed for npm @material-symbols/svg-400: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/@material-symbols/svg-400@0.48.1@latest?structure=flat (HTTP 400)
+[14:38:17]   - [material-symbols] tree fetch failed for gh marella/material-symbols@main: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/gh/marella/material-symbols@0.48.1?structure=flat (HTTP 403)
+[14:38:17]   - [bootstrap] tree fetch failed for npm bootstrap-icons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/bootstrap-icons@1.13.2@latest?structure=flat (HTTP 400)
+[14:38:17]   - [remixicon] tree fetch failed for npm remixicon: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/remixicon@4.9.1@latest?structure=flat (HTTP 400)
+[14:38:17]   - [feather] tree fetch failed for npm feather-icons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/feather-icons@4.29.2@latest?structure=flat (HTTP 400)
+[14:38:17]   - [boxicons] tree fetch failed for npm boxicons: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/npm/boxicons@2.1.4@latest?structure=flat (HTTP 400)
+[14:38:17]   - [solar] forms not configured for 480-Design/Solar-icon-set@main
+[14:40:10] === DISCOVERY: fetching package trees from data.jsdelivr.com ===
+[14:40:49] [tabler] form outline      prefix=icons/outline/               files=5184 bytes=2899771 (first: icons/outline/a-b-2.svg)
+[14:40:49] [tabler] form filled       prefix=icons/filled/                files=1054 bytes=748911 (first: icons/filled/accessible.svg)
+[14:40:49] [tabler] plan: 6238 files to download (fullTotal=6238, sampled=False)
+[14:41:19] [phosphor] form regular      prefix=assets/regular/              files=1512 bytes=763681 (first: assets/regular/acorn.svg)
+[14:41:19] [phosphor] form fill         prefix=assets/fill/                 files=1512 bytes=684316 (first: assets/fill/acorn-fill.svg)
+[14:41:19] [phosphor] plan: 3024 files to download (fullTotal=3024, sampled=False)
+[14:41:19] [heroicons] form outline-24   prefix=optimized/24/outline/        files=324 bytes=154228 (first: optimized/24/outline/academic-cap.svg)
+[14:41:19] [heroicons] form solid-24     prefix=optimized/24/solid/          files=324 bytes=198700 (first: optimized/24/solid/academic-cap.svg)
+[14:41:19] [heroicons] form solid-20     prefix=optimized/20/solid/          files=324 bytes=179743 (first: optimized/20/solid/academic-cap.svg)
+[14:41:19] [heroicons] plan: 972 files to download (fullTotal=972, sampled=False)
+[14:42:37] [material-symbols] form outlined     prefix=                             files=23592 bytes=13115545 (first: outlined/10k-fill.svg)
+[14:51:40] [material-symbols] plan: 23592 files to download (fullTotal=23592, sampled=False)
+[14:51:41] [bootstrap] form (flat)       prefix=icons/                       files=2078 bytes=1245329 (first: icons/0-circle-fill.svg)
+[14:51:41] [bootstrap] plan: 2078 files to download (fullTotal=2078, sampled=False)
+[14:51:48] [remixicon] form line         prefix=icons/                       files=1539 bytes=1019039 (first: icons/Finance/24-hours-line.svg)
+[14:51:48] [remixicon] form fill         prefix=icons/                       files=1539 bytes=867071 (first: icons/Finance/24-hours-fill.svg)
+[14:51:48] [remixicon] plan: 3078 files to download (fullTotal=3078, sampled=False)
+[14:51:49] [feather] form (flat)       prefix=dist/icons/                  files=287 bytes=108761 (first: dist/icons/activity.svg)
+[14:51:49] [feather] plan: 287 files to download (fullTotal=287, sampled=False)
+[14:51:53] [boxicons] form regular      prefix=svg/regular/                 files=814 bytes=324663 (first: svg/regular/bx-abacus.svg)
+[14:51:53] [boxicons] form solid        prefix=svg/solid/                   files=665 bytes=234877 (first: svg/solid/bxs-add-to-queue.svg)
+[14:51:53] [boxicons] plan: 1479 files to download (fullTotal=1479, sampled=False)
+[14:51:53] [solar] form linear       prefix=icons/SVG/Linear/            files=1246 bytes=1584119 (first: icons/SVG/Linear/Essentional, UI/4K.svg)
+[14:51:53] [solar] form bold         prefix=icons/SVG/Bold/              files=1246 bytes=1879972 (first: icons/SVG/Bold/Essentional, UI/4K.svg)
+[14:51:53] [solar] plan: 2492 files to download (fullTotal=2492, sampled=False)
+[14:51:53] === TOTAL files planned: 43240 | approx ETA at ~4.8 req/s: 02:30:08 ===
+[14:51:53] PROBLEMS:
+[14:51:53]   - [material-symbols] tree fetch failed for gh marella/material-symbols@main: GET failed after 4 attempts: https://data.jsdelivr.com/v1/packages/gh/marella/material-symbols@0.48.1?structure=flat (HTTP 403)
+[14:52:19] === DISCOVERY: fetching package trees from data.jsdelivr.com ===
+[14:52:19] [tabler] form outline      prefix=icons/outline/               files=5184 bytes=2899771 (first: icons/outline/a-b-2.svg)
+[14:52:19] [tabler] form filled       prefix=icons/filled/                files=1054 bytes=748911 (first: icons/filled/accessible.svg)
+[14:52:19] [tabler] plan: 6238 files to download (fullTotal=6238, sampled=False)
+[14:52:19] [phosphor] form regular      prefix=assets/regular/              files=1512 bytes=763681 (first: assets/regular/acorn.svg)
+[14:52:19] [phosphor] form fill         prefix=assets/fill/                 files=1512 bytes=684316 (first: assets/fill/acorn-fill.svg)
+[14:52:19] [phosphor] plan: 3024 files to download (fullTotal=3024, sampled=False)
+[14:52:19] [heroicons] form outline-24   prefix=optimized/24/outline/        files=324 bytes=154228 (first: optimized/24/outline/academic-cap.svg)
+[14:52:19] [heroicons] form solid-24     prefix=optimized/24/solid/          files=324 bytes=198700 (first: optimized/24/solid/academic-cap.svg)
+[14:52:19] [heroicons] form solid-20     prefix=optimized/20/solid/          files=324 bytes=179743 (first: optimized/20/solid/academic-cap.svg)
+[14:52:19] [heroicons] plan: 972 files to download (fullTotal=972, sampled=False)
+[14:52:19] [material-symbols] form outlined     prefix=outlined/                    files=3932 bytes=2069060 (first: outlined/10k.svg)
+[14:52:19] [material-symbols] form filled       prefix=outlined/                    files=3932 bytes=1777472 (first: outlined/10k-fill.svg)
+[14:52:19] [material-symbols] plan: 7864 files to download (fullTotal=7864, sampled=False)
+[14:52:19] [bootstrap] form (flat)       prefix=icons/                       files=2078 bytes=1245329 (first: icons/0-circle-fill.svg)
+[14:52:19] [bootstrap] plan: 2078 files to download (fullTotal=2078, sampled=False)
+[14:52:19] [remixicon] form line         prefix=icons/                       files=1539 bytes=1019039 (first: icons/Finance/24-hours-line.svg)
+[14:52:19] [remixicon] form fill         prefix=icons/                       files=1539 bytes=867071 (first: icons/Finance/24-hours-fill.svg)
+[14:52:19] [remixicon] plan: 3078 files to download (fullTotal=3078, sampled=False)
+[14:52:19] [feather] form (flat)       prefix=dist/icons/                  files=287 bytes=108761 (first: dist/icons/activity.svg)
+[14:52:19] [feather] plan: 287 files to download (fullTotal=287, sampled=False)
+[14:52:19] [boxicons] form regular      prefix=svg/regular/                 files=814 bytes=324663 (first: svg/regular/bx-abacus.svg)
+[14:52:19] [boxicons] form solid        prefix=svg/solid/                   files=665 bytes=234877 (first: svg/solid/bxs-add-to-queue.svg)
+[14:52:19] [boxicons] plan: 1479 files to download (fullTotal=1479, sampled=False)
+[14:52:19] [solar] form linear       prefix=icons/SVG/Linear/            files=1246 bytes=1584119 (first: icons/SVG/Linear/Essentional, UI/4K.svg)
+[14:52:19] [solar] form bold         prefix=icons/SVG/Bold/              files=1246 bytes=1879972 (first: icons/SVG/Bold/Essentional, UI/4K.svg)
+[14:52:19] [solar] plan: 2492 files to download (fullTotal=2492, sampled=False)
+[14:52:19] === TOTAL files planned: 27512 | approx ETA at ~4.8 req/s: 01:35:31 ===
+[14:53:57] [tabler] downloading 6238 files (0 already existed will be skipped) ...
+[14:57:54] [tabler] 250/6238 done=250 skip=0 fail=0 | 1.05 req/s | ETA 01:34:47
+[15:01:28] [tabler] downloading 6238 files (418 already existed will be skipped) ...
+[15:01:28] [tabler] 250/6238 done=0 skip=250 fail=0 | 0.00 req/s | ETA 166:20:00
+[15:01:47] [tabler] 500/6238 done=82 skip=418 fail=0 | 4.15 req/s | ETA 00:23:03
+[15:02:50] [tabler] 750/6238 done=332 skip=418 fail=0 | 4.04 req/s | ETA 00:22:38
+[15:04:02] [tabler] 1000/6238 done=582 skip=418 fail=0 | 3.76 req/s | ETA 00:23:14
+[15:05:06] [tabler] 1250/6238 done=832 skip=418 fail=0 | 3.81 req/s | ETA 00:21:49
+[15:06:18] [tabler] 1500/6238 done=1082 skip=418 fail=0 | 3.73 req/s | ETA 00:21:11
+[15:07:24] [tabler] 1750/6238 done=1332 skip=418 fail=0 | 3.73 req/s | ETA 00:20:02
+[15:08:29] [tabler] 2000/6238 done=1582 skip=418 fail=0 | 3.75 req/s | ETA 00:18:49
+[15:09:36] [tabler] 2250/6238 done=1832 skip=418 fail=0 | 3.75 req/s | ETA 00:17:43
+[15:10:42] [tabler] 2500/6238 done=2082 skip=418 fail=0 | 3.75 req/s | ETA 00:16:36
+[15:11:47] [tabler] 2750/6238 done=2332 skip=418 fail=0 | 3.76 req/s | ETA 00:15:26
+[15:12:53] [tabler] 3000/6238 done=2582 skip=418 fail=0 | 3.77 req/s | ETA 00:14:19
+[15:14:46] [tabler] 3250/6238 done=2828 skip=418 fail=4 | 3.54 req/s | ETA 00:14:03
+[15:26:07] [tabler] 3500/6238 done=3000 skip=418 fail=82 | 2.03 req/s | ETA 00:22:29
+[15:26:22] [tabler] downloading 6238 files (3418 already existed will be skipped) ...
+[15:26:22] [tabler] 250/6238 done=0 skip=251 fail=0 | 0.00 req/s | ETA 166:20:00
+[15:26:22] [tabler] 500/6238 done=0 skip=501 fail=0 | 0.00 req/s | ETA 159:23:20
+[15:26:22] [tabler] 750/6238 done=0 skip=750 fail=0 | 0.00 req/s | ETA 152:26:40
+[15:26:22] [tabler] 1000/6238 done=0 skip=1001 fail=0 | 0.00 req/s | ETA 145:30:00
+[15:26:22] [tabler] 1250/6238 done=0 skip=1250 fail=0 | 0.00 req/s | ETA 138:33:20
+[15:26:22] [tabler] 1500/6238 done=0 skip=1500 fail=0 | 0.00 req/s | ETA 131:36:40
+[15:26:22] [tabler] 1750/6238 done=0 skip=1751 fail=0 | 0.00 req/s | ETA 124:40:00
+[15:26:22] [tabler] 2000/6238 done=0 skip=2000 fail=0 | 0.00 req/s | ETA 117:43:20
+[15:26:22] [tabler] 2250/6238 done=0 skip=2250 fail=0 | 0.00 req/s | ETA 110:46:40
+[15:26:22] [tabler] 2500/6238 done=0 skip=2500 fail=0 | 0.00 req/s | ETA 103:50:00
+[15:26:22] [tabler] 2750/6238 done=0 skip=2750 fail=0 | 0.00 req/s | ETA 96:53:20
+[15:26:22] [tabler] 3000/6238 done=0 skip=3000 fail=0 | 0.00 req/s | ETA 89:56:40
+[15:26:23] CDN host cdn.jsdelivr.net unreachable -> switching to fastly.jsdelivr.net
+[15:26:27] [tabler] 3250/6238 done=4 skip=3246 fail=0 | 0.75 req/s | ETA 01:06:36
+[15:27:11] [tabler] 3500/6238 done=82 skip=3418 fail=0 | 1.65 req/s | ETA 00:27:37
+[15:28:51] [tabler] 3750/6238 done=332 skip=3418 fail=0 | 2.23 req/s | ETA 00:18:37
+[15:30:27] [tabler] 4000/6238 done=582 skip=3418 fail=0 | 2.37 req/s | ETA 00:15:43
+[15:32:06] [tabler] 4250/6238 done=832 skip=3418 fail=0 | 2.41 req/s | ETA 00:13:43
+[15:33:50] [tabler] 4500/6238 done=1082 skip=3418 fail=0 | 2.41 req/s | ETA 00:12:00
+[15:35:30] [tabler] 4750/6238 done=1332 skip=3418 fail=0 | 2.43 req/s | ETA 00:10:12
+[15:37:09] [tabler] 5000/6238 done=1582 skip=3418 fail=0 | 2.44 req/s | ETA 00:08:26
+[15:38:54] [tabler] 5250/6238 done=1832 skip=3418 fail=0 | 2.44 req/s | ETA 00:06:45
+[15:40:29] [tabler] 5500/6238 done=2082 skip=3418 fail=0 | 2.46 req/s | ETA 00:05:00
+[15:41:58] [tabler] 5750/6238 done=2332 skip=3418 fail=0 | 2.49 req/s | ETA 00:03:15
+[15:43:27] [tabler] 6000/6238 done=2582 skip=3418 fail=0 | 2.52 req/s | ETA 00:01:34
+[15:44:57] [tabler] 6238/6238 done=2820 skip=3418 fail=0 | 2.53 req/s | ETA 00:00:00
+[15:44:57] [tabler] DONE done=2820 skipped=3418 failed=0 bytes=1736805
+[15:44:57] [phosphor] downloading 3024 files (0 already existed will be skipped) ...
+[15:47:07] [phosphor] 250/3024 done=250 skip=0 fail=0 | 1.93 req/s | ETA 00:23:53
+[15:49:11] [phosphor] 500/3024 done=500 skip=0 fail=0 | 1.97 req/s | ETA 00:21:22
+[15:51:03] [phosphor] 750/3024 done=750 skip=0 fail=0 | 2.05 req/s | ETA 00:18:27
+[15:52:50] [phosphor] 1000/3024 done=1000 skip=0 fail=0 | 2.12 req/s | ETA 00:15:56
+[15:54:43] [phosphor] 1250/3024 done=1250 skip=0 fail=0 | 2.14 req/s | ETA 00:13:50
+[15:56:33] [phosphor] 1500/3024 done=1500 skip=0 fail=0 | 2.16 req/s | ETA 00:11:46
+[15:58:12] [phosphor] 1750/3024 done=1750 skip=0 fail=0 | 2.20 req/s | ETA 00:09:38
+[15:59:57] [phosphor] 2000/3024 done=2000 skip=0 fail=0 | 2.22 req/s | ETA 00:07:40
+[16:01:40] [phosphor] 2250/3024 done=2250 skip=0 fail=0 | 2.25 req/s | ETA 00:05:44
+[16:03:27] [phosphor] 2500/3024 done=2500 skip=0 fail=0 | 2.25 req/s | ETA 00:03:52
+[16:05:33] [phosphor] 2750/3024 done=2750 skip=0 fail=0 | 2.23 req/s | ETA 00:02:03
+[16:07:38] [phosphor] 3000/3024 done=3000 skip=0 fail=0 | 2.20 req/s | ETA 00:00:10
+[16:07:50] [phosphor] 3024/3024 done=3024 skip=0 fail=0 | 2.20 req/s | ETA 00:00:00
+[16:07:50] [phosphor] DONE done=3024 skipped=0 failed=0 bytes=1447997
+[16:07:50] [heroicons] downloading 972 files (0 already existed will be skipped) ...
+[16:10:19] [heroicons] 250/972 done=250 skip=0 fail=0 | 1.68 req/s | ETA 00:07:08
+[16:12:30] [heroicons] 500/972 done=500 skip=0 fail=0 | 1.78 req/s | ETA 00:04:24
+[16:14:52] [heroicons] 750/972 done=750 skip=0 fail=0 | 1.78 req/s | ETA 00:02:04
+[16:16:51] [heroicons] 972/972 done=972 skip=0 fail=0 | 1.80 req/s | ETA 00:00:00
+[16:16:51] [heroicons] DONE done=972 skipped=0 failed=0 bytes=532715
+[16:16:51] [material-symbols] downloading 7864 files (0 already existed will be skipped) ...
+[16:18:50] [material-symbols] 250/7864 done=250 skip=0 fail=0 | 2.10 req/s | ETA 01:00:18
+[16:20:17] [material-symbols] 500/7864 done=500 skip=0 fail=0 | 2.43 req/s | ETA 00:50:25
+[16:21:53] [material-symbols] 750/7864 done=750 skip=0 fail=0 | 2.49 req/s | ETA 00:47:40
+[16:23:28] [material-symbols] 1000/7864 done=1000 skip=0 fail=0 | 2.52 req/s | ETA 00:45:21
+[16:25:02] [material-symbols] 1250/7864 done=1250 skip=0 fail=0 | 2.55 req/s | ETA 00:43:17
+[16:26:29] [material-symbols] 1500/7864 done=1500 skip=0 fail=0 | 2.60 req/s | ETA 00:40:49
+[16:27:58] [material-symbols] 1750/7864 done=1750 skip=0 fail=0 | 2.63 req/s | ETA 00:38:48
+[16:29:22] [material-symbols] 2000/7864 done=2000 skip=0 fail=0 | 2.67 req/s | ETA 00:36:39
+[16:31:01] [material-symbols] 2250/7864 done=2250 skip=0 fail=0 | 2.65 req/s | ETA 00:35:19
+[16:32:37] [material-symbols] 2500/7864 done=2500 skip=0 fail=0 | 2.64 req/s | ETA 00:33:48
+[16:34:22] [material-symbols] 2750/7864 done=2750 skip=0 fail=0 | 2.62 req/s | ETA 00:32:34
+[16:35:58] [material-symbols] 3000/7864 done=3000 skip=0 fail=0 | 2.62 req/s | ETA 00:30:59
+[16:37:35] [material-symbols] 3250/7864 done=3250 skip=0 fail=0 | 2.61 req/s | ETA 00:29:26
+[16:38:53] [material-symbols] 3500/7864 done=3500 skip=0 fail=0 | 2.65 req/s | ETA 00:27:27
+[16:40:26] [material-symbols] 3750/7864 done=3750 skip=0 fail=0 | 2.65 req/s | ETA 00:25:52
+[16:42:06] [material-symbols] 4000/7864 done=4000 skip=0 fail=0 | 2.64 req/s | ETA 00:24:22
+[16:43:38] [material-symbols] 4250/7864 done=4250 skip=0 fail=0 | 2.64 req/s | ETA 00:22:46
+[16:45:14] [material-symbols] 4500/7864 done=4500 skip=0 fail=0 | 2.64 req/s | ETA 00:21:12
+[16:46:48] [material-symbols] 4750/7864 done=4750 skip=0 fail=0 | 2.64 req/s | ETA 00:19:37
+[16:48:13] [material-symbols] 5000/7864 done=5000 skip=0 fail=0 | 2.66 req/s | ETA 00:17:57
+[16:49:38] [material-symbols] 5250/7864 done=5250 skip=0 fail=0 | 2.67 req/s | ETA 00:16:19
+[16:51:06] [material-symbols] 5500/7864 done=5500 skip=0 fail=0 | 2.68 req/s | ETA 00:14:43
+[16:52:47] [material-symbols] 5750/7864 done=5750 skip=0 fail=0 | 2.67 req/s | ETA 00:13:12
+[16:54:11] [material-symbols] 6000/7864 done=6000 skip=0 fail=0 | 2.68 req/s | ETA 00:11:35
+[16:55:51] [material-symbols] 6250/7864 done=6250 skip=0 fail=0 | 2.67 req/s | ETA 00:10:04
+[16:57:28] [material-symbols] 6500/7864 done=6500 skip=0 fail=0 | 2.67 req/s | ETA 00:08:31
+[16:59:20] [material-symbols] 6750/7864 done=6750 skip=0 fail=0 | 2.65 req/s | ETA 00:07:00
+[17:00:52] [material-symbols] 7000/7864 done=7000 skip=0 fail=0 | 2.65 req/s | ETA 00:05:25
+[17:02:36] [material-symbols] 7250/7864 done=7250 skip=0 fail=0 | 2.64 req/s | ETA 00:03:52
+[17:04:21] [material-symbols] 7500/7864 done=7500 skip=0 fail=0 | 2.63 req/s | ETA 00:02:18
+[17:06:07] [material-symbols] 7750/7864 done=7750 skip=0 fail=0 | 2.62 req/s | ETA 00:00:43
+[17:06:51] [material-symbols] 7864/7864 done=7864 skip=0 fail=0 | 2.62 req/s | ETA 00:00:00
+[17:06:51] [material-symbols] DONE done=7864 skipped=0 failed=0 bytes=3846532
+[17:06:51] [bootstrap] downloading 2078 files (0 already existed will be skipped) ...
+[17:08:45] [bootstrap] 250/2078 done=250 skip=0 fail=0 | 2.19 req/s | ETA 00:13:53
+[17:10:29] [bootstrap] 500/2078 done=500 skip=0 fail=0 | 2.30 req/s | ETA 00:11:27
+[17:12:21] [bootstrap] 750/2078 done=750 skip=0 fail=0 | 2.28 req/s | ETA 00:09:43
+[17:14:00] [bootstrap] 1000/2078 done=1000 skip=0 fail=0 | 2.33 req/s | ETA 00:07:42
+[17:15:34] [bootstrap] 1250/2078 done=1250 skip=0 fail=0 | 2.39 req/s | ETA 00:05:46
+[17:17:07] [bootstrap] 1500/2078 done=1500 skip=0 fail=0 | 2.44 req/s | ETA 00:03:57
+[17:18:47] [bootstrap] 1750/2078 done=1750 skip=0 fail=0 | 2.45 req/s | ETA 00:02:14
+[17:20:36] [bootstrap] 2000/2078 done=2000 skip=0 fail=0 | 2.42 req/s | ETA 00:00:32
+[17:21:07] [bootstrap] 2078/2078 done=2078 skip=0 fail=0 | 2.43 req/s | ETA 00:00:00
+[17:21:07] [bootstrap] DONE done=2078 skipped=0 failed=0 bytes=1245329
+[17:21:07] [remixicon] downloading 3078 files (0 already existed will be skipped) ...
+[17:21:41] CDN host fastly.jsdelivr.net unreachable -> switching to gcore.jsdelivr.net
+[17:23:19] [remixicon] 250/3078 done=250 skip=0 fail=0 | 1.89 req/s | ETA 00:24:54
+[17:25:23] [remixicon] 500/3078 done=500 skip=0 fail=0 | 1.95 req/s | ETA 00:21:59
+[17:27:21] [remixicon] 750/3078 done=750 skip=0 fail=0 | 2.00 req/s | ETA 00:19:22
+[17:29:17] [remixicon] 1000/3078 done=1000 skip=0 fail=0 | 2.04 req/s | ETA 00:16:59
+[17:31:21] [remixicon] 1250/3078 done=1250 skip=0 fail=0 | 2.04 req/s | ETA 00:14:57
+[17:33:19] [remixicon] 1500/3078 done=1500 skip=0 fail=0 | 2.05 req/s | ETA 00:12:50
+[17:35:18] [remixicon] 1750/3078 done=1750 skip=0 fail=0 | 2.06 req/s | ETA 00:10:45
+[17:37:18] [remixicon] 2000/3078 done=2000 skip=0 fail=0 | 2.06 req/s | ETA 00:08:43
+[17:39:17] [remixicon] 2250/3078 done=2250 skip=0 fail=0 | 2.06 req/s | ETA 00:06:41
+[17:41:13] [remixicon] 2500/3078 done=2500 skip=0 fail=0 | 2.07 req/s | ETA 00:04:38
+[17:43:13] [remixicon] 2750/3078 done=2750 skip=0 fail=0 | 2.07 req/s | ETA 00:02:38
+[17:43:37] CDN host gcore.jsdelivr.net unreachable -> switching to cdn.jsdelivr.net
+[17:44:07] CDN host cdn.jsdelivr.net unreachable -> switching to fastly.jsdelivr.net
+[17:45:44] [remixicon] 3000/3078 done=3000 skip=0 fail=0 | 2.03 req/s | ETA 00:00:38
+[17:46:20] [remixicon] 3078/3078 done=3078 skip=0 fail=0 | 2.03 req/s | ETA 00:00:00
+[17:46:20] [remixicon] DONE done=3078 skipped=0 failed=0 bytes=1886110
+[17:46:20] [feather] downloading 287 files (0 already existed will be skipped) ...
+[17:48:09] [feather] 250/287 done=250 skip=0 fail=0 | 2.31 req/s | ETA 00:00:16
+[17:48:24] [feather] 287/287 done=287 skip=0 fail=0 | 2.31 req/s | ETA 00:00:00
+[17:48:24] [feather] DONE done=287 skipped=0 failed=0 bytes=108761
+[17:48:24] [boxicons] downloading 1479 files (0 already existed will be skipped) ...
+[17:50:21] [boxicons] 250/1479 done=250 skip=0 fail=0 | 2.14 req/s | ETA 00:09:35
+[17:52:34] [boxicons] 500/1479 done=500 skip=0 fail=0 | 2.00 req/s | ETA 00:08:08
+[17:54:32] [boxicons] 750/1479 done=750 skip=0 fail=0 | 2.04 req/s | ETA 00:05:57
+[17:56:23] [boxicons] 1000/1479 done=1000 skip=0 fail=0 | 2.09 req/s | ETA 00:03:49
+[17:58:30] [boxicons] 1250/1479 done=1250 skip=0 fail=0 | 2.06 req/s | ETA 00:01:50
+[18:00:25] [boxicons] 1479/1479 done=1479 skip=0 fail=0 | 2.05 req/s | ETA 00:00:00
+[18:00:25] [boxicons] DONE done=1479 skipped=0 failed=0 bytes=559540
+[18:00:25] [solar] WARNING: dropped 22 duplicate targets
+[18:00:25] [solar] downloading 2470 files (0 already existed will be skipped) ...
+[18:03:01] [solar] 250/2470 done=250 skip=0 fail=0 | 1.60 req/s | ETA 00:23:07
+[18:05:33] [solar] 500/2470 done=500 skip=0 fail=0 | 1.62 req/s | ETA 00:20:14
+[18:08:21] [solar] 750/2470 done=750 skip=0 fail=0 | 1.58 req/s | ETA 00:18:11
+[18:11:06] [solar] 1000/2470 done=1000 skip=0 fail=0 | 1.56 req/s | ETA 00:15:42
+[18:13:47] [solar] 1250/2470 done=1250 skip=0 fail=0 | 1.56 req/s | ETA 00:13:03
+[18:16:18] [solar] 1500/2470 done=1500 skip=0 fail=0 | 1.57 req/s | ETA 00:10:16
+[18:18:24] [solar] 1750/2470 done=1750 skip=0 fail=0 | 1.62 req/s | ETA 00:07:24
+[18:20:57] [solar] 2000/2470 done=2000 skip=0 fail=0 | 1.62 req/s | ETA 00:04:49
+[18:23:19] [solar] 2250/2470 done=2250 skip=0 fail=0 | 1.64 req/s | ETA 00:02:14
+[18:25:19] [solar] 2470/2470 done=2470 skip=0 fail=0 | 1.65 req/s | ETA 00:00:00
+[18:25:19] [solar] DONE done=2470 skipped=0 failed=0 bytes=3440508
+[18:25:19] META [tabler] total=6238 byForm={"outline": 5184, "filled": 1054} bytes=3.48MB sampled=False
+[18:25:20] META [phosphor] total=3024 byForm={"regular": 1512, "fill": 1512} bytes=1.38MB sampled=False
+[18:25:20] META [heroicons] total=972 byForm={"outline-24": 324, "solid-24": 324, "solid-20": 324} bytes=0.51MB sampled=False
+[18:25:21] META [material-symbols] total=7864 byForm={"outlined": 3932, "filled": 3932} bytes=3.67MB sampled=False
+[18:25:21] META [bootstrap] total=2078 byForm={"linear": 2078} bytes=1.19MB sampled=False
+[18:25:22] META [remixicon] total=3078 byForm={"line": 1539, "fill": 1539} bytes=1.80MB sampled=False
+[18:25:22] META [feather] total=287 byForm={"linear": 287} bytes=0.10MB sampled=False
+[18:25:22] META [boxicons] total=1479 byForm={"regular": 814, "solid": 665} bytes=0.53MB sampled=False
+[18:25:22] META [solar] total=2470 byForm={"linear": 1235, "bold": 1235} bytes=3.28MB sampled=False
+[18:25:22] META [lucide] total=1643 bytes=0.61MB (pre-existing)
+[18:25:22] INDEX written: 10 libs, 29133 files, 16.55 MB total
+[18:30:23] [solar] downloading 2492 files (0 already existed will be skipped) ...
+[18:30:24] CDN host cdn.jsdelivr.net unreachable -> switching to fastly.jsdelivr.net
+[18:31:25] [solar] 250/2492 done=250 skip=0 fail=0 | 4.00 req/s | ETA 00:09:21
+[18:32:16] [solar] 500/2492 done=500 skip=0 fail=0 | 4.40 req/s | ETA 00:07:33
+[18:33:08] [solar] 750/2492 done=750 skip=0 fail=0 | 4.54 req/s | ETA 00:06:23
+[18:33:59] [solar] 1000/2492 done=1000 skip=0 fail=0 | 4.62 req/s | ETA 00:05:22
+[18:34:50] [solar] 1250/2492 done=1250 skip=0 fail=0 | 4.67 req/s | ETA 00:04:25
+[18:35:42] [solar] 1500/2492 done=1500 skip=0 fail=0 | 4.70 req/s | ETA 00:03:30
+[18:36:33] [solar] 1750/2492 done=1750 skip=0 fail=0 | 4.72 req/s | ETA 00:02:37
+[18:37:25] [solar] 2000/2492 done=2000 skip=0 fail=0 | 4.74 req/s | ETA 00:01:43
+[18:38:16] [solar] 2250/2492 done=2250 skip=0 fail=0 | 4.76 req/s | ETA 00:00:50
+[18:39:05] [solar] 2492/2492 done=2492 skip=0 fail=0 | 4.77 req/s | ETA 00:00:00
+[18:39:05] [solar] DONE done=2492 skipped=0 failed=0 bytes=3464091
+[18:42:07] META [tabler] total=6238 byForm={"filled": 1054, "outline": 5184} bytes=3.48MB sampled=False
+[18:42:07] META [phosphor] total=3024 byForm={"fill": 1512, "regular": 1512} bytes=1.38MB sampled=False
+[18:42:07] META [heroicons] total=972 byForm={"outline-24": 324, "solid-20": 324, "solid-24": 324} bytes=0.51MB sampled=False
+[18:42:08] META [material-symbols] total=7864 byForm={"filled": 3932, "outlined": 3932} bytes=3.67MB sampled=False
+[18:42:08] META [bootstrap] total=2078 byForm={"linear": 2078} bytes=1.19MB sampled=False
+[18:42:09] META [remixicon] total=3078 byForm={"fill": 1539, "line": 1539} bytes=1.80MB sampled=False
+[18:42:09] META [feather] total=287 byForm={"linear": 287} bytes=0.10MB sampled=False
+[18:42:09] META [boxicons] total=1479 byForm={"regular": 814, "solid": 665} bytes=0.53MB sampled=False
+[18:42:09] META [solar] total=2492 byForm={"bold": 1246, "linear": 1246} bytes=3.30MB sampled=False
+[18:42:09] META [lucide] total=1642 bytes=0.54MB (pre-existing)
+[18:42:09] INDEX written: 10 libs, 29154 files, 16.51 MB total
+[18:42:22] [lucide] backfilling 249 missing icons from lucide-static@1.61.0
+[18:42:23] CDN host cdn.jsdelivr.net unreachable -> switching to fastly.jsdelivr.net
+[18:42:57] CDN host fastly.jsdelivr.net unreachable -> switching to gcore.jsdelivr.net
+[18:43:04] [lucide] backfill 50/249 done=50 fail=0
+[18:43:31] [lucide] backfill 100/249 done=100 fail=0
+[18:44:01] [lucide] backfill 150/249 done=150 fail=0
+[18:44:25] [lucide] backfill 200/249 done=200 fail=0
+[18:44:51] [lucide] backfill 249/249 done=249 fail=0
+[18:44:51] [lucide] backfill complete: done=249 failed=0 total svg now=1891 (remaining failed: 0)
+[18:45:02] META [tabler] total=6238 byForm={"filled": 1054, "outline": 5184} bytes=3.48MB sampled=False
+[18:45:02] META [phosphor] total=3024 byForm={"fill": 1512, "regular": 1512} bytes=1.38MB sampled=False
+[18:45:03] META [heroicons] total=972 byForm={"outline-24": 324, "solid-20": 324, "solid-24": 324} bytes=0.51MB sampled=False
+[18:45:03] META [material-symbols] total=7864 byForm={"filled": 3932, "outlined": 3932} bytes=3.67MB sampled=False
+[18:45:04] META [bootstrap] total=2078 byForm={"linear": 2078} bytes=1.19MB sampled=False
+[18:45:04] META [remixicon] total=3078 byForm={"fill": 1539, "line": 1539} bytes=1.80MB sampled=False
+[18:45:04] META [feather] total=287 byForm={"linear": 287} bytes=0.10MB sampled=False
+[18:45:05] META [boxicons] total=1479 byForm={"regular": 814, "solid": 665} bytes=0.53MB sampled=False
+[18:45:05] META [solar] total=2492 byForm={"bold": 1246, "linear": 1246} bytes=3.30MB sampled=False
+[18:45:05] META [lucide] total=1891 bytes=0.66MB (pre-existing)
+[18:45:05] INDEX written: 10 libs, 29403 files, 16.62 MB total
+[18:45:05] === VERIFY: integrity check across all libraries ===
+[18:45:06] VERIFY [bootstrap] svgs=2078 meta=2078 parts=0 badSamples=none -> OK
+[18:45:06] VERIFY [boxicons] svgs=1479 meta=1479 parts=0 badSamples=none -> OK
+[18:45:06] VERIFY [feather] svgs=287 meta=287 parts=0 badSamples=none -> OK
+[18:45:07] VERIFY [heroicons] svgs=972 meta=972 parts=0 badSamples=none -> OK
+[18:45:07] VERIFY [lucide] svgs=1891 meta=1891 parts=0 badSamples=none -> OK
+[18:45:07] VERIFY [material-symbols] svgs=7864 meta=7864 parts=0 badSamples=none -> OK
+[18:45:08] VERIFY [phosphor] svgs=3024 meta=3024 parts=0 badSamples=none -> OK
+[18:45:08] VERIFY [remixicon] svgs=3078 meta=3078 parts=0 badSamples=none -> OK
+[18:45:08] VERIFY [solar] svgs=2492 meta=2492 parts=0 badSamples=none -> OK
+[18:45:09] VERIFY [tabler] svgs=6238 meta=6238 parts=0 badSamples=none -> OK
+[18:45:09] VERIFY RESULT: ALL OK

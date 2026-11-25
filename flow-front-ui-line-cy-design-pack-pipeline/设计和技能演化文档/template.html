@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>设计和技能演化文档 · design-pack-pipeline</title>
+  <style>/*__THEME__*/</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="side">
+    <div class="identity"><div class="identity-mark">dp<span>.</span></div><div><strong>design-pack-pipeline</strong><small>设计和技能演化文档</small></div></div>
+    <nav class="main-nav" aria-label="主导航">
+      <a class="nav-item active" href="#skill" data-page="skill"><span class="nav-number">01</span><span>技能说明</span><span class="nav-arrow">↗</span></a>
+      <a class="nav-item" href="#journey" data-page="journey"><span class="nav-number">02</span><span>共创实录</span><span class="nav-arrow">↗</span></a>
+      <a class="nav-item" href="#review" data-page="review"><span class="nav-number">03</span><span>方法复盘</span><span class="nav-arrow">↗</span></a>
+    </nav>
+    <div class="side-bottom"><span class="live-dot"></span> 离线资料库<br><small>会话原文与版本证据随文档保存</small></div>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar"><button class="mobile-menu" id="menu-toggle" type="button" aria-label="打开菜单">☰</button><span class="breadcrumb" id="breadcrumb">技能说明</span><span class="snapshot" id="snapshot"></span></header>
+    <main>
+      <section class="page active" id="skill">
+        <div class="page-intro intro-skill">
+          <div class="intro-grid"><div><span class="eyebrow">PROJECT SYSTEM / 01</span><h1>从效果图包<br>到可运行的多页工程</h1><p>design-pack-pipeline 是一套由 AI 主会话编排的项目级工作流。它把一包页面效果图转为有路由、页面组件、模拟数据和交互的前端工程，并用逐站产物与门禁管理长任务。</p><div class="intro-meta"><span>输入 · 效果图包</span><span>输出 · 前端工程</span><span>现行 · 十站流程</span></div></div><div class="hero-flow" aria-label="从图包到工程的流程示意"><div class="flow-source">效果图包 <span>PNG / JPG</span></div><div class="flow-spine"><i></i><i></i><i></i></div><div class="flow-mid"><span>盘点与理解</span><span>逐页制作</span><span>集成验收</span></div><div class="flow-target">多页前端工程 <span>路由 · 组件 · mock · 交互</span></div></div></div>
+        </div>
+        <div class="content-wrap">
+          <section class="doc-section" id="skill-what">
+            <div class="section-label">01 / 定位</div><div class="section-body">
+              <h2>这套技能解决什么问题</h2>
+              <p>单页高保真还原能够做好一张图，但一包图还包含重复页面、同页不同状态、页面之间的业务关系和工程交付。多图技能负责把这些工作排成有输入、产出和验收依据的顺序；需要精绘的页面调用单页技能，其他页面复用统一设计系统制作。</p>
+              <div class="fact-strip"><div><strong>输入</strong><span>按编号、页面名和状态命名的图包；可附功能清单、设计规范</span></div><div><strong>输出</strong><span>用户指定技术栈的多页 H5 工程与交付报告</span></div><div><strong>边界</strong><span>当前入口针对位图图包；蓝湖切图链接是后续能力讨论，并非已支持输入</span></div></div>
+              <p class="minor">浏览器层验收适用于所选技术栈；文件形态检查目前适配 React 与 Vue。其他栈的自动检查范围须在启动时说明。第二次实跑促成了入口、旅程和质检规则的修订；这些规则的跨项目效果仍需新的完整运行验证。</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="skill-use">
+            <div class="section-label">02 / 使用</div><div class="section-body">
+              <h2>怎么启动，需要提供什么</h2>
+              <p>在支持该技能的 AI 编程工具里提出“用 design-pack-pipeline 把这包效果图做成多页前端项目”。技能会先展示能力简介，再分两次收齐七项输入；图包路径必须由你提供，收齐后才开始盘点。</p>
+              <div class="input-groups"><div class="input-group"><div class="input-group-head"><strong>项目输入 · 4 项</strong><span>决定做什么、做在哪里</span></div>
+                <div class="input-row"><b>图包路径 <em>必填</em></b><span>上传图包或指定目录。图片按“编号-页面名-状态.png”等规则命名；技能不会自行搜索目录。</span></div>
+                <div class="input-row"><b>增强文档</b><span>可给功能清单、已有 PRD 或设计规范的文件与路径；没有可填“无”。</span></div>
+                <div class="input-row"><b>技术栈</b><span>默认 React + Vite + TypeScript + Tailwind；所选栈若缺自动检查适配，启动时应说明验收范围。</span></div>
+                <div class="input-row"><b>工程落盘地址</b><span>指定项目输出目录；默认当前工作目录下的 <code>app/</code>。</span></div></div>
+                <div class="input-group"><div class="input-group-head"><strong>执行策略 · 3 项</strong><span>决定参与方式、保真度和并发</span></div>
+                <div class="input-row"><b>参与度</b><span>全自动放手（默认）：AI 合议与仲裁，原则冲突挂起并留痕；关键点叫我：各站 gate 停等、分歧直接问你；逐步盯：每站停等确认。</span></div>
+                <div class="input-row"><b>主力页精细制作</b><span>开（默认）：走完整高保真流程；关：并入轻量铺量流程，交付时声明保真降级。</span></div>
+                <div class="input-row"><b>并行子代理数</b><span>9（默认）、5 或 3；用于视觉盘点与铺量写手，裁判并发独立安排。</span></div></div></div>
+              <div class="use-example"><strong>一次说清的输入示例</strong><p>图包：<code>…/design-pack/</code>；增强文档：<code>…/requirements.md</code>；技术栈：React + Vite + TS；工程目录：<code>…/app/</code>。执行策略：全自动放手、主力页精细、并行子代理 9。</p></div>
+              <p class="minor">参与度同时控制审阅停等与语义分歧升级，原“暂停点密度”和“失败页处置”已合并。检测到单页技能时，⑤⑦使用完整高保真流程；未安装时走降级流程，并在交付报告中说明。</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="skill-content"><div class="section-label">03 / 技能本体</div><div class="section-body"><h2>技能内容与解析</h2><p>技能目录里既有主会话的编排规则，也有逐站细则、子代理任务书和可执行检查。先看文件构成，再看十站怎样运作。</p><div class="directory-grid"><div class="code-surface"><div class="code-top">技能本体 / design-pack-pipeline</div><pre>design-pack-pipeline/
+├─ SKILL.md
+├─ references/
+├─ templates/
+├─ scripts/
+├─ tests/
+├─ design-docs/
+└─ 设计和技能演化文档/</pre></div><div class="file-explain"><p><strong>主会话</strong>读 SKILL.md 决定何时激活、怎样配置和何时进入下一站；进入站点再读 references 的对应规则。</p><p><strong>执行者</strong>接收 templates 中与自己角色相符的任务书；这些规则随任务进入子代理上下文。</p><p><strong>脚本和测试</strong>处理能机械判断的合同，裁判与主会话负责视觉、业务和取舍判断。</p></div></div><h3>十站工作流</h3><p>每一段先产生下游能用的事实，再进入制作和验收。典型页可与产品梳理并行；发现偏差时按对应产物定位返工，人工审阅的停等方式由执行策略决定。</p><div class="workflow" aria-label="十站工作流">
+            <div class="workflow-lane"><div class="lane-head"><span>理解图包</span><small>事实 → 功能 → 状态</small></div><div class="lane-steps"><div><b>01</b><strong>盘点</strong><small>图级清单</small></div><div><b>02</b><strong>视觉盘点</strong><small>布局与缺口</small></div><div><b>03</b><strong>PRD</strong><small>业务与主流程</small></div><div><b>04</b><strong>状态归并</strong><small>冻结路由页</small></div></div></div>
+            <div class="workflow-lane"><div class="lane-head"><span>建立模具</span><small>⑤ 与③④并行；⑥汇合</small></div><div class="lane-steps"><div><b>05</b><strong>典型页精绘</strong><small>2–3 页</small></div><div><b>06</b><strong>设计系统</strong><small>tokens 与组件</small></div></div></div>
+            <div class="workflow-lane"><div class="lane-head"><span>生产页面</span><small>主力精绘 → 铺量</small></div><div class="lane-steps"><div><b>07</b><strong>主力页精绘</strong><small>高频页面</small></div><div><b>08</b><strong>其他页铺量</strong><small>逐页结对裁判</small></div></div></div>
+            <div class="workflow-lane"><div class="lane-head"><span>交付体验</span><small>接线 → 验收</small></div><div class="lane-steps"><div><b>09</b><strong>跨页接线</strong><small>主流程自测</small></div><div><b>10</b><strong>集成验收</strong><small>审计与报告</small></div></div></div>
+          </div><div class="flow-gate"><strong>门禁与返工</strong><span>②图面覆盖 / ③业务规则 / ④默认状态 / ⑥设计模具 / 逐页裁判 / ⑩交付审计</span><span class="gate-return">发现问题 → 回到对应产物修订 → 重跑受影响验证</span></div><h3>逐站看输入、产出与检查</h3><div class="station-list"><div><b>① 盘点</b><span>图包文件名 → 图级清单与 PLAN 初稿</span><small>全量解析，未知命名需处理</small></div><div><b>② 视觉盘点</b><span>每张源图 → 布局文档与缺口清单</span><small>逐图覆盖，缺失与矛盾有记录</small></div><div><b>③ PRD</b><span>全量布局文档 → 业务规则、主流程、站点地图</span><small>页面 ID 覆盖并审业务逻辑</small></div><div><b>④ 状态归并</b><span>PRD 与同页状态图 → 默认态和冻结路由清单</span><small>每组状态有据对账</small></div><div><b>⑤ 典型页精绘</b><span>最难的 2–3 页 → 高保真样板</span><small>与③④并行；逐页对照源图</small></div><div><b>⑥ 设计系统</b><span>样板与冻结结果 → tokens、组件与工程模具</span><small>模具过目后再规模复用</small></div><div><b>⑦ 主力页精绘</b><span>高频页 + 模具 → 页面组件与 mock</span><small>逐页视觉核对和转装检查</small></div><div><b>⑧ 其他页铺量</b><span>剩余布局 + 模具 → 批量页面</span><small>每页构建与结对裁判</small></div><div><b>⑨ 跨页接线</b><span>全站页面 + PRD → 跳转与跨页数据</span><small>主流程实际点击与自测</small></div><div><b>⑩ 集成验收</b><span>工程与审计证据 → 交付报告</span><small>构建、路由、视觉和失败项对账</small></div></div><h3>十站背后的执行机制</h3><div class="mechanism"><article><span>编排层</span><h3>主会话管进度与真值</h3><p>SKILL.md 规定站序、输入确认和暂停策略；PLAN.md 记录页与站点状态。页面布局、PRD 和默认状态各有固定产物，避免下游凭记忆猜。</p></article><article><span>执行层</span><h3>角色任务书随任务下发</h3><p>盘点、PRD、写码、接线、裁判分别收到自己的短任务书。页内切换和弹窗由写码站完成，跨页导航由接线站处理。</p></article><article><span>验证层</span><h3>脚本与独立裁判配合</h3><p>脚本检查可确定的合同，裁判判断视觉与语义，浏览器走真实主流程。原始失败结果保留，不能在交付报告里重新解释成通过。</p></article></div><h3>关键脚本落在哪些环节</h3><div class="script-table"><div><code>setup-env.py</code><span>开工前准备浏览器、Python 依赖与精绘环境</span></div><div><code>intake.py</code><span>① 解析图包命名，建立图级清单和 PLAN 初稿</span></div><div><code>plan-io.py</code><span>全程维护执行计划与页面状态</span></div><div><code>style-lint.py</code><span>⑧ 检查页面样式是否偏离设计系统</span></div><div><code>contracts-lint.py</code><span>逐页与⑩检查路由标记、目录和命名合同</span></div><div><code>route-audit.py</code><span>⑩ 对账路由并验证目标组件真实渲染</span></div><div><code>e2e-smoke.py</code><span>⑨⑩ 用浏览器物理点击检查主流程</span></div></div></div></section>
+
+          <section class="doc-section" id="skill-quality">
+            <div class="section-label">跨站机制</div><div class="section-body">
+              <h2>十站怎样判断、裁定和留下证据</h2>
+              <p>十站保持原有生产顺序。质量检查贯穿各站：机器核对确定的合同，独立裁判检查视觉与语义；有分歧时按依据对审并升级裁定。原始工具 FAIL 必须修正输入或工具后重跑，不能用讨论记录改写成 PASS。</p>
+              <div class="flow-gate"><strong>质检裁定链</strong><span>对照物与产物 → 独立判断 → 分歧仲裁或用户终裁 → 裁量入账本</span><span class="gate-return">机器结果进入证据索引 · 冻结的产品决定只能由用户变更</span></div>
+              <div class="artifact-table"><div><strong>⑨ 交互接线</strong><span>接线表对照行为清单与入口契约；一级导航、主流程和补页落点逐条审语义。缺少合适页面时先分诊，不能硬连相似页面。</span></div><div><strong>⑩ 集成验收</strong><span>从证据索引读取本工程版本下各工具的最新有效结果，按验收维度出结论；缺行、失败和待裁决范围不能报全绿。</span></div><div><strong>用户参与</strong><span>全自动放手、关键点叫我、逐步盯控制合议后的升级与停等；选择会传到接线、裁判和交付说明。</span></div></div>
+              <h3>新增的检查工具与记录</h3><div class="script-table"><div><code>exits-audit.py</code><span>按页面角色验证返回、tab 和弹层出口，物理点击后检查预期落点</span></div><div><code>explore-walk.py</code><span>从首页探索可见交互，记录可复现路径，用于发现断链</span></div><div><code>evidence_index.py</code><span>按工程版本汇总检查结果，终验拒绝缺失或失败的必要证据</span></div><div><code>plan-recon.py</code><span>将冻结路由、工程页面、PLAN 状态与证据结果逐项对账</span></div></div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="skill-output"><div class="section-label">04 / 产物</div><div class="section-body"><h2>产出物内容与解析</h2><p>技能执行后，项目工作文件与前端代码一起落到你指定的工程目录。下面以默认 React + Vite + TypeScript 工程为例；实际源码目录随所选技术栈变化。</p><div class="code-surface output-tree"><div class="code-top">工程目录 / app</div><pre>app/
+├─ pipeline/
+│  ├─ pages.manifest.json
+│  ├─ PLAN.md
+│  ├─ gaps.md
+│  ├─ decisions.md
+│  └─ evidence_index.jsonl
+├─ inventory/
+│  └─ &lt;页id&gt;.md
+├─ docs/
+│  ├─ sitemap.md
+│  └─ prd/
+└─ src/
+   ├─ components/
+   ├─ mocks/
+   │  ├─ entities/
+   │  └─ pages/
+   └─ pages/</pre></div><h3>这些产物怎样被消费</h3><div class="artifact-table"><div><strong>页面清单与 PLAN</strong><span>①建立，④更新。前者告诉后续站点有哪些图与路由页；后者记录每站和每页做到哪、哪些事项待审。</span></div><div><strong>布局盘点与 PRD</strong><span>②先记录图面事实，③再推导业务规则与主流程；④据此核对同页状态，写码站消费两者。</span></div><div><strong>设计系统与页面代码</strong><span>⑥沉淀 tokens 和组件；⑤⑦⑧逐页生成页面与 mock，⑨接跨页关系，⑩检查工程。</span></div><div><strong>审计与交付报告</strong><span>⑩汇总构建、路由、主流程和视觉裁判结果，保留失败项与补全清单；文件位置由工程配置决定。</span></div></div></div></section>
+
+          <section class="doc-section evolution-section" id="skill-evolution"><div class="section-label">05 / 演进</div><div class="section-body"><h2>产品为什么变成现在这样</h2><p>首版之前看决策怎样形成；首版之后看技能增加了什么、修改了什么，以及针对哪些问题修订。</p><div class="timeline-group"><div class="timeline-heading"><span>01 / 会话中的产品决策</span><h3>从问题到首版方案</h3><p>依据真实讨论提炼关键取舍，重点是为什么形成这套流程、为什么最终选择技能化。</p></div><div id="decision-timeline" class="product-timeline decision-timeline"></div></div><div class="timeline-group"><div class="timeline-heading"><span>02 / Git 中的版本演进</span><h3>首版之后的关键更新</h3><p>按实际提交归并成产品变化；这里记录能力和修复范围，不把尚未完成的项目回归写成已验证效果。</p></div><div id="release-timeline" class="product-timeline release-timeline"></div></div></div></section>
+        </div>
+      </section>
+
+      <section class="page" id="journey">
+        <div class="page-intro intro-journey"><div class="content-wrap"><span class="eyebrow">CO-CREATION RECORD / 02</span><h1>共创实录</h1><p>左侧是从原始会话抽出的线性过程地图；右侧保留你的原话、AI 的响应和可展开的执行记录。节点、旁批和问答都能回到原始行号。</p><div class="journey-legend"><span><i class="legend-user"></i>你的发言</span><span><i class="legend-ai"></i>AI 响应</span><span><i class="legend-note"></i>旁批</span><span><i class="legend-action"></i>干预动作</span></div></div></div>
+        <div class="journey-controls"><div class="journey-controls-inner"><label class="search-wrap"><span>⌕</span><input id="journey-search" type="search" placeholder="搜索原话、AI 回复或行号" aria-label="搜索共创会话"></label><button id="trace-toggle" class="subtle-button" type="button" aria-pressed="false">展开执行记录</button><button id="glossary-toggle" class="subtle-button" type="button" aria-expanded="false">术语表</button><span id="journey-count" class="journey-count"></span></div></div>
+        <div class="journey-layout"><aside class="process-map"><div class="process-heading"><span>过程地图</span><small>按会话先后排序</small></div><div id="stage-nav"></div></aside><div class="conversation-column"><div id="stage-heading" class="stage-heading"></div><div id="conversation-list" class="conversation-list"></div><div class="conversation-footer"><button id="load-turns" class="load-button" type="button">继续显示</button><div class="stage-pager"><button id="prev-stage" type="button">← 上一环节</button><button id="next-stage" type="button">下一环节 →</button></div></div></div></div>
+      </section>
+
+      <section class="page" id="review"><div class="page-intro intro-review"><div class="content-wrap"><span class="eyebrow">FIELD GUIDE / 03</span><h1>方法复盘</h1><p>从产品判断到 AI 协作、编程与验证：先给通用判断方法，再用这次会话作例证。</p></div></div><div class="content-wrap review-content"><div class="review-lead"><span>七组问题</span><p>AI 能拓宽思路和加速执行，但流畅的回答、搜到的资料和测试通过都要核对其证据范围。</p></div><div id="review-groups"></div></div></section>
+    </main>
+    <footer class="footer"><span>design-pack-pipeline · 设计和技能演化文档</span><span id="footer-stats"></span></footer>
+  </div>
+</div>
+<div id="glossary" class="glossary" hidden><div class="glossary-head"><strong>术语速查</strong><button id="glossary-close" type="button" aria-label="关闭术语表">×</button></div><dl id="glossary-terms"></dl></div>
+<script>const archiveGzip="__PAYLOAD__";/*__APP__*/</script>
+</body>
+</html>

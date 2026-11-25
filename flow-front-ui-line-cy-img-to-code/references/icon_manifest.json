@@ -1,0 +1,146 @@
+{
+  "_comment": "Human-confirmed inline-icon keys ONLY. verify_page.py FAILs any svg[data-icon] whose key is absent here. To confirm an icon: render the page, open the SMALL ASSET ZOOM / 4x comparison, verify shape+style+weight match the source at 4x, then add the key with a note.",
+  "_format": "<library>:<glyph-name>: {confirmed: true, note, confirmed_at}",
+  "_example_entry": {
+    "_comment": "copy this SHAPE under a real top-level key after human 4x confirmation",
+    "phosphor:shopping-cart-fill": {
+      "confirmed": false,
+      "note": "EXAMPLE — not confirmed"
+    }
+  },
+  "material-symbols:shopping-cart-outline-rounded": {
+    "confirmed": true,
+    "note": "首页白改.png #14 购物车：圆角线条篮筐+双轮，与原图粉紫渐变描边形态一致；对比板 _icon_compare/board.png 用户终审 2026-09-30",
+    "confirmed_at": "2026-09-30"
+  },
+  "mdi:gear-outline": {
+    "confirmed": true,
+    "note": "首页白改.png #15 齿轮：波浪齿+中心孔描边形态一致；对比板用户终审 2026-09-30",
+    "confirmed_at": "2026-09-30"
+  },
+  "mdi:compass": {
+    "confirmed": true,
+    "note": "首页白改.png #23 指南针：实心圆+白菱形针形态一致；对比板用户终审 2026-09-30",
+    "confirmed_at": "2026-09-30"
+  },
+  "material-symbols:chat-bubble-rounded": {
+    "confirmed": true,
+    "note": "首页白改.png #24 聊天气泡：左下尾圆角实心气泡形态一致；对比板用户终审 2026-09-30",
+    "confirmed_at": "2026-09-30"
+  },
+  "material-symbols:location-on-rounded": {
+    "confirmed": true,
+    "note": "p013 场馆介绍 asset_7 蓝色定位 pin：圆头+圆孔+尖底三吻合；对比板 _icon_compare.png 2026-10-06 主代理比对定稿",
+    "confirmed_at": "2026-10-06"
+  },
+  "material-symbols:call-rounded": {
+    "confirmed": true,
+    "note": "p013 场馆介绍 asset_8 黄色话筒：圆角实心听筒斜置形态一致；对比板 _icon_compare.png 2026-10-06 主代理比对定稿",
+    "confirmed_at": "2026-10-06"
+  },
+  "material-symbols:schedule-rounded": {
+    "confirmed": true,
+    "note": "p013 场馆介绍 asset_9 橙色时钟：实心圆+白镂空指针(12点+3点)一致；对比板 _icon_compare.png 2026-10-06 主代理比对定稿",
+    "confirmed_at": "2026-10-06"
+  },
+  "mdi:headset": {
+    "confirmed": true,
+    "note": "p013 场馆介绍 asset_5 耳机：头带弧+双耳罩结构吻合，原图斜置约-42°由 CSS rotate 补偿；对比板 _icon_compare.png 2026-10-06 主代理比对定稿",
+    "confirmed_at": "2026-10-06"
+  },
+  "material-symbols:send": {
+    "confirmed": true,
+    "note": "p013 场馆介绍 asset_6 纸飞机：实心纸飞机类别+风格吻合，原图机头朝左上由 scaleX(-1) 镜像补偿，13css 渲染尺寸下折缝细节不可辨；对比板 _icon_compare.png 2026-10-06 主代理比对定稿；p014 裁判反馈源机头朝右上：改 rotate(-30deg) 姿态补偿（替代 p013 的 scaleX(-1)），key 不变",
+    "confirmed_at": "2026-10-06"
+  },
+  "solar:heart-outline": {
+    "confirmed": true,
+    "note": "p061 我的主页 asset_7/asset_8 白色描边心形：单层圆头描边+圆钝底尖+顶部双瓣圆弧比例三吻合；对比板 pipeline/fidelity/p061/_icon_compare/board.png 2026-10-07 主代理比对定稿（vs mdi:heart-outline 双线/ion:heart-outline 渲染异常均排除）",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:arrow-back-ios-new-rounded": {
+    "confirmed": true,
+    "note": "p014 场馆介绍(藏品列表) asset_3 白色返回箭头：粗圆头 chevron、瘦高比例、夹角约75度三吻合；chevron-left-rounded/mdi:chevron-left 线细矮胖排除；对比板 _icon_compare.png 2026-10-07 主代理比对定稿",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:search": {
+    "confirmed": true,
+    "note": "p014 场馆介绍(藏品列表) asset_10 灰色搜索放大镜：细线圆环+右下短柄、圆环占比大三吻合；search-rounded 线过粗排除、mdi:magnify 柄略长次之；对比板 _icon_compare.png 2026-10-07 主代理比对定稿",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:headphones": {
+    "confirmed": true,
+    "note": "p014 场馆介绍(藏品列表) asset_5 开始讲解按钮耳机：细弧头箍+双实心胶囊耳罩结构吻合（源图斜置约-40度由 CSS rotate 补偿）；support-agent 无人脸排除、headset-mic-outline 多话筒杆、mdi:headset 实心团块 16px 不可辨；对比板 _icon_compare_headset.png 2026-10-07 主代理比对定稿（裁判 major #6 后重比对）",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:headphones-rounded": {
+    "confirmed": true,
+    "note": "p023 耳机按钮:比对板 _icon_board.png SRC asset_7 vs 3 候选,圆角实心头梁+双耳罩三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "mingcute:search-line": {
+    "confirmed": true,
+    "note": "p023 搜索按钮:_icon_board.png SRC asset_8,细线放大镜短圆柄三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:photo-camera-rounded": {
+    "confirmed": true,
+    "note": "p023 相机按钮:_icon_board2.png SRC asset_9,圆角机身+镜头环+顶凸三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "tabler:door-exit": {
+    "confirmed": true,
+    "note": "p023 设施卡出口:_icon_board.png SRC asset_10,门框+右向箭头三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "glyphs:restroom": {
+    "confirmed": true,
+    "note": "p023 设施卡卫生间:_icon_board.png SRC asset_11,双人形+中分隔线三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:storefront-outline": {
+    "confirmed": true,
+    "note": "p023 设施卡超市:_icon_board.png SRC asset_12,波浪遮阳棚店面线条三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "ic:baseline-gps-fixed": {
+    "confirmed": true,
+    "note": "p023 楼层列瞄准按钮:_icon_board.png SRC asset_13,外圆+四向线+中心点三吻合,金黄上色",
+    "confirmed_at": "2026-10-07"
+  },
+  "keyline-icons:audio-lines": {
+    "confirmed": true,
+    "note": "p023 声波图标 asset_14/15:_icon_board.png,5 竖条中高两边低三吻合,白色置于黄圆底",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:logout-rounded": {
+    "confirmed": true,
+    "note": "p023 设施卡出口:比对板 _icon_board.png SRC asset_10 门+右向箭头; tabler:door-exit 竖构图与原图横构图不符, 换 logout-rounded 门括弧+右箭头横构图三吻合",
+    "confirmed_at": "2026-10-07"
+  },
+  "material-symbols:photo-camera-outline-rounded": {
+    "confirmed": true,
+    "note": "p023 相机 asset_9 裁判 major 修复:比对板 _icon_board3.png SRC outline 机身+圆环镜头+顶凸+右上点, photo-camera-outline-rounded 三吻合(原 photo-camera-rounded 实心风格不符)",
+    "confirmed_at": "2026-10-07"
+  },
+  "majesticons:door-exit-line": {
+    "confirmed": true,
+    "note": "p023 出口 asset_10 裁判 major 修复:比对板3 SRC 3D开门+水平右箭头, door-exit-line 门框+右箭头线稿三吻合(原 logout-rounded 仅括弧门形态弱)",
+    "confirmed_at": "2026-10-07"
+  },
+  "hugeicons:man-woman": {
+    "confirmed": true,
+    "note": "p023 卫生间 asset_11 裁判 major 修复:比对板3 SRC 线框小人男|线|女裙, hugeicons:man-woman 细线双人+分隔三吻合(原 glyphs:restroom 实心剪影不符)",
+    "confirmed_at": "2026-10-07"
+  },
+  "tabler:building-store": {
+    "confirmed": true,
+    "note": "p023 超市 asset_12 裁判 major 修复:比对板3 SRC 线稿店面棚+橱窗+门, building-store 细线结构三吻合(storefront-outline 渲染过粗)",
+    "confirmed_at": "2026-10-07"
+  },
+  "material:bluetooth": {
+    "confirmed": true,
+    "note": "p073 我的订单 状态栏蓝牙：Material 标准 bluetooth 符文（竖线+双向折叠箭头），与源图 4x 比对板 _ble_compare.png 形态/笔画走向/粗细（stroke 1.6 加粗后）吻合；源图 9x13 逻辑 px 小图标，alpha 抠图与 RAW 直贴均模糊不可辨，SVG 为唯一可辨路径。主代理自动定稿 2026-10-10",
+    "confirmed_at": "2026-10-10"
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "project": "示例项目 · 某茶饮品牌点单小程序",
+  "version": 1,
+  "profile": "12 页组件 · 移动小程序 · 单语 · 业务域=到店点单/取餐通知/会员",
+  "current": "samplepage",
+  "steps": [
+    {
+      "id": "profile",
+      "no": "0",
+      "title": "第〇步 原型画像",
+      "status": "done",
+      "sub": "12 页组件 · 移动小程序 · 单语 · 业务域=到店点单/取餐通知/会员",
+      "candidates": [
+        {
+          "fields": {
+            "这是什么": "连锁茶饮品牌的到店点单小程序，顾客在店内扫码下单、等取餐通知、顺手积累会员权益",
+            "原型规模": "12 页全部可解析 · 底部 3 个主 Tab（点单/订单/我的）",
+            "端与语言": "移动小程序 · 单语（简体中文）",
+            "业务重点": "到店点单流程要短 · 取餐进度要一眼可见 · 会员入口常驻",
+            "处理方式": "原型只读内容与结构，原型里的旧配色旧字体不作为设计参考",
+            "推荐风格": "极简主义 minimalism（swiss-minimal 家族 · 主色近黑 #141414）——三键检索 top-1，第二步以此为一号种子"
+          }
+        }
+      ],
+      "chosen": "画像与用户确认无误 · 原型直读 · 原型旧样式不作设计参考"
+    },
+    {
+      "id": "external",
+      "no": "1",
+      "title": "第一步 外部输入",
+      "status": "done",
+      "sub": "用户提交的内容逐条解析展示 · 多次提交多条",
+      "submissions": [
+        {
+          "type": "品牌色卡",
+          "desc": "品牌主色的标准色卡，标注为「品牌绿」，要求界面延续这个绿。",
+          "swatches": [
+            "#07C160",
+            "#059048",
+            "#DFF5E9"
+          ],
+          "accept": "品牌绿确认为既定色锚，第三步令牌围绕它展开"
+        },
+        {
+          "type": "Logo",
+          "desc": "一枚圆形茶叶图形 Logo，深绿单色，线条干净，可直接用于导航与启动页。",
+          "accept": "Logo 深绿作为品牌绿的深档参考"
+        },
+        {
+          "type": "文字要求",
+          "quote": "下单按钮一定要显眼，别让我找；取餐号要大，隔着柜台能看清。",
+          "accept": "记为硬性要求：主操作强存在感 + 取餐号大字号"
+        }
+      ],
+      "chosen": "三条外部输入全部吸收 · 品牌绿为色锚 · 主操作与取餐号为硬性要求"
+    },
+    {
+      "id": "concept",
+      "no": "2",
+      "title": "第二步 风格定义层",
+      "status": "done",
+      "sub": "风格库检索/自创 · 完整风格描述 · 单选整卡执行",
+      "candidates": [
+        {
+          "name": "扁平设计 Flat Design",
+          "desc": "概念：色块像剪纸一样干净的清爽直接——层级靠色块明度与大小，不靠装饰。观感：清爽、直接、轻快。",
+          "values": {
+            "家族": "swiss-minimal 的形状驱动后代（flat-design）",
+            "适合本项目": "best_for 含移动应用——点单路径三步以内的效率感与茶饮的轻快日常天然匹配",
+            "实现层要点": "色块分区 · 简单形状拼装 · 系统无衬线字族 · 大按钮（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: flat-design · verified: 本地数据有据"
+          }
+        },
+        {
+          "name": "Japandi 温润风",
+          "desc": "概念：日式侘寂 × 北欧功能的融合——温润、圆熟、刚刚好的舒服。观感：像亚麻沙发上一只粗陶杯。",
+          "values": {
+            "家族": "自然疗愈系（japandi）",
+            "适合本项目": "茶饮的日常温和感与留白的呼吸感契合；大间距让点单零压力",
+            "实现层要点": "低饱和大地色 · 天然材质肌理 · 圆角容器 · 行高宽松（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: japandi · verified: 补写待核验"
+          }
+        },
+        {
+          "name": "北欧风 Scandinavian",
+          "desc": "概念：明亮、干净、窝心——像白墙上有一格阳光斜过来。观感：功能主义的温暖面孔。",
+          "values": {
+            "家族": "自然疗愈系（scandinavian）",
+            "适合本项目": "浅木色与自然光的明亮感衬茶饮新品与门店氛围；窝心气质贴合到店取茶场景",
+            "实现层要点": "白墙式浅底 · 原木暖点缀 · 功能优先的克制装饰（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: scandinavian · verified: 补写待核验"
+          }
+        },
+        {
+          "name": "极简主义 Minimalism",
+          "desc": "概念：安静、透气、克制——像一间只有一把椅子却刚刚好的空房间。观感：移除一切非必需，一屏一个焦点。",
+          "values": {
+            "家族": "swiss-minimal（minimalism）",
+            "适合本项目": "工具应用 best_for 命中；大间距与松行高给点单流程零压迫感",
+            "实现层要点": "移除非必需容器 · 层级用间距与字号表达 · 行高 1.7+ · 细线图标（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: minimalism · verified: 本地数据有据"
+          }
+        }
+      ],
+      "chosen": "Japandi 温润风（单选整卡执行）"
+    },
+    {
+      "id": "direction",
+      "no": "3",
+      "title": "第三步 设计令牌",
+      "status": "done",
+      "sub": "颜色/字体/字阶的原子规格 · 并排方向卡（圆角/阴影在第四步按组件库基调定）",
+      "hint": "以风格定义（Japandi 整卡）× 既定色锚拼装令牌并排卡。选一张 / 多选排序 / 微调某张 / 再来一批。组件形态不在这一步。",
+      "candidates": [
+        {
+          "name": "稳重绿 · 白底商务",
+          "concept": "Japandi 整卡",
+          "desc": "白底大留白，品牌绿只做操作与状态，信息密度优先。",
+          "tokens": {
+            "colors": {
+              "primary": "#07C160",
+              "primaryDark": "#059048",
+              "secondary": "#8FD9B5",
+              "cta": "#059048",
+              "bg": "#FFFFFF",
+              "surface": "#F7F9FB",
+              "textPrimary": "#1A2530",
+              "textSecondary": "#5B6B7A",
+              "textMuted": "#9AA7B4",
+              "border": "#E4E9EF",
+              "success": "#07C160",
+              "warning": "#F59E0B",
+              "danger": "#E5484D",
+              "tint": "rgba(7,193,96,.10)"
+            },
+            "fontHead": "思源黑体",
+            "fontBody": "思源黑体",
+            "scale": [
+              22,
+              17,
+              14,
+              12
+            ]
+          }
+        },
+        {
+          "name": "奶茶暖调 · 焦糖奶白",
+          "concept": "Japandi 整卡",
+          "desc": "奶白底配焦糖棕，品牌绿退为点缀，整体像奶茶店招牌。",
+          "tokens": {
+            "colors": {
+              "primary": "#8B5E3C",
+              "primaryDark": "#6B4527",
+              "secondary": "#D9B99A",
+              "cta": "#07C160",
+              "bg": "#FDF8F2",
+              "surface": "#FFFFFF",
+              "textPrimary": "#3A2E24",
+              "textSecondary": "#7A6A58",
+              "textMuted": "#B3A493",
+              "border": "#EFE3D4",
+              "success": "#3E9B6E",
+              "warning": "#D9A441",
+              "danger": "#D96A6A",
+              "tint": "rgba(139,94,60,.10)"
+            },
+            "fontHead": "思源宋体",
+            "fontBody": "思源黑体",
+            "scale": [
+              22,
+              17,
+              14,
+              12
+            ]
+          }
+        },
+        {
+          "name": "深夜茶 · 深色形态",
+          "concept": "Japandi 整卡",
+          "desc": "深底为主形态，夜间点单场景舒适，品牌绿在暗底上更亮。",
+          "tokens": {
+            "colors": {
+              "primary": "#2ED57F",
+              "primaryDark": "#07C160",
+              "secondary": "#4A6B75",
+              "cta": "#2ED57F",
+              "bg": "#16191D",
+              "surface": "#1F242B",
+              "textPrimary": "#E8ECF0",
+              "textSecondary": "#9AA7B4",
+              "textMuted": "#5F6B78",
+              "border": "#2A323B",
+              "success": "#2ED57F",
+              "warning": "#F5A623",
+              "danger": "#F25555",
+              "tint": "rgba(46,213,127,.12)"
+            },
+            "fontHead": "思源黑体",
+            "fontBody": "思源黑体",
+            "scale": [
+              22,
+              17,
+              14,
+              12
+            ]
+          }
+        },
+        {
+          "name": "自然清爽 · 冷萃浅调",
+          "concept": "Japandi 整卡",
+          "desc": "极浅底+细描边，几乎不用投影，靠留白与细线分层。",
+          "tokens": {
+            "colors": {
+              "primary": "#3BA97B",
+              "primaryDark": "#2C8560",
+              "secondary": "#BFE3D2",
+              "cta": "#3BA97B",
+              "bg": "#FBFDFC",
+              "surface": "#FFFFFF",
+              "textPrimary": "#22312B",
+              "textSecondary": "#5F7268",
+              "textMuted": "#93A89E",
+              "border": "#E2EDE7",
+              "success": "#3BA97B",
+              "warning": "#D9A441",
+              "danger": "#D96A6A",
+              "tint": "rgba(59,169,123,.08)"
+            },
+            "fontHead": "思源黑体",
+            "fontBody": "思源黑体",
+            "scale": [
+              22,
+              17,
+              14,
+              12
+            ]
+          }
+        }
+      ],
+      "chosen": "稳重绿 · 白底商务（微调：CTA 统一用品牌绿加深档）"
+    },
+    {
+      "id": "compstyle",
+      "no": "4",
+      "title": "第四步 组件风格",
+      "status": "done",
+      "sub": "先选基调库 · 再逐族规范过目（形态来自库，颜色用已锁令牌）",
+      "hint": "第一批：选组件基调库——形态是库的，定的是「长成谁的样子」。选定后再出逐族规范卡过目。",
+      "candidates": [
+        {
+          "name": "基调 · WeUI 系",
+          "desc": "微信生态原生感：cell 列表组织信息、胶囊按钮、克制的弹层。小程序用户零学习成本。",
+          "demo": "<div style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"background:#fff;border:1px solid #E7EAF0;border-radius:8px;overflow:hidden\"><div style=\"display:flex;justify-content:space-between;padding:9px 12px;font-size:12px;border-bottom:1px solid #F4F6F9\"><span>现制饮品</span><span style=\"color:#C2C9D2\">›</span></div><div style=\"display:flex;justify-content:space-between;padding:9px 12px;font-size:12px\"><span>轻食甜点</span><span style=\"color:#C2C9D2\">›</span></div></div><span style=\"display:inline-block;background:#07C160;color:#fff;border-radius:999px;padding:8px 26px;font-size:12.5px;font-weight:600\">选好了，去下单</span></div>"
+        },
+        {
+          "name": "基调 · Ant 系",
+          "desc": "企业级清晰感：表格化信息、明确的操作列、分页与面包屑。后台与复杂列表更稳。",
+          "demo": "<div style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"border:1px solid #E7EAF0;border-radius:8px;overflow:hidden;font-size:11px\"><div style=\"display:grid;grid-template-columns:1.4fr 1fr 1fr;background:#F7F9FC;padding:7px 10px;color:#8A93A0\"><span>名称</span><span>状态</span><span>操作</span></div><div style=\"display:grid;grid-template-columns:1.4fr 1fr 1fr;padding:7px 10px;border-top:1px solid #F4F6F9\"><span>冰美式 ×2</span><span style=\"color:#07C160\">制作中</span><span style=\"color:#1B66C9\">详情</span></div></div><span style=\"display:inline-block;background:#1677FF;color:#fff;border-radius:6px;padding:8px 22px;font-size:12.5px;font-weight:600\">提交订单</span></div>"
+        },
+        {
+          "name": "基调 · iOS 系",
+          "desc": "苹果原生观感：分组列表、分段控制、胶囊按钮，细腻的分隔与动效。",
+          "demo": "<div style=\"display:flex;flex-direction:column;gap:8px\"><div style=\"background:#EEF1F5;border-radius:9px;padding:2px;font-size:11.5px;display:inline-flex\"><b style=\"background:#fff;border-radius:7px;padding:4px 14px;color:#007AFF\">堂食</b><span style=\"padding:4px 14px;color:#5B6470\">外带</span></div><div style=\"background:#fff;border-radius:10px;overflow:hidden\"><div style=\"display:flex;justify-content:space-between;padding:10px 12px;font-size:12px;border-bottom:1px solid #F0F2F5\"><span>大杯 · 少冰</span><span style=\"color:#C2C9D2\">›</span></div><div style=\"display:flex;justify-content:space-between;padding:10px 12px;font-size:12px\"><span>备注</span><span style=\"color:#C2C9D2\">›</span></div></div><span style=\"display:inline-block;background:#007AFF;color:#fff;border-radius:999px;padding:8px 26px;font-size:12.5px;font-weight:600\">下单</span></div>"
+        },
+        {
+          "name": "基调 · 轻拟物茶饮系",
+          "desc": "大圆角卡片 + 奶油色块 + 柔和投影：商品卡更「好吃」，品牌感强但信息密度略低。",
+          "demo": "<div style=\"display:flex;gap:10px\"><div style=\"width:calc(50% - 5px);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(139,94,60,.14);overflow:hidden\"><div style=\"height:52px;background:linear-gradient(160deg,#D9B99A,#FDF8F2)\"></div><div style=\"padding:8px 10px\"><b style=\"font-size:11.5px\">芋泥波波</b><div style=\"font-size:10px;color:#8A93A0\">月售 1.2k</div></div></div><div style=\"width:calc(50% - 5px);background:#fff;border-radius:16px;box-shadow:0 4px 14px rgba(139,94,60,.14);overflow:hidden\"><div style=\"height:52px;background:linear-gradient(160deg,#BFE3D2,#F7FDF9)\"></div><div style=\"padding:8px 10px\"><b style=\"font-size:11.5px\">茉莉初雪</b><div style=\"font-size:10px;color:#8A93A0\">月售 860</div></div></div></div>"
+        }
+      ],
+      "chosen": "基调 · WeUI 系（列表组织信息 · 胶囊按钮）"
+    },
+    {
+      "id": "imagery",
+      "no": "5",
+      "title": "第五步 图片素材",
+      "status": "done",
+      "sub": "生图 / 图包 / 占位 · 单张策略卡确认",
+      "candidates": [
+        {
+          "name": "图片策略 · 单卡",
+          "desc": "本地生图能力探测：可用（生成质量以实物饮品图为佳）。来源策略定为 AI 生图主用 + 开源图包补位，全站图片统一暖光实景风格。",
+          "values": {
+            "来源策略": "AI 生图主用（产品图/氛围图）· 开源图包补位（抽象纹理）",
+            "风格要求": "暖光实景 + 浅色桌面 + 顶部柔光 · 同一提示词模板保系列感",
+            "统一处理": "品牌绿 6% 蒙版统一色调 · 统一裁切比例",
+            "禁止": "文字压图 / 多主体拼贴 / 高饱和滤镜"
+          }
+        }
+      ],
+      "chosen": "图片策略 · 单卡（AI 生图主用 + 图包补位）"
+    },
+    {
+      "id": "icon",
+      "no": "6",
+      "title": "第六步 图标风格",
+      "status": "done",
+      "sub": "开源库样例 + 链接；特殊风格可生成",
+      "hint": "优先开源库；特殊风格先出样张再批量。",
+      "candidates": [
+        {
+          "name": "Lucide · 线性 1.5px",
+          "desc": "开源 ISC 线性图标库：统一 24px 网格、1.5px 描边、圆头端点，与克制气质一致。本地快照 1891 枚。",
+          "demo": "<div style=\"display:flex;gap:14px\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-4.35-4.35\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M6 6h15l-1.5 9h-12zM6 6L5 3H2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM18 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2z\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c0-4 4-6 8-6s8 2 8 6\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg></div>",
+          "values": {
+            "规格": "24px 网格 · 描边 1.5px · 圆头",
+            "色彩": "跟随文字主色 · 激活态品牌绿"
+          }
+        },
+        {
+          "name": "Tabler · 线性 2px",
+          "desc": "同为 ISC 开源线性库，2px 描边更厚重，小尺寸下更清楚，但精致感略低。",
+          "demo": "<div style=\"display:flex;gap:14px\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M10 10m-7 0a7 7 0 1 0 14 0 7 7 0 1 0-14 0M21 21l-6-6\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M6 6h15l-1.5 9h-12zM6 6L5 3H2\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"9\" cy=\"20\" r=\"1\" fill=\"#07C160\"/><circle cx=\"18\" cy=\"20\" r=\"1\" fill=\"#07C160\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"7\" r=\"4\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"2\"/><path d=\"M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg></div>",
+          "values": {
+            "规格": "24px 网格 · 描边 2px · 圆头",
+            "色彩": "跟随文字主色"
+          }
+        },
+        {
+          "name": "填充式 · 关键动作特例",
+          "desc": "下单/支付等关键动作用品牌绿填充图标形成层级，其余线性——层级更强但维护两套。",
+          "demo": "<div style=\"display:flex;gap:14px\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M6 6h15l-1.5 9h-12z\" fill=\"#07C160\"/><circle cx=\"9\" cy=\"20\" r=\"1.5\" fill=\"#07C160\"/><circle cx=\"18\" cy=\"20\" r=\"1.5\" fill=\"#07C160\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"3\" fill=\"#07C160\"/><path d=\"M3 9h18\" stroke=\"#fff\" stroke-width=\"1.5\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z\" fill=\"none\" stroke=\"#5B6B7A\" stroke-width=\"1.5\"/></svg></div>",
+          "values": {
+            "规格": "填充式 · 圆角 4 · 双色",
+            "范围": "仅下单/支付 2 个关键动作"
+          }
+        },
+        {
+          "name": "自定义 · 圆角线性",
+          "desc": "在 Lucide 基础上把直角改圆角、端点改圆头的定制变体——独特但需要生成与维护整套。",
+          "demo": "<div style=\"display:flex;gap:14px\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M4 12l8-7 8 7v8a2 2 0 0 1-2 2h-4v-5h-4v5H6a2 2 0 0 1-2-2z\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><circle cx=\"11\" cy=\"10\" r=\"6\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\"/><path d=\"M20 20l-4-4\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"5\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\"/><path d=\"M8 12h8M12 8v8\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"8\" r=\"3.5\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\"/><path d=\"M5 20a7 7 0 0 1 14 0\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></svg></div>",
+          "values": {
+            "规格": "24px 网格 · 1.5px · 全圆角化",
+            "代价": "新增图标需定制，长期维护成本高"
+          }
+        }
+      ],
+      "chosen": "Lucide · 线性 1.5px（基准）· 下单/支付 2 个动作做填充特例"
+    },
+    {
+      "id": "gaps",
+      "no": "7",
+      "title": "第七步 查漏",
+      "status": "done",
+      "sub": "对照章节模板逐章核对 · 单张盘点卡",
+      "hint": "对照 14 章模板逐章盘点：缺什么补什么，别带缺口进样品页。",
+      "candidates": [
+        {
+          "name": "14 章核对 · 盘点结果",
+          "desc": "逐章对照章节模板：9 章已覆盖，3 处缺口全部可在进样品页前补齐，1 项维持原结论。",
+          "values": {
+            "补": "深色模式结论（密度与多端章：一期单形态）",
+            "确认": "多语言维持单语（已有结论，不再展开）"
+          }
+        }
+      ],
+      "chosen": "14 章核对 · 盘点结果（三项全补 · 空状态用灰度图形+一句话）"
+    },
+    {
+      "id": "samplepage",
+      "no": "8",
+      "title": "第八步 样品页",
+      "status": "now",
+      "sub": "代表页每页 3 版 · 不同子代理 · 看版定案 · 回流中间件",
+      "hint": "代表页（点单首页）3 版 · 不同子代理诠释 · 看版定案 · 回流中间件。选一版，或指出要混的要点。",
+      "candidates": [
+        {
+          "name": "A 版 · 严格遵循",
+          "desc": "完全按已锁令牌与组件规范执行：白底、WeUI 列表、胶囊主按钮，零自由发挥——用来验规范成色。",
+          "demo": "<div style=\"border:1px solid #E7EAF0;border-radius:12px;overflow:hidden;background:#fff\"><div style=\"padding:9px 12px;border-bottom:1px solid #F0F2F5;font-size:12px;font-weight:600\">茶语 · 点单</div><div style=\"display:flex;gap:6px;padding:8px 12px;border-bottom:1px solid #F0F2F5\"><span style=\"font-size:11px;color:#fff;background:#07C160;border-radius:99px;padding:3px 10px\">全部</span><span style=\"font-size:11px;color:#5B6B7A;background:#F2F4F7;border-radius:99px;padding:3px 10px\">现制</span><span style=\"font-size:11px;color:#5B6B7A;background:#F2F4F7;border-radius:99px;padding:3px 10px\">轻食</span></div><div style=\"display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #F7F9FB\"><span style=\"font-size:12px\">芋泥波波</span><span style=\"font-size:12px;color:#059048\">¥16</span></div><div style=\"display:flex;justify-content:space-between;padding:10px 12px\"><span style=\"font-size:12px\">茉莉初雪</span><span style=\"font-size:12px;color:#059048\">¥14</span></div><div style=\"padding:10px 12px\"><span style=\"display:block;text-align:center;background:#059048;color:#fff;border-radius:999px;padding:9px;font-size:12.5px;font-weight:600\">选好了，去下单</span></div></div>",
+          "values": {
+            "令牌": "100% 采用已锁值",
+            "组件": "WeUI 列表 + 胶囊按钮直接套用",
+            "适合": "验收规范是否自洽可用"
+          }
+        },
+        {
+          "name": "B 版 · 规范内均衡",
+          "desc": "在规范允许区间内做呼吸感：卡片内边距加大、分区留白翻倍，其余严格。",
+          "demo": "<div style=\"border:1px solid #E7EAF0;border-radius:12px;overflow:hidden;background:#fff\"><div style=\"padding:14px 16px;border-bottom:1px solid #F0F2F5;font-size:12px;font-weight:600\">茶语 · 点单</div><div style=\"display:flex;gap:8px;padding:14px 16px;border-bottom:1px solid #F0F2F5\"><span style=\"font-size:11px;color:#fff;background:#07C160;border-radius:99px;padding:4px 12px\">全部</span><span style=\"font-size:11px;color:#5B6B7A;background:#F2F4F7;border-radius:99px;padding:4px 12px\">现制</span><span style=\"font-size:11px;color:#5B6B7A;background:#F2F4F7;border-radius:99px;padding:4px 12px\">轻食</span></div><div style=\"display:flex;justify-content:space-between;padding:15px 16px;border-bottom:1px solid #F7F9FB\"><span style=\"font-size:12.5px\">芋泥波波</span><span style=\"font-size:12.5px;color:#059048\">¥16</span></div><div style=\"display:flex;justify-content:space-between;padding:15px 16px\"><span style=\"font-size:12.5px\">茉莉初雪</span><span style=\"font-size:12.5px;color:#059048\">¥14</span></div><div style=\"padding:14px 16px 18px\"><span style=\"display:block;text-align:center;background:#059048;color:#fff;border-radius:999px;padding:11px;font-size:13px;font-weight:600\">选好了，去下单</span></div></div>",
+          "values": {
+            "令牌": "100% 采用",
+            "调整": "仅间距区间内取大档",
+            "适合": "看规范上限的舒适度"
+          }
+        },
+        {
+          "name": "C 版 · 反向试探",
+          "desc": "故意试探边界：深夜茶深色形态 + 大圆角档，看规范在极端选择下的表现。",
+          "demo": "<div style=\"border:1px solid #2A323B;border-radius:16px;overflow:hidden;background:#16191D\"><div style=\"padding:10px 12px;border-bottom:1px solid #2A323B;font-size:12px;font-weight:600;color:#E8ECF0\">茶语 · 点单</div><div style=\"display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid #2A323B\"><span style=\"font-size:11px;color:#16191D;background:#2ED57F;border-radius:99px;padding:3px 10px\">全部</span><span style=\"font-size:11px;color:#9AA7B4;background:#1F242B;border-radius:99px;padding:3px 10px\">现制</span><span style=\"font-size:11px;color:#9AA7B4;background:#1F242B;border-radius:99px;padding:3px 10px\">轻食</span></div><div style=\"display:flex;justify-content:space-between;padding:11px 12px;border-bottom:1px solid #1F242B\"><span style=\"font-size:12px;color:#E8ECF0\">芋泥波波</span><span style=\"font-size:12px;color:#2ED57F\">¥16</span></div><div style=\"display:flex;justify-content:space-between;padding:11px 12px\"><span style=\"font-size:12px;color:#E8ECF0\">茉莉初雪</span><span style=\"font-size:12px;color:#2ED57F\">¥14</span></div><div style=\"padding:10px 12px\"><span style=\"display:block;text-align:center;background:#2ED57F;color:#16191D;border-radius:999px;padding:10px;font-size:12.5px;font-weight:600\">选好了，去下单</span></div></div>",
+          "values": {
+            "令牌": "用深夜茶深色形态",
+            "调整": "圆角取大档 · 标签胶囊",
+            "适合": "压力测试规范的容错"
+          }
+        }
+      ]
+    },
+    {
+      "id": "finalize",
+      "no": "9",
+      "title": "第九步 收尾 · 章节成文与审阅",
+      "status": "todo",
+      "sub": "回流后最终状态逐章成文 → 审阅修改 → 导出纯净版"
+    }
+  ],
+  "auto": {},
+  "overview": {
+    "color": "<div style=\"display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px\"><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#07C160;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#07C160</div><div style=\"font-size:10px;color:#3C4650\">主色</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#059048;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#059048</div><div style=\"font-size:10px;color:#3C4650\">CTA</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#07C160;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#07C160</div><div style=\"font-size:10px;color:#3C4650\">成功</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#F59E0B;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#F59E0B</div><div style=\"font-size:10px;color:#3C4650\">警告</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#E5484D;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#E5484D</div><div style=\"font-size:10px;color:#3C4650\">危险</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#F7F9FB;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#F7F9FB</div><div style=\"font-size:10px;color:#3C4650\">表面</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#E4E9EF;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#E4E9EF</div><div style=\"font-size:10px;color:#3C4650\">描边</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#1A1D21;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#1A1D21</div><div style=\"font-size:10px;color:#3C4650\">主文字</div></div><div style=\"text-align:center\"><div style=\"width:48px;height:48px;border-radius:10px;background:#6B7280;border:1px solid #E4E9EF\"></div><div style=\"font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace\">#6B7280</div><div style=\"font-size:10px;color:#3C4650\">次文字</div></div></div><p style=\"font-size:12px;color:#5B6470\">底色白 + 表面浅灰双层；CTA 与主操作统一用加深档 #059048。</p>",
+    "type": "<div style=\"margin-bottom:8px\"><span style=\"font-size:22px;font-weight:700;color:#1A1D21\">示例标题</span> <span style=\"font-size:10px;color:#8A93A0\">22/700 大标题</span></div><div style=\"margin-bottom:8px\"><span style=\"font-size:17px;font-weight:600;color:#1A1D21\">示例标题</span> <span style=\"font-size:10px;color:#8A93A0\">17/600 标题</span></div><div style=\"margin-bottom:8px\"><span style=\"font-size:14px;color:#1A1D21\">示例正文——这里检验日常阅读的可读性与行高节奏。</span> <span style=\"font-size:10px;color:#8A93A0\">14/400 正文</span></div><p style=\"font-size:12px;color:#5B6470\">统一思源黑体（Noto Sans SC）· 行高正文 1.7 / 标题 1.25。</p>",
+    "component": "<div style=\"border:1px solid #E4E9EF;border-radius:10px;padding:12px;max-width:360px\"><div style=\"font-size:11px;font-weight:600;color:#8A93A0;margin-bottom:6px\">常用功能</div><div style=\"display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px solid #F0F2F5;font-size:13px;color:#1A1D21\">服务合同 <span style=\"color:#C2C9D2\">3 份 ›</span></div><div style=\"display:flex;justify-content:space-between;padding:9px 2px;font-size:13px;color:#1A1D21\">消息中心 <span style=\"background:#E5484D;color:#fff;font-size:9px;border-radius:99px;padding:1px 6px\">2</span></div><div style=\"display:flex;gap:8px;margin-top:10px\"><span style=\"flex:1;text-align:center;background:#07C160;color:#fff;font-size:13px;font-weight:600;border-radius:999px;padding:9px\">主操作</span><span style=\"flex:1;text-align:center;background:#fff;border:1px solid #07C160;color:#07C160;font-size:13px;border-radius:999px;padding:8px\">次操作</span></div><div style=\"display:flex;gap:6px;margin-top:10px\"><span style=\"background:#07C1601A;color:#059048;font-size:11px;border-radius:999px;padding:3px 10px\">已完成</span><span style=\"background:#F59E0B1A;color:#B45309;font-size:11px;border-radius:999px;padding:3px 10px\">待安排</span><span style=\"background:#fff;border:1px solid #07C160;color:#07C160;font-size:11px;border-radius:999px;padding:3px 10px\">全部</span></div></div><p style=\"font-size:12px;color:#5B6470;margin-top:8px\">基调 WeUI 系：cell 列表组织信息 · 一屏至多一个主按钮 · 状态签 10% 轻底加深字。</p>",
+    "motion": "<p>取餐进度：环形进度 60s 线性+完成时一次 300ms 缓出放大。页面切换：150ms 淡入。其余动效默认不做。</p>",
+    "radius": "<div style=\"display:flex;gap:12px;align-items:flex-end\"><div style=\"text-align:center\"><div style=\"width:56px;height:40px;background:#E6F7EE;border:1.5px solid #07C160;border-radius:4px\"></div><div style=\"font-size:10px;color:#3C4650;margin-top:4px\">sm 4</div><div style=\"font-size:9px;color:#8A93A0\">按钮/标签</div></div><div style=\"text-align:center\"><div style=\"width:56px;height:40px;background:#E6F7EE;border:1.5px solid #07C160;border-radius:8px\"></div><div style=\"font-size:10px;color:#3C4650;margin-top:4px\">md 8</div><div style=\"font-size:9px;color:#8A93A0\">卡片/输入</div></div><div style=\"text-align:center\"><div style=\"width:56px;height:40px;background:#E6F7EE;border:1.5px solid #07C160;border-radius:12px\"></div><div style=\"font-size:10px;color:#3C4650;margin-top:4px\">lg 12</div><div style=\"font-size:9px;color:#8A93A0\">弹层</div></div><div style=\"text-align:center\"><div style=\"width:56px;height:40px;background:#E6F7EE;border:1.5px solid #07C160;border-radius:999px\"></div><div style=\"font-size:10px;color:#3C4650;margin-top:4px\">胶囊 999</div><div style=\"font-size:9px;color:#8A93A0\">分段/搜索</div></div></div>",
+    "shadow": "<div style=\"display:flex;gap:16px\"><div><div style=\"width:110px;height:56px;background:#fff;border:1px solid #E4E9EF\"></div><div style=\"font-size:10px;color:#3C4650;margin-top:5px\">默认</div><div style=\"font-size:9px;color:#8A93A0\">无投影 · 1px 边框分层</div></div><div><div style=\"width:110px;height:56px;background:#fff;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.08)\"></div><div style=\"font-size:10px;color:#3C4650;margin-top:5px\">浮层</div><div style=\"font-size:9px;color:#8A93A0\">0 4px 16px rgba(0,0,0,.08)</div></div></div>",
+    "icon": "<div style=\"display:flex;gap:14px;align-items:center;margin-bottom:8px\"><span style=\"width:40px;height:40px;border:1px solid #E4E9EF;border-radius:9px;display:flex;align-items:center;justify-content:center\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 10.5 12 3l9 7.5\"/><path d=\"M5 10v10h14V10\"/></svg></span><span style=\"width:40px;height:40px;border:1px solid #E4E9EF;border-radius:9px;display:flex;align-items:center;justify-content:center\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m21 21-4-4\"/></svg></span><span style=\"width:40px;height:40px;border:1px solid #E4E9EF;border-radius:9px;display:flex;align-items:center;justify-content:center\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#07C160\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M8 3v4M16 3v4M3 10h18\"/></svg></span><span style=\"font-size:11px;color:#8A93A0\">页内功能图标 · Lucide 细线 1.5px</span></div><div style=\"display:flex;gap:14px;align-items:center\"><span style=\"width:40px;height:40px;border:1px solid #E4E9EF;border-radius:9px;display:flex;align-items:center;justify-content:center\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#07C160\"><path d=\"M3 10.5 12 3l9 7.5\"/><path d=\"M5 10v10h14V10\"/></svg></span><span style=\"width:40px;height:40px;border:1px solid #E4E9EF;border-radius:9px;display:flex;align-items:center;justify-content:center\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#07C160\"><path d=\"M8 10h8M8 14h5\"/><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"3\"/></svg></span><span style=\"width:40px;height:40px;border:1px solid #E4E9EF;border-radius:9px;display:flex;align-items:center;justify-content:center\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"#07C160\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4 4-6 8-6s8 2 8 6\"/></svg></span><span style=\"font-size:11px;color:#8A93A0\">导航区/关键入口 · 填充式（可辨识度优先）</span></div><p style=\"font-size:12px;color:#5B6470;margin-top:8px\">双库分工：导航区填充 / 内容区细线，同一内容区绝不混两套。</p>"
+  },
+  "history": [
+    {
+      "step": "第〇步 原型画像",
+      "candidates": [
+        "12 页组件 · 移动小程序 · 茶饮到店点单"
+      ],
+      "chosen": "画像确认 · 原型直读 · 旧样式不作参考",
+      "by": "user",
+      "time": "示例"
+    },
+    {
+      "step": "第一步 外部输入",
+      "candidates": [
+        "品牌色卡",
+        "Logo",
+        "文字要求"
+      ],
+      "chosen": "三条全吸收 · 品牌绿为色锚",
+      "by": "user",
+      "time": "示例"
+    },
+    {
+      "step": "第二步 风格定义层",
+      "candidates": [
+        "扁平设计 Flat Design",
+        "Japandi 温润风",
+        "北欧风 Scandinavian",
+        "极简主义 Minimalism"
+      ],
+      "chosen": "Japandi 温润风（单选整卡执行）",
+      "by": "user",
+      "time": "示例"
+    },
+    {
+      "step": "第三步 设计令牌",
+      "candidates": [
+        "稳重绿",
+        "奶茶暖调",
+        "深夜茶",
+        "冷萃浅调"
+      ],
+      "chosen": "候选 1（CTA 加深档）",
+      "by": "user",
+      "time": "示例"
+    },
+    {
+      "step": "第四步 组件风格",
+      "candidates": [
+        "WeUI 系",
+        "Ant 系",
+        "iOS 系",
+        "轻拟物茶饮系"
+      ],
+      "chosen": "WeUI 系基调",
+      "by": "user",
+      "time": "示例"
+    },
+    {
+      "step": "第六步 图标风格",
+      "candidates": [
+        "Lucide 1.5px",
+        "Tabler 2px",
+        "填充特例",
+        "自定义圆角"
+      ],
+      "chosen": "Lucide 基准 + 2 个填充特例",
+      "by": "user",
+      "time": "示例"
+    },
+    {
+      "step": "第七步 查漏",
+      "candidates": [
+        "14 章核对"
+      ],
+      "chosen": "三项全补",
+      "by": "user",
+      "time": "示例"
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>样品页 B · 规范内均衡 — 工作台自举</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#FAFAF7;color:#23283B;font-size:14px;line-height:1.7;min-height:100vh;position:relative;overflow-x:hidden}
+/* 氛围斑（静玻璃层） */
+.blob{position:fixed;border-radius:50%;filter:blur(24px);opacity:.28;pointer-events:none;z-index:0}
+.b1{width:340px;height:340px;background:#4C6FFF;left:-80px;top:-90px}
+.b2{width:300px;height:300px;background:#3D8B6E;right:8%;top:30%}
+.b3{width:280px;height:280px;background:#C9A87C;left:18%;bottom:-100px}
+/* 白玻璃主面板 */
+.panel{position:relative;z-index:1;max-width:1376px;margin:18px auto;background:rgba(255,255,255,.66);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);border-radius:10px;box-shadow:0 4px 16px rgba(35,40,59,.08)}
+/* 顶栏 */
+.top{display:flex;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid rgba(226,230,242,.7)}
+.top b{font-size:15px}
+.chip{font-size:12px;background:#4C6FFF;color:#fff;border-radius:6px;padding:4px 12px;font-weight:600}
+.rawlinks{margin-left:auto;display:flex;gap:10px}
+.rawlinks a{color:#5A6472;text-decoration:none;font-size:12.5px;background:rgba(255,255,255,.7);border:1px solid rgba(226,230,242,.9);border-radius:6px;padding:6px 12px}
+/* Tab */
+.tabs{display:flex;gap:4px;padding:0 28px;border-bottom:1px solid rgba(226,230,242,.7)}
+.tabs button{border:0;background:none;padding:12px 18px;font-size:14px;color:#7C86A0;cursor:pointer;border-bottom:2px solid transparent}
+.tabs button.on{color:#3550C4;font-weight:700;border-bottom-color:#3550C4}
+/* 主区 */
+.main{display:flex;gap:22px;padding:20px 28px}
+/* 左步骤列 */
+.side{width:256px;flex-shrink:0;background:rgba(255,255,255,.72);border:1px solid rgba(226,230,242,.9);border-radius:10px;padding:12px}
+.step{padding:10px 12px;border-radius:8px;color:#7C86A0}
+.step+.step{margin-top:4px}
+.step .t{font-size:13.5px;line-height:1.5}
+.step .s{font-size:11.5px;line-height:1.65;opacity:.85;margin-top:3px}
+.step.done .t{color:#4A5B6C}
+.step.now{background:#4C6FFF;color:#fff;box-shadow:inset 3px 0 0 #3550C4,0 4px 12px rgba(76,111,255,.35)}
+.step.now .t{font-weight:700;font-size:14.5px}
+.step.now .s{opacity:.85}
+/* 右决策面板 */
+.area{flex:1;min-width:0}
+.nowchip{display:inline-block;font-size:12px;background:#EAF0FF;color:#3550C4;border-radius:6px;padding:4px 12px;margin-right:10px;font-weight:700}
+h1{display:inline;font-family:'Noto Serif SC','Songti SC',serif;font-size:28px;font-weight:700;letter-spacing:.01em}
+.hint{font-size:14px;color:#5A6472;line-height:1.75;margin:10px 0 18px}
+/* 候选卡 */
+.cands{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cand{background:rgba(255,255,255,.78);border:1px solid #E2E6F2;border-radius:10px;padding:20px 22px;position:relative}
+.chead{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.cno{font-size:12px;background:#F0F4F8;color:#7C86A0;border-radius:6px;padding:3px 10px}
+.cname{font-size:17.5px;font-weight:700;font-family:'Noto Serif SC','Songti SC',serif}
+.ctag{margin-left:auto;font-size:11.5px;background:#EEF1FF;color:#3550C4;border-radius:6px;padding:3px 10px}
+.win{position:absolute;top:-10px;right:14px;font-size:12px;background:#3D8B6E;color:#fff;border-radius:6px;padding:3px 10px;font-weight:700;box-shadow:0 2px 8px rgba(61,139,110,.35)}
+/* 色块行 */
+.lab{font-size:11px;letter-spacing:.08em;color:#8A93A0;margin:12px 0 6px}
+.sws{display:flex;gap:8px;flex-wrap:wrap}
+.swc{text-align:center}
+.swc i{display:block;width:44px;height:44px;border-radius:6px;border:1px solid rgba(0,0,0,.06)}
+.swc s{text-decoration:none;display:block;font-size:9.5px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace}
+/* 字阶真渲染 */
+.type28{font-family:'Noto Serif SC','Songti SC',serif;font-size:28px;font-weight:700;color:#23283B}
+.type16{font-size:16px;color:#23283B}
+.tmeta{font-size:9.5px;color:#8A93A0;font-family:Consolas,monospace;margin-left:6px}
+.act{font-size:12px;color:#9AA8B5;border-top:1px dashed #E2E6F2;padding-top:10px;margin-top:16px}
+</style>
+</head>
+<body>
+<span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+
+<div class="panel">
+  <div class="top">
+    <b>工作台自举 · 共创工作台</b><span style="font-size:12.5px;color:#7C86A0">决策链 v1</span>
+    <span class="chip">第三步 设计令牌</span>
+    <span class="rawlinks"><a href="#">原始组件库规范</a><a href="#">原始参考令牌库</a><a href="#">品牌设计语言</a><a href="#">原始图标库</a></span>
+  </div>
+  <div class="tabs"><button class="on">工作台</button><button>预览</button></div>
+  <div class="main">
+    <div class="side">
+      <div class="step done"><div class="t">✓ 第〇步 原型画像</div><div class="s">设计共创工作台 · PC · 设计工具 · 展示面板</div></div>
+      <div class="step done"><div class="t">✓ 第一步 外部输入</div><div class="s">4 条约束吸收（清新配色 / 纯黑否 / A 骨架已认 / 否决备案）</div></div>
+      <div class="step done"><div class="t">✓ 第二步 风格定义层</div><div class="s">文档编辑风（自创·单选整卡执行）</div></div>
+      <div class="step now"><div class="t">第三步 设计令牌</div><div class="s">靛蓝纸底 · 撞色文气 · 4 候选</div></div>
+      <div class="step"><div class="t">3 第四步 组件风格</div><div class="s">先选基调库 · 再逐族规范过目</div></div>
+      <div class="step"><div class="t">4 第五步 图片素材</div><div class="s">无图策略（已跳过）</div></div>
+      <div class="step"><div class="t">5 第六步 图标风格</div><div class="s">Feather 线性 2px</div></div>
+      <div class="step"><div class="t">6 第七步 查漏</div><div class="s">14 章盘点 · 全非待定</div></div>
+      <div class="step"><div class="t">7 第八步 样品页</div><div class="s">3 版 · 看版定案</div></div>
+      <div class="step"><div class="t">8 第九步 收尾</div><div class="s">逐章成文 → 导出纯净版</div></div>
+    </div>
+    <div class="area">
+      <span class="nowchip">当前</span><h1>第三步 设计令牌</h1>
+      <p class="hint">四张令牌方向卡（底座 = 文档编辑风家族锚 × 清新约束；uupm 交叉验证已实测）。单选或排序，回复「选 N」/ 描述微调 /「再来一批」。圆角/阴影/组件形态在第四步。</p>
+      <div class="cands">
+
+        <div class="cand">
+          <div class="chead"><span class="cno">候选 1</span><span class="cname">雾青 · 同色系层次</span><span class="ctag">同色系层次</span></div>
+          <div class="lab">主色 RAMP</div>
+          <div class="sws">
+            <span class="swc"><i style="background:#2C664F"></i><s>#2C664F</s></span><span class="swc"><i style="background:#3D8B6E"></i><s>#3D8B6E</s></span><span class="swc"><i style="background:#7FBFA4"></i><s>#7FBFA4</s></span><span class="swc"><i style="background:#CDE7DC"></i><s>#CDE7DC</s></span><span class="swc"><i style="background:#EAF4EF"></i><s>#EAF4EF</s></span>
+          </div>
+          <div class="lab">状态色</div>
+          <div class="sws"><span class="swc"><i style="background:#3D8B6E"></i><s>成功</s></span><span class="swc"><i style="background:#D9932C"></i><s>警告</s></span><span class="swc"><i style="background:#C75450"></i><s>危险</s></span></div>
+          <div class="lab">字体与字阶 · 思源黑体</div>
+          <div class="type28">示例标题<span class="tmeta">28 大标题</span></div>
+          <div class="type16">正文示例：检验日常阅读的舒适程度。<span class="tmeta">16 正文</span></div>
+          <div class="act">会话回复「选 1」；或多选排序；或微调某处；或「再来一批」</div>
+        </div>
+
+        <div class="cand">
+          <span class="win">✓ 已选定</span>
+          <div class="chead"><span class="cno">候选 2</span><span class="cname">靛蓝纸底 · 撞色强调（文气）</span><span class="ctag">撞色强调</span></div>
+          <div class="lab">主色 RAMP</div>
+          <div class="sws">
+            <span class="swc"><i style="background:#3550C4"></i><s>#3550C4</s></span><span class="swc"><i style="background:#4C6FFF"></i><s>#4C6FFF</s></span><span class="swc"><i style="background:#8B9BFF"></i><s>#8B9BFF</s></span><span class="swc"><i style="background:#D6DCFF"></i><s>#D6DCFF</s></span><span class="swc"><i style="background:#EEF1FF"></i><s>#EEF1FF</s></span>
+          </div>
+          <div class="lab">状态色</div>
+          <div class="sws"><span class="swc"><i style="background:#3D8B6E"></i><s>成功</s></span><span class="swc"><i style="background:#D9932C"></i><s>警告</s></span><span class="swc"><i style="background:#C75450"></i><s>危险</s></span></div>
+          <div class="lab">字体与字阶 · 思源宋体标题 / 思源黑体正文</div>
+          <div class="type28">示例标题<span class="tmeta">28 大标题</span></div>
+          <div class="type16">正文示例：检验日常阅读的舒适程度。<span class="tmeta">16 正文</span></div>
+          <div class="act">会话回复「选 2」；或多选排序；或微调某处</div>
+        </div>
+
+        <div class="cand">
+          <div class="chead"><span class="cno">候选 3</span><span class="cname">青瓷 · 邻近协调</span><span class="ctag">邻近色协调</span></div>
+          <div class="lab">主色 RAMP</div>
+          <div class="sws">
+            <span class="swc"><i style="background:#1F5C5C"></i><s>#1F5C5C</s></span><span class="swc"><i style="background:#2E8B8B"></i><s>#2E8B8B</s></span><span class="swc"><i style="background:#6FB3B3"></i><s>#6FB3B3</s></span><span class="swc"><i style="background:#C2DEDE"></i><s>#C2DEDE</s></span><span class="swc"><i style="background:#E9F3F3"></i><s>#E9F3F3</s></span>
+          </div>
+          <div class="lab">状态色</div>
+          <div class="sws"><span class="swc"><i style="background:#3D8B6E"></i><s>成功</s></span><span class="swc"><i style="background:#D9932C"></i><s>警告</s></span><span class="swc"><i style="background:#C75450"></i><s>危险</s></span></div>
+          <div class="lab">字体与字阶 · 思源黑体</div>
+          <div class="type28">示例标题<span class="tmeta">28 大标题</span></div>
+          <div class="type16">正文示例：检验日常阅读的舒适程度。<span class="tmeta">16 正文</span></div>
+          <div class="act">会话回复「选 3」；或多选排序；或微调某处</div>
+        </div>
+
+        <div class="cand">
+          <div class="chead"><span class="cno">候选 4</span><span class="cname">苔绿纸感 · 双色调 + 等宽</span><span class="ctag">双色调</span></div>
+          <div class="lab">主色 RAMP</div>
+          <div class="sws">
+            <span class="swc"><i style="background:#3F6640"></i><s>#3F6640</s></span><span class="swc"><i style="background:#5A8A5A"></i><s>#5A8A5A</s></span><span class="swc"><i style="background:#8FB08F"></i><s>#8FB08F</s></span><span class="swc"><i style="background:#C9A87C"></i><s>#C9A87C</s></span><span class="swc"><i style="background:#F7F6F2"></i><s>#F7F6F2</s></span>
+          </div>
+          <div class="lab">状态色</div>
+          <div class="sws"><span class="swc"><i style="background:#5A8A5A"></i><s>成功</s></span><span class="swc"><i style="background:#C9A87C"></i><s>警告</s></span><span class="swc"><i style="background:#C75450"></i><s>危险</s></span></div>
+          <div class="lab">字体与字阶 · 思源黑体 × JetBrains Mono</div>
+          <div class="type28">示例标题<span class="tmeta">28 大标题</span></div>
+          <div class="type16">正文示例：检验日常阅读的舒适程度。<span class="tmeta">16 正文</span></div>
+          <div class="act">会话回复「选 4」；或多选排序；或微调某处</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

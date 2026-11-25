@@ -1,0 +1,249 @@
+{
+  "source": "https://github.com/VoltAgent/awesome-design-md",
+  "license": "MIT",
+  "date": "2026-10-22",
+  "brands": {
+    "airbnb": {
+      "zh": "爱彼迎",
+      "group": "消费生活"
+    },
+    "airtable": {
+      "zh": "Airtable",
+      "group": "效率工具"
+    },
+    "apple": {
+      "zh": "苹果",
+      "group": "科技巨头"
+    },
+    "bmw": {
+      "zh": "宝马",
+      "group": "出行汽车"
+    },
+    "cal": {
+      "zh": "Cal.com",
+      "group": "效率工具"
+    },
+    "claude": {
+      "zh": "Claude",
+      "group": "AI 产品"
+    },
+    "clay": {
+      "zh": "Clay",
+      "group": "效率工具"
+    },
+    "clickhouse": {
+      "zh": "ClickHouse",
+      "group": "开发工具"
+    },
+    "cohere": {
+      "zh": "Cohere",
+      "group": "AI 产品"
+    },
+    "coinbase": {
+      "zh": "Coinbase",
+      "group": "金融支付"
+    },
+    "composio": {
+      "zh": "Composio",
+      "group": "开发工具"
+    },
+    "cursor": {
+      "zh": "Cursor",
+      "group": "AI 产品"
+    },
+    "elevenlabs": {
+      "zh": "ElevenLabs",
+      "group": "AI 产品"
+    },
+    "expo": {
+      "zh": "Expo",
+      "group": "开发工具"
+    },
+    "ferrari": {
+      "zh": "法拉利",
+      "group": "出行汽车"
+    },
+    "figma": {
+      "zh": "Figma",
+      "group": "设计创作"
+    },
+    "framer": {
+      "zh": "Framer",
+      "group": "设计创作"
+    },
+    "hashicorp": {
+      "zh": "HashiCorp",
+      "group": "开发工具"
+    },
+    "ibm": {
+      "zh": "IBM",
+      "group": "科技巨头"
+    },
+    "intercom": {
+      "zh": "Intercom",
+      "group": "效率工具"
+    },
+    "kraken": {
+      "zh": "Kraken",
+      "group": "金融支付"
+    },
+    "lamborghini": {
+      "zh": "兰博基尼",
+      "group": "出行汽车"
+    },
+    "linear.app": {
+      "zh": "Linear",
+      "group": "效率工具"
+    },
+    "lovable": {
+      "zh": "Lovable",
+      "group": "AI 产品"
+    },
+    "minimax": {
+      "zh": "MiniMax",
+      "group": "AI 产品"
+    },
+    "mintlify": {
+      "zh": "Mintlify",
+      "group": "开发工具"
+    },
+    "miro": {
+      "zh": "Miro",
+      "group": "设计创作"
+    },
+    "mistral.ai": {
+      "zh": "Mistral AI",
+      "group": "AI 产品"
+    },
+    "mongodb": {
+      "zh": "MongoDB",
+      "group": "开发工具"
+    },
+    "notion": {
+      "zh": "Notion",
+      "group": "效率工具"
+    },
+    "nvidia": {
+      "zh": "英伟达",
+      "group": "科技巨头"
+    },
+    "ollama": {
+      "zh": "Ollama",
+      "group": "AI 产品"
+    },
+    "opencode.ai": {
+      "zh": "OpenCode",
+      "group": "开发工具"
+    },
+    "pinterest": {
+      "zh": "Pinterest",
+      "group": "消费生活"
+    },
+    "posthog": {
+      "zh": "PostHog",
+      "group": "开发工具"
+    },
+    "raycast": {
+      "zh": "Raycast",
+      "group": "效率工具"
+    },
+    "renault": {
+      "zh": "雷诺",
+      "group": "出行汽车"
+    },
+    "replicate": {
+      "zh": "Replicate",
+      "group": "开发工具"
+    },
+    "resend": {
+      "zh": "Resend",
+      "group": "开发工具"
+    },
+    "revolut": {
+      "zh": "Revolut",
+      "group": "金融支付"
+    },
+    "runwayml": {
+      "zh": "Runway",
+      "group": "AI 产品"
+    },
+    "sanity": {
+      "zh": "Sanity",
+      "group": "开发工具"
+    },
+    "sentry": {
+      "zh": "Sentry",
+      "group": "开发工具"
+    },
+    "spacex": {
+      "zh": "SpaceX",
+      "group": "科技巨头"
+    },
+    "spotify": {
+      "zh": "Spotify",
+      "group": "消费生活"
+    },
+    "stripe": {
+      "zh": "Stripe",
+      "group": "金融支付"
+    },
+    "supabase": {
+      "zh": "Supabase",
+      "group": "开发工具"
+    },
+    "superhuman": {
+      "zh": "Superhuman",
+      "group": "效率工具"
+    },
+    "tesla": {
+      "zh": "特斯拉",
+      "group": "出行汽车"
+    },
+    "together.ai": {
+      "zh": "Together AI",
+      "group": "AI 产品"
+    },
+    "uber": {
+      "zh": "Uber",
+      "group": "出行汽车"
+    },
+    "vercel": {
+      "zh": "Vercel",
+      "group": "开发工具"
+    },
+    "voltagent": {
+      "zh": "VoltAgent",
+      "group": "开发工具"
+    },
+    "warp": {
+      "zh": "Warp",
+      "group": "开发工具"
+    },
+    "webflow": {
+      "zh": "Webflow",
+      "group": "设计创作"
+    },
+    "wise": {
+      "zh": "Wise",
+      "group": "金融支付"
+    },
+    "x.ai": {
+      "zh": "xAI",
+      "group": "AI 产品"
+    },
+    "zapier": {
+      "zh": "Zapier",
+      "group": "效率工具"
+    }
+  },
+  "groups": [
+    "AI 产品",
+    "开发工具",
+    "设计创作",
+    "效率工具",
+    "金融支付",
+    "出行汽车",
+    "科技巨头",
+    "消费生活"
+  ]
+}

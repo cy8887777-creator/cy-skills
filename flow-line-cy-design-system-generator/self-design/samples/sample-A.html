@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作台自举 · 共创工作台 — 第三步 设计令牌</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%}
+  body{
+    background:#FAFAF7;
+    color:#23283B;
+    font:400 14px/1.7 'PingFang SC','Microsoft YaHei',sans-serif;
+    padding:28px 32px 40px;
+    -webkit-font-smoothing:antialiased;
+  }
+  :root{
+    --ink:#23283B; --ink2:#7C86A0; --line:#E2E6F2;
+    --ok:#3D8B6E; --warn:#D9932C; --bad:#C75450; --indigo:#4C6FFF;
+    --serif:'Noto Serif SC','Songti SC',serif;
+    --sans:'PingFang SC','Microsoft YaHei',sans-serif;
+    --mono:Consolas,'Courier New',monospace;
+  }
+
+  /* —— 淡彩氛围斑 —— */
+  .bg{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+  .blob{position:absolute;border-radius:50%;filter:blur(24px);opacity:.28}
+  .blob-1{width:560px;height:560px;background:#4C6FFF;top:-180px;left:-120px}
+  .blob-2{width:520px;height:520px;background:#3D8B6E;bottom:-200px;right:-140px}
+  .blob-3{width:480px;height:480px;background:#C9A87C;top:36%;left:56%}
+
+  /* —— 白玻璃主卡 —— */
+  .glass{
+    position:relative;z-index:1;max-width:1376px;margin:0 auto;
+    background:rgba(255,255,255,.66);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.85);
+    border-radius:10px;
+    box-shadow:0 4px 16px rgba(35,40,59,.08);
+    overflow:hidden;
+  }
+
+  /* —— 顶栏 —— */
+  .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:15px 28px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .brand-name{font:700 20px/1.25 var(--serif);color:var(--ink)}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:6px;
+    background:rgba(255,255,255,.6);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border:1px solid var(--line);font-size:12.5px;line-height:1.6}
+  .chip-ver{color:var(--ink2)}
+  .chip-step{color:var(--ink);font-weight:600}
+  .chip-step .dot{width:6px;height:6px;border-radius:50%;background:var(--indigo);flex:none}
+  .top-links{display:flex;gap:18px;flex-wrap:wrap}
+  .top-links a{color:#4C6FFF;text-decoration:underline;text-underline-offset:3px;font-size:14px}
+  .top-links a:hover{text-decoration:underline;text-underline-offset:5px;color:#3550C4}
+
+  /* —— Tab —— */
+  .tabs{display:flex;gap:28px;padding:0 28px;border-bottom:1px solid var(--line)}
+  .tab{position:relative;padding:12px 2px;font:400 14px/1.6 var(--sans);color:var(--ink2);background:none;border:none;cursor:pointer}
+  .tab.active{color:var(--ink);font-weight:600}
+  .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--indigo);border-radius:2px}
+
+  /* —— 左步骤列 260 + 右决策面板 —— */
+  .layout{display:grid;grid-template-columns:260px minmax(0,1fr)}
+  .steps{border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:4px}
+  .step{padding:9px 10px;border-radius:8px}
+  .step-head{display:flex;align-items:center;gap:8px}
+  .step-title{font-size:14px;font-weight:500;color:var(--ink)}
+  .step-sub{margin-top:3px;padding-left:22px;font-size:11px;color:var(--ink2);line-height:1.6}
+  .mark{flex:none;width:14px;text-align:center;font-size:13px;font-weight:700;color:var(--ok);line-height:1.4}
+  .num{flex:none;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;
+    font:700 11px/1 var(--mono);color:var(--ink2);
+    border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.6)}
+  .todo .step-title{color:var(--ink2);font-weight:400}
+  .step.current{background:var(--indigo);box-shadow:0 4px 12px rgba(76,111,255,.35)}
+  .step.current .mark{color:#fff;font-size:10px}
+  .step.current .step-title{color:#fff;font-weight:600}
+  .now{margin-left:auto;font-size:11px;line-height:1.5;color:#fff;border:1px solid rgba(255,255,255,.38);border-radius:6px;padding:0 6px;background:rgba(255,255,255,.18)}
+  .step.current .step-sub{color:rgba(255,255,255,.96)}
+
+  /* —— 右面板 —— */
+  .panel{padding:22px 28px 24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+  h1{font:700 28px/1.25 var(--serif);color:var(--ink)}
+  .hint{font-size:14px;color:var(--ink2);max-width:900px}
+
+  .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .card{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:10px;
+    box-shadow:0 2px 8px rgba(35,40,59,.05);
+    padding:16px 18px;display:flex;flex-direction:column;gap:13px;min-width:0}
+  .card-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .card-no{flex:none;font:700 11px/1 var(--mono);letter-spacing:.05em;color:var(--ink2);
+    border:1px solid var(--line);border-radius:6px;padding:4px 6px;background:rgba(255,255,255,.6)}
+  .card-name{font:700 16px/1.25 var(--serif);color:var(--ink)}
+  .tag{font-size:11px;line-height:1.6;color:var(--ink2);
+    background:rgba(255,255,255,.6);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+  .badge{margin-left:auto;flex:none;font-size:12.5px;font-weight:700;color:#fff;background:var(--ok);border-radius:6px;padding:2px 9px}
+
+  .group-label{font:700 11px/1 var(--mono);letter-spacing:.12em;color:var(--ink2);margin-bottom:8px}
+  .swatches{display:flex;gap:10px}
+  .swatch{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .block{width:44px;height:44px;border-radius:8px;border:1px solid rgba(35,40,59,.08)}
+  .stat-name{font-size:11px;font-weight:600;color:var(--ink);line-height:1.4}
+  .hexlabel{font:400 11px/1.2 var(--mono);color:var(--ink2)}
+
+  .ts{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .ts + .ts{margin-top:6px}
+  .ts-28{font:700 28px/1.25 var(--serif)}
+  .ts-16{font:400 16px/1.7 var(--sans);color:var(--ink)}
+  .ts-tag{flex:none;font:400 11px/1 var(--mono);color:var(--ink2)}
+
+  .card-foot{margin-top:auto;border-top:1px dashed var(--line);padding-top:10px;font-size:12.5px;color:var(--ink2)}
+
+  .panel-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px}
+  .foot-note{font-size:12.5px;color:var(--ink2)}
+  .btn-primary{height:34px;padding:0 20px;border-radius:8px;cursor:pointer;
+    font:600 14px/1 var(--sans);color:#fff;
+    background:rgba(76,111,255,.88);
+    border:1px solid rgba(255,255,255,.38);
+    box-shadow:0 4px 12px rgba(76,111,255,.35)}
+  .btn-primary:hover{background:rgba(76,111,255,.96)}
+
+  @media (max-width:1120px){
+    .layout{grid-template-columns:1fr}
+    .steps{border-right:none;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap}
+    .cards{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="glass">
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-name">工作台自举 · 共创工作台</span>
+      <span class="chip chip-ver">决策链 v1</span>
+      <span class="chip chip-step"><span class="dot"></span>第三步 设计令牌</span>
+    </div>
+    <nav class="top-links">
+      <a href="#">原始组件库规范</a>
+      <a href="#">原始参考令牌库</a>
+      <a href="#">品牌设计语言</a>
+      <a href="#">原始图标库</a>
+    </nav>
+  </header>
+
+  <!-- Tab -->
+  <nav class="tabs">
+    <button class="tab active" type="button">工作台</button>
+    <button class="tab" type="button">预览</button>
+  </nav>
+
+  <div class="layout">
+
+    <!-- 左：步骤列 -->
+    <aside class="steps" aria-label="决策链步骤">
+      <div class="step">
+        <div class="step-head"><span class="mark">✓</span><span class="step-title">第〇步 原型画像</span></div>
+        <div class="step-sub">设计共创工作台 · PC · 设计工具 · 展示面板</div>
+      </div>
+      <div class="step">
+        <div class="step-head"><span class="mark">✓</span><span class="step-title">第一步 外部输入</span></div>
+        <div class="step-sub">4 条约束吸收</div>
+      </div>
+      <div class="step">
+        <div class="step-head"><span class="mark">✓</span><span class="step-title">第二步 风格定义层</span></div>
+        <div class="step-sub">文档编辑风·自创·单选整卡执行</div>
+      </div>
+      <div class="step current">
+        <div class="step-head"><span class="mark">●</span><span class="step-title">第三步 设计令牌</span><span class="now">当前</span></div>
+        <div class="step-sub">靛蓝纸底 · 撞色文气 · 4 候选</div>
+      </div>
+      <div class="step todo"><div class="step-head"><span class="num">3</span><span class="step-title">组件风格</span></div></div>
+      <div class="step todo"><div class="step-head"><span class="num">4</span><span class="step-title">图片素材</span></div></div>
+      <div class="step todo"><div class="step-head"><span class="num">5</span><span class="step-title">图标风格</span></div></div>
+      <div class="step todo"><div class="step-head"><span class="num">6</span><span class="step-title">查漏</span></div></div>
+      <div class="step todo"><div class="step-head"><span class="num">7</span><span class="step-title">样品页</span></div></div>
+      <div class="step todo"><div class="step-head"><span class="num">8</span><span class="step-title">收尾</span></div></div>
+    </aside>
+
+    <!-- 右：决策面板 -->
+    <main class="panel">
+      <header>
+        <h1>第三步 设计令牌</h1>
+        <p class="hint">这一步为整套设计系统定下主色 RAMP 与状态色。四张候选卡各代表一种配色策略，均含 5 档主色、3 档状态色与 28/16 两档字阶真渲染——浏览后在会话中给出你的选择。</p>
+      </header>
+
+      <section class="cards">
+
+        <!-- 卡 1 雾青 -->
+        <article class="card">
+          <header class="card-head">
+            <span class="card-no">01</span>
+            <h2 class="card-name">雾青 · 同色系层次</h2>
+            <span class="tag">同色系层次</span>
+          </header>
+          <section>
+            <div class="group-label">主色 RAMP ×5</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#2C664F"></span><span class="hexlabel">#2C664F</span></div>
+              <div class="swatch"><span class="block" style="background:#3D8B6E"></span><span class="hexlabel">#3D8B6E</span></div>
+              <div class="swatch"><span class="block" style="background:#7FBFA4"></span><span class="hexlabel">#7FBFA4</span></div>
+              <div class="swatch"><span class="block" style="background:#CDE7DC"></span><span class="hexlabel">#CDE7DC</span></div>
+              <div class="swatch"><span class="block" style="background:#EAF4EF"></span><span class="hexlabel">#EAF4EF</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">状态色 ×3</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#3D8B6E"></span><span class="stat-name">成功</span><span class="hexlabel">#3D8B6E</span></div>
+              <div class="swatch"><span class="block" style="background:#D9932C"></span><span class="stat-name">警告</span><span class="hexlabel">#D9932C</span></div>
+              <div class="swatch"><span class="block" style="background:#C75450"></span><span class="stat-name">危险</span><span class="hexlabel">#C75450</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">字阶真渲染 28 / 16</div>
+            <div class="ts"><span class="ts-28" style="color:#3D8B6E">纸上见色，字里生风</span><span class="ts-tag">28 · Serif 700</span></div>
+            <div class="ts"><span class="ts-16">正文示例：低饱和撞色，行高 1.7，阅读有呼吸感。</span><span class="ts-tag">16 · Sans 400</span></div>
+          </section>
+          <footer class="card-foot">会话回复「选 1」；或多选排序；或微调某处；或「再来一批」</footer>
+        </article>
+
+        <!-- 卡 2 靛蓝纸底（已选定） -->
+        <article class="card">
+          <header class="card-head">
+            <span class="card-no">02</span>
+            <h2 class="card-name">靛蓝纸底 · 撞色强调（文气）</h2>
+            <span class="tag">撞色强调</span>
+            <span class="badge">✓ 已选定</span>
+          </header>
+          <section>
+            <div class="group-label">主色 RAMP ×5</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#3550C4"></span><span class="hexlabel">#3550C4</span></div>
+              <div class="swatch"><span class="block" style="background:#4C6FFF"></span><span class="hexlabel">#4C6FFF</span></div>
+              <div class="swatch"><span class="block" style="background:#8B9BFF"></span><span class="hexlabel">#8B9BFF</span></div>
+              <div class="swatch"><span class="block" style="background:#D6DCFF"></span><span class="hexlabel">#D6DCFF</span></div>
+              <div class="swatch"><span class="block" style="background:#EEF1FF"></span><span class="hexlabel">#EEF1FF</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">状态色 ×3</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#3D8B6E"></span><span class="stat-name">成功</span><span class="hexlabel">#3D8B6E</span></div>
+              <div class="swatch"><span class="block" style="background:#D9932C"></span><span class="stat-name">警告</span><span class="hexlabel">#D9932C</span></div>
+              <div class="swatch"><span class="block" style="background:#C75450"></span><span class="stat-name">危险</span><span class="hexlabel">#C75450</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">字阶真渲染 28 / 16</div>
+            <div class="ts"><span class="ts-28" style="color:#4C6FFF">纸上见色，字里生风</span><span class="ts-tag">28 · Serif 700</span></div>
+            <div class="ts"><span class="ts-16">正文示例：低饱和撞色，行高 1.7，阅读有呼吸感。</span><span class="ts-tag">16 · Sans 400</span></div>
+          </section>
+          <footer class="card-foot">会话回复「选 2」；或多选排序；或微调某处；或「再来一批」</footer>
+        </article>
+
+        <!-- 卡 3 青瓷 -->
+        <article class="card">
+          <header class="card-head">
+            <span class="card-no">03</span>
+            <h2 class="card-name">青瓷 · 邻近协调</h2>
+            <span class="tag">邻近色协调</span>
+          </header>
+          <section>
+            <div class="group-label">主色 RAMP ×5</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#1F5C5C"></span><span class="hexlabel">#1F5C5C</span></div>
+              <div class="swatch"><span class="block" style="background:#2E8B8B"></span><span class="hexlabel">#2E8B8B</span></div>
+              <div class="swatch"><span class="block" style="background:#6FB3B3"></span><span class="hexlabel">#6FB3B3</span></div>
+              <div class="swatch"><span class="block" style="background:#C2DEDE"></span><span class="hexlabel">#C2DEDE</span></div>
+              <div class="swatch"><span class="block" style="background:#E9F3F3"></span><span class="hexlabel">#E9F3F3</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">状态色 ×3</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#3D8B6E"></span><span class="stat-name">成功</span><span class="hexlabel">#3D8B6E</span></div>
+              <div class="swatch"><span class="block" style="background:#D9932C"></span><span class="stat-name">警告</span><span class="hexlabel">#D9932C</span></div>
+              <div class="swatch"><span class="block" style="background:#C75450"></span><span class="stat-name">危险</span><span class="hexlabel">#C75450</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">字阶真渲染 28 / 16</div>
+            <div class="ts"><span class="ts-28" style="color:#2E8B8B">纸上见色，字里生风</span><span class="ts-tag">28 · Serif 700</span></div>
+            <div class="ts"><span class="ts-16">正文示例：低饱和撞色，行高 1.7，阅读有呼吸感。</span><span class="ts-tag">16 · Sans 400</span></div>
+          </section>
+          <footer class="card-foot">会话回复「选 3」；或多选排序；或微调某处；或「再来一批」</footer>
+        </article>
+
+        <!-- 卡 4 苔绿纸感 -->
+        <article class="card">
+          <header class="card-head">
+            <span class="card-no">04</span>
+            <h2 class="card-name">苔绿纸感 · 双色调+等宽</h2>
+            <span class="tag">双色调</span>
+          </header>
+          <section>
+            <div class="group-label">主色 RAMP ×5</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#3F6640"></span><span class="hexlabel">#3F6640</span></div>
+              <div class="swatch"><span class="block" style="background:#5A8A5A"></span><span class="hexlabel">#5A8A5A</span></div>
+              <div class="swatch"><span class="block" style="background:#8FB08F"></span><span class="hexlabel">#8FB08F</span></div>
+              <div class="swatch"><span class="block" style="background:#C9A87C"></span><span class="hexlabel">#C9A87C</span></div>
+              <div class="swatch"><span class="block" style="background:#F7F6F2"></span><span class="hexlabel">#F7F6F2</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">状态色 ×3</div>
+            <div class="swatches">
+              <div class="swatch"><span class="block" style="background:#3D8B6E"></span><span class="stat-name">成功</span><span class="hexlabel">#3D8B6E</span></div>
+              <div class="swatch"><span class="block" style="background:#D9932C"></span><span class="stat-name">警告</span><span class="hexlabel">#D9932C</span></div>
+              <div class="swatch"><span class="block" style="background:#C75450"></span><span class="stat-name">危险</span><span class="hexlabel">#C75450</span></div>
+            </div>
+          </section>
+          <section>
+            <div class="group-label">字阶真渲染 28 / 16</div>
+            <div class="ts"><span class="ts-28" style="color:#5A8A5A">纸上见色，字里生风</span><span class="ts-tag">28 · Serif 700</span></div>
+            <div class="ts"><span class="ts-16">正文示例：低饱和撞色，行高 1.7，阅读有呼吸感。</span><span class="ts-tag">16 · Sans 400</span></div>
+          </section>
+          <footer class="card-foot">会话回复「选 4」；或多选排序；或微调某处；或「再来一批」</footer>
+        </article>
+
+      </section>
+
+      <footer class="panel-foot">
+        <span class="foot-note">选定后进入下一步：3 组件风格</span>
+        <button class="btn-primary" type="button">再来一批</button>
+      </footer>
+    </main>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>比稿卡 demo · 语雀</title>
+<style>
+/* ============ 令牌最小集（--sp- 前缀，值=语雀 wiki 卡实现层真值） ============ */
+.sp-card{
+  /* 色板 9 */
+  --sp-primary:#00B96B;        /* 语雀绿 600 · 主按钮/选中态 */
+  --sp-bg:#FFFFFF;             /* 纸面白 · 页面默认底 */
+  --sp-surface:#F4F5F5;        /* 浅灰面 200 · 侧栏/次级面板/悬停中性底 */
+  --sp-surfaceAlt:#DAF6EA;     /* 浅绿衬底 100 · 强调底/选中衬底 */
+  --sp-textPrimary:#262626;    /* 正文黑 grey-900 */
+  --sp-textSecondary:#595959;  /* 次级文字 grey-500（Ant 系灰阶） */
+  --sp-border:#D9D9D9;         /* 细线 grey-200 系（封面直证） */
+  --sp-success:#00B96B;        /* 状态变绿 */
+  --sp-danger:#FF4D4F;         /* Ant 系 danger（骨架换肤规格） */
+  /* 派生真值（同梯度直证） */
+  --sp-primary-deep:#009456;   /* 绿 700 · hover/按压 */
+  --sp-brand-green:#2ED790;    /* 品牌亮绿 · logo/图标视觉层，不进界面用色 */
+  --sp-text-tertiary:#8C8C8C;  /* 辅助 grey-400 */
+  --sp-link:#117CEE;           /* 正文链接蓝 */
+  --sp-hover-bg:#F4F5F5;
+  /* 字体 2（真家族=全系统栈，不引入品牌字体） */
+  --sp-fontHead:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --sp-fontBody:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  /* 字阶 4 */
+  --sp-size-title:20px;
+  --sp-size-head:16px;
+  --sp-size-body:14px;
+  --sp-size-caption:12px;
+  /* 圆角 3（6px 主频 · 卡片档 8） */
+  --sp-radius-sm:4px;
+  --sp-radius-md:6px;
+  --sp-radius-lg:8px;
+  /* 间距档 4（紧凑→宽松） */
+  --sp-space-1:4px;
+  --sp-space-2:8px;
+  --sp-space-3:12px;
+  --sp-space-4:20px;
+  /* 控件高度档 3 */
+  --sp-size-ctl-sm:28px;
+  --sp-size-ctl-md:32px;
+  --sp-size-ctl-lg:40px;
+  /* 阴影 2（按钮近无影一层 / 浮层三层柔影，官网 token 直证） */
+  --sp-shadow-sm:0 2px 0 rgba(0,0,0,.043);
+  --sp-shadow-md:0 4px 16px rgba(0,0,0,.03),0 8px 28px rgba(0,0,0,.05),0 14px 48px rgba(0,0,0,.08);
+  /* 动效 2（克制 0.3s 短过渡） */
+  --sp-motion-duration:.3s;
+  --sp-motion-easing:cubic-bezier(.645,.045,.355,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--sp-surface,#F4F5F5);
+  font-family:var(--sp-fontHead,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif);
+  color:var(--sp-textPrimary,#262626);
+  display:flex;justify-content:center;
+  padding:32px var(--sp-space-4,20px) 48px;
+  min-width:1240px; /* 比稿实物横向并排，窄屏滚动比较 */
+}
+/* ============ 卡壳：白纸浮在灰面上，细线分区不靠重投影 ============ */
+.sp-card{
+  width:1240px;max-width:1240px;flex:none;
+  background:var(--sp-bg);
+  border:1px solid var(--sp-border);
+  border-radius:var(--sp-radius-lg);
+  box-shadow:var(--sp-shadow-md);
+}
+/* ---------- 1 卡头 ---------- */
+.sp-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-space-4);
+  padding:var(--sp-space-4) 32px;
+  border-bottom:1px solid var(--sp-border);
+}
+.sp-head h1{font-size:22px;font-weight:600;letter-spacing:.5px}
+.sp-head h1 .zh-en{font-size:var(--sp-size-caption);font-weight:400;color:var(--sp-text-tertiary);margin-left:var(--sp-space-2);letter-spacing:1px}
+.sp-head .temperament{margin-top:var(--sp-space-2);font-size:var(--sp-size-body);color:var(--sp-textSecondary);line-height:1.7;max-width:820px}
+.sp-badge{
+  flex:none;margin-top:var(--sp-space-1);
+  background:var(--sp-surfaceAlt);color:var(--sp-primary-deep);
+  font-size:var(--sp-size-caption);line-height:1;
+  padding:var(--sp-space-2) var(--sp-space-3);
+  border-radius:var(--sp-radius-sm);
+  display:inline-flex;align-items:center;gap:var(--sp-space-1);
+}
+.sp-badge svg{width:12px;height:12px}
+/* ---------- 2 骨架图集 ---------- */
+.sp-frames{
+  padding:var(--sp-space-4) 32px 28px;
+  display:flex;justify-content:center;gap:28px;
+  border-bottom:1px solid var(--sp-border);
+}
+.frame{display:flex;flex-direction:column;gap:var(--sp-space-3)}
+.frame figcaption{
+  text-align:center;font-size:var(--sp-size-caption);color:var(--sp-text-tertiary);
+  letter-spacing:.5px;
+}
+.frame figcaption b{color:var(--sp-textSecondary);font-weight:600}
+/* 屏：App 手机屏 375×760，白纸底 */
+.screen{
+  width:375px;height:760px;
+  background:var(--sp-bg);
+  border:1px solid var(--sp-border);
+  border-radius:var(--sp-radius-lg);
+  box-shadow:var(--sp-shadow-sm);
+  overflow:hidden;
+  position:relative;
+  display:flex;flex-direction:column;
+}
+/* 状态栏（示意） */
+.sbar{
+  height:28px;flex:none;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;font-size:var(--sp-size-caption);font-weight:600;
+}
+.sbar__icons{display:flex;align-items:center;gap:2px}
+.sbar__icons i{width:3px;height:4px;background:var(--sp-textPrimary);border-radius:1px;display:block}
+.sbar__icons i:nth-child(1){height:4px}.sbar__icons i:nth-child(2){height:6px}
+.sbar__icons i:nth-child(3){height:8px}.sbar__icons i:nth-child(4){height:10px;background:var(--sp-border)}
+.sbar__icons b{width:18px;height:9px;border:1px solid var(--sp-textPrimary);border-radius:2px;margin-left:var(--sp-space-1);position:relative}
+.sbar__icons b::after{content:"";position:absolute;inset:1px 5px 1px 1px;background:var(--sp-textPrimary);border-radius:1px}
+/* 图标通用 */
+.ic{width:20px;height:20px;flex:none;color:var(--sp-textSecondary);fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ic-s{width:16px;height:16px}
+.ic-m{width:28px;height:28px;color:var(--sp-text-tertiary)}
+.ic-arr{width:14px;height:14px;color:var(--sp-border)}
+.iconbtn{
+  width:var(--sp-size-ctl-md);height:var(--sp-size-ctl-md);
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-md);
+  background:var(--sp-bg);display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background var(--sp-motion-duration) var(--sp-motion-easing),color var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.iconbtn:hover{background:var(--sp-hover-bg)}
+/* ===== 屏1 浏览页：分组工作台 ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-space-2) 16px var(--sp-space-2)}
+.topbar .hello{font-size:var(--sp-size-head);font-weight:600}
+.searchbar{
+  margin:var(--sp-space-1) 16px 0;height:var(--sp-size-ctl-md);
+  display:flex;align-items:center;gap:var(--sp-space-2);
+  padding:0 var(--sp-space-3);
+  background:var(--sp-surface);border-radius:var(--sp-radius-md);
+  font-size:13px;color:var(--sp-text-tertiary);
+}
+.group{padding:0 16px;margin-top:var(--sp-space-4)}
+.group__head{display:flex;align-items:center;gap:var(--sp-space-2);margin-bottom:var(--sp-space-2)}
+.group__head span{font-size:var(--sp-size-caption);font-weight:600;color:var(--sp-textSecondary);letter-spacing:1px;flex:none}
+.group__line{flex:1;height:1px;background:var(--sp-border)}
+.feed-card{
+  display:flex;gap:var(--sp-space-3);align-items:flex-start;
+  padding:var(--sp-space-3);
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-lg);
+  margin-bottom:var(--sp-space-2);
+  background:var(--sp-bg);
+  transition:background var(--sp-motion-duration) var(--sp-motion-easing);
+  cursor:default;
+}
+.feed-card:hover{background:var(--sp-hover-bg)}
+.feed-card h4{font-size:15px;font-weight:600;line-height:1.45;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.feed-card p{font-size:13px;color:var(--sp-textSecondary);line-height:1.6;margin-top:var(--sp-space-1);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.feed-card .meta{display:flex;align-items:center;gap:var(--sp-space-1);margin-top:var(--sp-space-2);font-size:var(--sp-size-caption);color:var(--sp-text-tertiary)}
+.avatar-dot{width:16px;height:16px;border-radius:50%;background:var(--sp-surfaceAlt);border:1px solid #BFE9D6;flex:none}
+/* 图片=色块占位（禁真图）：浅灰面+细边+线性图标 */
+.ph{
+  background:var(--sp-surface);border:1px solid var(--sp-border);
+  border-radius:var(--sp-radius-md);
+  display:flex;align-items:center;justify-content:center;flex:none;
+}
+.ph--sq{width:76px;height:76px}
+/* 行式分组容器：细线分隔 */
+.panel{
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-lg);overflow:hidden;
+}
+.panel .row{
+  display:flex;align-items:center;gap:var(--sp-space-2);
+  padding:0 var(--sp-space-3);height:44px;background:var(--sp-bg);
+  border-bottom:1px solid var(--sp-border);
+  transition:background var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.panel .row:last-child{border-bottom:none}
+.panel .row:hover{background:var(--sp-hover-bg)}
+.row__text{flex:1;font-size:var(--sp-size-body);color:var(--sp-textPrimary)}
+.row__val{font-size:var(--sp-size-caption);color:var(--sp-text-tertiary)}
+/* 底部 tab */
+.tabbar{
+  margin-top:auto;height:56px;flex:none;
+  border-top:1px solid var(--sp-border);background:var(--sp-bg);
+  display:flex;
+}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;color:var(--sp-text-tertiary)}
+.tab .ic{width:22px;height:22px}
+.tab--on{color:var(--sp-primary)}
+.tab--on .ic{color:var(--sp-primary)}
+/* ===== 屏2 阅读页：单栏限宽成文 ===== */
+.read-top{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-space-2) 16px}
+.read-top__acts{display:flex;gap:var(--sp-space-2)}
+.doc{padding:0 24px;overflow:hidden}
+.doc h2{font-size:var(--sp-size-title);font-weight:600;line-height:1.5}
+.doc .meta{display:flex;align-items:center;gap:var(--sp-space-2);margin:var(--sp-space-3) 0;padding-bottom:var(--sp-space-3);border-bottom:1px solid var(--sp-border);font-size:var(--sp-size-caption);color:var(--sp-text-tertiary)}
+.avatar-circle{width:24px;height:24px;border-radius:50%;background:var(--sp-surfaceAlt);border:1px solid #BFE9D6;display:flex;align-items:center;justify-content:center;flex:none}
+.avatar-circle .ic{width:14px;height:14px;color:var(--sp-primary-deep)}
+.doc-body{font-size:var(--sp-size-head);line-height:1.8;color:var(--sp-textPrimary)}
+.doc-body p{margin-bottom:var(--sp-space-3)}
+.doc-body a{color:var(--sp-link);text-decoration:none;border-bottom:1px solid rgba(17,124,238,.35)}
+.doc-body a:hover{color:#5AA7F5;border-bottom-color:rgba(90,167,245,.5)}
+.doc-body h5{font-size:var(--sp-size-head);font-weight:600;margin:var(--sp-space-3) 0 var(--sp-space-2)}
+.ph--wide{width:100%;height:120px;margin-bottom:var(--sp-space-3)}
+.ph--wide .ic-m{width:36px;height:36px}
+/* 提示块：浅绿衬底（强调底色真用法） */
+.callout{
+  display:flex;gap:var(--sp-space-2);align-items:flex-start;
+  background:var(--sp-surfaceAlt);border-radius:var(--sp-radius-md);
+  padding:var(--sp-space-2) var(--sp-space-3);margin-bottom:var(--sp-space-3);
+  font-size:13px;line-height:1.7;color:var(--sp-textPrimary);
+}
+.callout .ic{width:16px;height:16px;color:var(--sp-primary-deep);margin-top:2px}
+/* 表格卡 */
+.tablecard{border:1px solid var(--sp-border);border-radius:var(--sp-radius-md);overflow:hidden;margin-bottom:var(--sp-space-3);font-size:13px}
+.tablecard table{width:100%;border-collapse:collapse}
+.tablecard th{background:var(--sp-surface);font-weight:600;text-align:left;padding:var(--sp-space-2) var(--sp-space-3);color:var(--sp-textSecondary)}
+.tablecard td{padding:var(--sp-space-2) var(--sp-space-3);border-top:1px solid var(--sp-border);color:var(--sp-textPrimary)}
+/* 底部操作条：工具在场，选中态绿 */
+.read-acts{
+  margin-top:auto;flex:none;height:56px;border-top:1px solid var(--sp-border);
+  display:flex;align-items:center;gap:var(--sp-space-3);padding:0 16px;background:var(--sp-bg);
+}
+.read-acts .act{display:flex;align-items:center;gap:var(--sp-space-1);font-size:var(--sp-size-caption);color:var(--sp-text-tertiary)}
+.act--on .ic{color:var(--sp-primary);fill:var(--sp-primary)}
+.read-acts .spacer{flex:1}
+/* ===== 屏3 个人页：白纸灰阶细线分区 ===== */
+.me-top{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-space-2) 16px}
+.me-top .title{font-size:var(--sp-size-head);font-weight:600}
+.identity{display:flex;align-items:center;gap:var(--sp-space-3);padding:var(--sp-space-3) 16px}
+.avatar-lg{width:56px;height:56px;border-radius:50%;background:var(--sp-surfaceAlt);border:1px solid #BFE9D6;display:flex;align-items:center;justify-content:center;flex:none}
+.avatar-lg .ic{width:28px;height:28px;color:var(--sp-primary-deep)}
+.identity__name{font-size:var(--sp-size-head);font-weight:600}
+.identity__sign{font-size:13px;color:var(--sp-textSecondary);margin-top:var(--sp-space-1)}
+.btn{
+  height:var(--sp-size-ctl-sm);padding:0 14px;border-radius:var(--sp-radius-md);
+  font-size:var(--sp-size-caption);font-family:inherit;cursor:pointer;
+  transition:all var(--sp-motion-duration) var(--sp-motion-easing);
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.btn-primary{background:var(--sp-primary);color:#fff;border:1px solid var(--sp-primary);box-shadow:var(--sp-shadow-sm)}
+.btn-primary:hover{background:var(--sp-primary-deep);border-color:var(--sp-primary-deep)}
+.btn-secondary{background:var(--sp-bg);color:var(--sp-textPrimary);border:1px solid var(--sp-border)}
+.btn-secondary:hover{border-color:var(--sp-primary);color:var(--sp-primary)}
+/* 数据行：细线分列 */
+.statrow{
+  display:flex;margin:var(--sp-space-1) 16px 0;
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-lg);overflow:hidden;
+}
+.stat{flex:1;text-align:center;padding:var(--sp-space-3) 0}
+.stat+.stat{border-left:1px solid var(--sp-border)}
+.stat b{font-size:var(--sp-size-head);font-weight:600;display:block}
+.stat span{font-size:var(--sp-size-caption);color:var(--sp-text-tertiary)}
+/* 开关（状态变绿） */
+.sw{width:38px;height:20px;border-radius:10px;border:1px solid var(--sp-border);background:var(--sp-bg);position:relative;flex:none;transition:all var(--sp-motion-duration) var(--sp-motion-easing)}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--sp-border);transition:all var(--sp-motion-duration) var(--sp-motion-easing)}
+.sw--on{background:var(--sp-primary);border-color:var(--sp-primary)}
+.sw--on::after{left:auto;right:2px;background:#fff}
+.row--danger .row__text{color:var(--sp-danger)}
+.me-push{margin-top:var(--sp-space-4)}
+/* ---------- 3 载体样本条 ---------- */
+.sp-carrier{padding:24px 32px 28px}
+.sp-carrier h3{
+  font-size:var(--sp-size-caption);font-weight:600;color:var(--sp-text-tertiary);
+  letter-spacing:1px;margin-bottom:var(--sp-space-3);
+}
+.swatches{display:grid;grid-template-columns:repeat(8,1fr);gap:var(--sp-space-3);margin-bottom:24px}
+.swatch__chip{height:40px;border-radius:var(--sp-radius-sm);border:1px solid var(--sp-border)}
+.swatch__name{font-size:var(--sp-size-caption);font-weight:600;margin-top:var(--sp-space-2)}
+.swatch__hex{font-size:11px;color:var(--sp-text-tertiary);font-family:Consolas,Menlo,monospace}
+.swatch__use{font-size:11px;color:var(--sp-text-tertiary);margin-top:1px}
+.carrier-grid{display:grid;grid-template-columns:1fr 1.45fr 1fr;gap:32px}
+.carrier-grid>div{border-top:1px solid var(--sp-border);padding-top:var(--sp-space-3)}
+/* 字体两级真渲染 */
+.type-title{font-size:var(--sp-size-title);font-weight:600;line-height:1.5}
+.type-body{font-size:var(--sp-size-head);line-height:1.75;color:var(--sp-textPrimary);margin-top:var(--sp-space-3)}
+.type-note{font-size:var(--sp-size-caption);color:var(--sp-text-tertiary);margin-top:var(--sp-space-2)}
+.type-body .lnk{color:var(--sp-link);text-decoration:none;border-bottom:1px solid rgba(17,124,238,.35)}
+/* 组件形态 */
+.ctl-demo{display:flex;flex-wrap:wrap;gap:var(--sp-space-2);align-items:center}
+.btn-demo-primary{
+  height:var(--sp-size-ctl-md);padding:0 20px;border-radius:var(--sp-radius-md);
+  background:var(--sp-primary);color:#fff;border:1px solid var(--sp-primary);
+  font-size:var(--sp-size-body);font-family:inherit;cursor:pointer;
+  box-shadow:var(--sp-shadow-sm);
+  transition:all var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.btn-demo-primary:hover{background:var(--sp-primary-deep);border-color:var(--sp-primary-deep)}
+.btn-demo-secondary{
+  height:var(--sp-size-ctl-md);padding:0 20px;border-radius:var(--sp-radius-md);
+  background:var(--sp-bg);color:var(--sp-textPrimary);border:1px solid var(--sp-border);
+  font-size:var(--sp-size-body);font-family:inherit;cursor:pointer;
+  transition:all var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.btn-demo-secondary:hover{border-color:var(--sp-primary);color:var(--sp-primary)}
+.input-demo{
+  height:var(--sp-size-ctl-md);flex:1;min-width:220px;
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-md);
+  padding:0 var(--sp-space-3);font-size:var(--sp-size-body);font-family:inherit;
+  color:var(--sp-text-tertiary);outline:none;display:flex;align-items:center;gap:var(--sp-space-2);
+  transition:border-color var(--sp-motion-duration) var(--sp-motion-easing),box-shadow var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.input-demo:focus-within{border-color:var(--sp-primary);box-shadow:0 0 0 2px var(--sp-surfaceAlt)}
+.mini-card{
+  margin-top:var(--sp-space-2);display:flex;gap:var(--sp-space-3);align-items:center;
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-lg);
+  padding:var(--sp-space-3);max-width:360px;
+  transition:background var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.mini-card:hover{background:var(--sp-hover-bg)}
+.mini-card b{font-size:var(--sp-size-body);font-weight:600;display:block}
+.mini-card .bars{margin-top:var(--sp-space-2);display:flex;flex-direction:column;gap:var(--sp-space-1)}
+.mini-card .bars i{height:6px;border-radius:3px;background:var(--sp-surface);border:1px solid var(--sp-border);display:block}
+.mini-card .bars i:nth-child(1){width:170px}
+.mini-card .bars i:nth-child(2){width:120px}
+/* 图标族 */
+.icons{display:flex;gap:var(--sp-space-3);flex-wrap:wrap}
+.icon-cell{
+  width:48px;height:48px;border:1px solid var(--sp-border);border-radius:var(--sp-radius-md);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--sp-motion-duration) var(--sp-motion-easing);
+}
+.icon-cell:hover{background:var(--sp-hover-bg)}
+.icon-cell .ic{width:22px;height:22px}
+.icon-cell--on{background:var(--sp-surfaceAlt);border-color:#BFE9D6}
+.icon-cell--on .ic{color:var(--sp-primary)}
+/* 卡尾注 */
+.sp-foot{
+  border-top:1px solid var(--sp-border);
+  padding:var(--sp-space-3) 32px;
+  font-size:var(--sp-size-caption);color:var(--sp-text-tertiary);
+  display:flex;justify-content:space-between;gap:var(--sp-space-4);
+}
+.sp-foot .mono{font-family:Consolas,Menlo,monospace}
+</style>
+</head>
+<body>
+
+<!-- ============ 线性图标族（语雀：线性灰阶，选中态才上绿） ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6z"/><path d="M10 19.5a2.2 2.2 0 0 0 4 0"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v16l-6-4.2L6 21V5a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h9M4 12h16M4 18h9"/><circle cx="18" cy="6" r="1.2"/><circle cx="18" cy="18" r="1.2"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="18.5" cy="12" r="1.3" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.8l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.9l5.8-.8z"/></symbol>
+    <symbol id="i-comment" viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-8l-5 4V6a1 1 0 0 1 1-1z"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 17.5l5.2-6.4 3.6 4.4 2.8-3.6 6.4 5.6z"/><circle cx="17" cy="7" r="2"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 1 3.8 10.6c-.7.6-.8 1.4-.8 2.4h-6c0-1-.1-1.8-.8-2.4A6 6 0 0 1 12 3z"/><path d="M9.5 19.5h5M10.5 22h3"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="3.8"/><path d="M4.5 20c.8-3.6 3.9-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="var(--sp-bg,#fff)"/><circle cx="15" cy="12" r="2" fill="var(--sp-bg,#fff)"/><circle cx="7" cy="17" r="2" fill="var(--sp-bg,#fff)"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.3 12.4l2.6 2.6 4.8-5.6"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8.5 3v4M15.5 3v4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 3.5V7h-3.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5h7L18.5 8v12.5h-12z"/><path d="M13.5 3.5V8h5M9.5 12h5M9.5 15.5h5"/></symbol>
+  </defs>
+</svg>
+
+<article class="sp-card">
+
+  <!-- ============ 1 卡头：风格名 + 一句话气质 + 预期标定角标 ============ -->
+  <header class="sp-head">
+    <div>
+      <h1>语雀 · 知识库文档<span class="zh-en">YUQUE</span></h1>
+      <p class="temperament">绿只是行动不是链接，页面先是书才是纸——白纸灰阶、细线分区，一抹绿只亮在主按钮与选中态，安静、书卷、结构感。</p>
+    </div>
+    <span class="sp-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-info"/></svg>方案示意 · demo</span>
+  </header>
+
+  <!-- ============ 2 骨架图集：语雀 × 三页信息架构（骨架随风格基因生长） ============ -->
+  <section class="sp-frames">
+
+    <!-- 屏1 浏览页：首页 × 语雀「分组工作台」——章节式分组、卡片流、中等密度、留白安静 -->
+    <figure class="frame">
+      <div class="screen">
+        <div class="sbar"><span>9:41</span><span class="sbar__icons"><i></i><i></i><i></i><i></i><b></b></span></div>
+        <div class="topbar">
+          <div class="hello">上午好，山客</div>
+          <button class="iconbtn" aria-label="通知"><svg class="ic"><use href="#i-bell"/></svg></button>
+        </div>
+        <div class="searchbar"><svg class="ic ic-s"><use href="#i-search"/></svg><span>找点什么 · 晨雾 / 旧地图</span></div>
+
+        <div class="group">
+          <div class="group__head"><span>最近</span><i class="group__line"></i></div>
+          <article class="feed-card">
+            <div style="flex:1;min-width:0">
+              <h4>山径与晨雾之间，有一条固定的路线</h4>
+              <p>三种走法里最慢的那种反而更稳，留出回头的余地。</p>
+              <div class="meta"><span class="avatar-dot"></span><span>三天前 · 约六分钟</span></div>
+            </div>
+            <div class="ph ph--sq"><svg class="ic ic-m"><use href="#i-mountain"/></svg></div>
+          </article>
+          <article class="feed-card">
+            <div style="flex:1;min-width:0">
+              <h4>车票夹在书里，翻到时才想起来</h4>
+              <p>抽屉最里面有一枚去年的书签，边角压得很平。</p>
+              <div class="meta"><span class="avatar-dot"></span><span>上周 · 约四分钟</span></div>
+            </div>
+            <div class="ph ph--sq"><svg class="ic ic-m"><use href="#i-doc"/></svg></div>
+          </article>
+        </div>
+
+        <div class="group">
+          <div class="group__head"><span>常用</span><i class="group__line"></i></div>
+          <div class="panel">
+            <div class="row"><svg class="ic ic-s"><use href="#i-bookmark"/></svg><span class="row__text">旧地图的折痕指向北面的渡口</span><svg class="ic ic-arr"><use href="#i-chevron"/></svg></div>
+            <div class="row"><svg class="ic ic-s"><use href="#i-calendar"/></svg><span class="row__text">每周留一个下午，不安排任何事</span><svg class="ic ic-arr"><use href="#i-chevron"/></svg></div>
+          </div>
+        </div>
+
+        <div class="tabbar">
+          <div class="tab tab--on"><svg class="ic"><use href="#i-grid"/></svg><span>浏览</span></div>
+          <div class="tab"><svg class="ic"><use href="#i-plus"/></svg><span>记录</span></div>
+          <div class="tab"><svg class="ic"><use href="#i-user"/></svg><span>我的</span></div>
+        </div>
+      </div>
+      <figcaption><b>① 浏览页</b> · 分组工作台 · 章节式编排</figcaption>
+    </figure>
+
+    <!-- 屏2 阅读页：详情 × 语雀「文档单栏限宽」——标题梯度/16px 舒朗行距/链接蓝/浅绿提示衬底 -->
+    <figure class="frame">
+      <div class="screen">
+        <div class="sbar"><span>9:41</span><span class="sbar__icons"><i></i><i></i><i></i><i></i><b></b></span></div>
+        <div class="read-top">
+          <button class="iconbtn" aria-label="返回"><svg class="ic"><use href="#i-back"/></svg></button>
+          <div class="read-top__acts">
+            <button class="iconbtn" aria-label="目录"><svg class="ic"><use href="#i-menu"/></svg></button>
+            <button class="iconbtn" aria-label="更多"><svg class="ic"><use href="#i-more"/></svg></button>
+          </div>
+        </div>
+
+        <div class="doc">
+          <h2>把常用的东西放在固定的位置</h2>
+          <div class="meta"><span class="avatar-circle"><svg class="ic"><use href="#i-user"/></svg></span><span>山客 · 三天前</span></div>
+
+          <div class="doc-body">
+            <p>清晨的图书馆比傍晚安静得多，灯下的字比屏幕上的更耐看。</p>
+            <p>渡口的船一天只开两班，时刻表贴在<a href="javascript:void(0)">北面的站牌</a>背面。</p>
+            <h5>三种走法</h5>
+            <div class="ph ph--wide"><svg class="ic ic-m"><use href="#i-mountain"/></svg></div>
+            <div class="callout"><svg class="ic"><use href="#i-bulb"/></svg><span>雨天出发前，先核对一次渡口的时刻表。</span></div>
+            <div class="tablecard">
+              <table>
+                <tr><th>走法</th><th>路程</th><th>用时</th></tr>
+                <tr><td>北线</td><td>六里</td><td>四十分钟</td></tr>
+                <tr><td>渡口</td><td>三里</td><td>等两班船</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="read-acts">
+          <span class="act act--on"><svg class="ic"><use href="#i-star"/></svg><span>已收录</span></span>
+          <span class="act"><svg class="ic"><use href="#i-comment"/></svg><span>12</span></span>
+          <span class="spacer"></span>
+          <button class="btn btn-primary">收录</button>
+        </div>
+      </div>
+      <figcaption><b>② 阅读页</b> · 单栏限宽成文 · 工具在场</figcaption>
+    </figure>
+
+    <!-- 屏3 个人页：个人中心 × 语雀「白纸灰阶细线分区」——绿只给行动与状态 -->
+    <figure class="frame">
+      <div class="screen">
+        <div class="sbar"><span>9:41</span><span class="sbar__icons"><i></i><i></i><i></i><i></i><b></b></span></div>
+        <div class="me-top">
+          <div class="title">我的</div>
+          <button class="iconbtn" aria-label="设置"><svg class="ic"><use href="#i-sliders"/></svg></button>
+        </div>
+
+        <div class="identity">
+          <div class="avatar-lg"><svg class="ic"><use href="#i-user"/></svg></div>
+          <div style="flex:1;min-width:0">
+            <div class="identity__name">山客</div>
+            <div class="identity__sign">雨天适合整理抽屉和旧照片</div>
+          </div>
+          <button class="btn btn-primary">编辑资料</button>
+        </div>
+
+        <div class="statrow">
+          <div class="stat"><b>36</b><span>收录</span></div>
+          <div class="stat"><b>128</b><span>标记</span></div>
+          <div class="stat"><b>9</b><span>草稿</span></div>
+        </div>
+
+        <div class="group me-push">
+          <div class="group__head"><span>偏好</span><i class="group__line"></i></div>
+          <div class="panel">
+            <div class="row"><svg class="ic ic-s"><use href="#i-moon"/></svg><span class="row__text">深色模式</span><span class="sw sw--on"></span></div>
+            <div class="row"><svg class="ic ic-s"><use href="#i-bell"/></svg><span class="row__text">到期提醒</span><span class="sw"></span></div>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="group__head"><span>通用</span><i class="group__line"></i></div>
+          <div class="panel">
+            <div class="row"><svg class="ic ic-s"><use href="#i-refresh"/></svg><span class="row__text">清理缓存</span><span class="row__val">236 MB</span><svg class="ic ic-arr"><use href="#i-chevron"/></svg></div>
+            <div class="row"><svg class="ic ic-s"><use href="#i-info"/></svg><span class="row__text">关于</span><span class="row__val">v0.1.0</span><svg class="ic ic-arr"><use href="#i-chevron"/></svg></div>
+            <div class="row row--danger"><span class="row__text" style="padding-left:2px">退出登录</span></div>
+          </div>
+        </div>
+
+        <div class="tabbar">
+          <div class="tab"><svg class="ic"><use href="#i-grid"/></svg><span>浏览</span></div>
+          <div class="tab"><svg class="ic"><use href="#i-plus"/></svg><span>记录</span></div>
+          <div class="tab tab--on"><svg class="ic"><use href="#i-user"/></svg><span>我的</span></div>
+        </div>
+      </div>
+      <figcaption><b>③ 个人页</b> · 白纸灰阶 · 细线分区</figcaption>
+    </figure>
+
+  </section>
+
+  <!-- ============ 3 载体样本条：真值真渲染 ============ -->
+  <section class="sp-carrier">
+
+    <h3>色板 · 真值（界面黑白灰 + 绿只给行动与状态，品牌绿另属一支）</h3>
+    <div class="swatches">
+      <div><div class="swatch__chip" style="background:#00B96B"></div><div class="swatch__name">语雀绿 600</div><div class="swatch__hex">#00B96B</div><div class="swatch__use">主按钮 / 选中态</div></div>
+      <div><div class="swatch__chip" style="background:#009456"></div><div class="swatch__name">绿 700 · 深</div><div class="swatch__hex">#009456</div><div class="swatch__use">hover / 按压</div></div>
+      <div><div class="swatch__chip" style="background:#2ED790"></div><div class="swatch__name">品牌亮绿</div><div class="swatch__hex">#2ED790</div><div class="swatch__use">logo / 图标视觉层</div></div>
+      <div><div class="swatch__chip" style="background:#DAF6EA"></div><div class="swatch__name">浅绿衬底 100</div><div class="swatch__hex">#DAF6EA</div><div class="swatch__use">强调底 / 选中衬底</div></div>
+      <div><div class="swatch__chip" style="background:#F4F5F5"></div><div class="swatch__name">浅灰面 200</div><div class="swatch__hex">#F4F5F5</div><div class="swatch__use">次级面板 / 悬停底</div></div>
+      <div><div class="swatch__chip" style="background:#FFFFFF"></div><div class="swatch__name">纸面白</div><div class="swatch__hex">#FFFFFF</div><div class="swatch__use">页面默认底</div></div>
+      <div><div class="swatch__chip" style="background:#262626"></div><div class="swatch__name">正文黑 900</div><div class="swatch__hex">#262626</div><div class="swatch__use">主文字</div></div>
+      <div><div class="swatch__chip" style="background:#117CEE"></div><div class="swatch__name">链接蓝</div><div class="swatch__hex">#117CEE</div><div class="swatch__use">正文链接（绿不进链接）</div></div>
+    </div>
+
+    <div class="carrier-grid">
+
+      <div>
+        <h3>字体 · 系统栈真渲染</h3>
+        <div class="type-title">白纸、细线与一抹绿</div>
+        <div class="type-note">标题级 · 系统栈 20px / 600</div>
+        <div class="type-body">层级靠字号差、字重差与清晰的标题梯度，行距舒朗；排版秩序本身就是字体层的身份，链接另有<span class="lnk">蓝色专档</span>。</div>
+        <div class="type-note">正文级 · 系统栈 16px / 行距 1.75 · 界面高频 14px / 辅助 12px</div>
+      </div>
+
+      <div>
+        <h3>组件 · 语雀形态（Ant 系骨架 + 品牌绿换肤，6px 圆角近无影）</h3>
+        <div class="ctl-demo">
+          <button class="btn-demo-primary">保存</button>
+          <button class="btn-demo-secondary">取消</button>
+          <div class="input-demo"><svg class="ic ic-s"><use href="#i-search"/></svg><span>找点什么，比如旧地图</span></div>
+        </div>
+        <div class="mini-card">
+          <div class="ph ph--sq" style="width:56px;height:56px"><svg class="ic ic-s" style="width:18px;height:18px"><use href="#i-doc"/></svg></div>
+          <div style="flex:1">
+            <b>车票夹在书里</b>
+            <div class="bars"><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="type-note">主按钮底影仅一层 2px 偏移 4.3% 黑；浮层才上三层柔影 · 过渡 0.3s，hover 变色与浅灰底反馈</div>
+      </div>
+
+      <div>
+        <h3>图标 · 线性族（灰阶，选中态才上绿）</h3>
+        <div class="icons">
+          <div class="icon-cell"><svg class="ic"><use href="#i-search"/></svg></div>
+          <div class="icon-cell"><svg class="ic"><use href="#i-menu"/></svg></div>
+          <div class="icon-cell"><svg class="ic"><use href="#i-bookmark"/></svg></div>
+          <div class="icon-cell icon-cell--on"><svg class="ic"><use href="#i-check"/></svg></div>
+          <div class="icon-cell"><svg class="ic"><use href="#i-calendar"/></svg></div>
+        </div>
+        <div class="type-note">线性 1.5px 描边 · 24px 网格 · 图形服务内容不表演风格</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="sp-foot">
+    <span>骨架生长：语雀基因（分组工作台 / 单栏限宽成文 / 细线分区）× 三页信息架构 · 内容为中性示意短句 + 色块条</span>
+    <span class="mono">tokens --sp-* · 值=语雀 wiki 卡实现层真值</span>
+  </footer>
+
+</article>
+
+</body>
+</html>

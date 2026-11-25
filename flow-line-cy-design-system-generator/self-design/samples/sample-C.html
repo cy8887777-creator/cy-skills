@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工作台自举 · 第三步 设计令牌 · 样品页 C（反向试探）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ================= 设计令牌（第三步已选定 · 靛蓝纸底） ================= */
+:root{
+  --bg:#FAFAF7;            /* 暖纸底 */
+  --primary:#4C6FFF;       /* 靛蓝 */
+  --cta:#3550C4;           /* CTA 深靛 */
+  --text:#23283B;          /* 正文 */
+  --muted:#7C86A0;         /* 次要文字 · 仅标注用 */
+  --line:#E2E6F2;          /* 边框 */
+  --ok:#3D8B6E; --warn:#D9932C; --bad:#C75450;
+  --serif:'Noto Serif SC','Source Han Serif SC','思源宋体','Songti SC','SimSun',serif;
+  --sans:'Noto Sans SC','Source Han Sans SC','思源黑体',-apple-system,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;
+  --mono:'Consolas','JetBrains Mono','Courier New',monospace;
+  --r-ctl:8px; --r-card:10px; --r-tag:6px;
+  --shadow-soft:0 4px 16px rgba(35,40,59,.08);
+  --shadow-cta:0 4px 12px rgba(76,111,255,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font:400 14px/1.7 var(--sans);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{line-height:1.25}
+button{font:inherit;background:none;border:none;cursor:default;color:inherit}
+a{color:inherit}
+
+/* ================= 氛围斑（静玻璃 · C 版更大更近 · blur≥22 · 低透明度） ================= */
+.atmo{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.atmo i{position:absolute;border-radius:50%;display:block}
+.atmo .b1{width:720px;height:720px;right:-180px;top:-240px;background:rgba(76,111,255,.30);filter:blur(24px)}
+.atmo .b2{width:620px;height:620px;left:-220px;top:26%;background:rgba(127,191,164,.25);filter:blur(26px)}
+.atmo .b3{width:520px;height:520px;left:30%;bottom:-300px;background:rgba(201,168,124,.25);filter:blur(22px)}
+.atmo .b4{width:360px;height:360px;right:16%;top:32%;background:rgba(139,155,255,.25);filter:blur(24px)}
+
+/* ================= 顶栏（导航族 · 白玻璃条 blur12 + 靛蓝当前态指示） ================= */
+.topbar{
+  position:relative;z-index:2;
+  margin:18px 24px 0;
+  background:rgba(255,255,255,.66);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:var(--shadow-soft),0 0 0 1px rgba(226,230,242,.45);
+  border-radius:var(--r-card);
+  display:flex;align-items:center;gap:14px;
+  height:58px;padding:0 20px;
+  animation:fadeUp .26s ease-out both;
+}
+.brand{display:flex;align-items:center;gap:9px;font:700 16px/1.25 var(--serif);letter-spacing:.5px;color:var(--text);white-space:nowrap}
+.brand svg{color:var(--cta);flex:none}
+.vline{width:1px;height:22px;background:var(--line);flex:none}
+.chips{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 11px;
+  border-radius:var(--r-tag);
+  background:rgba(255,255,255,.6);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:inset 0 0 0 1px rgba(226,230,242,.4);
+  font:500 11px/1 var(--sans);color:var(--text);white-space:nowrap;
+}
+.chip svg{color:var(--muted)}
+.chip.now{color:var(--cta);font-weight:700}
+.chip.now .pip{width:6px;height:6px;border-radius:50%;background:var(--primary)}
+.chip.hx{font:500 11px/1 var(--mono)}
+/* 素材链接 ×4 · 悬停弹层（玻璃面板） */
+.mat{position:relative}
+.mat .pop{
+  position:absolute;top:calc(100% + 10px);left:0;z-index:40;min-width:236px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 8px 24px rgba(35,40,59,.14);
+  border-radius:var(--r-card);padding:7px;
+  opacity:0;visibility:hidden;transform:translateY(-4px);
+  transition:opacity .2s ease-out,transform .2s ease-out,visibility .2s;
+}
+.mat:hover .pop,.mat:focus-within .pop{opacity:1;visibility:visible;transform:none}
+.pop a{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:var(--r-tag);
+  font:400 12.5px/1.4 var(--sans);color:var(--text);text-decoration:none}
+.pop a svg{color:var(--muted);flex:none}
+.pop a:hover{background:#EEF1FF;color:var(--cta)}
+.pop a:hover svg{color:var(--cta)}
+/* Tabs（靛蓝当前态指示） */
+.tabs{margin-left:auto;display:flex;gap:22px;flex:none}
+.tab{position:relative;padding:8px 2px 10px;font:500 14px/1 var(--sans);color:var(--muted);
+  border-bottom:2px solid transparent;transition:color .2s ease-out}
+.tab:hover{color:var(--text)}
+.tab.on{color:var(--cta);font-weight:700;border-bottom-color:var(--primary)}
+
+/* ================= 主区（单栏文档流 · 264 步骤列 + 决策面板） ================= */
+.wrap{
+  position:relative;z-index:1;
+  max-width:1240px;margin:24px auto 44px;padding:0 32px;
+  display:grid;grid-template-columns:264px minmax(0,1fr);gap:24px;align-items:start;
+}
+
+/* ---- 左 · 步骤列（纸白实底 · 不玻璃） ---- */
+.rail{
+  background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r-card);
+  box-shadow:var(--shadow-soft);padding:18px 14px 16px;
+  animation:fadeUp .26s ease-out .04s both;
+}
+.rail-cap{display:flex;align-items:center;gap:8px;padding:0 6px 12px;
+  font:400 11px/1 var(--mono);letter-spacing:1.5px;color:var(--muted)}
+.rail-cap::after{content:'';flex:1;height:1px;background:var(--line)}
+.steps{list-style:none;position:relative}
+.steps::before{content:'';position:absolute;left:16.5px;top:26px;bottom:30px;width:1px;background:var(--line)}
+.step{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;padding:8px 6px;align-items:start}
+.step .ic{position:relative;z-index:1;width:22px;height:22px;border-radius:50%;
+  display:grid;place-items:center;background:#EAF4EF;border:1px solid rgba(61,139,110,.28);color:var(--ok)}
+.step b{display:block;font:700 14px/1.45 var(--sans);color:var(--text)}
+.step small{display:block;font:400 12.5px/1.5 var(--sans);color:var(--muted)}
+/* 当前步 · 块面声明（实底反白） */
+.step.now{
+  margin:10px 2px;padding:13px 12px;
+  grid-template-columns:22px minmax(0,1fr);gap:10px;
+  background:var(--cta);border:1px solid rgba(255,255,255,.38);
+  border-radius:var(--r-card);
+  box-shadow:0 8px 20px rgba(53,80,196,.30),var(--shadow-cta);
+}
+.step.now .ic{background:transparent;border:1.6px solid rgba(255,255,255,.9);color:#fff;width:20px;height:20px;margin-top:2px}
+.step.now .ic i{width:6px;height:6px;border-radius:50%;background:#fff;display:block}
+.step.now b{font:700 16px/1.35 var(--serif);color:#fff;letter-spacing:.3px}
+.step.now small{color:rgba(255,255,255,.9);font-size:12.5px}
+/* 未至步 */
+.todo{margin-top:14px;padding:12px 6px 2px;border-top:1px dashed var(--line)}
+.todo-cap{font:400 11px/1 var(--mono);letter-spacing:1.5px;color:var(--muted);margin-bottom:6px}
+.todo ul{list-style:none}
+.todo li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:center;padding:6.5px 6px;
+  font:400 12.5px/1.5 var(--sans);color:var(--muted)}
+.todo li .ring{width:8px;height:8px;border-radius:50%;border:1.5px solid #B9C2D6;margin:0 auto;display:block}
+
+/* ---- 右 · 决策面板（文档头 · 大字衬线） ---- */
+.doc{min-width:0}
+.eyebrow{display:flex;align-items:center;gap:12px;
+  font:400 11px/1 var(--mono);letter-spacing:2px;color:var(--cta)}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--line)}
+.doc h1{font:900 32px/1.25 var(--serif);color:var(--text);letter-spacing:.5px;margin:12px 0 8px}
+.doc h1 .acc{color:var(--cta)}
+.doc .sub{font:400 14px/1.7 var(--sans);color:var(--muted)}
+.hint{margin-top:16px;max-width:72ch;border-left:3px solid var(--primary);
+  padding:2px 0 2px 14px;font:400 14px/1.75 var(--sans);color:var(--text)}
+.hint .k{color:var(--cta);font-weight:700}
+.head-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:28px;align-items:start}
+
+/* ---- 浅底代码块（恒实底 · 行内高亮 · 行内色板） ---- */
+.code{
+  margin-top:4px;background:#EEF1FF;border:1px solid #D6DCFF;border-radius:var(--r-card);
+  box-shadow:var(--shadow-soft);overflow:hidden;
+  animation:fadeUp .26s ease-out .08s both;
+}
+.code-head{display:flex;align-items:center;justify-content:space-between;
+  padding:9px 14px;border-bottom:1px solid #D6DCFF;
+  font:400 11px/1 var(--mono);color:var(--cta)}
+.code-head .fn{display:flex;align-items:center;gap:7px;font-weight:700;letter-spacing:.5px}
+.code-head .meta{color:var(--muted);letter-spacing:1px}
+.code-body{padding:12px 16px 14px;font:400 12.5px/2.0 var(--mono)}
+.cl{display:flex;align-items:center;gap:9px;white-space:nowrap}
+.cl .prop{color:var(--cta)}
+.cl .val{color:var(--text);font-weight:700}
+.cl .cm{color:var(--muted)}
+.cl .cm2{color:var(--cta)}
+.cl .dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(35,40,59,.10);flex:none}
+
+/* ---- 候选卡（白玻璃 · 双层玻璃 · 2 列网格 gap20） ---- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+.card{
+  --acc:#3550C4;
+  position:relative;min-width:0;
+  background:rgba(255,255,255,.66);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.85);
+  border-radius:var(--r-card);
+  box-shadow:var(--shadow-soft),0 0 0 1px rgba(226,230,242,.5);
+  padding:22px 24px;
+  animation:fadeUp .28s ease-out both;
+}
+.card:nth-child(1){animation-delay:.04s}
+.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.12s}
+.card:nth-child(4){animation-delay:.16s}
+.card.chosen{--acc:#3550C4;
+  box-shadow:0 8px 24px rgba(76,111,255,.16),0 0 0 1.5px var(--primary)}
+.card-head{display:flex;align-items:flex-start;gap:12px}
+.idx{width:40px;height:40px;flex:none;border-radius:var(--r-ctl);
+  display:grid;place-items:center;
+  font:700 20px/1 var(--serif);color:var(--acc);
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:inset 0 0 0 1px rgba(226,230,242,.45);
+}
+.card-head h3{font:700 20px/1.3 var(--serif);color:var(--text);letter-spacing:.3px}
+.card-head .cpt{font:400 12.5px/1.6 var(--sans);color:var(--muted);margin-top:3px}
+.badge{
+  margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;
+  background:var(--cta);color:#fff;border:1px solid rgba(255,255,255,.38);border-radius:var(--r-ctl);
+  box-shadow:var(--shadow-cta);font:700 12.5px/1 var(--sans);letter-spacing:.5px;
+}
+.sec{margin-top:17px}
+.sec-label{display:flex;justify-content:space-between;align-items:baseline;
+  font:400 11px/1 var(--mono);letter-spacing:1.5px;color:var(--muted);margin-bottom:8px}
+.sec-label .cnt{letter-spacing:.5px}
+/* 色阶 ramp */
+.ramp{display:flex;gap:6px}
+.swr{flex:1;min-width:0}
+.swr .sw{height:36px;border-radius:var(--r-tag);border:1px solid rgba(35,40,59,.08)}
+.swr .hx{display:block;text-align:center;font:400 11px/1 var(--mono);color:var(--text);
+  margin-top:5px;white-space:nowrap}
+/* 语义色 ×8 */
+.sem{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
+.cell{min-width:0}
+.cell .sw{height:22px;border-radius:var(--r-tag);border:1px solid rgba(35,40,59,.08)}
+.cell .role{display:block;text-align:center;font:400 11px/1.2 var(--sans);color:var(--muted);margin-top:4px;white-space:nowrap}
+.cell .hx{display:block;text-align:center;font:400 11px/1.2 var(--mono);color:var(--text);margin-top:1px;white-space:nowrap}
+/* 状态色 ×3（玻璃状态签 r6） */
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;gap:7px;height:27px;padding:0 11px;
+  border-radius:var(--r-tag);
+  background:rgba(255,255,255,.6);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:inset 0 0 0 1px rgba(226,230,242,.4);
+}
+.tag i{width:8px;height:8px;border-radius:50%;flex:none}
+.tag .nm{font:700 12.5px/1 var(--sans);color:var(--text)}
+.tag .hx{font:400 11px/1 var(--mono);color:var(--muted)}
+/* 字阶两档真渲染（长文区 · 退纯白实底） */
+.type{background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r-ctl);padding:14px 16px 13px}
+.type .t1{font:700 20px/1.3 var(--sans);color:var(--acc);letter-spacing:.3px}
+.type .t2{font:400 14px/1.7 var(--sans);color:var(--text);margin-top:6px}
+.type .t3{font:400 11px/1.6 var(--mono);color:var(--muted);margin-top:9px}
+.card.mono .type .t2{font:400 14px/1.7 var(--mono)}
+/* 尾注 */
+.foot{margin-top:17px;padding-top:12px;border-top:1px dashed var(--line);
+  font:400 12.5px/1.7 var(--sans);color:var(--text)}
+.foot .k{color:var(--cta);font-weight:700}
+
+/* ---- 页脚铭牌 ---- */
+.colo{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:30px;padding-top:14px;border-top:1px solid var(--line);
+  font:400 11px/1.6 var(--mono);letter-spacing:1px;color:var(--muted)}
+
+/* ================= 动效（淡入+位移 200-300ms · ease-out · 禁视差） ================= */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* ================= 响应式（1440 基准 · 1024 不塌 · <1200 卡片降单列） ================= */
+@media (max-width:1200px){
+  .wrap{grid-template-columns:232px minmax(0,1fr);gap:20px;padding:0 24px}
+  .head-grid{grid-template-columns:1fr}
+  .code{max-width:560px}
+  .cards{grid-template-columns:1fr}
+  .doc h1{font-size:28px}
+}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  .topbar{flex-wrap:wrap;height:auto;padding:12px 16px;gap:10px}
+  .tabs{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- 氛围斑 -->
+<div class="atmo" aria-hidden="true">
+  <i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i>
+</div>
+
+<!-- 顶栏：工作台自举 · 共创工作台｜决策链 v1｜第三步 设计令牌｜素材链接×4 ｜ Tab 工作台/预览 -->
+<header class="topbar">
+  <div class="brand">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+    工作台自举 · 共创工作台
+  </div>
+  <span class="vline" aria-hidden="true"></span>
+  <div class="chips">
+    <span class="chip">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
+      决策链 v1
+    </span>
+    <span class="chip now"><span class="pip" aria-hidden="true"></span>第三步 设计令牌</span>
+    <span class="chip mat" tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+      素材链接×4
+      <span class="pop" role="menu">
+        <a href="../原始组件库规范.html"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>原始组件库规范.html</a>
+        <a href="../原始参考令牌库.html"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>原始参考令牌库.html</a>
+        <a href="../品牌设计语言.html"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>品牌设计语言.html</a>
+        <a href="../原始图标库.html"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>原始图标库.html</a>
+      </span>
+    </span>
+  </div>
+  <nav class="tabs" aria-label="视图切换">
+    <button class="tab on" type="button" aria-current="page">工作台</button>
+    <button class="tab" type="button" title="样品页仅含工作台视图">预览</button>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- 左 · 步骤列 -->
+  <aside class="rail" aria-label="决策步骤列">
+    <div class="rail-cap">DECISION CHAIN · v1</div>
+    <ol class="steps">
+      <li class="step">
+        <span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span><b>第〇步 画像</b></span>
+      </li>
+      <li class="step">
+        <span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span><b>第一步 外部输入</b><small>4 条约束</small></span>
+      </li>
+      <li class="step">
+        <span class="ic"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span><b>第二步 风格定义层</b><small>文档编辑风</small></span>
+      </li>
+      <li class="step now">
+        <span class="ic"><i aria-hidden="true"></i></span>
+        <span><b>第三步 设计令牌</b><small>靛蓝纸底撞色文气</small></span>
+      </li>
+    </ol>
+    <div class="todo">
+      <div class="todo-cap">3~8 · 未至步</div>
+      <ul>
+        <li><span class="ring" aria-hidden="true"></span>组件风格</li>
+        <li><span class="ring" aria-hidden="true"></span>图片素材</li>
+        <li><span class="ring" aria-hidden="true"></span>图标风格</li>
+        <li><span class="ring" aria-hidden="true"></span>查漏</li>
+        <li><span class="ring" aria-hidden="true"></span>样品页</li>
+        <li><span class="ring" aria-hidden="true"></span>收尾</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- 右 · 决策面板 -->
+  <section class="doc">
+    <div class="head-grid">
+      <div>
+        <div class="eyebrow">STEP 03 · DESIGN TOKENS · CANDIDATES ×4</div>
+        <h1>第三步 <span class="acc">设计令牌</span></h1>
+        <p class="sub">风格/主色/字体/字阶拼装为设计令牌 · 并排方向卡（组件形态不在此步）</p>
+        <p class="hint">四张令牌方向卡（底座 = 文档编辑风家族锚 × 清新约束；uupm 交叉验证已实测）。单选或排序，回复<span class="k">「选 N」</span>/ 描述微调 /「再来一批」。圆角/阴影/组件形态在第四步。</p>
+      </div>
+
+      <!-- 浅底代码块 · 已选令牌速览（恒实底 · 行内高亮 · 行内色板） -->
+      <div class="code" role="img" aria-label="已选令牌速览代码块">
+        <div class="code-head">
+          <span class="fn">tokens.chosen.css</span>
+          <span class="meta">9 TOKENS · LOCKED</span>
+        </div>
+        <div class="code-body">
+          <div class="cl"><span class="cm2">/* 第三步 · 已选定 · 靛蓝纸底（文气） */</span></div>
+          <div class="cl"><span class="prop">--bg</span><span>:</span><span class="val">#FAFAF7</span><span class="cm">/* 暖纸底 */</span><span class="dot" style="background:#FAFAF7"></span></div>
+          <div class="cl"><span class="prop">--primary</span><span>:</span><span class="val">#4C6FFF</span><span class="cm">/* 靛蓝 */</span><span class="dot" style="background:#4C6FFF"></span></div>
+          <div class="cl"><span class="prop">--cta</span><span>:</span><span class="val">#3550C4</span><span class="dot" style="background:#3550C4"></span></div>
+          <div class="cl"><span class="prop">--text</span><span>:</span><span class="val">#23283B</span><span class="dot" style="background:#23283B"></span></div>
+          <div class="cl"><span class="prop">--muted</span><span>:</span><span class="val">#7C86A0</span><span class="dot" style="background:#7C86A0"></span></div>
+          <div class="cl"><span class="prop">--border</span><span>:</span><span class="val">#E2E6F2</span><span class="dot" style="background:#E2E6F2"></span></div>
+          <div class="cl"><span class="prop">--success</span><span>:</span><span class="val">#3D8B6E</span><span class="dot" style="background:#3D8B6E"></span></div>
+          <div class="cl"><span class="prop">--warning</span><span>:</span><span class="val">#D9932C</span><span class="dot" style="background:#D9932C"></span></div>
+          <div class="cl"><span class="prop">--danger</span><span>:</span><span class="val">#C75450</span><span class="dot" style="background:#C75450"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 张令牌候选卡 -->
+    <div class="cards">
+
+      <!-- 卡 1 雾青 -->
+      <article class="card" style="--acc:#2C664F">
+        <div class="card-head">
+          <span class="idx" aria-hidden="true">壹</span>
+          <div>
+            <h3>雾青 · 同色系层次</h3>
+            <div class="cpt">同色系层次 · 最贴「清新」本义</div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>色阶 RAMP</span><span class="cnt">×5 · 深→最浅</span></div>
+          <div class="ramp">
+            <span class="swr"><span class="sw" style="background:#2C664F"></span><span class="hx">#2C664F</span></span>
+            <span class="swr"><span class="sw" style="background:#3D8B6E"></span><span class="hx">#3D8B6E</span></span>
+            <span class="swr"><span class="sw" style="background:#7FBFA4"></span><span class="hx">#7FBFA4</span></span>
+            <span class="swr"><span class="sw" style="background:#CDE7DC"></span><span class="hx">#CDE7DC</span></span>
+            <span class="swr"><span class="sw" style="background:#EAF4EF"></span><span class="hx">#EAF4EF</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>语义色 SEMANTIC</span><span class="cnt">×8</span></div>
+          <div class="sem">
+            <span class="cell"><span class="sw" style="background:#2C664F"></span><span class="role">CTA</span><span class="hx">#2C664F</span></span>
+            <span class="cell"><span class="sw" style="background:#3D8B6E"></span><span class="role">主色</span><span class="hx">#3D8B6E</span></span>
+            <span class="cell"><span class="sw" style="background:#7FBFA4"></span><span class="role">次色</span><span class="hx">#7FBFA4</span></span>
+            <span class="cell"><span class="sw" style="background:#FBFCFB"></span><span class="role">底色</span><span class="hx">#FBFCFB</span></span>
+            <span class="cell"><span class="sw" style="background:#F4F6F5"></span><span class="role">面色</span><span class="hx">#F4F6F5</span></span>
+            <span class="cell"><span class="sw" style="background:#26312C"></span><span class="role">正文</span><span class="hx">#26312C</span></span>
+            <span class="cell"><span class="sw" style="background:#8A9791"></span><span class="role">次文</span><span class="hx">#8A9791</span></span>
+            <span class="cell"><span class="sw" style="background:#E4E9E7"></span><span class="role">边框</span><span class="hx">#E4E9E7</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>状态色 STATUS</span><span class="cnt">×3</span></div>
+          <div class="stats">
+            <span class="tag"><i style="background:#3D8B6E"></i><span class="nm">成功</span><span class="hx">#3D8B6E</span></span>
+            <span class="tag"><i style="background:#D9932C"></i><span class="nm">警告</span><span class="hx">#D9932C</span></span>
+            <span class="tag"><i style="background:#C75450"></i><span class="nm">危险</span><span class="hx">#C75450</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>字阶两档真渲染 TYPE 20 / 14</span><span class="cnt">head 思源黑体</span></div>
+          <div class="type">
+            <div class="t1">雾青 · 同色系层次</div>
+            <div class="t2">同色系层次 · 最贴「清新」本义，绿阶深浅同源。</div>
+            <div class="t3">head 思源黑体 × body 思源黑体 · scale 28 / 20 / 16 / 14 / 12.5 / 11</div>
+          </div>
+        </div>
+        <div class="foot">会话回复<span class="k">『选 1』</span>采纳此候选；或描述微调 /「再来一批」。</div>
+      </article>
+
+      <!-- 卡 2 靛蓝纸底（已选定） -->
+      <article class="card chosen" style="--acc:#3550C4">
+        <div class="card-head">
+          <span class="idx" aria-hidden="true">贰</span>
+          <div>
+            <h3>靛蓝纸底 · 撞色强调（文气）</h3>
+            <div class="cpt">撞色强调 · 暖纸底×冷靛蓝 · editorial 文气</div>
+          </div>
+          <span class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>已选定 ✓</span>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>色阶 RAMP</span><span class="cnt">×5 · 深→最浅</span></div>
+          <div class="ramp">
+            <span class="swr"><span class="sw" style="background:#3550C4"></span><span class="hx">#3550C4</span></span>
+            <span class="swr"><span class="sw" style="background:#4C6FFF"></span><span class="hx">#4C6FFF</span></span>
+            <span class="swr"><span class="sw" style="background:#8B9BFF"></span><span class="hx">#8B9BFF</span></span>
+            <span class="swr"><span class="sw" style="background:#D6DCFF"></span><span class="hx">#D6DCFF</span></span>
+            <span class="swr"><span class="sw" style="background:#EEF1FF"></span><span class="hx">#EEF1FF</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>语义色 SEMANTIC</span><span class="cnt">×8</span></div>
+          <div class="sem">
+            <span class="cell"><span class="sw" style="background:#3550C4"></span><span class="role">CTA</span><span class="hx">#3550C4</span></span>
+            <span class="cell"><span class="sw" style="background:#4C6FFF"></span><span class="role">主色</span><span class="hx">#4C6FFF</span></span>
+            <span class="cell"><span class="sw" style="background:#8B9BFF"></span><span class="role">次色</span><span class="hx">#8B9BFF</span></span>
+            <span class="cell"><span class="sw" style="background:#FAFAF7"></span><span class="role">底色</span><span class="hx">#FAFAF7</span></span>
+            <span class="cell"><span class="sw" style="background:#F5F4F0"></span><span class="role">面色</span><span class="hx">#F5F4F0</span></span>
+            <span class="cell"><span class="sw" style="background:#23283B"></span><span class="role">正文</span><span class="hx">#23283B</span></span>
+            <span class="cell"><span class="sw" style="background:#7C86A0"></span><span class="role">次文</span><span class="hx">#7C86A0</span></span>
+            <span class="cell"><span class="sw" style="background:#E2E6F2"></span><span class="role">边框</span><span class="hx">#E2E6F2</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>状态色 STATUS</span><span class="cnt">×3</span></div>
+          <div class="stats">
+            <span class="tag"><i style="background:#3D8B6E"></i><span class="nm">成功</span><span class="hx">#3D8B6E</span></span>
+            <span class="tag"><i style="background:#D9932C"></i><span class="nm">警告</span><span class="hx">#D9932C</span></span>
+            <span class="tag"><i style="background:#C75450"></i><span class="nm">危险</span><span class="hx">#C75450</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>字阶两档真渲染 TYPE 20 / 14</span><span class="cnt">head 思源宋体</span></div>
+          <div class="type">
+            <div class="t1" style="font-family:var(--serif);font-weight:700">靛蓝纸底 · 撞色强调</div>
+            <div class="t2">暖纸底×冷靛蓝，editorial 文气——思源宋标题 × 思源黑正文。</div>
+            <div class="t3">head 思源宋体 × body 思源黑体 · scale 28 / 20 / 16 / 14 / 12.5 / 11</div>
+          </div>
+        </div>
+        <div class="foot">会话回复<span class="k">『选 2』</span>维持当前定稿；回复其他编号可随时切换。</div>
+      </article>
+
+      <!-- 卡 3 青瓷 -->
+      <article class="card" style="--acc:#1F5C5C">
+        <div class="card-head">
+          <span class="idx" aria-hidden="true">叁</span>
+          <div>
+            <h3>青瓷 · 邻近协调</h3>
+            <div class="cpt">邻近色协调 · 比雾青冷半度 · 精密感</div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>色阶 RAMP</span><span class="cnt">×5 · 深→最浅</span></div>
+          <div class="ramp">
+            <span class="swr"><span class="sw" style="background:#1F5C5C"></span><span class="hx">#1F5C5C</span></span>
+            <span class="swr"><span class="sw" style="background:#2E8B8B"></span><span class="hx">#2E8B8B</span></span>
+            <span class="swr"><span class="sw" style="background:#6FB3B3"></span><span class="hx">#6FB3B3</span></span>
+            <span class="swr"><span class="sw" style="background:#C2DEDE"></span><span class="hx">#C2DEDE</span></span>
+            <span class="swr"><span class="sw" style="background:#E9F3F3"></span><span class="hx">#E9F3F3</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>语义色 SEMANTIC</span><span class="cnt">×8</span></div>
+          <div class="sem">
+            <span class="cell"><span class="sw" style="background:#1F5C5C"></span><span class="role">CTA</span><span class="hx">#1F5C5C</span></span>
+            <span class="cell"><span class="sw" style="background:#2E8B8B"></span><span class="role">主色</span><span class="hx">#2E8B8B</span></span>
+            <span class="cell"><span class="sw" style="background:#6FB3B3"></span><span class="role">次色</span><span class="hx">#6FB3B3</span></span>
+            <span class="cell"><span class="sw" style="background:#F8FAF9"></span><span class="role">底色</span><span class="hx">#F8FAF9</span></span>
+            <span class="cell"><span class="sw" style="background:#F0F4F4"></span><span class="role">面色</span><span class="hx">#F0F4F4</span></span>
+            <span class="cell"><span class="sw" style="background:#1F2E2E"></span><span class="role">正文</span><span class="hx">#1F2E2E</span></span>
+            <span class="cell"><span class="sw" style="background:#7E9696"></span><span class="role">次文</span><span class="hx">#7E9696</span></span>
+            <span class="cell"><span class="sw" style="background:#DDE8E8"></span><span class="role">边框</span><span class="hx">#DDE8E8</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>状态色 STATUS</span><span class="cnt">×3</span></div>
+          <div class="stats">
+            <span class="tag"><i style="background:#2E8B8B"></i><span class="nm">成功</span><span class="hx">#2E8B8B</span></span>
+            <span class="tag"><i style="background:#D9932C"></i><span class="nm">警告</span><span class="hx">#D9932C</span></span>
+            <span class="tag"><i style="background:#C75450"></i><span class="nm">危险</span><span class="hx">#C75450</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>字阶两档真渲染 TYPE 20 / 14</span><span class="cnt">head 思源黑体</span></div>
+          <div class="type">
+            <div class="t1">青瓷 · 邻近协调</div>
+            <div class="t2">邻近色协调，比雾青冷半度——精密感。</div>
+            <div class="t3">head 思源黑体 × body 思源黑体 · scale 28 / 20 / 16 / 14 / 12.5 / 11</div>
+          </div>
+        </div>
+        <div class="foot">会话回复<span class="k">『选 3』</span>采纳此候选；或描述微调 /「再来一批」。</div>
+      </article>
+
+      <!-- 卡 4 苔绿纸感 -->
+      <article class="card mono" style="--acc:#3F6640">
+        <div class="card-head">
+          <span class="idx" aria-hidden="true">肆</span>
+          <div>
+            <h3>苔绿纸感 · 双色调 + 等宽</h3>
+            <div class="cpt">双色调 · JetBrains Mono 强化代码块候选气质</div>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>色阶 RAMP</span><span class="cnt">×3 · 双色调</span></div>
+          <div class="ramp">
+            <span class="swr"><span class="sw" style="background:#5A8A5A"></span><span class="hx">#5A8A5A</span></span>
+            <span class="swr"><span class="sw" style="background:#C9A87C"></span><span class="hx">#C9A87C</span></span>
+            <span class="swr"><span class="sw" style="background:#3F6640"></span><span class="hx">#3F6640</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>语义色 SEMANTIC</span><span class="cnt">×8</span></div>
+          <div class="sem">
+            <span class="cell"><span class="sw" style="background:#3F6640"></span><span class="role">CTA</span><span class="hx">#3F6640</span></span>
+            <span class="cell"><span class="sw" style="background:#5A8A5A"></span><span class="role">主色</span><span class="hx">#5A8A5A</span></span>
+            <span class="cell"><span class="sw" style="background:#C9A87C"></span><span class="role">次色</span><span class="hx">#C9A87C</span></span>
+            <span class="cell"><span class="sw" style="background:#F7F6F2"></span><span class="role">底色</span><span class="hx">#F7F6F2</span></span>
+            <span class="cell"><span class="sw" style="background:#F2F0EA"></span><span class="role">面色</span><span class="hx">#F2F0EA</span></span>
+            <span class="cell"><span class="sw" style="background:#2A2E26"></span><span class="role">正文</span><span class="hx">#2A2E26</span></span>
+            <span class="cell"><span class="sw" style="background:#8A9184"></span><span class="role">次文</span><span class="hx">#8A9184</span></span>
+            <span class="cell"><span class="sw" style="background:#E5E3DA"></span><span class="role">边框</span><span class="hx">#E5E3DA</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>状态色 STATUS</span><span class="cnt">×3</span></div>
+          <div class="stats">
+            <span class="tag"><i style="background:#5A8A5A"></i><span class="nm">成功</span><span class="hx">#5A8A5A</span></span>
+            <span class="tag"><i style="background:#C9A87C"></i><span class="nm">警告</span><span class="hx">#C9A87C</span></span>
+            <span class="tag"><i style="background:#C75450"></i><span class="nm">危险</span><span class="hx">#C75450</span></span>
+          </div>
+        </div>
+        <div class="sec">
+          <div class="sec-label"><span>字阶两档真渲染 TYPE 20 / 14</span><span class="cnt">head 思源黑体 + mono</span></div>
+          <div class="type">
+            <div class="t1">苔绿纸感 · 双色调 + 等宽</div>
+            <div class="t2">JetBrains Mono 强化代码块候选气质。</div>
+            <div class="t3">head 思源黑体 × body 思源黑体 · mono 标注 · scale 28 / 20 / 16 / 14 / 12.5 / 11</div>
+          </div>
+        </div>
+        <div class="foot">会话回复<span class="k">『选 4』</span>采纳此候选；或描述微调 /「再来一批」。</div>
+      </article>
+
+    </div>
+
+    <div class="colo">
+      <span>样品页 · 工作台首屏 · 诠释 C · 反向试探</span>
+      <span>PC 1440 基准 · 静玻璃 × 文档编辑风 · Feather 线性</span>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

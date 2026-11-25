@@ -1,0 +1,28 @@
+# 插件/系统自带技能，不跟踪
+plugin-tool-bilibili/
+plugin-web-bilibili/
+
+# 残留目录（无 SKILL.md，仅 qa 文件），用户确认排除
+hifi-editable-gui-ux-design/
+
+# DSH 自身管理文件
+.disable_to_model_invocation_migration.json
+.model_invocation_to_override_migration.json
+
+# 依赖包：本地保留，不入库（npm install 重装）
+node_modules/
+
+# AI 抠图模型：单文件超 GitHub 100MB 上限，仅本地保留
+**/models/*.onnx
+
+# 私人技能：不上仓库（详见 skills-index/INDEX.md）
+solo-img-line-cy-gpt-image-rpa/
+solo-tool-line-cy-wiki-card-gen/
+solo-ue-line-cy-wiki-demo-gen/
+
+# 社区技能按用户裁决不上仓库
+solo-dev-line-matt-*/
+flow-ue-line-xjk-*/
+solo-doc-line-anthropic-*/
+# 嵌套仓库历史备份：仅本地保留，不入库
+.git-bak/

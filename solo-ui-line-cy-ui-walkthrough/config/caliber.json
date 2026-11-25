@@ -1,0 +1,14 @@
+{
+  "$comment": "技能缺省口径（通用常识线，项目无关）。项目差异（渐变令牌清单/品牌豁免/隐藏选择器/query 约定/视口档）由被审项目注入覆盖——禁止把任何项目的具体值写进本文件。间距刻度：有契约按契约刻度表，无契约用事实基线众数，均不询问用户。",
+  "gradient_tokens": [],
+  "brand_exemptions": [],
+  "hide_selectors": [],
+  "query_convention": "",
+  "font_floor_body": 12,
+  "font_floor_hint": 11,
+  "touch_min_px": 22,
+  "touch_suggest_px": 44,
+  "z_index_tiers": ["z-dropdown", "z-modal", "z-toast"],
+  "viewports": { "fast": [390], "standard": [390, 1440], "deep": [320, 375, 390, 768, 1440] },
+  "themes": { "fast": ["light"], "standard": ["light"], "deep": ["light", "dark"] }
+}

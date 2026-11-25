@@ -1,0 +1,893 @@
+{
+  "meta": {
+    "system": "跑腿服务用户端",
+    "system_en": "ERRAND-RUNNING USER APP",
+    "version": "v1.1.0",
+    "source_of_truth": "system-spec/design-system.html（定案版）",
+    "note": "本 json 与 system-rules.md / design-system.html 为同一内容的三种构造，均从定案 HTML 派生；原始提取数据（middle/normalized）为过程留物，见 work/，不属于交付物。",
+    "extract_source": "Figma 导出 HTML 4 页 · 6189 条样式声明",
+    "extract_date": "2026-10-16",
+    "token_total": "131（基础 35 / 语义 29 / 组件 22 / 度量 45）",
+    "components": "18"
+  },
+  "values": [
+    {
+      "name": "一致 Consistent",
+      "desc": "4 页稿纸同类元素完全同参：卡片一律 r24 + 蓝调阴影，状态标签一律 12% tint 底 + 同色文字。"
+    },
+    {
+      "name": "明确 Explicit",
+      "desc": "状态用颜色+文字双通道（橙=进行中、绿=已完成），蓝只给可操作元素。"
+    },
+    {
+      "name": "高效 Efficient",
+      "desc": "主行动永远是蓝渐变胶囊，页面内唯一强按钮，不与用户抢决策。"
+    },
+    {
+      "name": "可生长 Scalable",
+      "desc": "131 个 token 四段分层；新场景先取档，取不到再按 4pt 网格补档并回填本文件。"
+    }
+  ],
+  "tokens": {
+    "primitive": [
+      {
+        "name": "blue-500",
+        "value": "#2196F3",
+        "usage": "品牌主色：选中态、可点击文字、主图标底、底部标签选中"
+      },
+      {
+        "name": "blue-600",
+        "value": "#038CFA",
+        "usage": "首页顶部横幅纯色底"
+      },
+      {
+        "name": "blue-700",
+        "value": "#067AFA",
+        "usage": "主按钮渐变深端"
+      },
+      {
+        "name": "blue-450",
+        "value": "#0D96FB",
+        "usage": "主按钮渐变浅端"
+      },
+      {
+        "name": "orange-600",
+        "value": "#FC6014",
+        "usage": "横幅运行状态小圆点"
+      },
+      {
+        "name": "orange-400",
+        "value": "#FF8A37",
+        "usage": "服务图标圆底渐变浅端"
+      },
+      {
+        "name": "orange-350",
+        "value": "#FB9C3C",
+        "usage": "消息图标底渐变浅端"
+      },
+      {
+        "name": "orange-650",
+        "value": "#FB721F",
+        "usage": "消息图标底渐变深端"
+      },
+      {
+        "name": "gray-900",
+        "value": "#20252C",
+        "usage": "主标题/正文文字、home 指示条、时间线图标白字反"
+      },
+      {
+        "name": "ink-800",
+        "value": "#1A1A1A",
+        "usage": "状态栏深色图形元素、消息标题（SF Pro 数字场景"
+      },
+      {
+        "name": "gray-700",
+        "value": "#444444",
+        "usage": "辅助说明文字（隐藏态元信息）"
+      },
+      {
+        "name": "gray-600",
+        "value": "#666666",
+        "usage": "次级文字：顶部页签未选中项"
+      },
+      {
+        "name": "gray-550",
+        "value": "#626A76",
+        "usage": "次按钮文字、分段控件未选中项"
+      },
+      {
+        "name": "gray-500",
+        "value": "#999999",
+        "usage": "底部标签栏未选中文字"
+      },
+      {
+        "name": "gray-450",
+        "value": "#979CA5",
+        "usage": "次级说明文字（地址描述、时间、详情值）"
+      },
+      {
+        "name": "gray-400",
+        "value": "#8D99A8",
+        "usage": "消息预览文字"
+      },
+      {
+        "name": "gray-350",
+        "value": "#A8B2BD",
+        "usage": "消息时间戳"
+      },
+      {
+        "name": "gray-320",
+        "value": "#7E8A99",
+        "usage": "隐藏态元信息文字（低频）"
+      },
+      {
+        "name": "gray-300",
+        "value": "#73777F",
+        "usage": "隐藏态元信息文字（低频）"
+      },
+      {
+        "name": "gray-50",
+        "value": "#F6F7F9",
+        "usage": "图标占位浅灰底（48px 容器）"
+      },
+      {
+        "name": "line-100",
+        "value": "#E9ECF1",
+        "usage": "分隔线（1-2px）、描边胶囊边框、骑手标记分隔"
+      },
+      {
+        "name": "line-200",
+        "value": "#E2E6EA",
+        "usage": "导航胶囊描边、状态栏分隔竖线"
+      },
+      {
+        "name": "mist-50",
+        "value": "#F0F7FD",
+        "usage": "页面底色（4 页容器实测一致）；横幅→页面过渡渐隐的"
+      },
+      {
+        "name": "warm-50",
+        "value": "#FEF7EE",
+        "usage": "首页横幅暖白渐变浅端"
+      },
+      {
+        "name": "warm-25",
+        "value": "#FFFDFB",
+        "usage": "首页横幅暖白渐变深端"
+      },
+      {
+        "name": "ice-50",
+        "value": "#F5FBFF",
+        "usage": "个人中心资料卡渐变起点（30% 处）"
+      },
+      {
+        "name": "ice-200",
+        "value": "#D8EEFF",
+        "usage": "个人中心资料卡渐变终点"
+      },
+      {
+        "name": "white",
+        "value": "#FFFFFF",
+        "usage": "卡片底、反白文字、描边环"
+      },
+      {
+        "name": "black",
+        "value": "#000000",
+        "usage": "浅底页状态栏时间/图形（消息页）、资料卡名字"
+      },
+      {
+        "name": "ink-map-body",
+        "value": "#1F2429",
+        "usage": "地图骑手标记身体胶囊"
+      },
+      {
+        "name": "ink-map-head",
+        "value": "#21262E",
+        "usage": "地图骑手标记头部圆"
+      },
+      {
+        "name": "warning",
+        "value": "#FF7B28",
+        "usage": "进行中/等待状态标签文字、强调文字；状态标签底为其"
+      },
+      {
+        "name": "success",
+        "value": "#4CAF50",
+        "usage": "已完成状态标签文字；标签底为其 12% 透明色"
+      },
+      {
+        "name": "danger",
+        "value": "#D44737",
+        "usage": "删除操作描边（删除图标 0.5px（@2x 1px）"
+      },
+      {
+        "name": "danger-tint",
+        "value": "#FCEDEA",
+        "usage": "删除图标浅红底"
+      }
+    ],
+    "semantic": [
+      {
+        "token": "--color-text-primary",
+        "value": "#20252C",
+        "usage": "标题与正文主文字"
+      },
+      {
+        "token": "--color-text-secondary",
+        "value": "#979CA5",
+        "usage": "次级说明（地址详情、时间、信息值）"
+      },
+      {
+        "token": "--color-text-tertiary",
+        "value": "#666666",
+        "usage": "页签未选中文字"
+      },
+      {
+        "token": "--color-text-placeholder",
+        "value": "#626A76",
+        "usage": "占位/未选中控件文字"
+      },
+      {
+        "token": "--color-text-caption",
+        "value": "#73777F",
+        "usage": "微字注释（12px 级）"
+      },
+      {
+        "token": "--color-text-inverse",
+        "value": "#FFFFFF",
+        "usage": "深底/彩底上的反白文字"
+      },
+      {
+        "token": "--color-text-brand",
+        "value": "#2196F3",
+        "usage": "品牌色文字：选中页签、卡片操作链接、tabbar 选中"
+      },
+      {
+        "token": "--color-text-accent",
+        "value": "#FF7B28",
+        "usage": "强调/进行中文字（与 warning 同值）"
+      },
+      {
+        "token": "--color-text-success",
+        "value": "#4CAF50",
+        "usage": "完成态文字"
+      },
+      {
+        "token": "--color-bg-shell",
+        "value": "#F0F7FD",
+        "usage": "AI 补全：材料 body 为导出兜底色非设计值，壳层与页面同底"
+      },
+      {
+        "token": "--color-bg-page",
+        "value": "#F0F7FD",
+        "usage": "页面主区底（4 页容器实测一致）"
+      },
+      {
+        "token": "--color-bg-card",
+        "value": "#FFFFFF",
+        "usage": "卡片底"
+      },
+      {
+        "token": "--color-bg-subtle",
+        "value": "#F6F7F9",
+        "usage": "浅灰图标占位底"
+      },
+      {
+        "token": "--color-bg-banner",
+        "value": "#038CFA",
+        "usage": "首页顶部横幅纯色底"
+      },
+      {
+        "token": "--color-bg-overlay",
+        "value": "rgba(0,0,0,0.4)",
+        "usage": "AI 补全：材料无浮层证据，按移动端惯例给默认遮罩"
+      },
+      {
+        "token": "--color-border",
+        "value": "#E9ECF1",
+        "usage": "默认边框/分隔线色（1-0.96px（@2x 1.92px），全站 19 处实测）"
+      },
+      {
+        "token": "--color-border-default",
+        "value": "#E9ECF1",
+        "usage": "分隔线与胶囊描边（1-1.92px）"
+      },
+      {
+        "token": "--color-border-strong",
+        "value": "#E2E6EA",
+        "usage": "导航胶囊描边（白底上更清晰一档）"
+      },
+      {
+        "token": "--color-action-primary",
+        "value": "#2196F3",
+        "usage": "主操作色：CTA 渐变基色、主按钮系"
+      },
+      {
+        "token": "--color-action-accent",
+        "value": "#FF7B28",
+        "usage": "强调操作色（拨打/进行中操作）"
+      },
+      {
+        "token": "--focus-ring",
+        "value": "0 0 0 1.5px（@2x 3px） rgba(33,150,243,0.35)",
+        "usage": "AI 补全：材料为静态导出无焦点证据，按主色 35% 环给默认"
+      },
+      {
+        "token": "--font-family-base",
+        "value": "\"Noto Sans SC\", \"PingFang SC\", sans-serif",
+        "usage": "中文主字体（111 处实测）"
+      },
+      {
+        "token": "--font-family-numeric",
+        "value": "\"SF Pro\", \"Inter\", sans-serif",
+        "usage": "数字/时间/英文（状态栏、金额、消息时间）"
+      },
+      {
+        "token": "--line-height-body",
+        "value": "1.45",
+        "usage": "正文行高（28/40.6、24/34.8 等实测比值）"
+      },
+      {
+        "token": "--line-height-caption",
+        "value": "1.5",
+        "usage": "小字行高（12/16、14/24 实测）"
+      },
+      {
+        "token": "--icon-size-sm",
+        "value": "24px",
+        "usage": "行内小图标（地址行、箭头、状态点旁）"
+      },
+      {
+        "token": "--icon-size-md",
+        "value": "42px",
+        "usage": "底部标签栏图标（42.31 实测）"
+      },
+      {
+        "token": "--icon-size-lg",
+        "value": "48px",
+        "usage": "卡片内功能图标（消息图标底内）"
+      },
+      {
+        "token": "--color-text-secondary-readable",
+        "value": "#6E747D",
+        "usage": "AI 补全：次级可读文字达标替代档（4.71:1 ✓）；实测稿未出现，待设计确认"
+      }
+    ],
+    "component": [
+      {
+        "token": "--button-bg-primary",
+        "value": "linear-gradient(82.09deg, #0D96FB 0%, #067AFA 100%)",
+        "usage": "卡片尾主操作钮（160×56，订单页 3 处实测）"
+      },
+      {
+        "token": "--button-bg-primary-hero",
+        "value": "linear-gradient(180deg, #0D96FB 0%, #067AFA 100%)",
+        "usage": "首页大主按钮（162×64）"
+      },
+      {
+        "token": "--button-text-primary",
+        "value": "#FFFFFF",
+        "usage": "主按钮文字反白"
+      },
+      {
+        "token": "--button-bg-secondary",
+        "value": "#FFFFFF",
+        "usage": "次按钮白底胶囊（文字 #626A76）"
+      },
+      {
+        "token": "--button-bg-danger",
+        "value": "#D44737",
+        "usage": "AI 补全：材料无危险按钮，按 danger 基色给占位"
+      },
+      {
+        "token": "--tag-bg-status-accent",
+        "value": "rgba(255,123,40,0.12)",
+        "usage": "进行中/等待标签底（104×48 r12）"
+      },
+      {
+        "token": "--tag-text-status-accent",
+        "value": "#FF7B28",
+        "usage": "进行中/等待标签文字"
+      },
+      {
+        "token": "--tag-bg-status-success",
+        "value": "rgba(76,175,80,0.12)",
+        "usage": "已完成标签底"
+      },
+      {
+        "token": "--tag-text-status-success",
+        "value": "#4CAF50",
+        "usage": "已完成标签文字"
+      },
+      {
+        "token": "--tag-bg-brand",
+        "value": "rgba(33,150,243,0.12)",
+        "usage": "AI 补全：品牌 tint 标签底按系统 12% 惯例推（材料未出现）"
+      },
+      {
+        "token": "--card-bg",
+        "value": "#FFFFFF",
+        "usage": "卡片底（全站一致）"
+      },
+      {
+        "token": "--card-shadow",
+        "value": "0px 2px（@2x 4px） 7px（@2x 14px） 0px rgba(20, 90, 180, 0.051)",
+        "usage": "卡片常态阴影（13 处实测）"
+      },
+      {
+        "token": "--card-radius",
+        "value": "24px",
+        "usage": "卡片圆角（全站主档）"
+      },
+      {
+        "token": "--tabbar-active",
+        "value": "#2196F3",
+        "usage": "底部标签栏选中文字（700）"
+      },
+      {
+        "token": "--tabbar-inactive",
+        "value": "#999999",
+        "usage": "底部标签栏未选中文字（400）"
+      },
+      {
+        "token": "--icon-tile-accent",
+        "value": "linear-gradient(180deg, #FF8A37 0%, #FF7825 100%)",
+        "usage": "服务图标圆底渐变（50px 圆）"
+      },
+      {
+        "token": "--icon-tile-warm",
+        "value": "linear-gradient(180deg, #FB9C3C 0%, #FB721F 100%)",
+        "usage": "消息图标底渐变（104px r32）"
+      },
+      {
+        "token": "--gradient-banner-warm",
+        "value": "linear-gradient(90deg, #FEF7EE 0%, #FFFDFB 100%)",
+        "usage": "首页横幅暖白底（r24）"
+      },
+      {
+        "token": "--gradient-card-profile",
+        "value": "linear-gradient(151.48deg, #F5FBFF 30%, #D8EEFF 100%)",
+        "usage": "个人中心资料卡渐变底（+白描边）"
+      },
+      {
+        "token": "--gradient-overlay-page",
+        "value": "linear-gradient(180deg, rgba(240,247,253,0) 0%, rgba(240,…",
+        "usage": "横幅图→页面底的渐隐过渡遮罩（首页/个人中心实测）"
+      },
+      {
+        "token": "--marker-dot-bg",
+        "value": "linear-gradient(180deg, #1292FD 0%, #199CFC 100%)",
+        "usage": "地图骑手定位点渐变（19.92px 圆+白环）"
+      },
+      {
+        "token": "--navbar-pill-bg",
+        "value": "rgba(255,255,255,0.85)",
+        "usage": "导航右侧胶囊半透明白底（157.69×57.69 全胶囊）"
+      }
+    ],
+    "metric": [
+      {
+        "token": "--font-size-secondary",
+        "value": "11px（@2x 22px）",
+        "usage": "次级信息、卡片尾提示"
+      },
+      {
+        "token": "--font-size-body",
+        "value": "12px（@2x 24px）",
+        "usage": "正文（主力档）"
+      },
+      {
+        "token": "--font-size-body-lg",
+        "value": "13px（@2x 26px）",
+        "usage": "地址行、卡片操作链接"
+      },
+      {
+        "token": "--font-size-title",
+        "value": "14px（@2x 28px）",
+        "usage": "标题/重点正文"
+      },
+      {
+        "token": "--font-size-status",
+        "value": "15px（@2x 30px）",
+        "usage": "状态栏时间、菜单行文字"
+      },
+      {
+        "token": "--font-size-heading",
+        "value": "16px（@2x 32px）",
+        "usage": "区块大标题、消息标题、金额"
+      },
+      {
+        "token": "--font-size-display",
+        "value": "18px（@2x 36px）",
+        "usage": "页面大标题（导航栏居中标题）APPLICATION · 字重档（实物）"
+      },
+      {
+        "token": "--weight-400",
+        "value": "400",
+        "usage": "正文/说明"
+      },
+      {
+        "token": "--weight-500",
+        "value": "500",
+        "usage": "按钮文字/次强调"
+      },
+      {
+        "token": "--weight-600",
+        "value": "600",
+        "usage": "状态栏时间/分段控件选中"
+      },
+      {
+        "token": "--weight-700",
+        "value": "700",
+        "usage": "标题/选中态/状态标签APPLICATION · 字体混排（实测） —— 111 处实测；字体随产物打包于 fonts/（@font-face 自托管，不依赖系统安装）。数字 / 时间 / 金额用 Inter（SF Pro 的开源替代）—— 状态栏时间、金额、消息时间戳。行高 —— 正文 1.45（28/40.6 实测比值）、小字 1.5（12/16 实测）。USAGE · 使用规范DO ✓正文 12px（@2x 24px）/400/1.45；标题 14px（@2x 28px）/700；按钮文字 24-14px（@2x 28px）/500-700数字串（手机号/时间/金额）指定 font-family-numeric行高：正文 1.45、小字（12/14px）1.5DON'T ✕禁阶梯外字号；禁正文用 700 冒充标题禁中文用 SF Pro（其缺少中文字形会回退混排）禁行高小于 1.2 的正文排布07间距SPACING4pt 网格；9 档间距（4–64px）；页面左右边距 12px（@2x 24px），卡片间 gap 24，区块间 gap 32。低频散值就近归档不立档。PRINCIPLES · 原则网格先行 —— 全部实测间距落在 4pt 网格；5.77/11.54/13.46/21.15/11.54px（@2x 23.08px） 非 4pt 网格小数值一律就近归档，不得新造。节奏固定 —— 卡片间 gap 24、区块间 gap 32、卡内边距 24、页面边距 24，四处数值不随页变化。WHAT · 作用间距是呼吸感：页面底 #F0F7FD 从卡片 12px（@2x 24px） 缝隙里透出来，形成“浮在浅蓝底上的白卡”秩序。APPLICATION · 间距档（蓝条 = 1x 实宽）"
+      },
+      {
+        "token": "--space-1",
+        "value": "4px",
+        "usage": "微间距：图标与文字缝隙",
+        "cross_check": "md 表值: 2px（@2x 4px）"
+      },
+      {
+        "token": "--space-2",
+        "value": "8px",
+        "usage": "行内间距：时间线标题与描述",
+        "cross_check": "md 表值: 4px（@2x 8px）"
+      },
+      {
+        "token": "--space-3",
+        "value": "12px",
+        "usage": "小间距",
+        "cross_check": "md 表值: 6px（@2x 12px）"
+      },
+      {
+        "token": "--space-4",
+        "value": "16px",
+        "usage": "行间距、地址行内边距",
+        "cross_check": "md 表值: 8px（@2x 16px）"
+      },
+      {
+        "token": "--space-5",
+        "value": "20px",
+        "usage": "时间线图标与文字横向间距",
+        "cross_check": "md 表值: 10px（@2x 20px）"
+      },
+      {
+        "token": "--space-6",
+        "value": "24px",
+        "usage": "卡内区块间距、页面左右边距（主力档）",
+        "cross_check": "md 表值: 12px（@2x 24px）"
+      },
+      {
+        "token": "--space-8",
+        "value": "32px",
+        "usage": "区块间距、卡片纵向大间距",
+        "cross_check": "md 表值: 16px（@2x 32px）"
+      },
+      {
+        "token": "--space-10",
+        "value": "40px",
+        "usage": "导航栏横向内边距",
+        "cross_check": "md 表值: 20px（@2x 40px）"
+      },
+      {
+        "token": "--space-12",
+        "value": "64px",
+        "usage": "顶栏图标组间距USAGE · 使用规范DO ✓页面布局间距必须取档（space-1…space-12）组件内部尺寸按 §11 组件规格执行（豁免取档）取不到档：就近归档（偏差 ≤2px），并在变更日志登记DON'T ✕禁魔法数字（非 4 的倍数）禁同页混用两种卡片间距禁用 margin 负值制造紧凑08圆角RADIUS7 档圆角：小容器 4 → 标签 6 → 图标底 11/16 → 卡片 12 → 胶囊 999 → 正圆 50%（1x 值）。PRINCIPLES · 原则 —— 容器越大圆角越大；52px（@2x 104px） 图标底用 32，24px（@2x 48px） 占位底用 8。胶囊即行动 —— 全圆胶囊（999px 惯例）只给按钮与导航胶囊，容器禁用。WHAT · 作用圆角是这套界面亲和力的主要来源：12px（@2x 24px） 大圆角卡片 + 胶囊按钮，配合浅蓝底构成柔和的服务型气质。APPLICATION · 圆角档（实物 · 载体全列举）",
+        "cross_check": "md 表值: 32px（@2x 64px）"
+      },
+      {
+        "token": "--radius-xs",
+        "value": "4px（@2x 8px）",
+        "usage": "小图标底：首页服务图标占位底 48×48。微圆角（3.5-5.77px 的进度条/小点）是胶囊与圆的按值实现，不立档。"
+      },
+      {
+        "token": "--radius-sm",
+        "value": "6px（@2x 12px）",
+        "usage": "状态标签 104×48（等待取件 / 已完成）、筛选 chips。等待取件"
+      },
+      {
+        "token": "--radius-md",
+        "value": "11px（@2x 22px）",
+        "usage": "菜单行前置图标底 72×72（帮我送 / 帮我买 / 帮我排）。"
+      },
+      {
+        "token": "--radius-lg",
+        "value": "12px（@2x 24px）",
+        "usage": "全站主档订单卡 / 信息卡 / 分组容器 / 首页横幅底；贴边列表卡为单侧 24（左上左下或右上右下）。"
+      },
+      {
+        "token": "--radius-xl",
+        "value": "16px（@2x 32px）",
+        "usage": "消息通知图标底 104×104、个人中心大图标底 128×128。"
+      },
+      {
+        "token": "--radius-pill",
+        "value": "999px（全胶囊惯例）",
+        "usage": "全站第二高频主按钮 162×64、导航胶囊 157.69×57.69、进度条、小胶囊、地图标记点。源码实现值不定型（远大于高度一半的圆角值），统一写 999px。确认送达"
+      },
+      {
+        "token": "--radius-round",
+        "value": "50%",
+        "usage": "正圆：头像、圆形图标底。左：圆角特写（渲染档位值）· 右：该档在本系统的真实载体（含尺寸与频次）。同一元素只取一档，混档即违规（见 USAGE）。USAGE · 使用规范DO ✓卡片一律 12px（@2x 24px）· 全站主档状态标签 6px（@2x 12px）；菜单行图标底 11px（@2x 22px）胶囊一律 999px（全胶囊惯例）DON'T ✕禁一张卡片内混用两种圆角档禁容器用胶囊圆角禁微元素随手写小圆角——进度条/圆点属胶囊或正圆，按惯例 999px / 50%09阴影SHADOW5 档阴影全部带蓝调——这是本系统的识别特征：投影不是黑色渐隐，而是品牌蓝的环境光。PRINCIPLES · 原则蓝调阴影 —— 卡片 rgba(20,90,180,.051)、CTA rgba(7,126,250,.19)、悬浮 rgba(20,90,180,.18)，色相一致。悬浮 = 强阴影 + 白环 —— 地图上的骑手标记与价格卡用 white ring 叠加投影，从杂色背景里剥离。WHAT · 作用阴影承担海拔语言：常态卡片最轻（14px 模糊 5% 透明度）、主按钮用品牌蓝光垫、地图悬浮物最强并加白环。APPLICATION · 阴影档（实物）"
+      },
+      {
+        "token": "--shadow-sm",
+        "value": "0px 2px 7px 0px rgba(20, 90, 180, 0.051)",
+        "usage": "CTA 主按钮投影"
+      },
+      {
+        "token": "--shadow-md",
+        "value": "0px 5px 11px 0px rgba(20, 90, 180, 0.180)",
+        "usage": "卡片常态投影"
+      },
+      {
+        "token": "--shadow-lg",
+        "value": "0 0 0 2px #FFFFFF",
+        "usage": "悬浮卡投影（地图价格卡）"
+      },
+      {
+        "token": "--shadow-ring-sm",
+        "value": "0 0 0 3px #FFFFFF, 0px 4px 8px 0px rgba(24, 150, 252, 0.280)",
+        "usage": "地图标记白描边环"
+      },
+      {
+        "token": "--shadow-ring-lg",
+        "value": "0 0 0 1.5px（@2x 3px） #FFFFFF, 0px 2px（@2x 4px） 4px（@2x 8px） 0px rgba(24, 150, 252, 0.280)",
+        "usage": "骑手定位点白环+投影",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--padding-card",
+        "value": "12px（@2x 24px）",
+        "usage": "卡片四周内边距",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--padding-card-h",
+        "value": "14px（@2x 28px）",
+        "usage": "通知卡/菜单行横向内边距",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--padding-section",
+        "value": "16px（@2x 32px）",
+        "usage": "区块内边距（资料卡/图标底容器）",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--padding-page-x",
+        "value": "12px（@2x 24px）",
+        "usage": "内容区左右边距",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--stroke-hairline",
+        "value": "0.5px（@2x 1px）",
+        "usage": "细描边（胶囊/删除图标）",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--stroke-divider",
+        "value": "0.75px（@2x 1.5px）",
+        "usage": "卡内分隔线",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--stroke-border",
+        "value": "0.96px（@2x 1.92px）",
+        "usage": "导航胶囊/底栏上缘/横幅描边",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--stroke-thick",
+        "value": "1.44px（@2x 2.88px）",
+        "usage": "状态栏圆环描边",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--opacity-tint",
+        "value": "0.12",
+        "usage": "状态标签 tint 底透明度",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--opacity-pill",
+        "value": "0.85",
+        "usage": "导航胶囊白底透明度",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--z-dropdown",
+        "value": "10",
+        "usage": "AI 补全：悬浮元素（价格卡/骑手标记）",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--z-modal",
+        "value": "100",
+        "usage": "AI 补全：模态浮层",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      },
+      {
+        "token": "--z-toast",
+        "value": "1000",
+        "usage": "AI 补全：轻提示",
+        "source_note": "md 表补（HTML 无实物行载体）"
+      }
+    ],
+    "count": 131
+  },
+  "components": [
+    {
+      "name": "Button",
+      "name_cn": "按钮组",
+      "source": "已提取 4 页 6 处 · 按压/禁用态为 AI 补全"
+    },
+    {
+      "name": "Tag",
+      "name_cn": "标签组",
+      "source": "已提取 · 订单页 5 处"
+    },
+    {
+      "name": "Tabs",
+      "name_cn": "页签组",
+      "source": "已提取 · 4 页"
+    },
+    {
+      "name": "Card",
+      "name_cn": "卡片组",
+      "source": "已提取 · 4 页 15+ 处"
+    },
+    {
+      "name": "Avatar",
+      "name_cn": "头像组",
+      "source": "已提取 · 个人中心/首页"
+    },
+    {
+      "name": "Badge",
+      "name_cn": "徽标组",
+      "source": "已提取 · 首页横幅/地图"
+    },
+    {
+      "name": "List",
+      "name_cn": "列表组",
+      "source": "已提取 · 个人中心/首页"
+    },
+    {
+      "name": "Descriptions",
+      "name_cn": "描述列表组",
+      "source": "已提取 · 订单卡"
+    },
+    {
+      "name": "Input",
+      "name_cn": "输入组",
+      "source": "AI 补全（容器隐藏态推规格）"
+    },
+    {
+      "name": "Switch",
+      "name_cn": "开关组",
+      "source": "AI 补全 · 本系统无表单页"
+    },
+    {
+      "name": "Checkbox",
+      "name_cn": "复选组",
+      "source": "AI 补全"
+    },
+    {
+      "name": "Modal",
+      "name_cn": "对话框组",
+      "source": "AI 补全"
+    },
+    {
+      "name": "Toast",
+      "name_cn": "轻提示组",
+      "source": "AI 补全"
+    },
+    {
+      "name": "Alert",
+      "name_cn": "提示条组",
+      "source": "AI 补全"
+    },
+    {
+      "name": "Empty",
+      "name_cn": "空态组",
+      "source": "AI 补全"
+    },
+    {
+      "name": "Loading",
+      "name_cn": "加载组",
+      "source": "AI 补全"
+    },
+    {
+      "name": "Progress",
+      "name_cn": "进度组",
+      "source": "AI 补全"
+    }
+  ],
+  "design_requirements": {
+    "conceptual": [
+      "信息密度与呼吸感按页面任务平衡 —— 聚焦型页面敢留白、立重心；列表型页面保密度、立节奏（行卡等距、关键信息对齐、可扫读）。",
+      "视觉层级必须与信息层级一致 —— 重要的更大更醒目，次要的退后（本系统 16px 区块标题 → 14px 标题 → 12px 正文 → 11px 次级 的阶梯即此逻辑）。",
+      "一致性优先于个性 —— 同场景永远同样式；价值观「一致」在行为层的落点。"
+    ],
+    "specific": [
+      "状态色彩语义 status-color-semantics —— 蓝 = 品牌/选中/可操作；橙 = 进行中/等待/强调；绿 = 已完成；红 = 删除/危险。状态标签一律『同色 12% tint 底 + 同色实色 12px（@2x 24px）/700 文字』",
+      "渐变策略 gradient-strategy —— 渐变只用于：主按钮底、功能图标圆底、装饰横幅/资料卡底、图片→页面底渐隐遮罩；卡片与控件常态一律纯色",
+      "阴影策略 shadow-strategy —— 阴影全部带蓝调（rgba(7,126,250,*) / rgba(20,90,180,*)），禁用纯黑阴影；悬浮元素 = 强阴影 + 白色描边环组合",
+      "地图层级 elevation-map —— 地图场景元素（价格卡/骑手标记）用高投影 + 白环悬浮于地图之上，z 轴高于一切卡片"
+    ]
+  },
+  "prohibitions": {
+    "conceptual": [
+      "禁把信息撑得太满 —— 布局要有呼吸感，间距留足，页面要有清晰主次；列表页的形态是行距挤压、卡片贴边。",
+      "禁为留白牺牲信息密度 —— 列表页每行信息必须完整可扫；禁硬造视觉重心、禁拉大留白充高级。（与上条成对：密度与呼吸感按页面任务平衡，两头都是极端）",
+      "禁让用户思考「这是什么」 —— 元素含义必须自明；图标必配文字标签（底部导航 = 图标+文字即此落地）。",
+      "禁一屏多主任务 —— 操作决策页一屏一个主行动（蓝渐变 CTA 全页唯一即此落地）；浏览列表页禁塞竞争性 CTA。"
+    ],
+    "specific": [
+      "禁裸 hex / 裸值 —— 一切取自 token 表（含状态标签 tint 底：用 rgba token，不手写 12%）。",
+      "禁纯黑/中性灰阴影 —— 本系统阴影全部蓝调；黑阴影会立刻破坏环境光。",
+      "禁魔法间距 —— 非 4pt 网格数值一律就近归档，不新造。",
+      "禁一视图双主按钮 —— 蓝渐变胶囊全页唯一。",
+      "禁阶梯外字号/字重 —— 非档值一律就近归档，禁止直接抄用。",
+      "禁 #111/#000 作页面底 —— 那是导出兜底色；页面底只有 #F0F7FD。",
+      "禁状态标签不成对 —— tint 底（tag-bg-*）与同色实色文字（tag-text-*）必须同时出现。",
+      "禁颜色作唯一信息载体 —— 状态必须有文字（WCAG 1.4.1）。",
+      "禁混用图标来源 —— 线性只用 Lucide 系；彩色面性仅限服务分类切图。",
+      "禁 z-index 自造数值 —— 用 z-dropdown/modal/toast 三档。",
+      "禁把 AI 补全值当实测引用 —— 标注为 AI 补全的 token 待实测后回填。"
+    ],
+    "a11y_redlines": [
+      "状态不只靠颜色 —— 订单状态 = 颜色 + 文字标签（照做）；禁只变色不加字；禁红绿作唯一区分。自查：设计稿转灰度自读一遍。",
+      "图标必须可懂 —— 底部导航 = 图标 + 文字（照做）；纯图形操作按钮必标语义文案（动词+宾语，如「复制订单号」）——这段文案就是开发的读屏标签。自查：遮住图形只读文字。"
+    ]
+  },
+  "contrast": [
+    {
+      "pair": "主文字 #20252C / 页面底 #F0F7FD",
+      "ratio": "14.26:1",
+      "verdict": "✓ 优秀",
+      "usage": "正文照用"
+    },
+    {
+      "pair": "主文字 #20252C / 白卡 #FFFFFF",
+      "ratio": "15.41:1",
+      "verdict": "✓ 优秀",
+      "usage": "卡片内文字照用"
+    },
+    {
+      "pair": "白字 / 品牌蓝按钮 #2196F3",
+      "ratio": "3.12:1",
+      "verdict": "△ 仅大字",
+      "usage": "按钮文字 ≥16px 且字重 ≥500（现状达标）；禁小字号白字上蓝底"
+    },
+    {
+      "pair": "次级文字 #979CA5 / 白卡",
+      "ratio": "2.76:1",
+      "verdict": "✗ 不达标",
+      "usage": "禁用于正文、数值、时间等需阅读的信息；仅限装饰性视觉。可读文字用 --color-text-secondary-readable #6E747D（4.71:1 ✓）"
+    },
+    {
+      "pair": "白字 / 深色卡 #2C2C3A",
+      "ratio": "13.74:1",
+      "verdict": "✓ 优秀",
+      "usage": "深色场景照用"
+    }
+  ],
+  "assets": {
+    "icon_library": "icons/（Lucide 线性整库，风格匹配判定见 HTML §12）",
+    "fonts": "system-spec/fonts/（Noto Sans SC + Inter 自托管 woff2）"
+  },
+  "changelog": [
+    {
+      "version": "v1.1.0",
+      "date": "2026-10-19",
+      "change": "信息架构重排 16→15 章（先面后细再补充）；「场景规范」更名「设计要求」并增概念性要求 3 条；「无障碍」章取消、约束归位（对比度→颜色、触控→组件、双通道/语义文案→禁令、动效克制→动效）；设计禁令增概念性禁令 4 条、修状态标签措辞、删 Web 专属条款；字体自托管（Noto Sans SC + Inter woff2 随产物打包），根除系统回退宋体；次级可读色入库 --color-text-secondary-readable（AI 补全）"
+    },
+    {
+      "version": "v1.0.0",
+      "date": "2026-10-16",
+      "change": "首次提取：4 页 Figma 导出稿（跑腿服务首页/跑腿订单/我的消息/个人中心）→ 133 token（基础 35 / 语义 28 / 组件 22 / 度量 48）+ 10 类组件 + 7 条场景规范；Lucide 整库落盘；AI 补全项已逐条标注（focus-ring / overlay / z 层 / 动效档 / Input 规格 / button-bg-danger / tag-bg-brand）"
+    }
+  ]
+}

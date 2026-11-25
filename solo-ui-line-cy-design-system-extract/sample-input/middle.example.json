@@ -1,0 +1,553 @@
+{
+  "meta": {
+    "source_type": "C1_figma",
+    "source_id": "figma_demo_abc123",
+    "extracted_at": "2026-10-14T17:30:00Z",
+    "schema_version": "2.0.0",
+    "supplementary_notes": "演示数据；从 Figma 工具导出的 token JSON 消费得到。"
+  },
+  "tokens": {
+    "primitive": {
+      "blue-600": {
+        "value": "#3056D3",
+        "role": "primary",
+        "usage": "品牌主色：CTA / 链接 / 选中态",
+        "prohibition": "大面积铺色、正文文字"
+      },
+      "blue-700": {
+        "value": "#2443AB",
+        "role": "primary",
+        "usage": "主色 hover / active",
+        "prohibition": "默认态"
+      },
+      "blue-500": {
+        "value": "#4569E0",
+        "role": "primary_tint",
+        "usage": "聚焦描边",
+        "prohibition": "大面积铺色"
+      },
+      "blue-300": {
+        "value": "#A8C0F4",
+        "role": "primary_tint",
+        "usage": "次级强调、装饰渐变",
+        "prohibition": "文字"
+      },
+      "blue-100": {
+        "value": "#E8EEFC",
+        "role": "primary_tint",
+        "usage": "浅底、focus 光晕",
+        "prohibition": "文字"
+      },
+      "gray-50": {
+        "value": "#FAFAFA",
+        "role": "neutral",
+        "usage": "页面底色",
+        "prohibition": "卡片内部"
+      },
+      "gray-100": {
+        "value": "#F4F4F5",
+        "role": "neutral",
+        "usage": "禁用底、表头底",
+        "prohibition": "正文文字色"
+      },
+      "gray-200": {
+        "value": "#E4E4E7",
+        "role": "neutral",
+        "usage": "分隔线、卡片描边",
+        "prohibition": "输入框描边"
+      },
+      "gray-300": {
+        "value": "#D4D4D8",
+        "role": "neutral",
+        "usage": "输入框 / 控件默认描边",
+        "prohibition": "分隔线"
+      },
+      "gray-400": {
+        "value": "#A1A1AA",
+        "role": "neutral",
+        "usage": "禁用文字、占位符",
+        "prohibition": "正常文字"
+      },
+      "gray-500": {
+        "value": "#71717A",
+        "role": "neutral",
+        "usage": "次要文本",
+        "prohibition": "长正文（≥3 行段落）、主标题"
+      },
+      "gray-700": {
+        "value": "#3F3F46",
+        "role": "neutral",
+        "usage": "深次文本",
+        "prohibition": "主标题"
+      },
+      "gray-900": {
+        "value": "#18181B",
+        "role": "neutral",
+        "usage": "主文本",
+        "prohibition": "非文本场景"
+      },
+      "success": {
+        "value": "#16A34A",
+        "role": "functional",
+        "usage": "成功状态文字 / 图标",
+        "prohibition": "正文"
+      },
+      "success-bg": {
+        "value": "#E7F6EC",
+        "role": "functional",
+        "usage": "成功浅底",
+        "prohibition": "正文文字色"
+      },
+      "warning": {
+        "value": "#D97706",
+        "role": "functional",
+        "usage": "警告状态",
+        "prohibition": "正文"
+      },
+      "warning-bg": {
+        "value": "#FDF1E2",
+        "role": "functional",
+        "usage": "警告浅底",
+        "prohibition": "正文文字色"
+      },
+      "danger": {
+        "value": "#DC2626",
+        "role": "functional",
+        "usage": "危险 / 错误状态",
+        "prohibition": "正文"
+      },
+      "danger-bg": {
+        "value": "#FDEAEA",
+        "role": "functional",
+        "usage": "危险浅底",
+        "prohibition": "正文文字色"
+      }
+    },
+    "semantic": {
+      "color-text-primary": {
+        "value": "gray-900",
+        "category": "text",
+        "usage": "主文本",
+        "prohibition": "非文本场景"
+      },
+      "color-text-secondary": {
+        "value": "gray-500",
+        "category": "text",
+        "usage": "次文本、标签",
+        "prohibition": "≥3 行连续段落、主标题"
+      },
+      "color-text-disabled": {
+        "value": "gray-400",
+        "category": "text",
+        "usage": "禁用文本",
+        "prohibition": "正常文本"
+      },
+      "color-bg-page": {
+        "value": "gray-50",
+        "category": "bg",
+        "usage": "页面底色",
+        "prohibition": "卡片内部"
+      },
+      "color-bg-card": {
+        "value": "#FFFFFF",
+        "category": "bg",
+        "usage": "卡片、浮层底",
+        "prohibition": "页面底色"
+      },
+      "color-border": {
+        "value": "gray-200",
+        "category": "border",
+        "usage": "分隔线、卡片描边",
+        "prohibition": "输入框描边"
+      },
+      "input-border-default": {
+        "value": "gray-300",
+        "category": "input",
+        "usage": "输入控件默认描边",
+        "prohibition": "分隔线"
+      },
+      "input-border-focus": {
+        "value": "blue-500",
+        "category": "input",
+        "usage": "输入控件聚焦描边",
+        "prohibition": "默认态"
+      },
+      "focus-ring": {
+        "value": "0 0 0 3px var(--blue-100)",
+        "category": "focus",
+        "usage": "所有可聚焦控件的键盘焦点光晕",
+        "prohibition": "装饰"
+      },
+      "color-action-primary": {
+        "value": "blue-600",
+        "category": "action",
+        "usage": "主行动、链接、选中",
+        "prohibition": "大面积铺色"
+      },
+      "font-family-base": {
+        "value": "PingFang SC, Microsoft YaHei, Helvetica Neue, sans-serif",
+        "category": "font_family",
+        "usage": "全局唯一字族",
+        "prohibition": "品牌混排"
+      },
+      "line-height-body": {
+        "value": "1.6",
+        "category": "line_height",
+        "usage": "正文行高",
+        "prohibition": "标题"
+      },
+      "icon-sm": {
+        "value": "16px",
+        "category": "icon",
+        "usage": "行内图标",
+        "prohibition": ""
+      },
+      "icon-md": {
+        "value": "20px",
+        "category": "icon",
+        "usage": "按钮内图标",
+        "prohibition": ""
+      },
+      "icon-lg": {
+        "value": "24px",
+        "category": "icon",
+        "usage": "独立图标 / 空态",
+        "prohibition": ""
+      },
+      "stroke-color-default": {
+        "value": "gray-300",
+        "category": "stroke_color",
+        "usage": "默认描边色",
+        "prohibition": ""
+      },
+      "stroke-color-strong": {
+        "value": "gray-700",
+        "category": "stroke_color",
+        "usage": "强描边色",
+        "prohibition": ""
+      },
+      "color-bg-shell": {
+        "value": "#16181D",
+        "category": "bg",
+        "usage": "body 环境底（背景层级·壳层）",
+        "prohibition": "内容承载"
+      },
+      "color-bg-overlay": {
+        "value": "rgba(0,0,0,.45)",
+        "category": "bg",
+        "usage": "弹层遮罩（背景层级·遮罩）",
+        "prohibition": "非浮层场景"
+      }
+    },
+    "component": {
+      "button-bg-primary": {
+        "value": "action-primary",
+        "owner": "Button",
+        "usage": "主按钮底色",
+        "prohibition": "次按钮"
+      },
+      "button-bg-primary-hover": {
+        "value": "blue-700",
+        "owner": "Button",
+        "usage": "主按钮悬停",
+        "prohibition": "默认态"
+      },
+      "button-bg-danger": {
+        "value": "danger",
+        "owner": "Button",
+        "usage": "危险按钮底色（高危操作唯一载体）",
+        "prohibition": "普通操作"
+      },
+      "button-bg-danger-hover": {
+        "value": "#B91C1C",
+        "owner": "Button",
+        "usage": "危险按钮悬停",
+        "prohibition": "默认态"
+      },
+      "input-border-focus": {
+        "value": "blue-500",
+        "owner": "Input",
+        "usage": "输入控件聚焦描边",
+        "prohibition": "默认态"
+      },
+      "tag-bg-brand": {
+        "value": "blue-100",
+        "owner": "Tag",
+        "usage": "品牌标签底色",
+        "prohibition": "错误标签"
+      }
+    },
+    "metric": {
+      "space-1": {
+        "value": "4px",
+        "category": "spacing",
+        "usage": "图标与文字间隙"
+      },
+      "space-2": {
+        "value": "8px",
+        "category": "spacing",
+        "usage": "组件内部元素间隙"
+      },
+      "space-3": {
+        "value": "12px",
+        "category": "spacing",
+        "usage": "紧凑列表行距"
+      },
+      "space-4": {
+        "value": "16px",
+        "category": "spacing",
+        "usage": "组件之间"
+      },
+      "space-6": {
+        "value": "24px",
+        "category": "spacing",
+        "usage": "卡片内边距、分组之间、栅格栏距"
+      },
+      "space-8": {
+        "value": "32px",
+        "category": "spacing",
+        "usage": "区块之间"
+      },
+      "space-12": {
+        "value": "48px",
+        "category": "spacing",
+        "usage": "章节之间"
+      },
+      "radius-sm": {
+        "value": "4px",
+        "category": "radius",
+        "usage": "开关、小元素"
+      },
+      "radius-md": {
+        "value": "8px",
+        "category": "radius",
+        "usage": "按钮、输入框、下拉"
+      },
+      "radius-lg": {
+        "value": "12px",
+        "category": "radius",
+        "usage": "卡片、弹窗、弹层"
+      },
+      "radius-full": {
+        "value": "9999px",
+        "category": "radius",
+        "usage": "标签、头像、圆点"
+      },
+      "shadow-sm": {
+        "value": "0 1px 2px rgba(24,24,27,.06)",
+        "category": "shadow",
+        "usage": "卡片（默认浮起）"
+      },
+      "shadow-md": {
+        "value": "0 4px 12px rgba(24,24,27,.10)",
+        "category": "shadow",
+        "usage": "下拉菜单"
+      },
+      "shadow-lg": {
+        "value": "0 12px 32px rgba(24,24,27,.16)",
+        "category": "shadow",
+        "usage": "模态弹窗（最高层）"
+      },
+      "shadow-focus": {
+        "value": "0 0 0 3px var(--blue-100)",
+        "category": "shadow",
+        "usage": "键盘焦点光晕"
+      },
+      "shadow-overlay": {
+        "value": "0 8px 16px rgba(24,24,27,.08), 0 12px 32px rgba(24,24,27,.16)",
+        "category": "shadow",
+        "usage": "双层阴影（Drawer / 复杂弹层）"
+      },
+      "font-size-display": {
+        "value": "28px / 36 / 700",
+        "category": "font_size",
+        "usage": "页面主标题"
+      },
+      "font-size-title": {
+        "value": "22px / 30 / 700",
+        "category": "font_size",
+        "usage": "区块标题"
+      },
+      "font-size-subtitle": {
+        "value": "18px / 26 / 600",
+        "category": "font_size",
+        "usage": "次级标题"
+      },
+      "font-size-body": {
+        "value": "16px / 26 / 400",
+        "category": "font_size",
+        "usage": "正文"
+      },
+      "font-size-caption": {
+        "value": "14px / 22 / 400",
+        "category": "font_size",
+        "usage": "辅助说明"
+      },
+      "font-size-footnote": {
+        "value": "12px / 20 / 400",
+        "category": "font_size",
+        "usage": "注脚、标签"
+      },
+      "line-height-tight": {
+        "value": "1.3",
+        "category": "line_height",
+        "usage": "display 标题"
+      },
+      "line-height-snug": {
+        "value": "1.45",
+        "category": "line_height",
+        "usage": "subtitle"
+      },
+      "line-height-normal": {
+        "value": "1.6",
+        "category": "line_height",
+        "usage": "body"
+      },
+      "line-height-relaxed": {
+        "value": "1.75",
+        "category": "line_height",
+        "usage": "长文阅读"
+      },
+      "line-height-loose": {
+        "value": "2",
+        "category": "line_height",
+        "usage": "说明 / 段落"
+      },
+      "padding-sm": {
+        "value": "8px",
+        "category": "padding",
+        "usage": "小型元素内边距"
+      },
+      "padding-md": {
+        "value": "12px",
+        "category": "padding",
+        "usage": "中型元素"
+      },
+      "padding-lg": {
+        "value": "16px",
+        "category": "padding",
+        "usage": "大型元素"
+      },
+      "padding-xl": {
+        "value": "24px",
+        "category": "padding",
+        "usage": "容器类内边距"
+      },
+      "stroke-width-hairline": {
+        "value": "0.5px",
+        "category": "stroke_width",
+        "usage": "极细分割线"
+      },
+      "stroke-width-thin": {
+        "value": "1px",
+        "category": "stroke_width",
+        "usage": "标准描边"
+      },
+      "stroke-width-base": {
+        "value": "1.5px",
+        "category": "stroke_width",
+        "usage": "图标描边（默认）"
+      },
+      "stroke-width-bold": {
+        "value": "2px",
+        "category": "stroke_width",
+        "usage": "强描边、按钮按下态"
+      },
+      "opacity-disabled": {
+        "value": "0.45",
+        "category": "opacity",
+        "usage": "禁用态整体透明"
+      },
+      "opacity-tint": {
+        "value": "0.12",
+        "category": "opacity",
+        "usage": "浅底派生"
+      },
+      "opacity-mask": {
+        "value": "0.45",
+        "category": "opacity",
+        "usage": "弹层遮罩"
+      },
+      "z-dropdown": {
+        "value": "1000",
+        "category": "z_index",
+        "usage": "下拉 / Select 浮层"
+      },
+      "z-sticky": {
+        "value": "1100",
+        "category": "z_index",
+        "usage": "吸顶表头"
+      },
+      "z-drawer": {
+        "value": "1200",
+        "category": "z_index",
+        "usage": "侧滑抽屉"
+      },
+      "z-modal": {
+        "value": "1300",
+        "category": "z_index",
+        "usage": "模态弹窗"
+      },
+      "z-toast": {
+        "value": "1400",
+        "category": "z_index",
+        "usage": "全局轻提示（永远最顶）"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "variants": [
+        "primary",
+        "default",
+        "text",
+        "danger"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ],
+      "key_specs": {
+        "height": "36px",
+        "padding": "7px 18px",
+        "radius": "md",
+        "font": "14px/20px"
+      }
+    },
+    {
+      "name": "Input",
+      "variants": [
+        "text",
+        "textarea"
+      ],
+      "states": [
+        "default",
+        "focus",
+        "error",
+        "disabled"
+      ],
+      "key_specs": {
+        "padding": "7px 12px",
+        "radius": "md",
+        "border": "input-border-default → focus"
+      }
+    }
+  ],
+  "patterns": {
+    "form_validation": "失焦校验单字段、提交全量校验、禁输入中逐字报错",
+    "loading_strategy": "结构可预期→skeleton；结构未知或<1s→spinner；页面级→顶部细进度条",
+    "danger_action": "必过 Modal 二次确认 + danger 按钮 + 后果与恢复说明"
+  },
+  "raw_evidence": {
+    "figma_variables_count": 62,
+    "figma_styles_count": 22,
+    "components_count": 25,
+    "components_seen": [
+      "Button",
+      "Input"
+    ]
+  }
+}

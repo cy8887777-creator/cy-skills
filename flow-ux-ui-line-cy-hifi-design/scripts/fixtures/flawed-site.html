@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- KNOWN-DEFECT TARGET for self-test of build --check / audit / verify-interactions.
+     Expected verdicts when audited: ALL of the 8 defects below MUST be reported.
+     If any detector misses its defect, the detector itself is broken. -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>已知缺陷测试靶 · flawed-site</title>
+<!-- DEFECT-6: external script (build --check must reject; audit flags external asset) -->
+<script src="https://cdn.example.com/bad.js"></script>
+</head>
+<body>
+
+<!-- DEFECT-7: inline event handler (build --check must reject) -->
+<section class="screen" data-screen="home" data-name="首页" onclick="alert('x')">
+  <div class="viewport">
+
+    <!-- DEFECT-1: external image (audit: broken image + external asset) -->
+    <img data-eid="hero-img" src="https://cdn.example.com/hero-404.png" alt="hero">
+
+    <!-- DEFECT-2: dead jump target (audit: dead link; no screen named "ghost") -->
+    <button class="b" data-eid="go-ghost"
+            data-on='{"click":{"goto":"ghost"}}'>去不存在的页</button>
+
+    <!-- DEFECT-3: duplicate data-eid (audit: uniqueness) -->
+    <p data-eid="dup-1">第一处重复</p>
+    <p data-eid="dup-1">第二处重复</p>
+
+    <!-- DEFECT-4: fixed width overflow at 390 viewport (audit: geometry) -->
+    <div data-eid="wide-box" style="width:1200px;height:40px;background:#eee">固定 1200px 宽</div>
+
+    <!-- DEFECT-5: interactive element without handler and NOT declared decorative -->
+    <button class="b" data-eid="no-handler-btn">无行为按钮</button>
+
+  </div>
+</section>
+
+<script>
+/* DEFECT-8: console error on load (audit: console zero-error check) */
+console.error('flawed-site: deliberate console error for detector self-test');
+</script>
+</body>
+</html>

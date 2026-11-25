@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><title>工作台自举 · 共创工作台</title><style>
+*{box-sizing:border-box} body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#F3F5F8;margin:0;color:#20252C;}
+.top{background:#1E2430;color:#E8ECF2;padding:12px 24px;display:flex;align-items:center;gap:14px;font-size:13px;flex-wrap:wrap;}
+.top b{font-size:15px;} .sep{opacity:.3;} .nowchip2{background:rgba(255,255,255,.12);padding:3px 10px;border-radius:99px;font-size:12px;}
+.rawlinks{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap;}
+.rawlinks a{color:#8FB7E8;text-decoration:none;font-size:12px;border-bottom:1px dashed rgba(143,183,232,.55);padding:5px 2px;display:inline-block;}
+.rawlinks a:hover{color:#D6E6FB;border-bottom-color:#D6E6FB;}
+.tabs{display:flex;gap:4px;padding:10px 24px 0;background:#1E2430;}
+.tabs button{border:0;background:rgba(255,255,255,.08);padding:9px 18px;font-size:13px;cursor:pointer;color:#B9C2CE;border-radius:9px 9px 0 0;}
+.tabs button.on{background:#F3F5F8;color:#20252C;font-weight:600;}
+main{padding:20px 24px;max-width:1180px;margin:0 auto;}
+@media(max-width:720px){main{padding:12px}}
+.panel{display:none;} .panel.on{display:block;}
+.step{display:flex;gap:10px;padding:10px 18px;align-items:center;border-left:3px solid transparent;}
+.step.done{color:#7DC383;border-left-color:#2F4A3B;} .step.done .st{background:#22392B;color:#7DC383;}
+.step.now{background:#262E3D;color:#fff;border-left-color:#4C8DFF;} .step.now .st{background:#1B66C9;color:#fff;}
+.step.todo{color:#5F6B7B;} .step.todo .st{background:#2A3140;color:#5F6B7B;}
+.step.viewing{outline:1px dashed #4C8DFF;outline-offset:-3px;}
+.st{width:22px;height:22px;border-radius:99px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
+.stt{font-size:13px;} .ssub{font-size:12px;opacity:.65;margin-top:2px;line-height:1.4;}
+.wb{display:flex;gap:18px;align-items:flex-start;}
+@media(max-width:960px){.wb{flex-direction:column}.stepside{width:100%}}
+.stepside{width:280px;background:#1E2430;border-radius:14px;padding:16px 0;flex-shrink:0;}
+.carea{flex:1;}
+.curhead{margin-bottom:6px;} .nowchip{background:#1B66C9;color:#fff;font-size:11px;padding:2px 10px;border-radius:99px;margin-right:8px;}
+.curhint{color:#7A828E;font-size:12px;margin:6px 0 14px;line-height:1.5;}
+.ccard{background:#fff;border-radius:14px;box-shadow:0 3px 12px rgba(20,40,80,.07);padding:18px 20px;margin-bottom:14px;position:relative;}
+.rec{position:absolute;top:14px;right:16px;background:#E8F1FF;color:#1B66C9;font-size:10px;padding:2px 9px;border-radius:99px;}
+.chead{font-size:14px;margin-bottom:8px;} .cname{color:#7A828E;font-size:12px;margin-left:8px;}
+.sws{display:flex;gap:5px;margin:10px 0;} .sw{width:28px;height:28px;border-radius:7px;border:1px solid rgba(0,0,0,.06);}
+.cdesc{font-size:12px;color:#5B6470;margin:8px 0;line-height:1.5;}
+.cv{font-size:12px;padding-left:16px;margin:8px 0;} .cv li{margin:4px 0;} .cv b{margin-right:6px;}
+.cact{font-size:12px;color:#8A93A0;border-top:1px dashed #E7EAF0;padding-top:9px;margin-top:10px;line-height:1.5;}
+.win-badge{position:absolute;top:14px;right:16px;background:#E6F7EE;color:#16803C;font-size:10px;padding:2px 9px;border-radius:99px;}
+/* 候选区双列 + 文字层级 */
+.cands{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
+.ccard{margin-bottom:0;}
+.ccard.full{grid-column:1/-1;}
+@media(max-width:960px){.cands{grid-template-columns:1fr}}
+.cno{font-size:10px;color:#979CA5;background:#F0F2F5;padding:2px 8px;border-radius:99px;margin-right:8px;vertical-align:middle;}
+.cname2{font-size:14px;font-weight:700;color:#20252C;}
+.cdemo{background:#FBFCFE;border:1px solid #EEF1F5;border-radius:10px;padding:12px;margin:4px 0 10px;overflow:hidden;}
+/* 外部输入 */
+.ext-quote{background:#F7F9FB;border-left:3px solid #D6DCE4;padding:8px 12px;font-size:12px;color:#5B6470;border-radius:0 6px 6px 0;margin:6px 0;}
+.ext-ask{background:#F7F9FB;}
+.ext-ask b{display:block;font-size:12px;margin-bottom:4px;color:#3C4650;}
+.ext-ask span{font-size:11.5px;color:#7A828E;}
+/* 画像播报 */
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:6px 0 4px;}
+.pf-i{display:flex;gap:8px;align-items:baseline;font-size:12.5px;line-height:1.55;}
+.pf-i b{flex-shrink:0;font-size:10.5px;color:#8A93A0;font-weight:600;min-width:52px;}
+.pf-i span{color:#20252C;}
+.pf-w{border-bottom:1px dashed #EEF1F5;padding:5px 0;}
+.pf-concl{margin-top:12px;background:#F2F7F2;border-radius:8px;padding:9px 12px;font-size:12px;color:#2F5A3C;}
+.pf-concl b{margin-right:8px;font-size:10.5px;color:#16803C;}
+/* 查漏清单 */
+.ck{display:flex;gap:8px;align-items:baseline;font-size:12.5px;padding:6px 0;border-bottom:1px dashed #EEF1F5;}
+.ck:last-child{border-bottom:0;}
+.cktag{flex-shrink:0;font-size:10px;font-weight:600;border-radius:99px;padding:1px 8px;}
+.cktag.bu{background:#E8F1FF;color:#1B66C9;}
+.cktag.qr{background:#F0F2F5;color:#7A828E;}
+.tok-card .toksec{margin-bottom:14px;} .toklab{font-size:10px;letter-spacing:.1em;color:#979CA5;margin-bottom:8px;font-weight:600;} .ctag{font-size:10px;background:#F0F2F5;color:#7A828E;padding:2px 8px;border-radius:99px;margin-left:8px;} .ccard .md{font-size:12px;} .curfoot,.empty{font-size:12px;color:#979CA5;margin-top:12px;} .empty{background:#fff;border-radius:12px;padding:22px;text-align:center;}
+/* 预览 */
+.pvwrap{display:flex;gap:18px;align-items:flex-start;}
+@media(max-width:960px){.pvwrap{flex-direction:column}.pvtoc{width:100%;position:static}}
+.pvtoc{width:250px;background:#1E2430;border-radius:14px;padding:14px 0;position:sticky;top:12px;}
+.toc-i{display:flex;align-items:baseline;gap:8px;padding:9px 18px;color:#B9C2CE;font-size:12.5px;cursor:pointer;border-left:3px solid transparent;}
+.toc-i:hover{color:#fff;} .toc-i.full{color:#E8ECF2;} .toc-i.pend{color:#5F6B7B;}
+.toc-i .no{font-size:10px;opacity:.6;min-width:18px;} .toc-i .en{margin-left:auto;font-size:9px;opacity:.45;letter-spacing:.06em;}
+.toc-i .dot{width:6px;height:6px;border-radius:99px;margin-left:6px;} .toc-i.full .dot{background:#7DC383;} .toc-i.pend .dot{background:#3A4356;}
+.pvbody{flex:1;}
+.chapter{background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:12px;box-shadow:0 2px 7px rgba(20,90,180,.05);}
+.ch-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;} .ch-head .no{font-size:12px;color:#B8BDC4;font-weight:600;}
+h3{font-size:15px;margin:0;} .en{font-size:10px;color:#B8BDC4;margin-left:5px;letter-spacing:.08em;}
+.ch-body{font-size:13px;line-height:1.7;} .pending{color:#B8BDC4;font-size:12px;}
+</style></head><body>
+<div class="top"><b>工作台自举 · 共创工作台</b><span class="sep">|</span><span>决策链 v1</span><span class="sep">|</span><span class="nowchip2">第一步 外部输入</span><span class="rawlinks"><a href="./原始组件库规范.html" target="_blank">原始组件库规范 ↗</a><a href="./原始参考令牌库.html" target="_blank">原始参考令牌库 ↗</a><a href="./品牌设计语言.html" target="_blank">品牌设计语言 ↗</a><a href="./原始图标库.html" target="_blank">原始图标库 ↗</a></span></div>
+<div class="tabs">
+  <button class="on" data-t="wb">工作台</button>
+  <button data-t="preview">预览</button>
+</div>
+<main>
+  <div class="panel on" id="p-wb"><div class="wb"><div class="stepside" id="stepside"><div class="step done" onclick="selectStep('profile')" style="cursor:pointer" data-id="profile"><span class="st">✓</span><div class="stx"><div class="stt">第〇步 原型画像</div><div class="ssub">设计共创工作台 · PC · 设计工具 · 展示面板</div></div></div>
+<div class="step now" onclick="selectStep('external')" style="cursor:pointer" data-id="external"><span class="st">●</span><div class="stx"><div class="stt">第一步 外部输入</div><div class="ssub">用户提交内容逐条解析展示 · 多次提交多条</div></div></div>
+<div class="step todo" data-id="concept"><span class="st">2</span><div class="stx"><div class="stt">第二步 气质方向层</div><div class="ssub">设计价值观 + 气质关键词 · 4 组候选</div></div></div>
+<div class="step todo" data-id="direction"><span class="st">3</span><div class="stx"><div class="stt">第三步 设计令牌</div><div class="ssub">风格/主色/字体/字阶拼装为设计令牌 · 并排方向卡（组件形态不在此步）</div></div></div>
+<div class="step todo" data-id="compstyle"><span class="st">4</span><div class="stx"><div class="stt">第四步 组件风格</div><div class="ssub">先选基调库 · 再逐族规范过目（形态来自库，颜色用已锁令牌）</div></div></div>
+<div class="step todo" data-id="imagery"><span class="st">5</span><div class="stx"><div class="stt">第五步 图片素材</div><div class="ssub">生图 / 图包 / 占位 · 单张策略卡确认（先探测本地生图能力）</div></div></div>
+<div class="step todo" data-id="icon"><span class="st">6</span><div class="stx"><div class="stt">第六步 图标风格</div><div class="ssub">开源库样例 + 链接；特殊风格可生成</div></div></div>
+<div class="step todo" data-id="gaps"><span class="st">7</span><div class="stx"><div class="stt">第七步 查漏</div><div class="ssub">对照章节模板盘点缺口 —— 确保进样品页前信息齐</div></div></div>
+<div class="step todo" data-id="samplepage"><span class="st">8</span><div class="stx"><div class="stt">第八步 样品页</div><div class="ssub">代表页每页 3 版 · 不同子代理 · 看版定案 · 回流中间件</div></div></div>
+<div class="step todo" data-id="finalize"><span class="st">9</span><div class="stx"><div class="stt">第九步 收尾 · 章节成文与审阅</div><div class="ssub">回流后最终状态逐章成文 → 审阅修改 → 导出纯净版</div></div></div></div><div class="carea" id="carea"></div></div></div>
+  <div class="panel" id="p-preview"><div class="pvwrap"><div class="pvtoc"><a class="toc-i pend" onclick="gotoChapter('values')"><span class="no">01</span>设计价值观<span class="en">DESIGN VALUES</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('layout')"><span class="no">02</span>布局<span class="en">LAYOUT</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('density')"><span class="no">03</span>密度与多端<span class="en">PLATFORMS</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('rules')"><span class="no">04</span>设计要求<span class="en">REQUIREMENTS</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('color')"><span class="no">05</span>颜色<span class="en">COLOR</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('type')"><span class="no">06</span>字体<span class="en">TYPOGRAPHY</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('spacing')"><span class="no">07</span>间距<span class="en">SPACING</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('radius')"><span class="no">08</span>圆角<span class="en">RADIUS</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('shadow')"><span class="no">09</span>阴影<span class="en">SHADOW</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('motion')"><span class="no">10</span>动效<span class="en">MOTION</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('component')"><span class="no">11</span>组件<span class="en">COMPONENTS</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('icon')"><span class="no">12</span>图标<span class="en">ICONS</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('imagery')"><span class="no">13</span>图像与插画<span class="en">IMAGERY</span><span class="dot"></span></a>
+<a class="toc-i pend" onclick="gotoChapter('bans')"><span class="no">14</span>设计禁令<span class="en">PROHIBITIONS</span><span class="dot"></span></a></div><div class="pvbody"><section class="chapter" id="pv-values"><div class="ch-head"><span class="no">01</span><div><h3>设计价值观<span class="en">DESIGN VALUES</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-layout"><div class="ch-head"><span class="no">02</span><div><h3>布局<span class="en">LAYOUT</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-density"><div class="ch-head"><span class="no">03</span><div><h3>密度与多端<span class="en">PLATFORMS</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-rules"><div class="ch-head"><span class="no">04</span><div><h3>设计要求<span class="en">REQUIREMENTS</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-color"><div class="ch-head"><span class="no">05</span><div><h3>颜色<span class="en">COLOR</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-type"><div class="ch-head"><span class="no">06</span><div><h3>字体<span class="en">TYPOGRAPHY</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-spacing"><div class="ch-head"><span class="no">07</span><div><h3>间距<span class="en">SPACING</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-radius"><div class="ch-head"><span class="no">08</span><div><h3>圆角<span class="en">RADIUS</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-shadow"><div class="ch-head"><span class="no">09</span><div><h3>阴影<span class="en">SHADOW</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-motion"><div class="ch-head"><span class="no">10</span><div><h3>动效<span class="en">MOTION</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-component"><div class="ch-head"><span class="no">11</span><div><h3>组件<span class="en">COMPONENTS</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-icon"><div class="ch-head"><span class="no">12</span><div><h3>图标<span class="en">ICONS</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-imagery"><div class="ch-head"><span class="no">13</span><div><h3>图像与插画<span class="en">IMAGERY</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section>
+<section class="chapter" id="pv-bans"><div class="ch-head"><span class="no">14</span><div><h3>设计禁令<span class="en">PROHIBITIONS</span></h3></div></div><div class="ch-body"><div class="pending">待定 —— 由共创步骤产生</div></div></section></div></div></div>
+</main>
+<script>
+const STATE = {"project":"工作台自举","version":1,"profile":"设计共创工作台 · PC · 设计工具 · 展示面板","current":"external","steps":[{"id":"profile","no":"0","title":"第〇步 原型画像","sub":"设计共创工作台 · PC · 设计工具 · 展示面板","status":"done","candidates":[{"name":"设计共创工作台（自举）","desc":"为工作台自身生成设计系统：设计协作工具 · PC · 展示面板","fields":{"产品":"设计共创工作台——AI 陪跑设计决策的展示面板","端/画布":"PC Web · 1280+（顶栏+左步骤列+右决策区）","使用者":"用本技能做设计的开发者/设计师/产品","页面构成":"两 Tab（工作台决策流/预览 14 章文档）+ 顶栏素材入口","使用时长":"单次会话 10~15 轮 · 长时间阅读+颜色评估","体验意图":"专业信任 · 专注衬作品 · 精致不冷淡 · 中立画布","布局归类":"向导流程（左步骤列）+ 决策面板（候选卡）+ 文档（预览）","已定方向":"编辑排版骨架 + 代码块候选（A 版已认）｜主色纯黑已否"}}],"chosen":"设计共创工作台（自举）"},{"id":"external","no":"1","title":"第一步 外部输入","sub":"用户提交内容逐条解析展示 · 多次提交多条","status":"todo"},{"id":"concept","no":"2","title":"第二步 气质方向层","sub":"设计价值观 + 气质关键词 · 4 组候选","status":"todo"},{"id":"direction","no":"3","title":"第三步 设计令牌","sub":"风格/主色/字体/字阶拼装为设计令牌 · 并排方向卡（组件形态不在此步）","status":"todo"},{"id":"compstyle","no":"4","title":"第四步 组件风格","sub":"先选基调库 · 再逐族规范过目（形态来自库，颜色用已锁令牌）","status":"todo"},{"id":"imagery","no":"5","title":"第五步 图片素材","sub":"生图 / 图包 / 占位 · 单张策略卡确认（先探测本地生图能力）","status":"todo"},{"id":"icon","no":"6","title":"第六步 图标风格","sub":"开源库样例 + 链接；特殊风格可生成","status":"todo"},{"id":"gaps","no":"7","title":"第七步 查漏","sub":"对照章节模板盘点缺口 —— 确保进样品页前信息齐","status":"todo"},{"id":"samplepage","no":"8","title":"第八步 样品页","sub":"代表页每页 3 版 · 不同子代理 · 看版定案 · 回流中间件","status":"todo"},{"id":"finalize","no":"9","title":"第九步 收尾 · 章节成文与审阅","sub":"回流后最终状态逐章成文 → 审阅修改 → 导出纯净版","status":"todo"}],"auto":{},"overview":{},"history":[{"step":"profile","note":"画像确认 · 风格判断进行中"}]};
+let viewing = STATE.current;
+function findStep(id){ return (STATE.steps||[]).find(s=>s.id===id); }
+function renderPane(){
+  const s = findStep(viewing);
+  const area = document.getElementById('carea');
+  if (!s) { area.innerHTML = '<div class="empty">步骤全部完成</div>'; return; }
+  const cands = s.candidates||[];
+  let inner = '';
+  try {
+    if (s.id==='profile') inner = renderProfile(s);
+    else if (s.id==='external') inner = renderExternal(s);
+    else if (s.id==='direction') inner = cands.map((c,i)=>renderTokenCard(c,s,i)).join('');
+    else if (s.id==='imagery'||s.id==='gaps') inner = (cands.length===1 ? renderSingle(cands[0],s) : cands.map((c,i)=>renderGeneric(c,s,i)).join(''));
+    else inner = cands.map((c,i)=>renderGeneric(c,s,i)).join('');
+  } catch (e) {
+    inner = '<div class="ccard full"><div class="chead"><b class="cname2">候选渲染异常</b></div><p class="cdesc">该步数据字段不符合渲染约定（对照 examples/sample-chain.json 的 shape），已在会话中修复前降级为通用卡：'+String(e && e.message || e).replace(/</g,'&lt;')+'</p></div>' + cands.map((c,i)=>renderGeneric(c,s,i)).join('');
+  }
+  area.innerHTML = head(s) + '<div class="cands">' + (inner || '<div class="empty">本步暂无候选内容</div>') + '</div>';
+}
+function head(s){
+  if (s.status==='done') return '<div class="curhead"><span class="nowchip" style="background:#16803C">已完成</span><b>'+s.title+'</b></div>'+(s.reopened?'<p class="curhint">⚠ 此步曾回改，下游步骤建议重看。</p>':'')+'<p class="curhint">当时的选择已标 ✓。点左栏其他步骤可切换；在会话里说「回改 '+s.title+'」可重开此步（下游软提示）。</p>';
+  if (s.id===STATE.current) return '<div class="curhead"><span class="nowchip">当前</span><b>'+s.title+'</b></div><p class="curhint">'+(s.hint||'')+'</p>';
+  if ((s.candidates||[]).length) return '<div class="curhead"><span class="nowchip" style="background:#5F6B7B">候选已备</span><b>'+s.title+'</b></div><p class="curhint">这一步的候选已生成（可回看），还没轮到决策 —— 按流程顺序走完前面的步骤后在这里拍板。</p>';
+  return '<div class="curhead"><b>'+s.title+'</b></div><p class="curhint">未解锁 —— 由前序步骤产生。</p>';
+}
+function actSel(i){ return '<div class="cact">会话回复「选 '+(i+1)+'」；或描述微调；或说「再来一批」</div>'; }
+function actConfirm(){ return '<div class="cact">看完没问题，会话回复「可以」；要调整就直接说改哪里</div>'; }
+function cardHead(s,i,name){
+  const nm = name || ('候选 '+(i+1));
+  const win = s.chosen && (s.chosen===nm || (Array.isArray(s.chosen)&&s.chosen.some(x=>nm.indexOf(x)>=0||x.indexOf(nm)>=0)) || (typeof s.chosen==='string'&&nm.indexOf(s.chosen)>=0));
+  let t = '<div class="chead"><span class="cno">候选 '+(i+1)+'</span><b class="cname2">'+nm+'</b>';
+  if (win) t += '<span class="win-badge" style="position:static;margin-left:auto">✓ 已选定</span>';
+  else if (i===0&&s.status==='now') t += '<span class="rec" style="position:static;margin-left:auto">推荐</span>';
+  return t + '</div>';
+}
+function renderGeneric(c,s,i){
+  const isObj=(typeof c==='object'&&c!==null);
+  const name=isObj?(c.name||('候选 '+(i+1))):String(c);
+  const sw=(isObj?(c.swatches||[]):[]).map(x=>'<span class="sw" style="background:'+x+'"></span>').join('');
+  const vals=(isObj&&c.values)?'<ul class="cv">'+Object.entries(c.values).map(function(kv){return '<li><b>'+kv[0]+'</b>'+kv[1]+'</li>';}).join('')+'</ul>':'';
+  let card = '<div class="ccard">' + cardHead(s,i,name);
+  if (isObj && c.demo) card += '<div class="cdemo">'+c.demo+'</div>';
+  if (sw) card += '<div class="sws">'+sw+'</div>';
+  if (isObj && c.desc) card += '<p class="cdesc">'+c.desc+'</p>';
+  card += vals;
+  if (s.status==='now') card += actSel(i);
+  card += '</div>';
+  return card;
+}
+function renderSingle(c,s){
+  const isObj=(typeof c==='object'&&c!==null);
+  let card = '<div class="ccard full">' + cardHead(s,0,isObj?c.name:'盘点结果');
+  if (isObj && c.desc) card += '<p class="cdesc">'+c.desc+'</p>';
+  if (isObj && c.values) Object.entries(c.values).forEach(function(kv){
+    const isGap = /^(补|待|缺)/.test(kv[0]);
+    card += '<div class="ck"><b class="cktag '+(isGap?'bu':'qr')+'">'+kv[0]+'</b><span>'+kv[1]+'</span></div>';
+  });
+  if (s.status==='now') card += actConfirm();
+  card += '</div>';
+  return card;
+}
+function renderProfile(s){
+  const c = (s.candidates||[])[0];
+  let rows = '';
+  if (c && typeof c==='object' && c.fields) {
+    Object.keys(c.fields).forEach(function(k){ rows += '<div class="pf-i"><b>'+k+'</b><span>'+c.fields[k]+'</span></div>'; });
+  } else {
+    String(c||'').split(/[·；;]+/).map(x=>x.trim()).filter(Boolean).forEach(function(p){ rows += '<div class="pf-i pf-w"><span>'+p+'</span></div>'; });
+  }
+  const concl = s.chosen ? '<div class="pf-concl"><b>处理结论</b>'+(Array.isArray(s.chosen)?s.chosen.join('；'):s.chosen)+'</div>' : '';
+  return '<div class="ccard full"><div class="pf-grid">'+rows+'</div>'+concl+(s.status==='now'?actConfirm():'')+'</div>';
+}
+function renderExternal(s){
+  const subs = s.submissions || [];
+  let out = '';
+  subs.forEach(function(u,i){
+    const sw = (u.swatches||[]).map(function(x){return '<span class="sw" style="background:'+x+'"></span>';}).join('');
+    out += '<div class="ccard"><span class="cno">提交 '+(i+1)+'</span><div class="chead"><b class="cname2">'+(u.type||'外部素材')+'</b></div>'
+      + (u.quote ? '<div class="ext-quote">'+u.quote+'</div>' : '')
+      + (u.desc ? '<p class="cdesc">'+u.desc+'</p>' : '')
+      + (sw ? '<div class="sws">'+sw+'</div>' : '')
+      + (u.accept ? '<div class="cact">吸收：'+u.accept+'</div>' : '')
+      + '</div>';
+  });
+  out += '<div class="ccard full ext-ask"><b>'+(subs.length?'还可以继续补充':'还没有外部输入')+'</b><span>可以直接发：品牌色卡 · Logo · 参考截图 · 竞品 · 文字要求——发一条解析一条，多次提交会逐条列出；没有要提交的就说「跳过」。</span>'+(s.status==='now'?actConfirm():'')+'</div>';
+  return out;
+}
+function renderTokenCard(c, s, i){
+  const t = c.tokens;
+  if (!t || !t.colors) return '';
+  const C = t.colors;
+  const sw = function(hex,label){ return '<div style="text-align:center"><div style="width:44px;height:44px;border-radius:8px;background:'+hex+';border:1px solid rgba(0,0,0,.08)"></div><div style="font-size:9px;color:#8A93A0;margin-top:3px;font-family:Consolas,monospace">'+label+'</div></div>'; };
+  let colorRow = '';
+  const cmap = [['主色',C.primary],['次色',C.secondary],['CTA',C.cta],['底色',C.bg],['表面',C.surface],['主文字',C.textPrimary],['次文字',C.textSecondary],['边框',C.border]];
+  cmap.filter(x => x[1]).forEach(function(x){ colorRow += sw(x[1], x[0]); });
+  let statusRow = '';
+  [['成功',C.success],['警告',C.warning],['危险',C.danger]].filter(x => x[1]).forEach(function(x){ statusRow += sw(x[1], x[0]); });
+  let scaleRow = '';
+  (t.scale || []).forEach(function(sz, idx){ const labels=['大标题','标题','正文','次级','辅助','最小']; scaleRow += '<div style="margin:3px 0"><span style="font-family:'+t.fontHead+';font-size:'+sz+'px;font-weight:'+(idx===0?700:idx===1?600:400)+';color:'+C.textPrimary+'">示例标题</span> <span style="font-size:9px;color:#8A93A0">'+sz+'px '+(labels[idx]||('第'+(idx+1)+'档'))+'</span></div>'; });
+  return '<div class="ccard tok-card">' + cardHead(s,i,c.name) + '<span class="ctag" style="margin-left:8px">'+(c.concept||'')+'</span>' +
+    '<div class="toksec"><div class="toklab">语义色</div><div style="display:flex;gap:8px;flex-wrap:wrap">'+colorRow+'</div>' +
+    '<div class="toklab" style="margin-top:10px">状态色</div><div style="display:flex;gap:8px">'+statusRow+'</div></div>' +
+    '<div class="toksec"><div class="toklab">字体与字阶 · '+t.fontHead+' / '+t.fontBody+'</div>'+scaleRow+'<div style="margin-top:8px"><span style="font-family:'+t.fontBody+';color:'+C.textSecondary+';font-size:12px">正文示例：这里展示正文的可读性与行高节奏，用于检验日常阅读的舒适程度。</span></div></div>' +
+    '<div class="cact">会话回复「选 '+(i+1)+'」；或多选排序；或微调某处；或「再来一批」。圆角/阴影/组件形态都不在这一步 —— 全部在下一步按组件库基调定。</div></div>';
+}
+function selectStep(id){ viewing = id; renderPane();
+  document.querySelectorAll('#stepside .step').forEach(el=>el.classList.toggle('viewing', el.dataset.id===id));
+}
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x => x.classList.remove('on'));
+  b.classList.add('on'); document.getElementById('p-' + b.dataset.t).classList.add('on');
+});
+function gotoChapter(id){
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(x => x.classList.remove('on'));
+  document.querySelector('[data-t="preview"]').classList.add('on');
+  document.getElementById('p-preview').classList.add('on');
+  const el = document.getElementById('pv-' + id); if (el) el.scrollIntoView({behavior:'smooth'});
+}
+renderPane();
+</script></body></html>

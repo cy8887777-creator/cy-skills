@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(~/.claude/skills/prd-generator-2.0/**)"
+    ]
+  }
+}

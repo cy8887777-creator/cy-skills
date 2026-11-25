@@ -1,0 +1,262 @@
+{
+ "STYLE-REGISTRY": {
+  "schemaVersion": 1,
+  "domBases": [
+   {
+    "domBaseId": "db-x",
+    "pages": [
+     "p1"
+    ]
+   }
+  ],
+  "families": [
+   {
+    "familyId": "fam-x",
+    "domBaseId": "db-x",
+    "label": "主族（两个成员）",
+    "members": [
+     "pack-1",
+     "pack-2"
+    ]
+   }
+  ]
+ },
+ "STYLE-PACK": {
+  "schemaVersion": 1,
+  "packs": [
+   {
+    "packId": "pack-1",
+    "familyId": "fam-x",
+    "identity": {
+     "styleId": "s:pack-1",
+     "styleName": "风格一",
+     "origin": "wiki",
+     "mood": "样例情绪-风格一"
+    },
+    "tokens": {
+     "primary": "#0A6CFF",
+     "bg": "#F6F8FC",
+     "surface": "#FFFFFF",
+     "surface-alt": "#EEF2F8",
+     "text-primary": "#101828",
+     "text-secondary": "#556070",
+     "border": "#D9E1EC",
+     "success": "#0BA5A5",
+     "danger": "#D92D20",
+     "font-head": "'PingFang SC','Microsoft YaHei',sans-serif",
+     "font-body": "'PingFang SC','Microsoft YaHei',sans-serif",
+     "size-title": "20px",
+     "size-head": "16px",
+     "size-body": "13px",
+     "size-caption": "12px",
+     "weight-head": "600",
+     "weight-body": "400",
+     "line-height-body": "1.6",
+     "radius-sm": "6px",
+     "radius-md": "12px",
+     "radius-lg": "18px",
+     "space-1": "8px",
+     "space-2": "12px",
+     "space-3": "16px",
+     "space-4": "24px",
+     "size-ctl-sm": "28px",
+     "size-ctl-md": "34px",
+     "size-ctl-lg": "40px",
+     "shadow-sm": "0 1px 2px rgba(16,24,40,0.06)",
+     "shadow-md": "0 2px 12px rgba(16,24,40,0.12)",
+     "motion-duration-base": "240ms",
+     "motion-easing-base": "cubic-bezier(0.22,0.9,0.3,1)",
+     "fence-width": "1px",
+     "density": "regular"
+    },
+    "palettes": [
+     {
+      "paletteId": "pal-pack-1-a",
+      "label": "品牌",
+      "swatches": [
+       "#0A6CFF",
+       "#F6F8FC",
+       "#101828",
+       "#FFFFFF"
+      ]
+     },
+     {
+      "paletteId": "pal-pack-1-b",
+      "label": "青灰",
+      "swatches": [
+       "#0BA5A5",
+       "#F6F8FC",
+       "#101828",
+       "#FFFFFF"
+      ]
+     }
+    ],
+    "iconSet": null,
+    "l2Overrides": [
+     {
+      "selector": ".app",
+      "props": "--radius:12px;box-shadow:none;"
+     }
+    ]
+   },
+   {
+    "packId": "pack-2",
+    "familyId": "fam-x",
+    "identity": {
+     "styleId": "s:pack-2",
+     "styleName": "风格二",
+     "origin": "wiki",
+     "mood": "样例情绪-风格二"
+    },
+    "tokens": {
+     "primary": "#0A6CFF",
+     "bg": "#F6F8FC",
+     "surface": "#FFFFFF",
+     "surface-alt": "#EEF2F8",
+     "text-primary": "#101828",
+     "text-secondary": "#556070",
+     "border": "#D9E1EC",
+     "success": "#0BA5A5",
+     "danger": "#D92D20",
+     "font-head": "'PingFang SC','Microsoft YaHei',sans-serif",
+     "font-body": "'PingFang SC','Microsoft YaHei',sans-serif",
+     "size-title": "20px",
+     "size-head": "16px",
+     "size-body": "13px",
+     "size-caption": "12px",
+     "weight-head": "600",
+     "weight-body": "400",
+     "line-height-body": "1.6",
+     "radius-sm": "6px",
+     "radius-md": "12px",
+     "radius-lg": "18px",
+     "space-1": "8px",
+     "space-2": "12px",
+     "space-3": "16px",
+     "space-4": "24px",
+     "size-ctl-sm": "28px",
+     "size-ctl-md": "34px",
+     "size-ctl-lg": "40px",
+     "shadow-sm": "0 1px 2px rgba(16,24,40,0.06)",
+     "shadow-md": "0 2px 12px rgba(16,24,40,0.12)",
+     "motion-duration-base": "240ms",
+     "motion-easing-base": "cubic-bezier(0.22,0.9,0.3,1)",
+     "density": "compact"
+    },
+    "palettes": [
+     {
+      "paletteId": "pal-pack-2-a",
+      "label": "品牌",
+      "swatches": [
+       "#0A6CFF",
+       "#F6F8FC",
+       "#101828",
+       "#FFFFFF"
+      ]
+     },
+     {
+      "paletteId": "pal-pack-2-b",
+      "label": "青灰",
+      "swatches": [
+       "#0BA5A5",
+       "#F6F8FC",
+       "#101828",
+       "#FFFFFF"
+      ]
+     }
+    ],
+    "l2Overrides": [
+     {
+      "selector": ".app",
+      "props": "--radius:12px;box-shadow:none;"
+     }
+    ]
+   }
+  ]
+ },
+ "COMPONENT-PACK": {
+  "schemaVersion": 1,
+  "packFor": "pack-1",
+  "components": [
+   {
+    "compId": "c-01",
+    "name": "组件1",
+    "html": "<div class=\"c\" data-block=\"c-01\"></div>"
+   },
+   {
+    "compId": "c-02",
+    "name": "组件2",
+    "html": "<div class=\"c\" data-block=\"c-02\"></div>"
+   },
+   {
+    "compId": "c-03",
+    "name": "组件3",
+    "html": "<div class=\"c\" data-block=\"c-03\"></div>"
+   },
+   {
+    "compId": "c-04",
+    "name": "组件4",
+    "html": "<div class=\"c\" data-block=\"c-04\"></div>"
+   },
+   {
+    "compId": "c-05",
+    "name": "组件5",
+    "html": "<div class=\"c\" data-block=\"c-05\"></div>"
+   },
+   {
+    "compId": "c-06",
+    "name": "组件6",
+    "html": "<div class=\"c\" data-block=\"c-06\"></div>"
+   },
+   {
+    "compId": "c-07",
+    "name": "组件7",
+    "html": "<div class=\"c\" data-block=\"c-07\"></div>"
+   },
+   {
+    "compId": "c-08",
+    "name": "组件8",
+    "html": "<div class=\"c\" data-block=\"c-08\"></div>"
+   },
+   {
+    "compId": "c-09",
+    "name": "组件9",
+    "html": "<div class=\"c\" data-block=\"c-09\"></div>"
+   },
+   {
+    "compId": "c-10",
+    "name": "组件10",
+    "html": "<div class=\"c\" data-block=\"c-10\"></div>"
+   }
+  ]
+ },
+ "STYLE-CONTRACT": {
+  "schemaVersion": 1,
+  "domBaseId": "db-x",
+  "styleOrigin": {
+   "styleId": "s:pack-1",
+   "mood": "样例情绪-风格一"
+  },
+  "pages": [
+   {
+    "pageId": "p1",
+    "form": "列表",
+    "regions": [
+     {
+      "region": "卡片区",
+      "shape": "card",
+      "count": 1
+     }
+    ]
+   }
+  ],
+  "motion": {
+   "tier": "a",
+   "tokens": {
+    "duration": "200ms",
+    "easing": "ease-out"
+   }
+  },
+  "density": "regular"
+ }
+}

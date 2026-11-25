@@ -1,0 +1,5 @@
+# design-system-extract 第三方依赖(其余脚本全部标准库)
+# bs4:B-1 静态解析(parse_html.py)必需
+beautifulsoup4>=4.12
+# playwright:仅 B-2 URL 抓取(fetch_url.py)需要;不做 URL 提取可不装
+playwright>=1.40

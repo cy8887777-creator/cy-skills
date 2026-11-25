@@ -1,0 +1,13 @@
+{
+ "STYLE-PACK": {
+  "schemaVersion": 1,
+  "packs": [
+   {
+    "packId": "pack-9",
+    "tokens": {
+     "surface-2": "#F2F5FA"
+    }
+   }
+  ]
+ }
+}

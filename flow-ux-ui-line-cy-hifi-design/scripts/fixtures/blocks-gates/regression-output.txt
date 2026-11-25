@@ -1,0 +1,294 @@
+verify_blocks/1.4.0-gates — input: D:\ai design\测试生高保真图1107\师傅端任务小程序\_归档\旧版比稿-布局写死\intake\style-blocks.json (data-file)
+[pass] STYLE-REGISTRY — 数据文件块齐, JSON ok, fields ok, references closed
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[0] "pack-a-weui".tokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[0] "pack-a-weui".tokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[0] "pack-a-weui".tokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[0] "pack-a-weui".tokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "gridCols"：键名 "gridCols" 不合正本表规则（全小写连字符）——这是正本键 "grid-cols" 的常见错误写法，请改写为 "grid-cols"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[0] "pack-a-weui".tokens 键 "space0"：扩展键 "space0" 与正本键 "space-1" 仅差 2 个字符——若指同一参数请改用正本键 "space-1"，否则请换区分度更高的键名（扩展参数同样必须全小写连字符）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "ctlXs"：键名 "ctlXs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "ctlXxs"：键名 "ctlXxs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xxs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[0] "pack-a-weui".tokens 键 "radiusPill"：键名 "radiusPill" 不合正本表规则（全小写连字符）——请改写为 "radius-pill"（驼峰自动转换）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-MINIMUM: packs[0] "pack-a-weui".tokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集是比稿卡必给、选型必带、选定即锁的核心参数，请在 tokens 里补齐
+[FAIL] STYLE-PACK — E-L2-DECL: packs[0] "pack-a-weui".l2Overrides[0].props 含非法声明 ":ok:#00A2C7" ——疑似漏写属性名前缀 "--"（自定义属性必须以 -- 开头，如 "--ok:#00A2C7"）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[1] "pack-b2-enterprise".tokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[1] "pack-b2-enterprise".tokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[1] "pack-b2-enterprise".tokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[1] "pack-b2-enterprise".tokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "gridCols"：键名 "gridCols" 不合正本表规则（全小写连字符）——这是正本键 "grid-cols" 的常见错误写法，请改写为 "grid-cols"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[1] "pack-b2-enterprise".tokens 键 "space0"：扩展键 "space0" 与正本键 "space-1" 仅差 2 个字符——若指同一参数请改用正本键 "space-1"，否则请换区分度更高的键名（扩展参数同样必须全小写连字符）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "ctlXs"：键名 "ctlXs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "ctlXxs"：键名 "ctlXxs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xxs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[1] "pack-b2-enterprise".tokens 键 "radiusPill"：键名 "radiusPill" 不合正本表规则（全小写连字符）——请改写为 "radius-pill"（驼峰自动转换）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-MINIMUM: packs[1] "pack-b2-enterprise".tokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集是比稿卡必给、选型必带、选定即锁的核心参数，请在 tokens 里补齐
+[FAIL] STYLE-PACK — E-L2-DECL: packs[1] "pack-b2-enterprise".l2Overrides[0].props 含非法声明 ":ok:#00A2C7" ——疑似漏写属性名前缀 "--"（自定义属性必须以 -- 开头，如 "--ok:#00A2C7"）
+[FAIL] STYLE-PACK — E-L2-UNKNOWN-VAR: packs[1] "pack-b2-enterprise".l2Overrides[2].props 引用未定义变量 --radius-sm ——不在已知集合（正本表 emits 变量 + 种子默认值 + 风格包扩展键 --sp-<键名> + 种子 STYLE_OWNED_VARS 运行时颜色根变量）；请改用已定义变量
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[2] "pack-b3-vitality".tokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[2] "pack-b3-vitality".tokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[2] "pack-b3-vitality".tokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[2] "pack-b3-vitality".tokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-VALUE: packs[2] "pack-b3-vitality".tokens 键 "density" 的值 "airy" 不在正本表允许值内——可选值：compact、regular、loose；请改用其中之一
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "gridCols"：键名 "gridCols" 不合正本表规则（全小写连字符）——这是正本键 "grid-cols" 的常见错误写法，请改写为 "grid-cols"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[2] "pack-b3-vitality".tokens 键 "space0"：扩展键 "space0" 与正本键 "space-1" 仅差 2 个字符——若指同一参数请改用正本键 "space-1"，否则请换区分度更高的键名（扩展参数同样必须全小写连字符）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "ctlXs"：键名 "ctlXs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "ctlXxs"：键名 "ctlXxs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xxs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[2] "pack-b3-vitality".tokens 键 "radiusPill"：键名 "radiusPill" 不合正本表规则（全小写连字符）——请改写为 "radius-pill"（驼峰自动转换）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-MINIMUM: packs[2] "pack-b3-vitality".tokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集是比稿卡必给、选型必带、选定即锁的核心参数，请在 tokens 里补齐
+[FAIL] STYLE-PACK — E-L2-DECL: packs[2] "pack-b3-vitality".l2Overrides[0].props 含非法声明 ":ok:#00A2C7" ——疑似漏写属性名前缀 "--"（自定义属性必须以 -- 开头，如 "--ok:#00A2C7"）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[3] "pack-b4-steady".tokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[3] "pack-b4-steady".tokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[3] "pack-b4-steady".tokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[3] "pack-b4-steady".tokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "gridCols"：键名 "gridCols" 不合正本表规则（全小写连字符）——这是正本键 "grid-cols" 的常见错误写法，请改写为 "grid-cols"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[3] "pack-b4-steady".tokens 键 "space0"：扩展键 "space0" 与正本键 "space-1" 仅差 2 个字符——若指同一参数请改用正本键 "space-1"，否则请换区分度更高的键名（扩展参数同样必须全小写连字符）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "ctlXs"：键名 "ctlXs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "ctlXxs"：键名 "ctlXxs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xxs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[3] "pack-b4-steady".tokens 键 "radiusPill"：键名 "radiusPill" 不合正本表规则（全小写连字符）——请改写为 "radius-pill"（驼峰自动转换）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-MINIMUM: packs[3] "pack-b4-steady".tokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集是比稿卡必给、选型必带、选定即锁的核心参数，请在 tokens 里补齐
+[FAIL] STYLE-PACK — E-L2-DECL: packs[3] "pack-b4-steady".l2Overrides[0].props 含非法声明 ":ok:#00A2C7" ——疑似漏写属性名前缀 "--"（自定义属性必须以 -- 开头，如 "--ok:#00A2C7"）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[4] "pack-c-illustration".tokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[4] "pack-c-illustration".tokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[4] "pack-c-illustration".tokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[4] "pack-c-illustration".tokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-VALUE: packs[4] "pack-c-illustration".tokens 键 "density" 的值 "airy" 不在正本表允许值内——可选值：compact、regular、loose；请改用其中之一
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "gridCols"：键名 "gridCols" 不合正本表规则（全小写连字符）——这是正本键 "grid-cols" 的常见错误写法，请改写为 "grid-cols"（正本表别名）
+[FAIL] STYLE-PACK — E-PACK-KEY-NEAR: packs[4] "pack-c-illustration".tokens 键 "space0"：扩展键 "space0" 与正本键 "space-1" 仅差 2 个字符——若指同一参数请改用正本键 "space-1"，否则请换区分度更高的键名（扩展参数同样必须全小写连字符）
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "ctlXs"：键名 "ctlXs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "ctlXxs"：键名 "ctlXxs" 不合正本表规则（全小写连字符）——请改写为 "size-ctl-xxs"（驼峰自动转换，并入正本命名族 size-*）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-KEY: packs[4] "pack-c-illustration".tokens 键 "radiusPill"：键名 "radiusPill" 不合正本表规则（全小写连字符）——请改写为 "radius-pill"（驼峰自动转换）；若它对应正本表参数，请以 assets/token-keys.json 的键名为准
+[FAIL] STYLE-PACK — E-PACK-MINIMUM: packs[4] "pack-c-illustration".tokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集是比稿卡必给、选型必带、选定即锁的核心参数，请在 tokens 里补齐
+[FAIL] STYLE-PACK — E-L2-DECL: packs[4] "pack-c-illustration".l2Overrides[0].props 含非法声明 ":ok:#00A2C7" ——疑似漏写属性名前缀 "--"（自定义属性必须以 -- 开头，如 "--ok:#00A2C7"）
+[FAIL] COMPONENT-PACK — E-COMP-UNKNOWN-VAR: components[6] "定位打卡条" 引用未定义变量 --sp-surface ——不在已知集合（正本表 emits 变量 + 种子默认值 + 风格包扩展键 --sp-<键名> + STYLE_OWNED_VARS）；请改用已定义变量，或在风格包 tokens 里补该扩展键
+[pass] STYLE-CONTRACT — 数据文件块齐, JSON ok, fields ok, references closed
+[warn] STYLE-PACK — W-PACK-PALETTES: packs[0] "pack-a-weui" 只有 1 套配色（提示，不拦截）——品牌色盘那一版必须有，另按风格气质再配几套合适的配色版
+[warn] STYLE-PACK — W-PACK-PALETTES: packs[1] "pack-b2-enterprise" 只有 1 套配色（提示，不拦截）——品牌色盘那一版必须有，另按风格气质再配几套合适的配色版
+[warn] STYLE-PACK — W-PACK-PALETTES: packs[2] "pack-b3-vitality" 只有 1 套配色（提示，不拦截）——品牌色盘那一版必须有，另按风格气质再配几套合适的配色版
+[warn] STYLE-PACK — W-PACK-PALETTES: packs[3] "pack-b4-steady" 只有 1 套配色（提示，不拦截）——品牌色盘那一版必须有，另按风格气质再配几套合适的配色版
+[warn] STYLE-PACK — W-PACK-PALETTES: packs[4] "pack-c-illustration" 只有 1 套配色（提示，不拦截）——品牌色盘那一版必须有，另按风格气质再配几套合适的配色版
+[warn] STYLE-REGISTRY — W-FAMILY-SOLO: 族 "fam-b" 只有 1 个成员（提示，不拦截）——每族顺手送 1-2 个同族变体
+[FAIL] E-LOCK — E-LOCK-MINIMUM: selected "微信 WeUI" skeletonTokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集选型必带（选定即锁），请补齐后再回传
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "微信 WeUI" skeletonTokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-MINIMUM: selected "企业蓝·表单工具风" skeletonTokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集选型必带（选定即锁），请补齐后再回传
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "企业蓝·表单工具风" skeletonTokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-MINIMUM: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集选型必带（选定即锁），请补齐后再回传
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "暖阳黄的蓝色变种（活力形态）" skeletonTokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-MINIMUM: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集选型必带（选定即锁），请补齐后再回传
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "深青的蓝色变种（沉稳形态）" skeletonTokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-MINIMUM: selected "扁平插画界面" skeletonTokens 缺少正本表最小集（minimum）键 26 个：font-body、font-head、line-height-body、motion-duration-base、motion-easing-base、radius-lg、radius-md、radius-sm、shadow-md、shadow-sm、size-body、size-caption、size-ctl-lg、size-ctl-md、size-ctl-sm、size-head、size-title、space-1、space-2、space-3、space-4、surface-alt、text-primary、text-secondary、weight-body、weight-head——最小集选型必带（选定即锁），请补齐后再回传
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "surfaceAlt"：键名 "surfaceAlt" 不合正本表规则（全小写连字符）——这是正本键 "surface-alt" 的常见错误写法，请改写为 "surface-alt"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "textPrimary"：键名 "textPrimary" 不合正本表规则（全小写连字符）——这是正本键 "text-primary" 的常见错误写法，请改写为 "text-primary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "textSecondary"：键名 "textSecondary" 不合正本表规则（全小写连字符）——这是正本键 "text-secondary" 的常见错误写法，请改写为 "text-secondary"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "fontHead"：键名 "fontHead" 不合正本表规则（全小写连字符）——这是正本键 "font-head" 的常见错误写法，请改写为 "font-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "fontBody"：键名 "fontBody" 不合正本表规则（全小写连字符）——这是正本键 "font-body" 的常见错误写法，请改写为 "font-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "fontNum"：键名 "fontNum" 不合正本表规则（全小写连字符）——这是正本键 "font-num" 的常见错误写法，请改写为 "font-num"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "sizeTitle"：键名 "sizeTitle" 不合正本表规则（全小写连字符）——这是正本键 "size-title" 的常见错误写法，请改写为 "size-title"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "sizeHead"：键名 "sizeHead" 不合正本表规则（全小写连字符）——这是正本键 "size-head" 的常见错误写法，请改写为 "size-head"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "sizeBody"：键名 "sizeBody" 不合正本表规则（全小写连字符）——这是正本键 "size-body" 的常见错误写法，请改写为 "size-body"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "sizeCaption"：键名 "sizeCaption" 不合正本表规则（全小写连字符）——这是正本键 "size-caption" 的常见错误写法，请改写为 "size-caption"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "radiusSm"：键名 "radiusSm" 不合正本表规则（全小写连字符）——这是正本键 "radius-sm" 的常见错误写法，请改写为 "radius-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "radiusMd"：键名 "radiusMd" 不合正本表规则（全小写连字符）——这是正本键 "radius-md" 的常见错误写法，请改写为 "radius-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "radiusLg"：键名 "radiusLg" 不合正本表规则（全小写连字符）——这是正本键 "radius-lg" 的常见错误写法，请改写为 "radius-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "space1"：键名 "space1" 命中正本表别名——正本键是 "space-1"，请改用正本键名 "space-1"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "space2"：键名 "space2" 命中正本表别名——正本键是 "space-2"，请改用正本键名 "space-2"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "space3"：键名 "space3" 命中正本表别名——正本键是 "space-3"，请改用正本键名 "space-3"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "space4"：键名 "space4" 命中正本表别名——正本键是 "space-4"，请改用正本键名 "space-4"
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "ctlSm"：键名 "ctlSm" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-sm" 的常见错误写法，请改写为 "size-ctl-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "ctlMd"：键名 "ctlMd" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-md" 的常见错误写法，请改写为 "size-ctl-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "ctlLg"：键名 "ctlLg" 不合正本表规则（全小写连字符）——这是正本键 "size-ctl-lg" 的常见错误写法，请改写为 "size-ctl-lg"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "shadowSm"：键名 "shadowSm" 不合正本表规则（全小写连字符）——这是正本键 "shadow-sm" 的常见错误写法，请改写为 "shadow-sm"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "shadowMd"：键名 "shadowMd" 不合正本表规则（全小写连字符）——这是正本键 "shadow-md" 的常见错误写法，请改写为 "shadow-md"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "motionDuration"：键名 "motionDuration" 不合正本表规则（全小写连字符）——这是正本键 "motion-duration-base" 的常见错误写法，请改写为 "motion-duration-base"（正本表别名）
+[FAIL] E-LOCK — E-LOCK-KEY: selected "扁平插画界面" skeletonTokens 键 "motionEasing"：键名 "motionEasing" 不合正本表规则（全小写连字符）——这是正本键 "motion-easing-base" 的常见错误写法，请改写为 "motion-easing-base"（正本表别名）
+
+summary: 4 block(s): 2 passed / 2 failed — warnings: 6 — FAIL
+exit: 1

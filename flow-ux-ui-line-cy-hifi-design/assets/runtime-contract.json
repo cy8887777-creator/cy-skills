@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "frozenSource": "T00-冻结单 §3 动作/参数/目标语义目录（逐 callee 核对）；事件键=click",
+  "events": {
+    "click": {
+      "bindingAttr": "data-on",
+      "valueShape": "JSON object；主动作键互斥、首键生效",
+      "titleParam": "title 为 sheet 附属参数，不计入互斥（seed:3166、3214-3215）",
+      "notes": "seed 预览态仅消费 a.click（seed:3021-3026）；scanBindings 同样只查 click（seed:3212-3213）。冻结：唯一事件键=click。未知动作键→E-ACT-UNKNOWN（runAction 兜底 toast『暂不支持的动作』seed:2947 即未登记；scanBindings:3215 只查多键不查未知键，权威判定在 Python 检查器）。"
+    }
+  },
+  "actions": {
+    "goto": {
+      "params": "非空 screenId，须在契约 pages 内",
+      "target": "screenId",
+      "callee": "runAction:2929→goTo:2643→openScreen:2627（screenEl:2615 查不到静默 return）",
+      "thenRecursive": false,
+      "targetNotes": "已声明未产→E-ACT-TARGET-PENDING；未声明→E-ACT-TARGET-MISSING"
+    },
+    "back": {
+      "params": "true（布尔，严格）",
+      "target": "none",
+      "callee": "runAction:2930→goBack:2651（栈空 toast）",
+      "thenRecursive": false
+    },
+    "close": {
+      "params": "true",
+      "target": "none",
+      "callee": "runAction:2931→closeOverlay:2685",
+      "thenRecursive": false
+    },
+    "sheet": {
+      "params": "非空 screenId＋可选 title:string",
+      "target": "screenId",
+      "callee": "runAction:2932→openSheet:2703-2705（找不到 toast；克隆剔除 .tabbar:2710）",
+      "thenRecursive": false,
+      "targetNotes": "screenId 类：对照契约 pages 索引"
+    },
+    "modal": {
+      "params": "string 或 {title?,text?}",
+      "target": "none",
+      "callee": "runAction:2933→openModal:2749-2756",
+      "thenRecursive": false
+    },
+    "toast": {
+      "params": "非空 string",
+      "target": "none",
+      "callee": "runAction:2934",
+      "thenRecursive": false
+    },
+    "shuffle": {
+      "params": "true",
+      "target": "none",
+      "callee": "runAction:2935→doShuffle:2864",
+      "thenRecursive": false
+    },
+    "result": {
+      "params": "{ok?,title?,text?,btn?,goto?}；ok 缺省=成功（2893 ok!==false）；btn 缺省『完成』（2901）",
+      "target": "screenId",
+      "callee": "runAction:2936→showResult:2888-2908",
+      "thenRecursive": false,
+      "recursiveParam": "goto",
+      "targetNotes": "goto=递归 screenId（2904）→按 screenId 类对照契约索引校验"
+    },
+    "loading": {
+      "params": "正整数 ms（parseInt‖1200:2971）＋可选 then:动作对象",
+      "target": "recursive",
+      "callee": "runAction:2937→doLoading:2970-2974（then 递归 runAction:2974）",
+      "thenRecursive": true,
+      "targetNotes": "then 递归校验：then 必须是动作对象，逐层校验其目标"
+    },
+    "submit": {
+      "params": "对象 {toast?,loading?,then?}；toast 缺省:2989；loading parseInt‖1200:2993；then 必须是动作对象（2990 runAction(s.then)）；then 缺省合法（直接 finish）；then 为 string→E-ACT-TYPE（运行时静默落 2947，检查必须拦截）",
+      "target": "recursive",
+      "callee": "runAction:2938→doSubmit:2976-3000（validateForm:2916 必填标红）",
+      "thenRecursive": true,
+      "targetNotes": "then 递归校验；对照合法写法 {\"click\":{\"submit\":{\"toast\":\"已提交\",\"then\":{\"goto\":\"...\"}}}}"
+    },
+    "tab": {
+      "params": "\"group:index\"；index≥0 整数，缺省取元素 data-tabindex→0（2819-2821）",
+      "target": "selector",
+      "callee": "runAction:2939→doTab:2815-2829",
+      "thenRecursive": false,
+      "targetNotes": "group 须本页存在 [data-tabgroup]（静态判存在，scanBindings:3219 同判）"
+    },
+    "toggle": {
+      "params": "本页 eid 或 #/. 页内选择器",
+      "target": "eid",
+      "callee": "runAction:2940→doToggle:2769→findTarget:2762-2767",
+      "thenRecursive": false,
+      "targetNotes": "eid 类静态判（查本页 [data-eid]）；#/. 前缀选择器→静态不判，交声明的浏览器档报 unverified，不假报不存在/不假报通过"
+    },
+    "switch": {
+      "params": "可省（默认自身 .sw:2776）或目标同 toggle",
+      "target": "eid",
+      "callee": "runAction:2941→doSwitch:2775-2778",
+      "thenRecursive": false,
+      "targetNotes": "同 toggle"
+    },
+    "check": {
+      "params": "组名 string（.chk[data-check]；非 radio 单选即 toggle:2808-2812）",
+      "target": "none",
+      "callee": "runAction:2942→doCheck:2803-2813（closest 无 .chk 静默 return:2804-2805）",
+      "thenRecursive": false,
+      "targetNotes": "现状不静态判组存在（运行时容错），登记在案"
+    },
+    "clear": {
+      "params": "true 或目标同 toggle",
+      "target": "eid",
+      "callee": "runAction:2943→doClear:2781-2801（host=弹层或本页:2783）",
+      "thenRecursive": false,
+      "targetNotes": "同 toggle"
+    },
+    "scroll": {
+      "params": "目标同 toggle",
+      "target": "eid",
+      "callee": "runAction:2944→doScroll:2830-2832",
+      "thenRecursive": false,
+      "targetNotes": "同 toggle（eid 类静态判；#/. 交浏览器档）"
+    },
+    "link": {
+      "params": "非空 http(s) URL",
+      "target": "none",
+      "callee": "runAction:2945 window.open",
+      "thenRecursive": false,
+      "targetNotes": "无（外链按 au:71-72 warn 语义）"
+    },
+    "lang": {
+      "params": "'en'|'zh'|'toggle'（2953-2954 其他→参数错误 toast）",
+      "target": "none",
+      "callee": "runAction:2946→setLang:2951-2968（父链 data-en 去重防砸子树:2958-2960）",
+      "thenRecursive": false
+    }
+  },
+  "targetCategories": {
+    "screenId": "goto/sheet/result.goto：对照契约 pages 索引；已声明未产→E-ACT-TARGET-PENDING，未声明→E-ACT-TARGET-MISSING",
+    "eid": "toggle/scroll/switch/clear 显式目标：静态查本页 [data-eid]",
+    "selector": "#/. 前缀选择器→静态不判，交声明的浏览器档报 unverified；tab 的 group 存在性静态判（scanBindings:3219 同判）",
+    "none": "back/close/modal/toast/shuffle/check/link/lang：无目标或现状不静态判（check 登记在案）",
+    "recursive": "loading/submit 的 then 递归动作对象校验",
+    "scanBindingsNote": "scanBindings:3220-3222 仅按 eid 查＝调试面板启发式，非权威"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "_comment": "Mask detector regression set. expect_not_ok: verdict must NOT be OK (any gating counts). expect_use_raw: verdict must be USE_RAW (bad labels must downgrade to RAW, not just REVIEW). allow_use_raw: USE_RAW permitted but not required (good samples may gate, must NOT be forced OK). WORKDIR CONVENTION: every workdir must live under `${I2C_REGRESSION_ROOT}/_skill_selftest/` — the rmtree guard anchors on that dir name (2026-10-07: plain-word substrings like selftest/regression in user paths are NOT accepted).",
+  "cases": [
+    {
+      "name": "black-bad-labels (a18 hollow base + a22 frame-shifted, pre-fix labels)",
+      "image": "${I2C_REGRESSION_ROOT}/image2code-work/首页黑改/source.png",
+      "assets": "${I2C_REGRESSION_ROOT}/_skill_selftest/assets.json",
+      "workdir": "${I2C_REGRESSION_ROOT}/_skill_selftest/regression_bad",
+      "expect_not_ok": [
+        18,
+        22
+      ],
+      "expect_use_raw": [
+        18,
+        22
+      ],
+      "allow_use_raw": [
+        7,
+        11,
+        14,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "name": "black-good-labels (a18 RAW decision + a22 centered reframe)",
+      "image": "${I2C_REGRESSION_ROOT}/image2code-work/首页黑改/source.png",
+      "assets": "${I2C_REGRESSION_ROOT}/image2code-work/首页黑改/assets.json",
+      "workdir": "${I2C_REGRESSION_ROOT}/_skill_selftest/regression_good",
+      "expect_not_ok": [],
+      "expect_use_raw": [],
+      "allow_use_raw": [
+        14,
+        23,
+        24,
+        25
+      ]
+    }
+  ]
+}

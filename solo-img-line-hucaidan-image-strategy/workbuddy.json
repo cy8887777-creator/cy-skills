@@ -1,0 +1,6 @@
+{
+  "display_name": "AI图片策略生成",
+  "display_name_en": "AI Image Strategy",
+  "description_zh": "根据项目类型自动判断图片策略，生成符合行业规范的图片提示词。支持28个行业：电商零售、社区团购、房产中介、招聘求职、物流快递、餐饮外卖、教育培训、医疗健康、旅游出行、金融理财、社交社区、企业服务、上门按摩、生活服务、上门服务、本地生活、美容美发、健身运动、宠物服务、宠物用品、汽车服务、鲜花礼品、二手交易、母婴服务、养老护理、法律咨询、装修设计。",
+  "description_en": "Automatically determine image strategy based on project type and generate industry-standard image prompts. Supports 28 industries."
+}

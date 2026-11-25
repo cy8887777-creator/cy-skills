@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>风格比稿 · 候选合集（demo）</title>
+<style>
+  :root{
+    --shell-bg:#f5f6f8; --shell-card:#ffffff; --shell-line:#e4e6ea;
+    --shell-text:#1f2329; --shell-muted:#8a8f99; --shell-accent:#4c6ef5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--shell-bg);color:var(--shell-text);
+    font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    padding:32px 40px 64px}
+  .shell-head{max-width:1560px;margin:0 auto 8px}
+  .shell-title{font-size:22px;font-weight:700}
+  .shell-meta{font-size:13px;color:var(--shell-muted);margin-top:6px}
+  .shell-note{font-size:12px;color:var(--shell-muted);margin-top:14px;
+    padding:10px 14px;background:var(--shell-card);border:1px solid var(--shell-line);border-radius:8px}
+  .shell-grid{max-width:1560px;margin:24px auto 0;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(640px,1fr));gap:28px}
+  .slot{background:var(--shell-card);border:1px solid var(--shell-line);border-radius:14px;
+    padding:18px;box-shadow:0 1px 3px rgba(16,24,40,.04)}
+  .slot iframe{width:100%;border:0;border-radius:8px;display:block;
+    background:#fff}
+  .slot-pages{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;
+    padding-top:12px;border-top:1px dashed var(--shell-line)}
+  .slot-pages span{font-size:12px;color:var(--shell-muted);background:var(--shell-bg);
+    border:1px solid var(--shell-line);border-radius:999px;padding:3px 12px}
+</style>
+</head>
+<body>
+  <header class="shell-head">
+    <div class="shell-title">城市散步 App · 风格比稿（demo）</div>
+    <div class="shell-meta">受众组：C 端用户 · 候选 3 个 · 方案示意，非最终效果图</div>
+    <div class="shell-note">每张卡=一个风格方向：骨架图展示结构与密度情绪，底部样本条展示该风格的色板/字体/组件/图标真实载体。看方向、选感觉；文字内容与图片均为占位，选定后按真实需求生成。</div>
+  </header>
+
+  <main class="shell-grid">
+    <section class="slot">
+      <iframe src="demo-card-neubrutalism.html" title="候选1 · 新粗野主义" style="height:1082px"></iframe>
+      <div class="slot-pages"><span>首页 · 路线流</span><span>路线详情</span><span>记录中</span><span>个人主页</span></div>
+    </section>
+    <section class="slot">
+      <iframe src="demo-card-dark-oled.html" title="候选2 · 暗色 OLED" style="height:2088px"></iframe>
+      <div class="slot-pages"><span>首页 · 路线流</span><span>路线详情</span><span>记录中</span><span>个人主页</span></div>
+    </section>
+    <section class="slot">
+      <iframe src="demo-card-kawaii-pastel.html" title="候选3 · 可爱粉彩" style="height:2184px"></iframe>
+      <div class="slot-pages"><span>首页 · 路线流</span><span>路线详情</span><span>记录中</span><span>个人主页</span></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-11-25T06:32:56.303Z",
+  "description": "offline icon libraries for design-system-generator (icon style step), one JSON per library",
+  "sourceRoot": "data/icons-json/<lib>.json",
+  "libraries": [
+    {
+      "name": "bootstrap",
+      "total": 2078,
+      "byForm": {
+        "linear": 2078
+      }
+    },
+    {
+      "name": "boxicons",
+      "total": 1479,
+      "byForm": {
+        "regular": 814,
+        "solid": 665
+      }
+    },
+    {
+      "name": "feather",
+      "total": 287,
+      "byForm": {
+        "linear": 287
+      }
+    },
+    {
+      "name": "heroicons",
+      "total": 972,
+      "byForm": {
+        "outline-24": 324,
+        "solid-20": 324,
+        "solid-24": 324
+      }
+    },
+    {
+      "name": "lucide",
+      "total": 1891,
+      "byForm": {
+        "linear": 1891
+      }
+    },
+    {
+      "name": "material-symbols",
+      "total": 7864,
+      "byForm": {
+        "filled": 3932,
+        "outlined": 3932
+      }
+    },
+    {
+      "name": "phosphor",
+      "total": 3024,
+      "byForm": {
+        "fill": 1512,
+        "regular": 1512
+      }
+    },
+    {
+      "name": "remixicon",
+      "total": 3078,
+      "byForm": {
+        "fill": 1539,
+        "line": 1539
+      }
+    },
+    {
+      "name": "solar",
+      "total": 2470,
+      "byForm": {
+        "bold": 1235,
+        "linear": 1235
+      }
+    },
+    {
+      "name": "tabler",
+      "total": 6238,
+      "byForm": {
+        "filled": 1054,
+        "outline": 5184
+      }
+    }
+  ]
+}

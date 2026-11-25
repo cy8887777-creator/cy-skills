@@ -1,0 +1,1258 @@
+<!DOCTY
+<div class="block"><div class="spec-label">BACKGROUND · 背景层级（四级 · 由远及近）</div>
+<table><thead><tr><th>层级</th><th>Token</th><th>值</th><th>放什么</th></tr></thead><tbody>
+<tr><td><b>壳层</b>（环境底）</td><td><code>--color-bg-shell</code></td><td>#16181d</td><td>body 最外层环境底，全页最深处</td></tr>
+<tr><td><b>页面</b></td><td><code>--color-bg-page</code></td><td>gray-100</td><td>内容主区底</td></tr>
+<tr><td><b>卡片</b></td><td><code>--color-bg-card</code></td><td>#ffffff</td><td>内容分组/信息承载</td></tr>
+<tr><td><b>遮罩</b></td><td><code>--color-bg-overlay</code></td><td>rgba(0,0,0,.45)</td><td>弹层之下压暗，禁作他用</td></tr>
+</tbody></table>
+<p class="note">规则：内容由低层向高层叠放；跨层文字色随底反转（浅底墨字、深底白字），禁跨底不改字色；遮罩仅存在于浮层之下。</p></div>PE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>示例设计系统 / Demo Design System</title>
+<style>
+  /* ============ 演示 Token（本页所描述的设计系统） ============ */
+  :root {
+    /* Primitive · 蓝 */
+    --blue-100: #e8eefc; --blue-300: #a8c0f4; --blue-500: #4569e0; --blue-600: #3056d3; --blue-700: #2443ab;
+    /* Primitive · 灰 */
+    --gray-50: #fafafa; --gray-100: #f4f4f5; --gray-200: #e4e4e7; --gray-300: #d4d4d8;
+    --gray-400: #a1a1aa; --gray-500: #71717a; --gray-700: #3f3f46; --gray-900: #18181b;
+    /* Primitive · 功能色（主色 + 浅底） */
+    --success: #16a34a; --success-bg: #e7f6ec; --warning: #d97706; --warning-bg: #fdf1e2; --danger: #dc2626; --danger-bg: #fdeaea;
+    /* Semantic */
+    --color-text-primary: var(--gray-900); --color-text-secondary: var(--gray-500); --color-text-disabled: var(--gray-300);
+    --color-bg-page: var(--gray-50); --color-bg-card: #ffffff;
+    --color-border: var(--gray-200); --input-border-default: var(--gray-300);
+    --color-action-primary: var(--blue-600);
+    --focus-ring: 0 0 0 3px var(--blue-100);
+    --font-family-base: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    --line-height-body: 1.6;
+    --icon-sm: 16px; --icon-md: 20px; --icon-lg: 24px;
+    /* Component */
+    --button-bg-primary: var(--color-action-primary); --button-bg-primary-hover: var(--blue-700);
+    --button-bg-danger: var(--danger); --button-bg-danger-hover: #b91c1c;
+    --input-border-focus: var(--blue-500);
+    --tag-bg-brand: var(--blue-100);
+    /* Stroke（描边色 + 描边宽） */
+    --stroke-color-default: var(--gray-300); --stroke-color-strong: var(--gray-700);
+    --stroke-width-hairline: 0.5px; --stroke-width-thin: 1px; --stroke-width-base: 1.5px; --stroke-width-bold: 2px;
+    /* Opacity（透明度派生动效） */
+    --opacity-disabled: 0.45; --opacity-tint: 0.12; --opacity-mask: 0.45;
+    /* Line height（独立 token，可单独调用） */
+    --line-height-tight: 1.3; --line-height-snug: 1.45; --line-height-normal: 1.6; --line-height-relaxed: 1.75; --line-height-loose: 2;
+    /* Padding（组件内尺寸体系化） */
+    --padding-sm: 8px; --padding-md: 12px; --padding-lg: 16px; --padding-xl: 24px;
+    /* Spacing */
+    --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 48px;
+    /* Radius */
+    --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-full: 9999px;
+    /* Shadow（顶部光源 · 纯垂直投影） */
+    --shadow-sm: 0 1px 2px rgba(24,24,27,.06); --shadow-md: 0 4px 12px rgba(24,24,27,.10); --shadow-lg: 0 12px 32px rgba(24,24,27,.16);
+    --shadow-focus: 0 0 0 3px var(--blue-100); --shadow-overlay: 0 8px 16px rgba(24,24,27,.08), 0 12px 32px rgba(24,24,27,.16);
+    /* Type */
+    --font-size-display: 28px; --font-size-title: 22px; --font-size-subtitle: 18px;
+    --font-size-body: 16px; --font-size-caption: 14px; --font-size-footnote: 12px;
+    /* Z-index */
+    --z-dropdown: 1000; --z-sticky: 1100; --z-drawer: 1200; --z-modal: 1300; --z-toast: 1400;
+  }
+
+  /* ============ 文档页自身样式 ============ */
+  :root {
+    /* —— 文档皮肤（gen_html.apply_skin 按项目气质重渲染；默认纸感）—— */
+    --skin-page-bg: #f7f6f3;      /* 页面底 → 深色项目取 color-bg-page 实值 */
+    --skin-page-ink: #1c1d21;     /* 正文字 → color-text-primary 实值 */
+    --skin-ink-soft: #6b6d74;     /* 次级字 → color-text-secondary 实值 */
+    --skin-line: #e3e1db;         /* 分隔线 → color-border-subtle 实值 */
+    --skin-sidebar-bg: #16181d;   /* 侧栏底 → 页面底程序派生加深一档 */
+    --skin-sidebar-ink: #d8d9dd;  /* 侧栏字 → 侧栏上白系 */
+    --skin-accent: #3056d3;       /* 点缀 → 品牌主色实值 */
+    --skin-grid: rgba(28,29,33,.028);        /* 背景格纹 → 深色项目换白色低透明 */
+    --skin-code-bg: #edece8;                 /* 行内代码/表头底 → 深色项目换白 8% 透明 */
+    --skin-code-ink: #1c1d21;                /* ↑ 的配对文字色（成对设计，保对比度） */
+    --skin-card-bg: #ffffff;                 /* 文档表格/卡片底 → 深色项目换白 6% 透明（禁挂项目 token） */
+    --skin-card-ink: #1c1d21;                /* ↑ 的配对文字色 */
+    --skin-badge-bg: #1c1d21;                /* 小标签底（role-badge）→ 深色项目换白 14% 透明 */
+    --skin-badge-ink: #f7f6f3;               /* ↑ 的配对文字色 */
+    /* 骨架引用别名（值挂皮肤，骨架代码不改） */
+    --paper: var(--skin-page-bg); --ink: var(--skin-page-ink); --ink-soft: var(--skin-ink-soft);
+    --line: var(--skin-line); --accent: var(--skin-accent);
+    --serif: "Source Han Serif SC", "Noto Serif SC", "SimSun", serif;
+    --mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans, var(--font-family-base)); font-size: var(--font-size-body); line-height: 1.75; }
+  body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: linear-gradient(var(--skin-grid) 1px, transparent 1px), linear-gradient(90deg, var(--skin-grid) 1px, transparent 1px);
+    background-size: 24px 24px; }
+
+  .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 256px; z-index: 10; background: var(--skin-sidebar-bg); color: var(--skin-sidebar-ink); display: flex; flex-direction: column; padding: var(--space-6) 0 var(--space-4); }
+  .brand { display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--space-6); }
+  .brand-mark { width: 34px; height: 34px; flex: none; border-radius: var(--radius-sm); background: var(--accent); color: #fff; font-family: var(--mono); font-size: 13px; font-weight: 700; display: grid; place-items: center; letter-spacing: .5px; }
+  .brand-name { font-family: var(--serif); font-size: 16px; font-weight: 700; color: #fff; line-height: 1.3; }
+  .brand-ver { font-family: var(--mono); font-size: 11px; color: #8b8e96; }
+  .nav { margin-top: var(--space-6); flex: 1; overflow-y: auto; }
+  .nav a { display: flex; align-items: baseline; gap: var(--space-2); padding: 6px var(--space-6); color: #9a9da5; text-decoration: none; font-size: 13px; border-left: 2px solid transparent; transition: color .15s, background .15s; }
+  .nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+  .nav a.on { color: #fff; border-left-color: var(--accent); background: rgba(255,255,255,.05); }
+  .nav .no { font-family: var(--mono); font-size: 11px; color: #63666e; width: 20px; flex: none; }
+  .nav a.on .no { color: var(--accent); }
+  .nav .en { font-size: 10px; color: #55585f; margin-left: auto; letter-spacing: .04em; }
+  .sidebar-meta { padding: var(--space-4) var(--space-6) 0; border-top: 1px solid rgba(255,255,255,.08); font-family: var(--mono); font-size: 10.5px; line-height: 1.9; color: #63666e; }
+  .sidebar-meta b { color: #9a9da5; font-weight: 500; }
+
+  main { margin-left: 256px; position: relative; z-index: 1; max-width: 900px; padding: var(--space-12); }
+  section.chapter { padding-top: var(--space-8); margin-bottom: var(--space-12); scroll-margin-top: var(--space-8); }
+
+  .hero { padding: var(--space-6) 0 var(--space-10); animation: rise .6s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .hero-spec { display: flex; align-items: center; gap: var(--space-3); font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--ink-soft); }
+  .hero-spec .tag { background: var(--ink); color: var(--paper); padding: 2px 10px; border-radius: var(--radius-full); letter-spacing: .1em; }
+  .hero h1 { font-family: var(--serif); font-size: 46px; line-height: 1.25; font-weight: 700; margin: var(--space-4) 0 var(--space-2); }
+  .hero .h1-en { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); letter-spacing: .08em; }
+  .hero p.lead { max-width: 640px; color: var(--ink-soft); margin-top: var(--space-4); }
+  .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; margin-top: var(--space-8); font-size: 13px; }
+  .hero-meta > div { background: var(--color-bg-card); padding: var(--space-3) var(--space-4); }
+  .hero-meta .k { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--ink-soft); display: block; }
+  .hero-meta .v { font-weight: 600; margin-top: 2px; }
+
+  .ch-head { display: flex; gap: var(--space-6); align-items: flex-start; border-top: 2px solid var(--ink); padding-top: var(--space-6); }
+  .ch-num { font-family: var(--serif); font-size: 64px; font-weight: 700; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--gray-300); flex: none; }
+  .ch-head h2 { margin: 0; font-family: var(--serif); font-size: 30px; font-weight: 700; line-height: 1.3; }
+  .ch-head .en { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); letter-spacing: .14em; display: block; margin-top: 4px; }
+  .ch-intro { color: var(--ink-soft); margin: var(--space-2) 0 0; max-width: 600px; font-size: 15px; }
+
+  .block { margin-top: var(--space-8); }
+  .spec-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; color: var(--accent); display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4); }
+  .spec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .block h3 { font-size: var(--font-size-subtitle); margin: var(--space-6) 0 var(--space-3); }
+  .block p { margin: 0 0 var(--space-3); }
+  .block p.note { font-size: 13.5px; color: var(--ink-soft); }
+  code { font-family: var(--mono); font-size: .86em; background: var(--skin-code-bg); padding: 1px 6px; border-radius: var(--radius-sm); color: var(--skin-code-ink); }
+  pre.prompt { font-family: var(--mono); font-size: 12px; line-height: 1.8; background: #23252b; color: #d8d9dd; padding: var(--space-4) var(--space-5); border-radius: var(--radius-md); overflow-x: auto; white-space: pre-wrap; }
+  pre.prompt .hl { color: #8fb0ff; }
+  ul.plain { margin: 0; padding-left: 1.3em; }
+  ul.plain li { margin-bottom: 6px; }
+  ul.plain b { font-weight: 600; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; background: var(--skin-card-bg); color: var(--skin-card-ink); }
+  th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: var(--skin-code-bg); font-family: var(--mono); font-size: 11px; letter-spacing: .06em; font-weight: 600; }
+  td code { white-space: nowrap; }
+  td .no { color: var(--danger); font-size: 12.5px; }
+
+  /* 色卡墙（chip 修复：display block；浅色加格纹辨识） */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: var(--space-3); }
+  .swatch { background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 8px; cursor: pointer; transition: transform .15s, box-shadow .15s; text-align: left; }
+  .swatch:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .swatch .chip { display: block; height: 64px; border-radius: var(--radius-sm); border: 1px solid rgba(28,29,33,.10); }
+  .swatch .chip.checker { background-image: linear-gradient(45deg, rgba(28,29,33,.05) 25%, transparent 25%, transparent 75%, rgba(28,29,33,.05) 75%), linear-gradient(45deg, rgba(28,29,33,.05) 25%, transparent 25%, transparent 75%, rgba(28,29,33,.05) 75%); background-size: 12px 12px; background-position: 0 0, 6px 6px; }
+  .swatch .nm { font-family: var(--mono); font-size: 10.5px; margin-top: 8px; display: block; }
+  .swatch .hx { font-family: var(--mono); font-size: 10px; color: var(--ink-soft); display: block; }
+  .sw-group { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--ink-soft); margin: var(--space-5) 0 var(--space-2); }
+  .sw-group b { color: var(--ink); }
+  .role-badge { display: inline-block; font-family: var(--mono); font-size: 9.5px; background: var(--skin-badge-bg); color: var(--skin-badge-ink); border-radius: var(--radius-full); padding: 1px 8px; margin-left: 6px; vertical-align: 1px; }
+
+  /* 字号阶梯 */
+  .type-row { display: flex; align-items: baseline; gap: var(--space-4); padding: var(--space-3) 0; border-bottom: 1px dashed var(--line); }
+  .type-row .meta { font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); width: 230px; flex: none; line-height: 1.7; }
+  .type-row .meta b { color: var(--ink); font-weight: 600; }
+
+  /* 间距：两块夹一隙 */
+  .space-ruler { display: flex; flex-direction: column; gap: var(--space-3); }
+  .space-row { display: flex; align-items: center; gap: var(--space-4); font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+  .space-row .lbl { width: 220px; flex: none; }
+  .gap-demo { display: flex; align-items: center; }
+  .gap-block { width: 40px; height: 26px; background: var(--gray-200); border: 1px solid var(--gray-300); border-radius: 3px; flex: none; }
+  .gap-slot { background: var(--blue-100); outline: 1px dashed var(--blue-500); outline-offset: -1px; height: 26px; position: relative; }
+  .gap-slot::after { content: attr(data-v); position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-size: 9.5px; color: var(--blue-700); background: rgba(255,255,255,.85); padding: 0 3px; border-radius: 2px; white-space: nowrap; }
+
+  .demo-grid { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+  .radius-box { width: 108px; height: 84px; background: var(--color-bg-card); border: 1.5px solid var(--gray-300); display: grid; place-items: center; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); text-align: center; }
+  .shadow-card { width: 150px; height: 92px; background: var(--color-bg-card); border-radius: var(--radius-md); display: grid; place-items: center; font-family: var(--mono); font-size: 11px; color: var(--ink-soft); text-align: center; }
+
+  .motion-row { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-3); font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+  .motion-row .lbl { width: 230px; flex: none; }
+  .motion-track { flex: 1; height: 26px; background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-full); overflow: hidden; }
+  .motion-fill { height: 100%; width: 18%; background: var(--accent); border-radius: var(--radius-full); transition: width .15s ease-out; }
+  .motion-row:hover .motion-fill.f150 { width: 100%; transition-duration: .15s; }
+  .motion-row:hover .motion-fill.f250 { width: 100%; transition-duration: .25s; }
+  .motion-row:hover .motion-fill.f400 { width: 100%; transition-duration: .4s; }
+
+  /* 组件演示区 */
+  .comp-stage { background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-6); display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+  .comp-stage + .comp-stage { margin-top: var(--space-3); }
+  .stage-lbl { width: 100%; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; color: var(--ink-soft); margin-top: var(--space-2); }
+  .btn { font-family: var(--font-family-base); font-size: 14px; line-height: 20px; padding: 7px 18px; border-radius: var(--radius-md); border: 1px solid transparent; cursor: pointer; transition: all .15s ease-out; }
+  .btn-primary { background: var(--button-bg-primary); color: #fff; }
+  .btn-primary:hover, .btn-primary.is-hover { background: var(--button-bg-primary-hover); }
+  .btn-primary:active, .btn-primary.is-active { background: var(--blue-700); transform: scale(.97); }
+  .btn-danger { background: var(--button-bg-danger); color: #fff; }
+  .btn-danger:hover { background: var(--button-bg-danger-hover); }
+  .btn-default { background: var(--color-bg-card); border-color: var(--input-border-default); color: var(--color-text-primary); }
+  .btn-default:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-text { background: transparent; color: var(--accent); }
+  .btn-text:hover { background: var(--blue-100); }
+  .btn:disabled { background: var(--gray-100); color: var(--color-text-disabled); border-color: transparent; cursor: not-allowed; transform: none; }
+  .btn-default:disabled { background: var(--color-bg-card); border-color: var(--gray-200); }
+
+  .field { display: flex; flex-direction: column; gap: 4px; min-width: 220px; }
+  .field input, .field textarea { font-family: var(--font-family-base); font-size: 14px; padding: 7px 12px; border: 1px solid var(--input-border-default); border-radius: var(--radius-md); outline: none; transition: border-color .15s, box-shadow .15s; background: var(--color-bg-card); color: var(--ink); }
+  .field textarea { min-height: 64px; resize: vertical; }
+  .field input:focus, .field textarea:focus { border-color: var(--input-border-focus); box-shadow: var(--focus-ring); }
+  .field input.err { border-color: var(--danger); }
+  .field .msg-err { font-size: 12px; color: var(--danger); }
+  .field .msg-help { font-size: 12px; color: var(--color-text-secondary); }
+
+  .check { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+  .check input { width: 16px; height: 16px; accent-color: var(--accent); }
+  .radio-set { display: inline-flex; gap: var(--space-4); }
+
+  .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .track { position: absolute; inset: 0; background: var(--gray-300); border-radius: var(--radius-full); transition: background .2s ease-out; cursor: pointer; }
+  .switch .track::before { content: ""; position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #fff; top: 3px; left: 3px; transition: transform .2s ease-out; box-shadow: var(--shadow-sm); }
+  .switch input:checked + .track { background: var(--accent); }
+  .switch input:checked + .track::before { transform: translateX(18px); }
+  .switch input:disabled + .track { opacity: .45; cursor: not-allowed; }
+
+  .select-box { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-2); min-width: 200px; padding: 7px 12px; border: 1px solid var(--input-border-default); border-radius: var(--radius-md); font-size: 14px; background: var(--color-bg-card); }
+  .select-box svg { flex: none; }
+
+  .tagchip { display: inline-block; font-size: 12px; padding: 2px 10px; border-radius: var(--radius-full); background: var(--tag-bg-brand); color: var(--blue-700); }
+  .tagchip.ok { background: var(--success-bg); color: var(--success); }
+  .tagchip.warn { background: var(--warning-bg); color: var(--warning); }
+  .tagchip.err { background: var(--danger-bg); color: var(--danger); }
+
+  /* 卡片 / 列表 / 表格 / 分页 / 弹层 / Toast / Tabs / 面包屑 / 描述列表 / 空态 / 加载 */
+  .card-demo { width: 240px; background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
+  .card-demo .cover { height: 110px; background: linear-gradient(135deg, var(--blue-100), var(--blue-300)); }
+  .card-demo .body { padding: var(--space-4); }
+  .card-demo .body h4 { margin: 0 0 4px; font-size: 15px; }
+  .card-demo .body p { margin: 0 0 var(--space-3); font-size: 12.5px; color: var(--color-text-secondary); }
+  .card-demo .foot { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--line); font-size: 12.5px; color: var(--color-text-secondary); }
+
+  .list-demo { width: 320px; background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+  .list-item { display: flex; gap: var(--space-3); align-items: center; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--line); transition: background .15s; }
+  .list-item:last-child { border-bottom: none; }
+  .list-item:hover { background: var(--gray-100); }
+  .list-item .avatar { width: 36px; height: 36px; flex: none; border-radius: var(--radius-full); background: var(--blue-100); color: var(--blue-700); display: grid; place-items: center; font-size: 13px; font-weight: 600; }
+  .list-item .li-main { flex: 1; min-width: 0; }
+  .list-item .li-main b { display: block; font-size: 13.5px; }
+  .list-item .li-main span { font-size: 12px; color: var(--color-text-secondary); }
+  .list-item .li-act { flex: none; font-size: 12.5px; color: var(--accent); }
+
+  .tbl-demo { width: 100%; background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+  .tbl-demo table { border: none; font-size: 13px; }
+  .tbl-demo th { background: var(--gray-100); border: none; border-bottom: 1px solid var(--line); padding: 10px 14px; }
+  .tbl-demo td { border: none; border-bottom: 1px solid var(--line); padding: 10px 14px; }
+  .tbl-demo tr:last-child td { border-bottom: none; }
+  .tbl-demo tbody tr { transition: background .12s; }
+  .tbl-demo tbody tr:hover { background: var(--gray-50); }
+  .tbl-demo td.num { text-align: right; font-family: var(--mono); font-size: 12px; }
+
+  .pager { display: inline-flex; gap: 4px; align-items: center; font-size: 13px; }
+  .pager a { min-width: 30px; height: 30px; display: grid; place-items: center; border-radius: var(--radius-sm); color: var(--color-text-secondary); text-decoration: none; border: 1px solid transparent; }
+  .pager a:hover { background: var(--gray-100); }
+  .pager a.cur { background: var(--accent); color: #fff; }
+
+  .modal-demo { width: 320px; border-radius: var(--radius-lg); background: var(--color-bg-card); box-shadow: var(--shadow-lg); overflow: hidden; }
+  .modal-demo .m-head { padding: var(--space-4) var(--space-5); font-weight: 600; border-bottom: 1px solid var(--line); }
+  .modal-demo .m-body { padding: var(--space-4) var(--space-5); font-size: 13.5px; color: var(--color-text-secondary); }
+  .modal-demo .m-foot { display: flex; justify-content: flex-end; gap: var(--space-2); padding: var(--space-3) var(--space-5); border-top: 1px solid var(--line); }
+  .modal-backdrop-note { padding: var(--space-4); background: rgba(24,24,27,.45); border-radius: var(--radius-lg); }
+
+  .toast-demo { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--ink); color: #fff; font-size: 13px; padding: 8px 16px; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+
+  .tabs-demo { display: inline-flex; gap: var(--space-2); border-bottom: 2px solid var(--line); }
+  .tabs-demo a { padding: 8px 16px; font-size: 14px; color: var(--color-text-secondary); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+  .tabs-demo a.cur { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+
+  .crumb { font-size: 13px; color: var(--color-text-secondary); }
+  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
+  .crumb a:hover { color: var(--accent); }
+  .crumb .sep { margin: 0 8px; color: var(--gray-300); }
+
+  .desc-demo { width: 340px; background: var(--color-bg-card); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; font-size: 13px; }
+  .desc-demo .dr { display: flex; border-bottom: 1px solid var(--line); }
+  .desc-demo .dr:last-child { border-bottom: none; }
+  .desc-demo .dt { width: 96px; flex: none; background: var(--gray-50); color: var(--color-text-secondary); padding: 9px 12px; }
+  .desc-demo .dd { padding: 9px 12px; }
+
+  .empty-demo { width: 240px; text-align: center; padding: var(--space-6) var(--space-4); background: var(--color-bg-card); border: 1px dashed var(--gray-300); border-radius: var(--radius-md); }
+  .empty-demo .glyph { width: 56px; height: 56px; margin: 0 auto var(--space-3); border-radius: var(--radius-full); background: var(--gray-100); display: grid; place-items: center; color: var(--gray-400); }
+  .empty-demo b { font-size: 14px; display: block; }
+  .empty-demo span { font-size: 12px; color: var(--color-text-secondary); display: block; margin: 4px 0 var(--space-3); }
+
+  .spinner { width: 26px; height: 26px; border: 3px solid var(--gray-200); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .skeleton { width: 260px; }
+  .skeleton .sk { background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 45%, var(--gray-100) 65%); background-size: 200% 100%; animation: shine 1.2s ease infinite; border-radius: var(--radius-sm); height: 12px; margin-bottom: 8px; }
+  @keyframes shine { to { background-position: -200% 0; } }
+
+  /* 图标展示 */
+  .icon-cell { width: 96px; text-align: center; font-family: var(--mono); font-size: 10px; color: var(--ink-soft); }
+  .icon-cell .box { width: 56px; height: 56px; margin: 0 auto 6px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--color-bg-card); display: grid; place-items: center; color: var(--ink); }
+  .icon-cell svg { width: var(--icon-lg); height: var(--icon-lg); }
+  @media (prefers-reduced-motion: reduce) { .spinner, .skeleton .sk { animation: none; } }
+
+  /* 布局骨架图 */
+  .layout-map { display: grid; grid-template-columns: 64px 1fr; grid-template-rows: 36px 150px 30px; gap: 4px; width: 320px; font-family: var(--mono); font-size: 9.5px; color: var(--ink-soft); }
+  .layout-map div { background: var(--color-bg-card); border: 1px solid var(--gray-300); border-radius: 3px; display: grid; place-items: center; text-align: center; }
+
+  /* Do / Don't */
+  .dd { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .dd-col { border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); background: var(--color-bg-card); }
+  .dd-col.do { border: 1px solid #bfe3cb; border-left: 3px solid var(--success); }
+  .dd-col.dont { border: 1px solid #f0c4c5; border-left: 3px solid var(--danger); }
+  .dd-head { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; margin-bottom: var(--space-2); }
+  .dd-col.do .dd-head { color: var(--success); }
+  .dd-col.dont .dd-head { color: var(--danger); }
+  .dd-col ul { margin: 0; padding-left: 1.2em; font-size: 13.5px; }
+  .dd-col li { margin-bottom: 6px; }
+  .dd-col.do li::marker { content: "✓  "; color: var(--success); }
+  .dd-col.dont li::marker { content: "✕  "; color: var(--danger); }
+
+  .anatomy { display: flex; gap: var(--space-8); align-items: center; flex-wrap: wrap; }
+  .anatomy-demo { position: relative; background: var(--button-bg-primary); color: #fff; padding: 8px 18px; border-radius: var(--radius-md); font-size: 14px; line-height: 20px; }
+  .anatomy-demo .callout { position: absolute; font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); white-space: nowrap; line-height: 1.6; }
+  .anatomy-notes { font-size: 13.5px; }
+  .anatomy-notes code { font-size: 11px; }
+
+  footer.doc-footer { border-top: 2px solid var(--ink); padding-top: var(--space-6); margin-top: var(--space-12); font-family: var(--mono); font-size: 11px; color: var(--ink-soft); line-height: 2; }
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translate(-50%, 16px); z-index: 99; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 12px; padding: 8px 18px; border-radius: var(--radius-full); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 900px) { .sidebar { display: none; } main { margin-left: 0; padding: var(--space-6) var(--space-4); } .hero-meta { grid-template-columns: repeat(2, 1fr); } .dd { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">DS</div>
+    <div>
+      <div class="brand-name">示例设计系统</div>
+      <div class="brand-ver">v2.0.0 · SPEC</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <a href="#s1"><span class="no">01</span>设计价值观<span class="en">VALUES</span></a>
+    <a href="#s2"><span class="no">02</span>颜色<span class="en">COLOR</span></a>
+    <a href="#s3"><span class="no">03</span>字体<span class="en">TYPE</span></a>
+    <a href="#s4"><span class="no">04</span>间距<span class="en">SPACING</span></a>
+    <a href="#s5"><span class="no">05</span>圆角<span class="en">RADIUS</span></a>
+    <a href="#s6"><span class="no">06</span>阴影<span class="en">SHADOW</span></a>
+    <a href="#s7"><span class="no">07</span>动效<span class="en">MOTION</span></a>
+    <a href="#s8"><span class="no">08</span>布局<span class="en">LAYOUT</span></a>
+    <a href="#s9"><span class="no">09</span>多端适配<span class="en">PLATFORMS</span></a>
+    <a href="#s10"><span class="no">10</span>图标<span class="en">ICONS</span></a>
+    <a href="#s11"><span class="no">11</span>素材资产<span class="en">ASSETS</span></a>
+    <a href="#s12"><span class="no">12</span>组件库<span class="en">COMPONENTS</span></a>
+    <a href="#s13"><span class="no">13</span>模式<span class="en">PATTERNS</span></a>
+    <a href="#s14"><span class="no">14</span>反模式<span class="en">ANTI</span></a>
+    <a href="#s15"><span class="no">15</span>无障碍<span class="en">A11Y</span></a>
+    <a href="#s16"><span class="no">16</span>变更日志<span class="en">CHANGELOG</span></a>
+  </nav>
+  <div class="sidebar-meta">
+    <b>产物类型</b> system-spec · 人看演示<br>
+    <b>配套产物</b> system-rules.md · AI 读规则<br>
+    <b>生成工具</b> design-system-extract
+  </div>
+</aside>
+
+<main>
+
+  <header class="hero">
+    <div class="hero-spec"><span class="tag">SPEC SHEET</span><span>设计系统规范 · 提取产物示例</span></div>
+    <h1>示例设计系统</h1>
+    <div class="h1-en">DEMO DESIGN SYSTEM · v2.0.0</div>
+    <p class="lead">
+      本页面是一份<b>设计系统提取产物的通用示例</b>：演示文档的结构、内容粒度与展示形态。
+      全部数值均为演示数据——将任意项目的提取结果代入同一骨架，即得该项目的规范文档。
+    </p>
+    <div class="hero-meta">
+      <div><span class="k">提取来源 SOURCE</span><span class="v">截图 / HTML / URL / 文本</span></div>
+      <div><span class="k">提取日期 DATE</span><span class="v">2026-10-14</span></div>
+      <div><span class="k">TOKEN 总数</span><span class="v">85（分层口径见 §16）</span></div>
+      <div><span class="k">组件 COMPONENTS</span><span class="v">19</span></div>
+    </div>
+  </header>
+
+  <!-- ============ 01 设计价值观 ============ -->
+  <section class="chapter" id="s1">
+    <div class="ch-head">
+      <span class="ch-num">01</span>
+      <div><h2>设计价值观<span class="en">DESIGN VALUES</span></h2>
+      <p class="ch-intro">一切规则的上游依据。后续每章的具体规定，都能追溯到这里的四个词。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>一致 Consistent</b> —— 同类元素永远长一样、动一样。用户学一次，处处可用。</li>
+        <li><b>明确 Explicit</b> —— 每个视觉选择都传达确定信息，不留歧义。</li>
+        <li><b>高效 Efficient</b> —— 减少决策与操作步骤，默认值即最优解。</li>
+        <li><b>可生长 Scalable</b> —— 新场景优先复用既有 token、组件与资产，而非新增。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">WHAT · 作用</div>
+      <p>价值观不是口号，是<b>裁决依据</b>：当两条具体规则冲突、或遇到规则未覆盖的新场景时，回到这里做判断。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用链路</div>
+      <p class="note">价值观 → 设计原则（§02–§09）→ 资产与组件（§10–§12）→ 模式（§13）→ 具体方案。越靠右越具体，越靠左越稳定；下层规则不得违背上层。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>新增规则前，先对照四价值观检查是否自洽</li><li>评审争议时引用价值观条目作为依据</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要写无法落到具体规则的空话价值观</li><li>不要为单个需求临时突破价值观</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 颜色 ============ -->
+  <section class="chapter" id="s2">
+    <div class="ch-head">
+      <span class="ch-num">02</span>
+      <div><h2>颜色<span class="en">COLOR</span></h2>
+      <p class="ch-intro">主色只有一个；三层 token 架构（基础层 → 语义层 → 组件层）。写样式只允许引用后两层。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>可访问 Accessible</b> —— 正文对比度 ≥ 4.5:1（WCAG AA）。</li>
+        <li><b>可扩展 Scalable</b> —— 色阶成档，不散点用色。</li>
+        <li><b>有目的 Purposeful</b> —— 每个颜色 token 必须回答"用在哪、禁用在哪"。</li>
+        <li><b>分角色 Role-based</b> —— 色板按 主色 / 中性色 / 功能色 三组管理，不可互相越界。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">WHAT · 作用</div>
+      <p>颜色同时承担三件事：传达<b>状态</b>（成功/警告/危险）、建立<b>层级</b>（页面→卡片→元素）、识别<b>品牌</b>（主行动色）。一处颜色只能优先服务一件事。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用（基础层 · 三组角色）</div>
+
+      <div class="sw-group"><b>PRIMARY · 主色</b><span class="role-badge">品牌主色 1 枚 + 深色悬停档</span></div>
+      <div class="swatches">
+        <button class="swatch" data-hex="#3056d3"><span class="chip" style="background:#3056d3"></span><span class="nm">blue-600 <span class="role-badge">主色</span></span><span class="hx">#3056D3 · CTA / 链接 / 选中</span></button>
+        <button class="swatch" data-hex="#2443ab"><span class="chip" style="background:#2443ab"></span><span class="nm">blue-700 <span class="role-badge">悬停</span></span><span class="hx">#2443AB · 主色 hover / active</span></button>
+      </div>
+
+      <div class="sw-group"><b>TINTS · 主色辅助阶</b><span class="role-badge">浅底、边框、聚焦</span></div>
+      <div class="swatches">
+        <button class="swatch" data-hex="#4569e0"><span class="chip" style="background:#4569e0"></span><span class="nm">blue-500</span><span class="hx">#4569E0 · 聚焦描边</span></button>
+        <button class="swatch" data-hex="#a8c0f4"><span class="chip" style="background:#a8c0f4"></span><span class="nm">blue-300</span><span class="hx">#A8C0F4 · 次级强调</span></button>
+        <button class="swatch" data-hex="#e8eefc"><span class="chip checker" style="background-color:#e8eefc"></span><span class="nm">blue-100</span><span class="hx">#E8EEFC · 浅底 / 光晕</span></button>
+      </div>
+
+      <div class="sw-group"><b>NEUTRAL · 中性色</b><span class="role-badge">文本、背景、边框专用</span></div>
+      <div class="swatches">
+        <button class="swatch" data-hex="#fafafa"><span class="chip checker" style="background-color:#fafafa"></span><span class="nm">gray-50</span><span class="hx">#FAFAFA · 页面底色</span></button>
+        <button class="swatch" data-hex="#f4f4f5"><span class="chip checker" style="background-color:#f4f4f5"></span><span class="nm">gray-100</span><span class="hx">#F4F4F5 · 禁用底 / 表头</span></button>
+        <button class="swatch" data-hex="#e4e4e7"><span class="chip checker" style="background-color:#e4e4e7"></span><span class="nm">gray-200</span><span class="hx">#E4E4E7 · 分隔线</span></button>
+        <button class="swatch" data-hex="#d4d4d8"><span class="chip checker" style="background-color:#d4d4d8"></span><span class="nm">gray-300</span><span class="hx">#D4D4D8 · 输入框描边</span></button>
+        <button class="swatch" data-hex="#a1a1aa"><span class="chip checker" style="background-color:#a1a1aa"></span><span class="nm">gray-400</span><span class="hx">#A1A1AA · 禁用文字</span></button>
+        <button class="swatch" data-hex="#71717a"><span class="chip" style="background:#71717a"></span><span class="nm">gray-500</span><span class="hx">#71717A · 次要文本</span></button>
+        <button class="swatch" data-hex="#3f3f46"><span class="chip" style="background:#3f3f46"></span><span class="nm">gray-700</span><span class="hx">#3F3F46 · 深次文本</span></button>
+        <button class="swatch" data-hex="#18181b"><span class="chip" style="background:#18181b"></span><span class="nm">gray-900</span><span class="hx">#18181B · 主文本</span></button>
+      </div>
+
+      <div class="sw-group"><b>FUNCTIONAL · 功能色</b><span class="role-badge">每色 = 主色 + 浅底配对</span></div>
+      <div class="swatches">
+        <button class="swatch" data-hex="#16a34a"><span class="chip" style="background:#16a34a"></span><span class="nm">success <span class="role-badge">成功</span></span><span class="hx">#16A34A · 浅底 #E7F6EC</span></button>
+        <button class="swatch" data-hex="#d97706"><span class="chip" style="background:#d97706"></span><span class="nm">warning <span class="role-badge">警告</span></span><span class="hx">#D97706 · 浅底 #FDF1E2</span></button>
+        <button class="swatch" data-hex="#dc2626"><span class="chip" style="background:#dc2626"></span><span class="nm">danger <span class="role-badge">危险</span></span><span class="hx">#DC2626 · 浅底 #FDEAEA</span></button>
+      </div>
+
+      <h3>语义层 Semantic · 每格 4 列（名称 / 值 / 用途 / 禁用于）</h3>
+      <table>
+        <thead><tr><th>Token</th><th>值</th><th>用途</th><th>禁用于</th></tr></thead>
+        <tbody>
+          <tr><td><code>--color-text-primary</code></td><td>gray-900</td><td>主文本：标题、正文</td><td class="no">非文本场景</td></tr>
+          <tr><td><code>--color-text-secondary</code></td><td>gray-500</td><td>次文本：说明、标签（连续段落 ≥3 行时不得使用）</td><td class="no">长正文、主标题</td></tr>
+          <tr><td><code>--color-text-disabled</code></td><td>gray-400</td><td>禁用态文本</td><td class="no">正常文本</td></tr>
+          <tr><td><code>--color-bg-page</code></td><td>gray-50</td><td>页面底色</td><td class="no">卡片内部</td></tr>
+          <tr><td><code>--color-bg-card</code></td><td>#FFFFFF</td><td>卡片、浮层底色</td><td class="no">页面底色</td></tr>
+          <tr><td><code>--color-border</code></td><td>gray-200</td><td>分隔线、卡片描边</td><td class="no">输入框描边</td></tr>
+          <tr><td><code>--input-border-default</code></td><td>gray-300</td><td>输入框 / 控件默认描边</td><td class="no">分隔线</td></tr>
+          <tr><td><code>--color-action-primary</code></td><td>blue-600</td><td>主行动 CTA、链接、选中态</td><td class="no">大面积铺色</td></tr>
+          <tr><td><code>--focus-ring</code></td><td>0 0 0 3px blue-100</td><td>键盘焦点光晕（所有可聚焦控件）</td><td class="no">装饰用途</td></tr>
+          <tr><td><code>--success-bg</code> / <code>--warning-bg</code> / <code>--danger-bg</code></td><td>见色板</td><td>功能色浅底（标签、提示条底色）</td><td class="no">正文文字色</td></tr>
+          <tr><td><code>--font-family-base</code></td><td>系统栈</td><td>全局唯一字族</td><td class="no">品牌混排</td></tr>
+        </tbody>
+      </table>
+
+      <h3>组件层 Component</h3>
+      <table>
+        <thead><tr><th>Token</th><th>值</th><th>归属</th><th>禁用于</th></tr></thead>
+        <tbody>
+          <tr><td><code>--button-bg-primary</code></td><td>action-primary</td><td>主按钮底色</td><td class="no">次按钮</td></tr>
+          <tr><td><code>--button-bg-primary-hover</code></td><td>blue-700</td><td>主按钮悬停</td><td class="no">默认态</td></tr>
+          <tr><td><code>--button-bg-danger</code> / <code>-hover</code></td><td>danger / #B91C1C</td><td>危险按钮（删除等高危操作唯一载体）</td><td class="no">普通操作</td></tr>
+          <tr><td><code>--input-border-focus</code></td><td>blue-500</td><td>输入控件聚焦描边</td><td class="no">默认态</td></tr>
+          <tr><td><code>--tag-bg-brand</code></td><td>blue-100</td><td>品牌标签底色</td><td class="no">错误标签</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>样式一律引用语义层 / 组件层 token</li>
+          <li>主色只用在 CTA、链接、选中态三处</li>
+          <li>状态信息用 颜色 + 图标 / 文字 双通道传达</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要写裸 hex（如 <code>#3056D3</code>）——含 Tag 底色在内一律走 token</li>
+          <li>不要自造新颜色，先复用现有色阶</li>
+          <li>不要用颜色作唯一信息载体（WCAG 1.4.1）</li>
+          <li>不要让主色出现在大面积背景上</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 字体 ============ -->
+  <section class="chapter" id="s3">
+    <div class="ch-head">
+      <span class="ch-num">03</span>
+      <div><h2>字体<span class="en">TYPOGRAPHY</span></h2>
+      <p class="ch-intro">6 档字号阶梯覆盖全部场景。任何文字先归档，再使用。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>层级清晰 Hierarchical</b> —— 字号差 ≥ 4px 才能形成可感知层级。</li>
+        <li><b>阅读优先 Readable</b> —— 正文行高 1.6（<code>--line-height-body</code>），行长 ≤ 42em。</li>
+        <li><b>少档位 Restrained</b> —— 同一内容区块内可见字号 ≤ 3 档；组件内部文字（标签 / 帮助文字 / 按钮字）不计入。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">WHAT · 作用</div>
+      <p>字体是信息架构本身：用户靠字号与字重判断"什么更重要"，不读也能扫出结构。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用（字号阶梯实物 · 字重三档 400/600/700）</div>
+      <div class="type-row"><span class="meta"><b>--font-size-display</b><br>28px / 行高 36 / 字重 700 · 页面主标题</span><span style="font-size:28px;font-weight:700;line-height:1.3">大标题 Display</span></div>
+      <div class="type-row"><span class="meta"><b>--font-size-title</b><br>22px / 行高 30 / 字重 700 · 区块标题</span><span style="font-size:22px;font-weight:700;line-height:1.35">区块标题 Title</span></div>
+      <div class="type-row"><span class="meta"><b>--font-size-subtitle</b><br>18px / 行高 26 / 字重 600 · 次级标题</span><span style="font-size:18px;font-weight:600;line-height:1.45">次级标题 Subtitle</span></div>
+      <div class="type-row"><span class="meta"><b>--font-size-body</b><br>16px / 行高 26 / 字重 400 · 正文</span><span style="font-size:16px;line-height:1.6">正文 Body——承载主要阅读内容</span></div>
+      <div class="type-row"><span class="meta"><b>--font-size-caption</b><br>14px / 行高 22 / 字重 400 · 辅助说明</span><span style="font-size:14px;color:var(--color-text-secondary)">辅助说明 Caption</span></div>
+      <div class="type-row"><span class="meta"><b>--font-size-footnote</b><br>12px / 行高 20 / 字重 400 · 注脚标签</span><span style="font-size:12px;color:var(--color-text-secondary)">注脚 FOOTNOTE</span></div>
+      <p class="note">字重三档各司其职：<b>400</b> 正文 / <b>600</b> 次级标题与组件强调 / <b>700</b> 仅限 display 与 title 两档标题。字族统一 <code>--font-family-base</code>（系统栈），不做品牌字体混排。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>新文字先归入 6 档之一，再取 token</li>
+          <li>标题 = 字重 + 字号<b>同时</b>升级一档</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要使用阶梯外字号（如 15px、19px）</li>
+          <li>不要在正文中用加粗替代标题层级</li>
+          <li>不要一个视图排布超过 3 档内容字号</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 间距 ============ -->
+  <section class="chapter" id="s4">
+    <div class="ch-head">
+      <span class="ch-num">04</span>
+      <div><h2>间距<span class="en">SPACING</span></h2>
+      <p class="ch-intro">8pt 体系：页面布局间距一律取 4 的倍数。间距表达"关系"——近者相关，远者无关。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>基准统一 Base-8</b> —— 页面布局间距取自 4/8/12/16/24/32/48 七档。</li>
+        <li><b>豁免边界 Exemption</b> —— 组件内部尺寸（padding / 高度）按 §12 组件规格表执行，不受档位约束；布局层间距（组件之间、区块之间）必须取档。</li>
+        <li><b>节奏 Breathing</b> —— 相关内容近，无关内容远；组内 &lt; 组间。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">WHAT · 作用</div>
+      <p>间距是不画线的分隔线。密度过高让人紧张，过疏让人失联；七档标尺让"多远算远"有唯一答案。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用（两块夹一隙 · 蓝色区域即真实间距）</div>
+      <div class="space-ruler">
+        <div class="space-row"><span class="lbl">--space-1 · 图标与文字间隙</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:4px" data-v="4"></div><div class="gap-block"></div></div></div>
+        <div class="space-row"><span class="lbl">--space-2 · 组件内部元素间隙</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:8px" data-v="8"></div><div class="gap-block"></div></div></div>
+        <div class="space-row"><span class="lbl">--space-3 · 紧凑列表行距</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:12px" data-v="12"></div><div class="gap-block"></div></div></div>
+        <div class="space-row"><span class="lbl">--space-4 · 组件之间</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:16px" data-v="16"></div><div class="gap-block"></div></div></div>
+        <div class="space-row"><span class="lbl">--space-6 · 卡片内边距 / 分组之间</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:24px" data-v="24"></div><div class="gap-block"></div></div></div>
+        <div class="space-row"><span class="lbl">--space-8 · 区块之间</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:32px" data-v="32"></div><div class="gap-block"></div></div></div>
+        <div class="space-row"><span class="lbl">--space-12 · 章节之间</span><div class="gap-demo"><div class="gap-block"></div><div class="gap-slot" style="width:48px" data-v="48"></div><div class="gap-block"></div></div></div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>布局间距就近归档（±2px 内取档）</li>
+          <li>用间距分组替代画线分割</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>布局层不要出现魔法数字（13px、17px）</li>
+          <li>不要嵌套累加导致对不齐（4+8 ≠ 16）</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 圆角 ============ -->
+  <section class="chapter" id="s5">
+    <div class="ch-head">
+      <span class="ch-num">05</span>
+      <div><h2>圆角<span class="en">RADIUS</span></h2>
+      <p class="ch-intro">圆角是亲和度旋钮，也是组件身份的一部分：同尺寸元素必须同圆角。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>身份一致 Identity</b> —— 圆角档位与组件类型绑定，不随页面变化。</li>
+        <li><b>克制 Restraint</b> —— 常规界面不使用超过 lg(12px) 的圆角。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用（实物）</div>
+      <div class="demo-grid">
+        <div class="radius-box" style="border-radius:4px">sm · 4px<br>开关 / 小元素</div>
+        <div class="radius-box" style="border-radius:8px">md · 8px<br>按钮 / 输入框 / 下拉</div>
+        <div class="radius-box" style="border-radius:12px">lg · 12px<br>卡片 / 弹窗 / 弹层</div>
+        <div class="radius-box" style="border-radius:9999px">full<br>标签 / 头像 / 圆点</div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>按组件类型取档：按钮与输入框 md、卡片与弹窗 lg</li>
+          <li>嵌套时外圆角 = 内圆角 + 内边距</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要混用相邻档位（按钮 8px、旁边卡片 9px）</li>
+          <li>不要单角异形圆角（无明确构图目的）</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 阴影 ============ -->
+  <section class="chapter" id="s6">
+    <div class="ch-head">
+      <span class="ch-num">06</span>
+      <div><h2>阴影<span class="en">SHADOW</span></h2>
+      <p class="ch-intro">阴影即高度：元素离"桌面"越远，影子越大越淡。三级封顶。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>高度隐喻 Elevation</b> —— 阴影大小严格对应悬浮层级。</li>
+        <li><b>顶部光源 Top light</b> —— 纯垂直投影（x 偏移恒为 0），全局一致。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用（三级实物）</div>
+      <div class="demo-grid">
+        <div class="shadow-card" style="box-shadow:var(--shadow-sm)">shadow-sm<br>卡片 · 默认浮起</div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-md)">shadow-md<br>下拉菜单 · 浮起</div>
+        <div class="shadow-card" style="box-shadow:var(--shadow-lg)">shadow-lg<br>模态弹窗 · 最高层</div>
+      </div>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>悬浮越高，阴影越深——按层级取档</li>
+          <li>阴影与描边二选一，不做双重强化</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要彩色阴影、发光效果（品牌场景除外）</li>
+          <li>不要 x 偏移阴影（破坏全局光源）</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 动效 ============ -->
+  <section class="chapter" id="s7">
+    <div class="ch-head">
+      <span class="ch-num">07</span>
+      <div><h2>动效<span class="en">MOTION</span></h2>
+      <p class="ch-intro">动效只为三件事服务：反馈、引导、连续性。悬停下方各行体验三档时长。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">PRINCIPLES · 原则</div>
+      <ul class="plain">
+        <li><b>快而不跳 Swift</b> —— 反馈 ≤ 150ms，超过即被感知为迟钝。</li>
+        <li><b>有因必有动 Purposeful</b> —— 每个动画对应一个状态变化，无动画则不变。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">APPLICATION · 应用（三档时长 · 悬停体验）</div>
+      <div class="motion-row"><span class="lbl">fast · 150ms — 微交互（hover / 按压 / Toast）</span><div class="motion-track"><div class="motion-fill f150"></div></div></div>
+      <div class="motion-row"><span class="lbl">base · 250ms — 展开 / 收起 / 下拉</span><div class="motion-track"><div class="motion-fill f250"></div></div></div>
+      <div class="motion-row"><span class="lbl">slow · 400ms — 页面 / Modal 转场</span><div class="motion-track"><div class="motion-fill f400"></div></div></div>
+      <p class="note">缓动统一 <code>ease-out</code>；进出场成对出现；实现必须尊重系统减弱动效设置：<code>@media (prefers-reduced-motion: reduce) { * { animation: none; transition-duration: 0s; } }</code></p>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>操作反馈一律 fast 档（≤150ms）</li>
+          <li>列表首屏用 stagger 错峰入场（≤40ms/项）</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要循环动画抢夺注意力（加载指示除外）</li>
+          <li>不要无状态变化的装饰性飞入</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 布局 ============ -->
+  <section class="chapter" id="s8">
+    <div class="ch-head"><span class="ch-num">08</span><div><h2>布局<span class="en">LAYOUT</span></h2>
+    <p class="ch-intro">页面类型模板库：九类骨架覆盖全部页面形态，骨架有限收敛、用途开放扩展。每类双示意——线框讲结构，token 渲染示例讲观感。</p></div></div>
+    <style>
+    .tpl-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:16px; }
+    .tpl-card { border:1px solid var(--line); border-radius:12px; padding:12px; }
+    .tpl-name { font-family:var(--mono); font-size:12px; font-weight:700; margin-bottom:8px; }
+    .tpl-frames { display:flex; gap:10px; margin-bottom:8px; }
+    .tpl-frame { width:88px; height:176px; border:1.5px solid var(--line); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; gap:3px; padding:4px; flex:none; }
+    .tpl-frame .blk { border-radius:3px; }
+    .tpl-wire .blk { background:#d8d9dd; }
+    .tpl-meta { font-size:11.5px; line-height:1.7; color:var(--ink-soft); }
+    .tpl-meta b { color:var(--ink); }
+    </style>
+    <div class="block"><div class="spec-label">PAGE TEMPLATES · 骨架家族（九类 · 线框 + 示例双示意）</div>
+    <div class="tpl-grid">
+<div class="tpl-card"><div class="tpl-name">枢纽 Hub <span class="role-badge">已提取</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:12%">搜索</div><div class="blk" style="height:40%">入口宫格</div><div class="blk" style="height:28%">内容位</div><div class="blk" style="height:10%">底导航</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>页底 + 白卡入口格 + 品牌色底导航</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：首页 / 工作台 / 游戏大厅<br><b>呼吸感</b>：区块 16 / 卡片间 12 / 宫格内 8<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">聚焦 Focus <span class="role-badge">已提取</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:70%">主视觉占满</div><div class="blk" style="height:12%">状态条</div><div class="blk" style="height:12%">悬浮操作</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>整页主视觉 + 悬浮状态与操作</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：播放 / 匹配等待 / 地图<br><b>呼吸感</b>：主视觉满幅 / 悬浮件贴边 12<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">流览 Feed <span class="role-badge">AI 补全</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:14%">页头</div><div class="blk" style="height:22%">卡片</div><div class="blk" style="height:22%">卡片</div><div class="blk" style="height:22%">卡片</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>页头 + 统一节奏卡片流</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：信息流 / 消息列表 / 商品列表<br><b>呼吸感</b>：卡片间距 12 / 统一头高<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">详情 Detail <span class="role-badge">AI 补全</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:34%">主视觉</div><div class="blk" style="height:16%">属性行</div><div class="blk" style="height:34%">正文/规格</div><div class="blk" style="height:10%">底部操作</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>主视觉 → 属性 → 正文 → 固定操作</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：商品 / 文章 / 视频详情（同骨架不同插槽）<br><b>呼吸感</b>：区间 16 / 属性行 12<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">表单配置 Form <span class="role-badge">已提取</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:14%">标题</div><div class="blk" style="height:56%">分组输入/选项</div><div class="blk" style="height:18%">确认操作</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>标题 + 分组表单 + 主操作按钮</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：设置 / 结账 / 选项配置<br><b>呼吸感</b>：组内 8 / 组间 16<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">档案 Profile <span class="role-badge">已提取</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:26%">身份头部</div><div class="blk" style="height:20%">数据格</div><div class="blk" style="height:38%">操作列表</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>头像身份 + 数据可视化 + 列表</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：个人资料 / 统计 / 等级页<br><b>呼吸感</b>：头部 16 / 数据格间 8<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">对话 Chat <span class="role-badge">AI 补全</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:16%">对方消息</div><div class="blk" style="height:16%">我的消息</div><div class="blk" style="height:46%">消息流</div><div class="blk" style="height:12%">输入栏</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>气泡流 + 常驻输入栏</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：聊天 / 客服 / AI 对话<br><b>呼吸感</b>：气泡间 8 / 输入栏贴底<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">过渡 Onboarding <span class="role-badge">AI 补全</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:58%">插画/视觉</div><div class="blk" style="height:14%">文案</div><div class="blk" style="height:16%">跳过/下一步</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>大视觉 + 短文案 + 双操作</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：引导 / 登录 / 启动<br><b>呼吸感</b>：视觉满宽 / 文案居中 12<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+<div class="tpl-card"><div class="tpl-name">系统 System <span class="role-badge">AI 补全</span></div>
+<div class="tpl-frames"><div class="tpl-frame tpl-wire"><div class="blk" style="height:30%">页面（压暗）</div><div class="blk" style="height:34%">居中弹窗</div><div class="blk" style="height:14%"></div><div class="blk" style="height:12%">Toast</div></div><div class="tpl-frame" style="background:var(--color-bg-page)"><div style="font-size:7px;color:var(--ink-soft);text-align:center;padding-top:70px">token 渲染示例<br>遮罩 + 居中面板 + 轻提示</div></div></div>
+<div class="tpl-meta"><b>典型用途</b>：弹层 / 抽屉 / Toast（非整页）<br><b>呼吸感</b>：弹窗距屏 24 / Toast 贴底 16<br><b>区域坑位</b>：按区块自上而下对应 §12 组件坑位</div></div>
+</div></div>
+    <div class="block"><div class="spec-label">RULES · 布局规则</div><ul class="plain">
+      <li><b>两步套模板</b>：识别页面类型 → 套骨架 → 组件对号入座 → 间距按模板呼吸感预设。</li>
+      <li><b>用途不占骨架</b>：新业务页面先归骨架类；真无匹配 → 新立骨架并登记本页，不硬塞。</li>
+      <li><b>移动竖屏为基线</b>：375px 基准；安全区（刘海/home indicator）避让由状态栏与底部操作区承担。</li></ul></div>
+    <div class="block"><div class="spec-label">USAGE · 使用规范</div><ul class="plain">
+      <li>新页面先选九类之一，禁凭感觉自由排。</li>
+      <li>骨架内区域顺序可微调，区域间呼吸感不得突破模板预设档。</li></ul></div>
+  </section>
+  <!-- ============ 09 多端适配 ============ -->
+  <section class="chapter" id="s9">
+    <div class="ch-head">
+      <span class="ch-num">09</span>
+      <div><h2>多端适配<span class="en">PLATFORMS</span></h2>
+      <p class="ch-intro">同一套 token，三端各有关注点。差异只发生在"交互形态"，token 值保持一致。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">MATRIX · 三端差异矩阵</div>
+      <table>
+        <thead><tr><th>维度</th><th>Web 桌面</th><th>Pad 平板</th><th>移动 Mobile</th></tr></thead>
+        <tbody>
+          <tr><td><b>悬停态 hover</b></td><td>必须提供，承载状态预告</td><td>可能失效——hover 信息须同时可由点按获得</td><td>不存在——用按压态（active）替代</td></tr>
+          <tr><td><b>触控目标</b></td><td>≥ 24×24px 即可</td><td>≥ 40×40px</td><td><b>≥ 44×44px</b>（硬性）</td></tr>
+          <tr><td><b>导航形态</b></td><td>顶栏 + 侧栏</td><td>侧栏展开 / 收起随断点</td><td>底部 Tab（≤ 5 项）</td></tr>
+          <tr><td><b>栅格</b></td><td>12 列</td><td>8 列</td><td>4 列</td></tr>
+          <tr><td><b>弹层形态</b></td><td>居中 Modal</td><td>居中 Modal</td><td>底部上滑 Drawer / 全屏</td></tr>
+          <tr><td><b>字号</b></td><td>§03 阶梯原值</td><td>§03 阶梯原值</td><td>阶梯原值；正文最小 14px</td></tr>
+          <tr><td><b>输入</b></td><td>键盘优先，Tab 序完整</td><td>键盘 + 触控混合</td><td>唤起正确键盘类型（数字 / 邮箱）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>hover 承载的关键信息，移动端必须有替代入口</li>
+          <li>移动端弹层一律改底部抽屉形态</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要把桌面点击目标原样缩到移动端</li>
+          <li>不要用 JS 嗅探设备——用断点与媒体查询</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 图标 ============ -->
+  <section class="chapter" id="s10">
+    <div class="ch-head"><span class="ch-num">10</span><div><h2>图标<span class="en">ICONS</span></h2>
+    <p class="ch-intro">现有图标实物陈列 + 匹配开源图标库整库交付；尺寸只用三档。</p></div></div>
+    <div class="block"><div class="spec-label">CURRENT · 现有图标实物</div>
+    <div class="comp-stage" style="gap:16px">
+      <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3056d3" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>搜索</div>
+      <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3056d3" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z"/></svg>设置</div>
+      <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3056d3" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>用户</div>
+      <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3056d3" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6.5 5.4 5.4 0 0 1 21.3 12c-2.3 4.4-9.3 9-9.3 9z"/></svg>收藏</div>
+      <span class="stage-lbl">从 assets 切图甄别陈列（本例为示意图形）</span></div></div>
+    <div class="block"><div class="spec-label">LIBRARY MATCH · 图标库匹配与整库交付</div>
+    <table><thead><tr><th>判定</th><th>依据</th><th>交付</th></tr></thead><tbody>
+    <tr><td><b>Lucide</b>（线性 · 圆角端点 · 24 网格）</td><td>描边粗细与端点风格和现有图标一致</td><td>全套 SVG 已交付 <code>assets/icons/lucide/</code>（manifest.json 登记）· <a href="https://icon-sets.iconify.design/lucide/">库主页</a></td></tr>
+    </tbody></table>
+    <p class="note">加图标 = 本地库直接挑；库里真没有 → 用下方提示词生成（兜底）。</p></div>
+    <div class="block"><div class="spec-label">SIZES · 尺寸三档实物</div>
+    <div class="comp-stage">
+      <div class="icon-cell"><div class="box" style="display:grid;place-items:center"><div style="width:16px;height:16px;background:var(--blue-100);border-radius:4px"></div></div>icon-small · 16px<br>行内小图标</div>
+      <div class="icon-cell"><div class="box" style="display:grid;place-items:center"><div style="width:24px;height:24px;background:var(--blue-300);border-radius:6px"></div></div>icon-medium · 24px<br>按钮 / 导航图标</div>
+      <div class="icon-cell"><div class="box" style="display:grid;place-items:center"><div style="width:40px;height:40px;background:var(--blue-500);border-radius:10px"></div></div>icon-large · 40px<br>功能入口大图标</div>
+      <span class="stage-lbl">示意色块代表尺寸档位</span></div></div>
+    <div class="block"><div class="spec-label">PROMPT · 新图标生成提示词母版（库中没有时兜底）</div>
+    <pre class="prompt">请为本设计系统生成一枚图标，严格遵守：
+【尺寸】画布 96×96 导出，落位只用 icon-small 16 / icon-medium 24 / icon-large 40 三档。
+【风格】与现有图标同风格：圆角形体、描边端点圆角、{线性/面性} 与库一致。
+【色板】只用 §02 色板：主体 blue-600 系 / 点缀 pink 系；禁第三色相。
+【语义】图标含义：<span class="hl">{ 名称 }</span>；隐喻直观。
+【命名】<span class="hl">{ kebab-case }</span>.svg 入 assets/icons/，登记清单。
+【自查】缩至 16px 轮廓可辨；与库图标并排无风格突兀。</pre>
+    <p class="note">生成后两步验收：①16px 肉眼可辨 ②与已交付库图标并排风格一致；任一不过即重生成。</p></div>
+    <div class="block"><div class="spec-label">USAGE · 使用规范</div><ul class="plain">
+      <li>引用 <code>&lt;img src="assets/icons/..."&gt;</code> 或内联 SVG（currentColor 随文字变色）；禁拉伸变形。</li>
+      <li>同一视图只用一套风格；可点击图标必须配 aria-label。</li></ul></div>
+  </section>
+  <!-- ============ 11 素材资产 ============ -->
+  <section class="chapter" id="s11">
+    <div class="ch-head"><span class="ch-num">11</span><div><h2>素材资产<span class="en">ASSETS</span></h2>
+    <p class="ch-intro">美术素材库：缩略图网格 + 语义分组 + 去重登记；点击缩略看大图，原图在 assets/ 不占版面。</p></div></div>
+    <style>
+    .ast-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(96px,1fr)); gap:10px; }
+    .ast-cell { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--skin-card-bg); color:var(--skin-card-ink); }
+    .ast-thumb { height:72px; display:grid; place-items:center; }
+    .ast-cap { font-size:10px; padding:4px 6px; line-height:1.5; opacity:.75; }
+    .ast-cap b { display:block; font-size:11px; opacity:1; }
+    .ast-group { font-family:var(--mono); font-size:11px; letter-spacing:.1em; margin:14px 0 8px; color:var(--accent); }
+    </style>
+    <div class="block"><div class="spec-label">GALLERY · 缩略网格（语义分组 · 点击放大）</div>
+    <div class="ast-group">角色立绘</div>
+    <div class="ast-grid">
+      <div class="ast-cell"><div class="ast-thumb"><svg width="40" height="40"><rect x="8" y="4" width="24" height="24" rx="6" fill="#a8c0f4"/><rect x="14" y="30" width="12" height="8" rx="3" fill="#3056d3"/></svg></div><div class="ast-cap"><b>棋子·红方</b>48×48 · PNG · 首页+对战页</div></div>
+      <div class="ast-cell"><div class="ast-thumb"><svg width="40" height="40"><rect x="8" y="4" width="24" height="24" rx="6" fill="#bfe3cb"/><rect x="14" y="30" width="12" height="8" rx="3" fill="#16a34a"/></svg></div><div class="ast-cap"><b>棋子·绿方</b>48×48 · PNG · 首页+对战页</div></div>
+      <div class="ast-cell"><div class="ast-thumb"><svg width="40" height="40"><circle cx="20" cy="14" r="9" fill="#f0c4c5"/><rect x="10" y="26" width="20" height="12" rx="4" fill="#dc2626"/></svg></div><div class="ast-cap"><b>玩家头像占位</b>96×96 · PNG · 个人资料页</div></div>
+    </div>
+    <div class="ast-group">徽章 / 道具</div>
+    <div class="ast-grid">
+      <div class="ast-cell"><div class="ast-thumb"><svg width="40" height="40"><circle cx="20" cy="18" r="12" fill="#f0a500"/><rect x="12" y="26" width="16" height="10" rx="2" fill="#7c3fe5"/></svg></div><div class="ast-cap"><b>金币徽章</b>64×64 · PNG · 首页+结算页（2 处引用）</div></div>
+      <div class="ast-cell"><div class="ast-thumb"><svg width="40" height="40"><path d="M20 4l4 10 10 1-8 7 3 11-9-6-9 6 3-11-8-7 10-1z" fill="#f0a500"/></svg></div><div class="ast-cap"><b>星级奖励</b>48×48 · PNG · 结算页</div></div>
+      <div class="ast-cell"><div class="ast-thumb"><svg width="40" height="40"><rect x="6" y="10" width="28" height="20" rx="4" fill="#2443ab"/><path d="M6 16h28" stroke="#fff" stroke-width="2"/></svg></div><div class="ast-cap"><b>宝箱道具</b>64×64 · PNG · 大厅页</div></div>
+    </div>
+    <div class="ast-group">场景插画</div>
+    <div class="ast-grid">
+      <div class="ast-cell"><div class="ast-thumb"><svg width="72" height="40"><rect x="2" y="8" width="68" height="28" rx="6" fill="#e8eefc"/><rect x="8" y="18" width="24" height="12" rx="3" fill="#4569e0"/><rect x="40" y="14" width="24" height="16" rx="3" fill="#a8c0f4"/></svg></div><div class="ast-cap"><b>棋盘主视觉</b>780×1244 · PNG · 首页（缩略展示，原图 assets/）</div></div>
+    </div></div>
+    <div class="block"><div class="spec-label">DEDUPE · 去重登记（异名同图合并）</div>
+    <p class="note">跨页重复导出按感知哈希（pHash）合并为一枚，登记全部引用位置；新增前先查本清单，确无再增。</p></div>
+    <div class="block"><div class="spec-label">USAGE · 使用规范</div><ul class="plain">
+      <li>图片容器先定宽高（防布局跳动）；列表长图懒加载。</li>
+      <li>新增素材走语义化 kebab-case 命名并登记清单；同图禁存多份副本。</li></ul></div>
+  </section>
+  <!-- ============ 12 组件库 ============ -->
+  <section class="chapter" id="s12">
+    <div class="ch-head">
+      <span class="ch-num">12</span>
+      <div><h2>组件库<span class="en">COMPONENTS</span></h2>
+      <p class="ch-intro">19 个基础组件，按倒金字塔叙述：概览 → 解剖 → 状态 → 用法。核心组件附实物演示。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">OVERVIEW · 概览（25 组件）</div>
+      <table>
+        <thead><tr><th>族</th><th>组件</th><th>变体</th><th>状态</th><th>来源</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><b>通用</b></td><td>Button 按钮</td><td>primary / default / text / <b>danger</b></td><td>默认 · 悬停 · 按下 · 禁用</td><td>已提取</td></tr>
+          <tr><td>Tag 标签</td><td>brand / ok / warn / err</td><td>静态 · 可关闭</td><td>已提取</td></tr>
+          <tr><td rowspan="3"><b>数据录入</b></td><td>Input 输入框</td><td>单行 / 多行 Textarea</td><td>默认 · 聚焦 · 错误 · 禁用</td><td><b>AI 补全</b></td></tr>
+          <tr><td>Select 选择器 / Checkbox / Radio / Switch</td><td>单选 / 多选 / 开关</td><td>默认 · 选中 · 禁用</td><td>已提取</td></tr>
+          <tr><td>Upload 上传</td><td>点击 / 拖拽</td><td>上传中 · 完成 · 失败</td><td>已提取</td></tr>
+          <tr><td rowspan="4"><b>数据展示</b></td><td>Table 表格</td><td>斑马纹 / 边框</td><td>行悬停 · 排序 · 选中</td><td><b>AI 补全</b></td></tr>
+          <tr><td>Card 卡片 / List 列表 / Descriptions 描述列表</td><td>含图 / 纯文本</td><td>悬停浮起</td><td>已提取</td></tr>
+          <tr><td>Tabs 标签页 / Breadcrumb 面包屑</td><td>—</td><td>当前项高亮</td><td>已提取</td></tr>
+          <tr><td>Badge / Avatar</td><td>—</td><td>—</td><td>已提取</td></tr>
+          <tr><td rowspan="3"><b>反馈</b></td><td>Modal 对话框 / Drawer 抽屉</td><td>确认 / 内容</td><td>打开 · 关闭（§08 层级）</td><td><b>AI 补全</b></td></tr>
+          <tr><td>Toast 轻提示 / Alert 提示条</td><td>info / ok / warn / err</td><td>自动消失 / 可关闭</td><td>已提取</td></tr>
+          <tr><td>Empty 空态 / Loading 加载 / Progress 进度</td><td>spinner / skeleton</td><td>—</td><td>已提取</td></tr>
+          <tr><td><b>导航</b></td><td>Pagination 分页 / Menu 菜单</td><td>—</td><td>当前页高亮</td><td>已提取</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">ANATOMY · 解剖（以 Button 为例）</div>
+      <div class="anatomy">
+        <div class="anatomy-demo">主要操作
+          <span class="callout" style="top:-30px;left:0">← 文字：动词短语，≤ 4 字</span>
+          <span class="callout" style="bottom:-30px;right:0">高 36px = 行高 20 + 内边距 7×2 + 描边 2 →</span>
+        </div>
+        <ul class="anatomy-notes plain">
+          <li><b>容器</b>：高度 36px，圆角 <code>--radius-md</code>，内边距 7px 18px，文字行高 20px（三者相加自洽）</li>
+          <li><b>文字</b>：<code>--font-size-caption</code>，动词开头</li>
+          <li><b>图标（可选）</b>：<code>--icon-sm</code>，与文字间距 <code>--space-2</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">BUTTON · 按钮（可交互）</div>
+      <div class="comp-stage">
+        <button class="btn btn-primary">主按钮</button>
+        <button class="btn btn-default">次按钮</button>
+        <button class="btn btn-text">文字按钮</button>
+        <button class="btn btn-danger">删除</button>
+        <button class="btn btn-primary" disabled>禁用</button>
+        <span class="stage-lbl">4 变体 + 禁用态 · 高危操作必须用 danger（补齐"禁令出路"）</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">INPUT · 输入控件（可交互）</div>
+      <div class="comp-stage">
+        <div class="field"><input type="text" placeholder="单行输入，点击聚焦"><span class="msg-help">帮助文字：输入不超过 20 字</span></div>
+        <div class="field"><input type="text" class="err" value="错误示范@"><span class="msg-err">格式不正确，仅支持中英文与数字</span></div>
+        <div class="field"><textarea placeholder="多行 Textarea"></textarea></div>
+      </div>
+      <div class="comp-stage">
+        <label class="check"><input type="checkbox" checked>复选 A</label>
+        <label class="check"><input type="checkbox">复选 B</label>
+        <span class="radio-set">
+          <label class="check"><input type="radio" name="r" checked>单选 1</label>
+          <label class="check"><input type="radio" name="r">单选 2</label>
+        </span>
+        <label class="switch"><input type="checkbox" checked><span class="track"></span></label>
+        <label class="switch"><input type="checkbox"><span class="track"></span></label>
+        <span class="select-box">请选择 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        <span class="stage-lbl">CHECKBOX / RADIO / SWITCH / SELECT（聚焦自验：蓝色描边 + 光晕）</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">CARD / LIST · 卡片与列表</div>
+      <div class="comp-stage">
+        <div class="card-demo">
+          <div class="cover"></div>
+          <div class="body"><h4>卡片标题</h4><p>一句话描述卡片内容，超出一行截断省略。</p><span class="tagchip ok">进行中</span></div>
+          <div class="foot"><span>更新于 2 小时前</span><a href="#" style="color:var(--accent)">查看详情</a></div>
+        </div>
+        <div class="list-demo">
+          <div class="list-item"><span class="avatar">岳</span><span class="li-main"><b>列表项标题</b><span>辅助说明文字</span></span><span class="li-act">操作 ›</span></div>
+          <div class="list-item"><span class="avatar">方</span><span class="li-main"><b>第二项标题</b><span>辅助说明文字</span></span><span class="li-act">操作 ›</span></div>
+          <div class="list-item"><span class="avatar">设</span><span class="li-main"><b>第三项标题</b><span>辅助说明文字</span></span><span class="li-act">操作 ›</span></div>
+        </div>
+        <span class="stage-lbl">CARD（含图 · 底部操作条） / LIST（行悬停变色，内容型页面主力构件）</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">TABLE / PAGINATION · 表格与分页</div>
+      <div class="tbl-demo">
+        <table>
+          <thead><tr><th>项目名称</th><th>状态</th><th>负责人</th><th style="text-align:right">进度</th></tr></thead>
+          <tbody>
+            <tr><td>官网改版</td><td><span class="tagchip ok">进行中</span></td><td>张三</td><td class="num">72%</td></tr>
+            <tr><td>小程序二期</td><td><span class="tagchip warn">待评审</span></td><td>李四</td><td class="num">35%</td></tr>
+            <tr><td>数据后台</td><td><span class="tagchip err">已延期</span></td><td>王五</td><td class="num">18%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top:var(--space-3);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:12.5px;color:var(--color-text-secondary)">共 128 条</span>
+        <span class="pager"><a href="#">‹</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a><a href="#">…</a><a href="#">9</a><a href="#">›</a></span>
+      </div>
+      <p class="note">表头底 gray-100 + 吸底描边；行悬停 gray-50；数字列右对齐等宽字体；表格下方必配总数 + 分页。</p>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">MODAL / TOAST / TABS / BREADCRUMB / DESCRIPTIONS</div>
+      <div class="comp-stage">
+        <div class="modal-backdrop-note">
+          <div class="modal-demo">
+            <div class="m-head">确认删除项目？</div>
+            <div class="m-body">删除后 30 天内可从回收站恢复，超过 30 天将永久清除。</div>
+            <div class="m-foot"><button class="btn btn-default" style="padding:5px 14px">取消</button><button class="btn btn-danger" style="padding:5px 14px">确认删除</button></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+          <span class="toast-demo">✓ 已保存</span>
+          <div class="tabs-demo"><a href="#" class="cur">概览</a><a href="#">成员</a><a href="#">设置</a></div>
+          <div class="crumb"><a href="#">首页</a><span class="sep">/</span><a href="#">项目管理</a><span class="sep">/</span>详情</div>
+          <div class="desc-demo"><div class="dr"><div class="dt">项目周期</div><div class="dd">2026-10-01 → 2026-12-31</div></div><div class="dr"><div class="dt">负责人</div><div class="dd">张三</div></div></div>
+        </div>
+        <span class="stage-lbl">MODAL（danger 确认 + 后果说明 / 遮罩 rgba(24,24,27,.45)） · TOAST · TABS · BREADCRUMB · DESCRIPTIONS</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">EMPTY / LOADING · 空态与加载</div>
+      <div class="comp-stage">
+        <div class="empty-demo">
+          <div class="glyph"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18v13H3zM3 7l3-4h12l3 4M9 12h6"/></svg></div>
+          <b>暂无数据</b><span>创建第一项内容后展示在这里</span><button class="btn btn-primary" style="padding:5px 14px;font-size:13px">立即创建</button>
+        </div>
+        <div class="spinner"></div>
+        <div class="skeleton"><div class="sk" style="width:40%"></div><div class="sk"></div><div class="sk" style="width:80%"></div></div>
+        <span class="stage-lbl">EMPTY（图标 + 文案 + 行动按钮三件套） · SPINNER（时长未知） · SKELETON（结构可预期）——选择规则见 §13</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>一页面 / 一弹窗内只放 1 个 primary 按钮；行内与卡片内操作用文字按钮</li>
+          <li>禁用关键操作时，旁边说明原因</li>
+          <li>新组件先查概览表，确认无既有组件可复用再新增</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要并排两个主按钮</li>
+          <li>不要静默禁用——用户不知道为何点不了</li>
+          <li>不要为单次需求创造一次性组件变体</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 模式 ============ -->
+  <section class="chapter" id="s13">
+    <div class="ch-head">
+      <span class="ch-num">13</span>
+      <div><h2>模式<span class="en">PATTERNS</span></h2>
+      <p class="ch-intro">组件之上的流程级组合：表单、列表、加载、危险操作。照模式拼页面，不重新发明。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">FORM · 表单流程</div>
+      <ul class="plain">
+        <li><b>Label 在上</b>，左对齐；必填用 <code style="color:var(--danger)">*</code> 标记，选填可不标。</li>
+        <li><b>校验时机</b>：失焦时校验单个字段；提交时全量校验；禁止输入中逐字报错。</li>
+        <li><b>错误就近显示</b>在字段下方（红色 12px），同时顶部不重复弹窗。</li>
+        <li><b>提交按钮</b>：请求期间转为加载态并禁用，防重复提交。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">LIST · 列表页组合</div>
+      <ul class="plain">
+        <li>筛选区（Select / DatePicker）→ 工具条（批量操作）→ 表格 / 卡片 → 分页，四段自上而下。</li>
+        <li>批量操作依赖行内 Checkbox；选中数量实时显示在工具条。</li>
+        <li>无数据时表格区域内嵌 Empty 组件（带行动按钮）。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">LOADING · 加载策略（spinner vs skeleton 的唯一判据）</div>
+      <ul class="plain">
+        <li><b>结构可预期</b>（列表 / 详情 / 卡片墙）→ <b>Skeleton 骨架屏</b>，占位与真实结构同形。</li>
+        <li><b>结构未知或短暂等待</b>（&lt; 1s 的按钮提交、局部刷新）→ <b>Spinner</b>。</li>
+        <li>页面级跳转允许顶部细进度条；禁全屏转圈遮罩。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">CONFIRM · 危险操作确认</div>
+      <ul class="plain">
+        <li>删除 / 转让 / 停用等不可逆操作，必须过 <b>Modal 二次确认</b>（§12 实物样式）。</li>
+        <li>确认按钮用 danger 变体；正文写清后果与恢复方式（"30 天内可恢复"）。</li>
+        <li>执行期间按钮转加载态；成功后 Toast 反馈并刷新列表。</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>新页面先对照四模式，能拼则拼</li>
+          <li>模式与组件冲突时，以模式为准上报修订</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要自创第四种加载形态</li>
+          <li>不要跳过危险操作确认</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 反模式 ============ -->
+  <section class="chapter" id="s14">
+    <div class="ch-head">
+      <span class="ch-num">14</span>
+      <div><h2>反模式<span class="en">ANTIPATTERNS</span></h2>
+      <p class="ch-intro">跨章高频错误的集中对照。AI / 新成员产出前，逐条自查。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">TOP 8 · 高频错误对照</div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 用语义 token</div><ul><li><code>color: var(--color-text-primary)</code></li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 写裸色值</div><ul><li><code>color: #18181B</code> —— 改主题时必然漏改</li></ul></div>
+      </div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 布局间距取 4 的倍数</div><ul><li>12 / 16 / 24，就近归档</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 魔法间距</div><ul><li>margin: 13px / 17px —— 无档可归</li></ul></div>
+      </div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 状态多通道传达</div><ul><li>红色 + ✕ 图标 + 文字说明</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 只用颜色</div><ul><li>仅变红传达错误 —— 色盲用户不可见</li></ul></div>
+      </div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 一视图一主按钮</div><ul><li>主操作 1 个；行内 / 卡片内操作用文字按钮</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 双主按钮</div><ul><li>「保存」「提交」同时高亮蓝 —— 用户失去焦点</li></ul></div>
+      </div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 字号走阶梯</div><ul><li>16 / 14 / 12，层级靠档位差</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 字号随手写</div><ul><li>15px、18px、19px 混排 —— 层级感被稀释</li></ul></div>
+      </div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 动效有因</div><ul><li>弹层淡入 400ms，对应"出现"这一状态变化</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 装饰动画</div><ul><li>静态元素循环漂浮 —— 抢注意力、耗性能</li></ul></div>
+      </div>
+      <div class="dd" style="margin-bottom:var(--space-3)">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 图标同源同套</div><ul><li>全部取自 assets/icons，线性为默认</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 图标混套</div><ul><li>页面里 3 种描边粗细的图标混排 —— 廉价感来源</li></ul></div>
+      </div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓ 触控目标达标</div><ul><li>移动端可点区域 ≥ 44×44（含热区扩展）</li></ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕ 目标过小</div><ul><li>24px 的关闭按钮裸放在移动端 —— 误触率飙升</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 15 无障碍 ============ -->
+  <section class="chapter" id="s15">
+    <div class="ch-head">
+      <span class="ch-num">15</span>
+      <div><h2>无障碍<span class="en">ACCESSIBILITY</span></h2>
+      <p class="ch-intro">不是附加项，是验收项。以下五条全部通过，页面才算完成。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">CHECKLIST · 五条验收</div>
+      <table>
+        <thead><tr><th>#</th><th>条目</th><th>标准</th><th>自验方法</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><b>对比度</b></td><td>正文 ≥ 4.5:1；大字（≥18px 粗体）≥ 3:1；UI 部件描边 ≥ 3:1</td><td>取色器测前景 / 背景比对 WCAG 表</td></tr>
+          <tr><td>2</td><td><b>键盘可达</b></td><td>所有可操作元素 Tab 可达；焦点可见（<code>--focus-ring</code>）；Modal 内 Esc 关闭、焦点困住</td><td>拔掉鼠标走完整个流程</td></tr>
+          <tr><td>3</td><td><b>双通道</b></td><td>信息不得仅靠颜色传达（状态配图标 / 文字）</td><td>页面转灰度看信息是否仍完整</td></tr>
+          <tr><td>4</td><td><b>可读名称</b></td><td>图标按钮必须有 <code>aria-label</code>；图片有 alt；表单控件有 label 关联</td><td>开屏幕阅读器听一遍</td></tr>
+          <tr><td>5</td><td><b>减弱动效</b></td><td>尊重 <code>prefers-reduced-motion</code>（§07 提供了实现代码）</td><td>系统开启减弱动效后复查动画</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>五条验收写进交付自检清单</li>
+          <li>新组件随附无障碍说明（键盘行为 + aria）</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要用 div 充当按钮（无键盘语义）</li>
+          <li>不要移除焦点描边outline而不提供替代</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 16 变更日志 ============ -->
+  <section class="chapter" id="s16">
+    <div class="ch-head">
+      <span class="ch-num">16</span>
+      <div><h2>变更日志<span class="en">CHANGELOG</span></h2>
+      <p class="ch-intro">语义化版本：破坏性改动进位 major，新增进位 minor，修正进位 patch。每条必须带迁移说明。</p></div>
+    </div>
+    <div class="block">
+      <div class="spec-label">RECORDS · 记录</div>
+      <table>
+        <thead><tr><th>版本</th><th>日期</th><th>类型</th><th>内容</th><th>迁移说明</th></tr></thead>
+        <tbody>
+          <tr><td><code>v1.0.0</code></td><td>2026-10-14</td><td>初始</td><td>10 章：三层 token（基础 19 + 语义 13 + 组件 6）+ 4 组件</td><td>—</td></tr>
+          <tr><td><code>v2.0.0</code></td><td>2026-10-14</td><td>minor 扩展</td><td>16 章：新增布局 / 多端 / 图标 / 素材 / 模式 / 无障碍 6 章；组件 4 → 19；token 85（基础 19 + 语义 17 + 组件 6 + 度量 43）；修正 15 处条文矛盾</td><td>章节号整体位移；token 无破坏性改名</td></tr>
+          <tr><td><code>v2.1.0</code></td><td>（路线）</td><td>minor</td><td>暗色模式（语义层整体映射，色板不动）</td><td>仅新增，可平滑升级</td></tr>
+          <tr><td><code>v2.2.0</code></td><td>（路线）</td><td>minor</td><td>数据可视化色板、文案语气规范（Voice & Tone）</td><td>仅新增</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Token 计数口径统一为：<b>颜色（基础+功能浅底）+ 语义 + 组件 + 度量（间距/圆角/阴影/字号/层级）</b>四段相加，全文只用这一个口径。</p>
+    </div>
+    <div class="block">
+      <div class="spec-label">USAGE · 使用规范</div>
+      <div class="dd">
+        <div class="dd-col do"><div class="dd-head">DO ✓</div><ul>
+          <li>每条变更写清影响范围与迁移步骤</li>
+          <li>破坏性改动先在文档公告，再进版本</li>
+        </ul></div>
+        <div class="dd-col dont"><div class="dd-head">DON'T ✕</div><ul>
+          <li>不要写"修复若干问题"式模糊条目</li>
+          <li>不要跳过 minor 直接叠 patch</li>
+        </ul></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="doc-footer">
+    示例设计系统 v2.0.0 · 本页为 design-system-extract 技能的产出形态示例，全部数值为演示数据<br>
+    双产物体系：本页（system-spec，人看） + system-rules.md（AI 读规则） · 16 章 · Token 87 · 组件 19 · 生成于 2026-10-14
+  </footer>
+
+</main>
+
+<div class="toast" id="toast">已复制</div>
+
+<script>
+  var toast = document.getElementById('toast'), toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1500);
+  }
+  document.querySelectorAll('.swatch[data-hex]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var hex = el.getAttribute('data-hex');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(hex).then(function () { showToast(hex + ' 已复制'); });
+      } else { showToast(hex); }
+    });
+  });
+  var links = document.querySelectorAll('.nav a');
+  var sections = document.querySelectorAll('main section.chapter');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        var id = e.target.id;
+        links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + id); });
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+</script>
+
+</body>
+</html>

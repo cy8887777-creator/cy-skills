@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-10-23T12:41:40.032Z",
+  "target": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\examples\\workbench.html",
+  "summary": {
+    "total": 2,
+    "bySeverity": {
+      "blocker": 0,
+      "high": 1,
+      "medium": 1,
+      "low": 0,
+      "info": 0
+    },
+    "byDimension": {
+      "a11y": {
+        "total": 1,
+        "worst": "high"
+      },
+      "typography": {
+        "total": 1,
+        "worst": "medium"
+      }
+    }
+  },
+  "findings": [
+    {
+      "id": "a11y/color-contrast",
+      "rule": "WCAG 1.4.3 对比度（最低）",
+      "dimension": "a11y",
+      "severity": "high",
+      "selector": "div > div:nth-of-type(2) > span:nth-of-type(1)",
+      "measured": "2.38:1（rgb(255, 255, 255) on rgb(7, 193, 96)，11px）",
+      "expected": "≥ 4.5:1",
+      "message": "18 处文本对比度不足：div > div:nth-of-type(2) > span:nth-of-type(1) 2.38:1；div > div:nth-of-type(2) > span:nth-of-type(1) 2.38:1；div.stepside:nth-of-type(1) > div.step.todo:nth-of-type(10) > span.st 2.4:1；div.ccard:nth-of-type(1) > div.chead:nth-of-type(1) > span.cno:nth-of-type(1) 2.46:1；div.ccard:nth-of-type(2) > div.chead:nth-of-type(1) > span.cno 2.46:1",
+      "fix": {
+        "kind": "contrast",
+        "targets": [
+          {
+            "selector": "div > div:nth-of-type(2) > span:nth-of-type(1)",
+            "css": "color: #3b3b3b; /* 2.38:1 → 4.7:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.stepside:nth-of-type(1) > div.step.todo:nth-of-type(10) > span.st",
+            "css": "color: #000000; /* 2.4:1 → 1.61:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.ccard:nth-of-type(1) > div.chead:nth-of-type(1) > span.cno:nth-of-type(1)",
+            "css": "color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.ccard:nth-of-type(2) > div.chead:nth-of-type(1) > span.cno",
+            "css": "color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.ccard:nth-of-type(3) > div.chead:nth-of-type(1) > span.cno",
+            "css": "color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.step.todo:nth-of-type(10) > div.stx > div.stt:nth-of-type(1)",
+            "css": "color: #000000; /* 2.87:1 → 1.35:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.step.todo:nth-of-type(10) > div.stx > div.ssub:nth-of-type(2)",
+            "css": "color: #000000; /* 2.87:1 → 1.35:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(1) > div.cact:nth-of-type(3)",
+            "css": "color: #6a717b; /* 3.11:1 → 4.93:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(2) > div.cact:nth-of-type(3)",
+            "css": "color: #6a717b; /* 3.11:1 → 4.93:1（判据 4.5:1） */"
+          }
+        ],
+        "note": "建议色是按当前色算出来的达标值（逐步加深直到越过判据线）。能用设计令牌（如 --color-text-muted）替代硬编码色值时优先用令牌，并把令牌本身提到达标值，而不是逐处覆盖。"
+      },
+      "count": 18,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    },
+    {
+      "id": "typography/line-height",
+      "rule": "WCAG 1.4.12 文本间距（行高）",
+      "dimension": "typography",
+      "severity": "medium",
+      "selector": "div.wb > div.carea:nth-of-type(2) > p.curhint",
+      "measured": "line-height 1.2（14.4px / 12px）",
+      "expected": "段落行高 ≥ 1.5；绝对下限 1.3",
+      "message": "2 处多行文本行高过紧，最紧 1.2：body > div.top:nth-of-type(1) > b；div.wb > div.carea:nth-of-type(2) > p.curhint",
+      "fix": {
+        "kind": "css",
+        "targets": [
+          {
+            "selector": "body > div.top:nth-of-type(1) > b",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          },
+          {
+            "selector": "div.wb > div.carea:nth-of-type(2) > p.curhint",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          }
+        ],
+        "note": "行高用无单位数值（1.5）而非 px，避免子元素继承后被固定死。"
+      },
+      "count": 2,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    }
+  ],
+  "viewports": [
+    {
+      "label": "w1440",
+      "count": 5
+    },
+    {
+      "label": "w390",
+      "count": 5
+    }
+  ]
+}

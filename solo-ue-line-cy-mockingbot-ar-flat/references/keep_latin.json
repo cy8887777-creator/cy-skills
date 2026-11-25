@@ -1,0 +1,23 @@
+{
+  "keep_latin": [
+    "Carrom",
+    "ELO",
+    "GvG",
+    "Jackaroo",
+    "Ludo",
+    "Uno",
+    "XP"
+  ],
+  "banned_ar": [
+    "قمار",
+    "مراهنة",
+    "رهان",
+    "مقامرة"
+  ],
+  "banned_en": [
+    "Age Restriction",
+    "Daily/Weekly Staking Cap",
+    "Stake",
+    "Staking"
+  ]
+}

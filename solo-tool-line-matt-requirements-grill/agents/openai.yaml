@@ -1,0 +1,6 @@
+interface:
+  display_name: "正式软件需求深挖"
+  short_description: "逐问持久化需求事实并生成同源 Excel 功能清单与 PRD"
+  default_prompt: "After project materials and industry research are complete, clarify requirements before producing PRDs, workflow diagrams, or feature lists. Use concise, dependency-aware rounds and persist each answer."
+policy:
+  allow_implicit_invocation: false

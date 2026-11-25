@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>比稿卡 · 语雀 · 纯情绪色块 demo</title>
+<style>
+/* ============================================================
+   比稿卡（specimen card）· 语雀 Yuque · 纯情绪色块版
+   单卡自包含单文件 · file:// 直开 · 零外链
+   骨架图区（.sp-wireframes 内）零内容性文字：所有内容位=色块；
+   文字仅两处：卡头标定区 / 载体样本条。
+   ------------------------------------------------------------
+   风格令牌（--sp-*，真值来自语雀风格卡实现层。注：「选定即锁」条款已随 V06 退役——令牌定位=取值记录，不锁画面；本文件为 demo 锚例仅供对账）：
+   ============================================================ */
+:root{
+  /* ── 色板（9 语义组）── */
+  --sp-primary:#00B96B;          /* 语雀绿600 · 主按钮/选中态/勾选 */
+  --sp-primary-hover:#009456;    /* hover/按压深档（伴随值） */
+  --sp-bg:#FFFFFF;               /* 纸面白 · 页面默认底 */
+  --sp-surface:#FFFFFF;          /* 卡面白（与 bg 同值，语义分档） */
+  --sp-surface-alt:#F4F5F5;      /* 浅灰面200 · 侧栏/次级面板/悬停底 */
+  --sp-text-primary:#262626;     /* 正文黑 grey900 */
+  --sp-text-secondary:#8C8C8C;   /* 次级文字 grey500 */
+  --sp-border:#D9D9D9;           /* 控件描边 grey300 */
+  --sp-success:#00B96B;          /* 状态变绿=主绿（语雀成功感来自变绿，同值同源） */
+  --sp-danger:#FF4D4F;           /* Ant 系危险红 */
+  /* ── 专档附注色（语雀特有约束的载体） ── */
+  --sp-link:#117CEE;             /* 正文链接专档 · 绿不进链接 */
+  --sp-brand-green:#2ED790;      /* 品牌视觉层 · logo/图标（不作界面主色） */
+  --sp-green-tint:#DAF6EA;       /* 浅绿衬底100 · 选中衬底/强调底 */
+  --sp-green-tint-50:#ECFAF4;    /* 绿梯度50 · 最浅衬底 */
+  --sp-hairline:#EDEDED;         /* 细线分区（灰阶浅档，1px 分隔专用） */
+  /* ── 字体 ── */
+  --sp-font-head:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+  --sp-font-body:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
+  /* ── 字阶（界面高频14 / 文档正文16 / 辅助12，标题梯度制） ── */
+  --sp-size-title:22px;
+  --sp-size-head:17px;
+  --sp-size-body:14px;
+  --sp-size-caption:12px;
+  /* ── 圆角（6 主频 / 8 卡片档 / 4 小件） ── */
+  --sp-radius-sm:4px;
+  --sp-radius-md:6px;
+  --sp-radius-lg:8px;
+  /* ── 间距四档（紧凑→宽松，4 基数） ── */
+  --sp-space-1:4px;
+  --sp-space-2:8px;
+  --sp-space-3:12px;
+  --sp-space-4:16px;
+  /* ── 控件高度档（Ant 规格） ── */
+  --sp-size-ctl-sm:24px;
+  --sp-size-ctl-md:32px;
+  --sp-size-ctl-lg:40px;
+  /* ── 阴影（按钮近无影一层 / 浮层三层柔影） ── */
+  --sp-shadow-sm:0 2px 0 rgba(0,0,0,.043);
+  --sp-shadow-md:0 16px 24px rgba(0,0,0,.03),0 28px 32px rgba(0,0,0,.05),0 48px 64px rgba(0,0,0,.08);
+  /* ── 动效 ── */
+  --sp-motion-duration:.3s;
+  --sp-motion-easing:cubic-bezier(.645,.045,.355,1);
+  /* ── 骨架色块灰阶（语雀 Ant 灰阶档，仅骨架图使用） ── */
+  --g900:#262626;  /* 标题块 */
+  --g600:#595959;  /* 小节头/强调块 */
+  --g400:#A6A6A6;  /* 元信息/未选块 */
+  --g300:#D9D9D9;  /* 正文行块 */
+  --g200:#E8E9E9;  /* 极弱行块 */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#F1F2F2}
+body{
+  font-family:var(--sp-font-body);
+  color:var(--sp-text-primary);
+  -webkit-font-smoothing:antialiased;
+  padding:28px 16px 48px;
+}
+.sp-card{
+  width:854px;max-width:100%;margin:0 auto;
+  background:var(--sp-bg);
+  border:1px solid var(--sp-border);
+  border-radius:var(--sp-radius-lg);
+  box-shadow:var(--sp-shadow-md);
+  padding:26px 28px 28px;
+}
+
+/* ─────────── ① 卡头标定区 ─────────── */
+.sp-head{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding-bottom:18px;border-bottom:1px solid var(--sp-hairline);
+}
+.sp-head-name{font-family:var(--sp-font-head);font-size:var(--sp-size-head);font-weight:600;letter-spacing:.2px}
+.sp-head-name em{font-style:normal;font-weight:400;color:var(--sp-text-secondary);font-size:var(--sp-size-body);margin-left:8px}
+.sp-head-vibe{margin-top:6px;font-size:var(--sp-size-body);color:var(--sp-text-secondary)}
+.sp-badge{
+  flex:none;margin-top:2px;height:24px;line-height:24px;padding:0 10px;
+  font-size:var(--sp-size-caption);color:var(--sp-primary-hover);
+  background:var(--sp-green-tint);border-radius:var(--sp-radius-sm);
+}
+
+/* ─────────── ② 骨架图集（纯情绪色块 · 零文字） ─────────── */
+.sp-wireframes{display:flex;justify-content:center;gap:20px;margin-top:22px}
+.phone{
+  position:relative;width:252px;height:516px;flex:none;
+  background:var(--sp-surface);
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.p-top{flex:none;display:flex;align-items:center;height:44px;padding:0 12px;gap:8px}
+.p-body{flex:1;min-height:0;display:flex;flex-direction:column}
+.p-tabbar{
+  flex:none;height:52px;border-top:1px solid var(--sp-hairline);
+  display:flex;align-items:center;padding:0 6px 4px;
+  background:var(--sp-surface);
+}
+.p-homebar{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:64px;height:3px;border-radius:2px;background:var(--g300)}
+/* 色块词汇：标题块/行块/链接段/面块（宽度逐位内联） */
+.t1{height:9px;border-radius:3px;background:var(--g900)}
+.t2{height:7px;border-radius:3px;background:var(--g900)}
+.t3{height:6px;border-radius:3px;background:var(--g600)}
+.ln{height:4px;border-radius:2px;background:var(--g300)}
+.ln2{height:3px;border-radius:2px;background:var(--g200)}
+.lk{background:var(--sp-link)}
+.meta{display:flex;align-items:center;gap:6px}
+.ava{border-radius:50%;background:linear-gradient(135deg,#E9EAEA,#DDDEDE)}
+.ava2{border-radius:50%;background:linear-gradient(135deg,#EDEDED,#E2E3E3)}
+.ph-img{border-radius:var(--sp-radius-md);background:linear-gradient(135deg,#F4F5F5,#EBECEC)}
+.ph-img-g{border-radius:var(--sp-radius-md);background:linear-gradient(135deg,#ECFAF4,#DAF6EA)}
+.btn-label{border-radius:2px;background:#FFFFFF}
+.divider{flex:none;height:1px;background:var(--sp-hairline)}
+/* 线性图标（界面 chrome 图形，非内容文字） */
+.ic{flex:none;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ic-22{width:22px;height:22px}
+.ic-18{width:18px;height:18px}
+.ic-14{width:14px;height:14px;color:var(--g400)}
+.g-c{color:var(--g400)}
+.g-d{color:var(--g600)}
+.g-green{color:var(--sp-primary)}
+
+/* —— 页1 首页：知识库分组工作台气质的信息流 —— */
+.logo{
+  flex:none;width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--sp-brand-green),var(--sp-primary));
+  display:flex;align-items:center;justify-content:center;
+}
+.logo i{display:block;width:13px;height:5px;border-radius:2.5px;background:#fff}
+.searchbar{
+  flex:1;height:28px;margin:0 4px;border-radius:var(--sp-radius-sm);
+  background:var(--sp-surface-alt);display:flex;align-items:center;gap:6px;padding:0 8px;
+}
+.btn-write{
+  flex:none;width:52px;height:28px;border-radius:var(--sp-radius-sm);
+  background:var(--sp-primary);box-shadow:var(--sp-shadow-sm);
+  display:flex;align-items:center;justify-content:center;
+}
+.chtabs{flex:none;display:flex;align-items:flex-end;gap:22px;height:38px;padding:0 16px;border-bottom:1px solid var(--sp-hairline)}
+.chtab{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:8px}
+.chtab .blk{height:4px;border-radius:2px;background:var(--g400)}
+.chtab.on .blk{background:var(--g900)}
+.chtab.on::after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-1px;width:16px;height:2.5px;border-radius:2px;background:var(--sp-primary)}
+.feed{flex:1;min-height:0}
+.feed-sec{display:flex;align-items:center;gap:8px;padding:12px 16px 6px}
+.feed-card{padding:12px 16px 13px;border-bottom:1px solid var(--sp-hairline)}
+.feat{width:100%;height:92px}
+.fc-main{display:flex;gap:12px}
+.fc-txt{flex:1;min-width:0}
+.fc-thumb{flex:none;width:64px;height:64px;border-radius:var(--sp-radius-sm)}
+.dots{margin-left:auto;color:var(--g400)}
+
+/* —— 页2 文章详情：单栏限宽 · 行距舒朗 · 目录跟读 —— */
+.toc-pop{
+  position:absolute;top:50px;right:10px;width:96px;z-index:3;
+  background:var(--sp-bg);border-radius:var(--sp-radius-md);box-shadow:var(--sp-shadow-md);
+  padding:10px 10px 8px;
+}
+.toc-row{height:4px;border-radius:2px;background:var(--g300);margin-bottom:7px}
+.toc-row.cur{background:var(--sp-primary)}
+.toc-cell.cur{background:var(--sp-green-tint);border-radius:3px;padding:3px 4px;margin:-3px -4px 4px}
+.doc{flex:1;padding:14px 22px 0}
+.doc .ln,.doc .ln2{margin-bottom:8px}
+.par{margin-bottom:18px}
+.follow{
+  flex:none;width:44px;height:20px;border-radius:3px;background:var(--sp-primary);
+  box-shadow:var(--sp-shadow-sm);display:flex;align-items:center;justify-content:center;
+}
+.quote{
+  background:var(--sp-surface-alt);border-radius:var(--sp-radius-sm);
+  padding:10px 12px;margin-bottom:18px;
+}
+.quote .ln{background:#CBCCCB}
+.tbl{border:1px solid var(--sp-border);border-radius:var(--sp-radius-sm);overflow:hidden;margin-bottom:18px}
+.tbl-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;height:20px;border-top:1px solid var(--sp-hairline)}
+.tbl-row:first-child{border-top:0;background:var(--sp-surface-alt)}
+.tbl-row i{border-left:1px solid var(--sp-hairline);display:flex;align-items:center;padding:0 8px}
+.tbl-row i:first-child{border-left:0}
+.tbl-row i b{display:block;height:3px;border-radius:2px;background:var(--g200);width:60%}
+.docbar{flex:none;display:flex;align-items:center;gap:14px;height:48px;border-top:1px solid var(--sp-hairline);padding:0 14px}
+.docbar .cnt{display:flex;align-items:center;gap:4px}
+.cmt-btn{margin-left:auto;width:84px;height:30px;border-radius:var(--sp-radius-sm);background:var(--sp-primary);box-shadow:var(--sp-shadow-sm);display:flex;align-items:center;justify-content:center}
+
+/* —— 页3 个人中心：我的文档资产 · 书卷列表 —— */
+.me-head{flex:none;display:flex;flex-direction:column;align-items:center;padding:6px 16px 0}
+.me-ava{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#E9EAEA,#DBDCDC)}
+.me-stats{display:flex;align-items:center;gap:0;margin-top:14px}
+.me-stat{display:flex;flex-direction:column;align-items:center;gap:5px;padding:0 22px}
+.me-stat+.me-stat{border-left:1px solid var(--sp-hairline)}
+.me-acts{display:flex;gap:10px;margin-top:14px}
+.btn-pri{width:132px;height:32px;border-radius:var(--sp-radius-md);background:var(--sp-primary);box-shadow:var(--sp-shadow-sm);display:flex;align-items:center;justify-content:center}
+.btn-sec{width:88px;height:32px;border-radius:var(--sp-radius-md);background:var(--sp-bg);border:1px solid var(--sp-border);display:flex;align-items:center;justify-content:center}
+.seg{display:flex;height:28px;background:var(--sp-surface-alt);border-radius:var(--sp-radius-sm);padding:2px;margin:14px 16px 0}
+.seg i{flex:1;border-radius:3px;display:flex;align-items:center;justify-content:center}
+.seg i.on{background:var(--sp-bg);box-shadow:var(--sp-shadow-sm)}
+.me-list{flex:1;min-height:0}
+.me-item{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--sp-hairline)}
+.me-item .txt{flex:1;min-width:0}
+.me-thumb{flex:none;width:40px;height:40px;border-radius:3px}
+.state-ok{flex:none;width:8px;height:8px;border-radius:2px;background:var(--sp-primary)}
+.state-draft{flex:none;width:32px;height:16px;border-radius:8px;background:var(--sp-surface-alt)}
+.tabcell{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}
+.tabcell .blk{height:3px;border-radius:2px;background:var(--g300)}
+.tabcell.on .blk{background:var(--sp-primary)}
+.pub-fab{
+  flex:none;width:36px;height:36px;border-radius:50%;margin:0 10px;
+  background:var(--sp-primary);box-shadow:var(--sp-shadow-sm);
+  display:flex;align-items:center;justify-content:center;color:#fff;
+}
+
+/* ─────────── ③ 载体样本条 ─────────── */
+.sp-samples{margin-top:22px;padding-top:18px;border-top:1px solid var(--sp-hairline);display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}
+.sm-group>.sm-cap{font-size:var(--sp-size-caption);color:var(--sp-text-secondary);margin-bottom:10px;letter-spacing:.4px}
+.swatches{display:flex;flex-wrap:wrap;gap:8px}
+.sw{width:64px}
+.sw i{display:block;height:36px;border-radius:var(--sp-radius-sm);border:1px solid var(--sp-hairline)}
+.sw span{display:block;margin-top:4px;font-size:11px;line-height:1.45;color:var(--sp-text-secondary)}
+.sw b{display:block;font-size:11px;font-weight:500;color:var(--sp-text-primary);font-family:ui-monospace,Consolas,monospace}
+.font-demo-h{font-family:var(--sp-font-head);font-size:20px;font-weight:600;line-height:1.45;margin-bottom:10px}
+.font-demo-b{font-family:var(--sp-font-body);font-size:16px;line-height:1.75;color:var(--sp-text-primary)}
+.font-family-note{margin-top:10px;font-size:var(--sp-size-caption);color:var(--sp-text-secondary)}
+.ctrl-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.btn{font-family:var(--sp-font-body);font-size:var(--sp-size-body);border-radius:var(--sp-radius-md);cursor:default;
+  transition:background var(--sp-motion-duration) var(--sp-motion-easing)}
+.btn-primary{height:var(--sp-size-ctl-md);padding:0 16px;background:var(--sp-primary);color:#fff;box-shadow:var(--sp-shadow-sm);border:0}
+.btn-primary:hover{background:var(--sp-primary-hover)}
+.btn-default{height:var(--sp-size-ctl-md);padding:0 16px;background:var(--sp-surface);color:var(--sp-text-primary);border:1px solid var(--sp-border)}
+.input{height:var(--sp-size-ctl-md);width:180px;padding:0 10px;font-size:var(--sp-size-body);color:var(--sp-text-secondary);
+  border:1px solid var(--sp-border);border-radius:var(--sp-radius-sm);outline:0;background:var(--sp-surface)}
+.sm-card{width:208px;border:1px solid var(--sp-border);border-radius:var(--sp-radius-lg);padding:12px}
+.sm-card .ln{margin-top:8px}
+.icon-row{display:flex;align-items:center;gap:18px}
+.icon-row .ic-22{color:var(--g600)}
+.icon-note{margin-top:10px;font-size:var(--sp-size-caption);color:var(--sp-text-secondary)}
+</style>
+</head>
+<body>
+
+<div class="sp-card">
+
+  <!-- ① 卡头标定区 -->
+  <header class="sp-head">
+    <div>
+      <div class="sp-head-name">语雀<em>Yuque · 知识库文档</em></div>
+      <div class="sp-head-vibe">绿只是按钮不是链接，文档先是书才是页——安静、书卷、结构感、一抹绿。</div>
+    </div>
+    <div class="sp-badge">方案示意 · demo</div>
+  </header>
+
+  <!-- ② 骨架图集主体：三页示意（纯情绪色块，零内容文字） -->
+  <section class="sp-wireframes">
+
+    <!-- 页 1 · 首页（信息流）：分组工作台 + 卡片流 -->
+    <div class="phone">
+      <div class="p-top">
+        <div class="logo"><i></i></div>
+        <div class="searchbar">
+          <svg class="ic ic-14" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M15.8 15.8 20 20"/></svg>
+          <div class="ln" style="width:58%"></div>
+        </div>
+        <div class="btn-write"><div class="btn-label" style="width:12px;height:3.5px"></div></div>
+      </div>
+      <div class="chtabs">
+        <div class="chtab on"><div class="blk" style="width:24px"></div></div>
+        <div class="chtab"><div class="blk" style="width:20px"></div></div>
+        <div class="chtab"><div class="blk" style="width:20px"></div></div>
+        <div class="chtab"><div class="blk" style="width:20px"></div></div>
+      </div>
+      <div class="feed">
+        <div class="feed-sec">
+          <div class="ln2" style="width:36px;background:var(--g400)"></div>
+          <div class="divider" style="flex:1"></div>
+        </div>
+        <div class="feed-card">
+          <div class="feat ph-img"></div>
+          <div class="t1" style="width:68%;margin-top:10px"></div>
+          <div class="ln" style="width:97%;margin-top:8px"></div>
+          <div style="display:flex;gap:4px;margin-top:7px">
+            <div class="ln" style="flex:2.6"></div><div class="ln lk" style="flex:1"></div><div class="ln" style="flex:1.4"></div>
+          </div>
+          <div class="meta" style="margin-top:10px">
+            <div class="ava" style="width:18px;height:18px"></div>
+            <div class="ln2" style="width:26px"></div>
+            <div class="ln2" style="width:14px;opacity:.7"></div>
+            <svg class="ic ic-14 dots" viewBox="0 0 24 24" style="margin-left:auto"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="2.4"/></svg>
+          </div>
+        </div>
+        <div class="feed-card">
+          <div class="fc-main">
+            <div class="fc-txt">
+              <div class="t1" style="width:88%;height:8px"></div>
+              <div class="ln" style="width:96%;margin-top:8px"></div>
+              <div class="ln" style="width:63%;margin-top:6px"></div>
+              <div class="meta" style="margin-top:12px">
+                <div class="ava2" style="width:16px;height:16px"></div>
+                <div class="ln2" style="width:22px"></div>
+                <div class="ln2" style="width:12px;opacity:.7"></div>
+              </div>
+            </div>
+            <div class="fc-thumb ph-img"></div>
+          </div>
+        </div>
+        <div class="feed-card">
+          <div class="fc-main">
+            <div class="fc-txt">
+              <div class="t1" style="width:74%;height:8px"></div>
+              <div class="ln" style="width:92%;margin-top:8px"></div>
+              <div class="ln" style="width:48%;margin-top:6px"></div>
+              <div class="meta" style="margin-top:12px">
+                <div class="ava" style="width:16px;height:16px"></div>
+                <div class="ln2" style="width:26px"></div>
+                <div class="ln2" style="width:16px;opacity:.7"></div>
+              </div>
+            </div>
+            <div class="fc-thumb ph-img-g"></div>
+          </div>
+        </div>
+        <div class="feed-card" style="padding-bottom:0">
+          <div class="t1" style="width:56%;height:8px"></div>
+          <div class="ln" style="width:80%;margin-top:8px"></div>
+        </div>
+      </div>
+      <div class="p-tabbar">
+        <div class="tabcell on">
+          <svg class="ic ic-22 g-green" viewBox="0 0 24 24"><path d="M4.5 11.5 12 4.8l7.5 6.7v7.7h-5.2v-5h-4.6v5H4.5Z"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="tabcell">
+          <svg class="ic ic-22 g-c" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="m15.6 8.4-2.4 4.7-4.8 2.5 2.4-4.7Z"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="pub-fab">
+          <svg class="ic ic-18" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13"/></svg>
+        </div>
+        <div class="tabcell">
+          <svg class="ic ic-22 g-c" viewBox="0 0 24 24"><path d="M6 16.2v-5.4a6 6 0 0 1 12 0v5.4l1.6 2.6H4.4Z"/><path d="M10.4 20.6a1.8 1.8 0 0 0 3.2 0"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="tabcell">
+          <svg class="ic ic-22 g-c" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.8 19.6a7.4 7.4 0 0 1 14.4 0"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="p-homebar"></div>
+      </div>
+    </div>
+
+    <!-- 页 2 · 文章详情：文档单栏限宽 · 目录大纲跟读 -->
+    <div class="phone">
+      <div class="p-top" style="border-bottom:0">
+        <svg class="ic ic-18 g-d" viewBox="0 0 24 24"><path d="M19 12H5m7-6.5L5.5 12 12 18.5"/></svg>
+        <div style="flex:1"></div>
+        <svg class="ic ic-18 g-d" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.6 6h.01M4.6 12h.01M4.6 18h.01" stroke-width="1.8"/></svg>
+        <svg class="ic ic-18 g-d" viewBox="0 0 24 24" style="margin-left:10px"><path d="M5 12h.01M12 12h.01M19 12h.01" stroke-width="2.4"/></svg>
+      </div>
+      <div class="toc-pop">
+        <div class="t3" style="width:22px;height:4px;margin-bottom:9px"></div>
+        <div class="toc-cell cur"><div class="toc-row cur" style="width:70%"></div></div>
+        <div class="toc-row" style="width:56%;margin-left:8px"></div>
+        <div class="toc-row" style="width:62%"></div>
+        <div class="toc-row" style="width:48%;margin-left:8px;margin-bottom:0"></div>
+      </div>
+      <div class="doc">
+        <div class="par" style="margin-bottom:16px">
+          <div class="t1" style="width:92%;height:11px"></div>
+          <div class="t1" style="width:55%;height:11px;margin-top:9px"></div>
+          <div class="meta" style="margin-top:14px">
+            <div class="ava" style="width:24px;height:24px"></div>
+            <div class="ln2" style="width:38px"></div>
+            <div class="ln2" style="width:20px;opacity:.7"></div>
+            <div class="follow" style="margin-left:auto"><div class="btn-label" style="width:12px;height:3px"></div></div>
+          </div>
+        </div>
+        <div class="par">
+          <div class="ln" style="width:100%"></div>
+          <div class="ln" style="width:100%"></div>
+          <div class="ln" style="width:46%"></div>
+        </div>
+        <div class="par">
+          <div class="t2" style="width:38%"></div>
+          <div class="ln" style="width:100%;margin-top:12px"></div>
+          <div style="display:flex;gap:4px;margin-bottom:8px">
+            <div class="ln" style="flex:1.8"></div><div class="ln lk" style="flex:.9"></div><div class="ln" style="flex:1.3"></div>
+          </div>
+          <div class="ln" style="width:66%"></div>
+        </div>
+        <div class="quote">
+          <div class="ln" style="width:88%;margin-bottom:7px"></div>
+          <div class="ln" style="width:60%;margin-bottom:0"></div>
+        </div>
+        <div class="ph-img" style="width:100%;height:88px;margin-bottom:18px"></div>
+        <div class="tbl">
+          <div class="tbl-row"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+          <div class="tbl-row"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+          <div class="tbl-row"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+        </div>
+        <div class="par">
+          <div class="ln" style="width:100%"></div>
+          <div class="ln" style="width:82%"></div>
+        </div>
+      </div>
+      <div class="docbar">
+        <div class="cnt">
+          <svg class="ic ic-18 g-d" viewBox="0 0 24 24"><path d="M12 20C5.4 15.4 3.8 11 6.6 8.2c2-2 4.8-1.1 5.4.8.6-1.9 3.4-2.8 5.4-.8 2.8 2.8 1.2 7.2-5.4 11.8Z"/></svg>
+          <div class="ln2" style="width:8px"></div>
+        </div>
+        <div class="cnt">
+          <svg class="ic ic-18 g-d" viewBox="0 0 24 24"><path d="m12 4.3 2.3 4.9 5.4.8-4 3.8 1 5.4-4.7-2.7-4.7 2.7 1-5.4-4-3.8 5.4-.8Z"/></svg>
+          <div class="ln2" style="width:8px"></div>
+        </div>
+        <div class="cnt">
+          <svg class="ic ic-18 g-d" viewBox="0 0 24 24"><path d="M20 13a2.5 2.5 0 0 1-2.5 2.5H9.6L4.5 20.2V6.5A2.5 2.5 0 0 1 7 4h10.5A2.5 2.5 0 0 1 20 6.5Z"/></svg>
+          <div class="ln2" style="width:8px"></div>
+        </div>
+        <div class="cmt-btn"><div class="btn-label" style="width:24px;height:4px"></div></div>
+      </div>
+      <div class="p-homebar"></div>
+    </div>
+
+    <!-- 页 3 · 个人中心：我的文档资产 · 书卷列表 -->
+    <div class="phone">
+      <div class="p-top">
+        <svg class="ic ic-18 g-d" viewBox="0 0 24 24"><path d="M4 8h9M17.5 8H20M14 8a2.4 2.4 0 1 0 4.8 0M4 16h4.5M12.5 16H20M10.5 16a2.4 2.4 0 1 1-4.8 0"/></svg>
+        <div style="flex:1"></div>
+        <svg class="ic ic-18 g-d" viewBox="0 0 24 24" style="margin-left:10px"><path d="M13 4.5v9M9.5 8 13 4.5 16.5 8M6.5 11.5V18a1.5 1.5 0 0 0 1.5 1.5h8a1.5 1.5 0 0 0 1.5-1.5v-6.5"/></svg>
+      </div>
+      <div class="me-head">
+        <div class="me-ava"></div>
+        <div class="t1" style="width:34%;margin-top:12px"></div>
+        <div class="ln2" style="width:52%;margin-top:8px"></div>
+        <div class="me-stats">
+          <div class="me-stat">
+            <div class="t2" style="width:28px"></div>
+            <div class="ln2" style="width:24px"></div>
+          </div>
+          <div class="me-stat">
+            <div class="t2" style="width:34px"></div>
+            <div class="ln2" style="width:28px"></div>
+          </div>
+          <div class="me-stat">
+            <div class="t2" style="width:26px"></div>
+            <div class="ln2" style="width:30px"></div>
+          </div>
+        </div>
+        <div class="me-acts">
+          <div class="btn-pri"><div class="btn-label" style="width:22px;height:4px"></div></div>
+          <div class="btn-sec"><div class="ln2" style="width:18px;background:var(--g400)"></div></div>
+        </div>
+      </div>
+      <div class="seg">
+        <i class="on"><div class="ln" style="width:30px"></div></i>
+        <i><div class="ln2" style="width:26px;background:var(--g400)"></div></i>
+      </div>
+      <div class="me-list">
+        <div class="feed-sec" style="padding-top:8px;padding-bottom:4px">
+          <div class="ln2" style="width:36px;background:var(--g400)"></div>
+          <div class="divider" style="flex:1"></div>
+        </div>
+        <div class="me-item">
+          <div class="txt">
+            <div class="t3" style="width:78%;height:6px"></div>
+            <div class="meta" style="margin-top:8px">
+              <div class="ln2" style="width:30px"></div>
+              <div class="ln2" style="width:16px;opacity:.7"></div>
+            </div>
+          </div>
+          <div class="me-thumb ph-img"></div>
+        </div>
+        <div class="me-item">
+          <div class="txt">
+            <div class="t3" style="width:64%;height:6px"></div>
+            <div class="meta" style="margin-top:8px">
+              <div class="state-ok"></div>
+              <div class="ln2" style="width:26px"></div>
+            </div>
+          </div>
+          <div class="state-draft"></div>
+        </div>
+        <div class="me-item">
+          <div class="txt">
+            <div class="t3" style="width:70%;height:6px"></div>
+            <div class="meta" style="margin-top:8px">
+              <div class="ln2" style="width:34px"></div>
+              <div class="ln2" style="width:14px;opacity:.7"></div>
+            </div>
+          </div>
+          <div class="me-thumb ph-img-g" style="opacity:.8"></div>
+        </div>
+        <div class="me-item" style="border-bottom:0">
+          <div class="txt">
+            <div class="t3" style="width:52%;height:6px;opacity:.55"></div>
+            <div class="meta" style="margin-top:8px">
+              <div class="ln2" style="width:22px;opacity:.55"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-tabbar">
+        <div class="tabcell">
+          <svg class="ic ic-22 g-c" viewBox="0 0 24 24"><path d="M4.5 11.5 12 4.8l7.5 6.7v7.7h-5.2v-5h-4.6v5H4.5Z"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="tabcell">
+          <svg class="ic ic-22 g-c" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="m15.6 8.4-2.4 4.7-4.8 2.5 2.4-4.7Z"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="pub-fab">
+          <svg class="ic ic-18" viewBox="0 0 24 24"><path d="M12 5.5v13M5.5 12h13"/></svg>
+        </div>
+        <div class="tabcell">
+          <svg class="ic ic-22 g-c" viewBox="0 0 24 24"><path d="M6 16.2v-5.4a6 6 0 0 1 12 0v5.4l1.6 2.6H4.4Z"/><path d="M10.4 20.6a1.8 1.8 0 0 0 3.2 0"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="tabcell on">
+          <svg class="ic ic-22 g-green" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.8 19.6a7.4 7.4 0 0 1 14.4 0"/></svg>
+          <div class="blk" style="width:20px"></div>
+        </div>
+        <div class="p-homebar"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ③ 载体样本条 -->
+  <section class="sp-samples">
+
+    <div class="sm-group">
+      <div class="sm-cap">色板 · 真值</div>
+      <div class="swatches">
+        <div class="sw"><i style="background:#00B96B;border-color:#00B96B"></i><b>#00B96B</b><span>primary 主按钮/选中</span></div>
+        <div class="sw"><i style="background:#009456;border-color:#009456"></i><b>#009456</b><span>hover/按压深档</span></div>
+        <div class="sw"><i style="background:#2ED790;border-color:#2ED790"></i><b>#2ED790</b><span>品牌层·不作界面主色</span></div>
+        <div class="sw"><i style="background:#DAF6EA;border-color:#DAF6EA"></i><b>#DAF6EA</b><span>浅绿衬底·选中底</span></div>
+        <div class="sw"><i style="background:#FFFFFF"></i><b>#FFFFFF</b><span>bg / surface 纸面白</span></div>
+        <div class="sw"><i style="background:#F4F5F5"></i><b>#F4F5F5</b><span>surfaceAlt 浅灰面</span></div>
+        <div class="sw"><i style="background:#262626;border-color:#262626"></i><b>#262626</b><span>textPrimary 正文黑</span></div>
+        <div class="sw"><i style="background:#8C8C8C;border-color:#8C8C8C"></i><b>#8C8C8C</b><span>textSecondary</span></div>
+        <div class="sw"><i style="background:#D9D9D9"></i><b>#D9D9D9</b><span>border 细线/描边</span></div>
+        <div class="sw"><i style="background:#117CEE;border-color:#117CEE"></i><b>#117CEE</b><span>link 正文链接专档</span></div>
+        <div class="sw"><i style="background:#FF4D4F;border-color:#FF4D4F"></i><b>#FF4D4F</b><span>danger</span></div>
+        <div class="sw"><i style="background:#00B96B;border-color:#00B96B"></i><b>#00B96B</b><span>success=变绿(同primary)</span></div>
+      </div>
+    </div>
+
+    <div class="sm-group">
+      <div class="sm-cap">字体 · 两级真渲染（系统栈）</div>
+      <div class="font-demo-h">白纸为底，字里行间皆有秩序</div>
+      <div class="font-demo-b">正文行距舒朗，呼吸感来自留白与细线分区；层级靠字号差与标题梯度，排版秩序本身就是身份，不引入品牌字体。</div>
+      <div class="font-family-note">-apple-system / PingFang SC / Microsoft YaHei · 标题 20px/600 · 正文 16px · 行距 1.75 · 辅助 12px</div>
+    </div>
+
+    <div class="sm-group">
+      <div class="sm-cap">组件 · 真实形态（按钮近无影 / 卡片细线分区）</div>
+      <div class="ctrl-row">
+        <button class="btn btn-primary">立即开始</button>
+        <button class="btn btn-default">稍后再说</button>
+        <input class="input" value="输入关键词…">
+      </div>
+      <div class="sm-card">
+        <div class="t1" style="width:46%;height:8px"></div>
+        <div class="ln" style="width:88%"></div>
+        <div class="ln" style="width:60%"></div>
+      </div>
+    </div>
+
+    <div class="sm-group">
+      <div class="sm-cap">图标 · 线性族（选中态才上绿）</div>
+      <div class="icon-row">
+        <svg class="ic ic-22" viewBox="0 0 24 24"><path d="M6.5 3.5H14l3.5 3.5v13H6.5Z"/><path d="M14 3.5V7h3.5M9.2 11.2h5.6M9.2 14.8h5.6"/></svg>
+        <svg class="ic ic-22" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.6 6h.01M4.6 12h.01M4.6 18h.01" stroke-width="1.8"/></svg>
+        <svg class="ic ic-22" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M15.8 15.8 20 20"/></svg>
+        <svg class="ic ic-22 g-green" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><path d="m8.3 12.4 2.7 2.7 4.9-5.2"/></svg>
+        <svg class="ic ic-22" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.8 19.6a7.4 7.4 0 0 1 14.4 0"/></svg>
+      </div>
+      <div class="icon-note">线性图标 1.6px 描边 · 灰阶常态 · 勾选/选中态变绿（成功感来自变绿，不来自彩带）</div>
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>

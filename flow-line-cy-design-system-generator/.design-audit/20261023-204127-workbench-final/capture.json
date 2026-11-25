@@ -1,0 +1,34 @@
+{
+  "target": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\examples\\workbench.html",
+  "kind": "file",
+  "fullPage": true,
+  "generatedAt": "2026-10-23T12:41:33.371Z",
+  "dir": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-204127-workbench-final",
+  "browser": "Chrome/155.0.8059.82",
+  "viewports": [
+    {
+      "label": "w1440",
+      "width": 1440,
+      "height": 900,
+      "file": "w1440.png",
+      "path": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-204127-workbench-final\\w1440.png",
+      "dimensions": "1440×1158",
+      "contentHeight": 1158,
+      "headFile": "w1440-viewport.png",
+      "headPath": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-204127-workbench-final\\w1440-viewport.png",
+      "headDimensions": "1440×900"
+    },
+    {
+      "label": "w390",
+      "width": 390,
+      "height": 844,
+      "file": "w390.png",
+      "path": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-204127-workbench-final\\w390.png",
+      "dimensions": "390×2450",
+      "contentHeight": 2450,
+      "headFile": "w390-viewport.png",
+      "headPath": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\.design-audit\\20261023-204127-workbench-final\\w390-viewport.png",
+      "headDimensions": "390×844"
+    }
+  ]
+}

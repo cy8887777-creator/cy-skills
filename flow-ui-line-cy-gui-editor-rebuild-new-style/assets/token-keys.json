@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "title": "风格参数名正本表",
+  "rule": "风格包 tokens 与选型回传 skeletonTokens 的键名逐字照抄本表：一律全小写连字符。表外键=扩展参数，同样必须全小写连字符，运行时一律生成 --sp-<键名> 变量供页面引用。驼峰、下划线、大写一律报错。本表每个键都必须有接收方（emits 列出它最终控制的变量或位置），没有接收方的键不许进表。",
+  "keyPattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+  "extension": {
+    "emits": "--sp-<key>",
+    "value": "写完整 CSS 值（长度带单位）；值里不许出现 ; { } < >"
+  },
+  "fields": {
+    "minimum": "true=选型最小集：比稿卡必须给出、选型回传必须带、选定即锁（U2 只扩不改）",
+    "value": "取值类型：color / font / length / number / shadow / duration / easing / keyword / integer / object",
+    "emits": "运行时据此写入的变量或控制的位置",
+    "default": "产物种子里的静态默认值（页面在没有风格包时也能引用该变量）",
+    "aliases": "常见错误写法，检查据此提示正确键名"
+  },
+  "keys": [
+    {"key": "primary", "group": "颜色", "minimum": true, "value": "color", "emits": ["--accent", "--accent-soft"], "aliases": ["colorPrimary", "primaryColor"], "note": "主色；配色版 swatches[0] 在色板级覆盖它"},
+    {"key": "bg", "group": "颜色", "minimum": true, "value": "color", "emits": ["--bg"], "aliases": ["background", "bgColor"], "note": "页面底色；配色版 swatches[1]"},
+    {"key": "surface", "group": "颜色", "minimum": true, "value": "color", "emits": ["--surface"], "aliases": ["surfaceColor"], "note": "卡片/表面色；配色版 swatches[3]"},
+    {"key": "surface-alt", "group": "颜色", "minimum": true, "value": "color", "emits": ["--sp-surface-alt"], "aliases": ["surfaceAlt"], "note": "次级表面（分组底、输入底）"},
+    {"key": "text-primary", "group": "颜色", "minimum": true, "value": "color", "emits": ["--text"], "aliases": ["textPrimary", "text"], "note": "主文字色；配色版 swatches[2]"},
+    {"key": "text-secondary", "group": "颜色", "minimum": true, "value": "color", "emits": ["--muted"], "aliases": ["textSecondary", "muted"], "note": "次要文字色"},
+    {"key": "border", "group": "颜色", "minimum": true, "value": "color", "emits": ["--line"], "aliases": ["line", "borderColor"], "note": "分割线/描边色"},
+    {"key": "success", "group": "颜色", "minimum": true, "value": "color", "emits": ["--ok", "--ok-soft"], "aliases": ["ok", "colorSuccess"], "note": "成功语义色"},
+    {"key": "danger", "group": "颜色", "minimum": true, "value": "color", "emits": ["--danger", "--danger-soft"], "aliases": ["error", "colorDanger"], "note": "风险/错误语义色"},
+    {"key": "warning", "group": "颜色", "minimum": false, "value": "color", "emits": ["--warn", "--warn-soft"], "aliases": ["warn", "colorWarning"], "note": "提醒语义色"},
+    {"key": "hero", "group": "颜色", "minimum": false, "value": "color", "emits": ["横幅底色（配色推算的包级来源）"], "aliases": ["heroBg"], "note": "缺省=跟随主色"},
+    {"key": "nav", "group": "颜色", "minimum": false, "value": "color", "emits": ["导航条/标签栏底色"], "aliases": ["navBg"], "note": "缺省=表面色"},
+
+    {"key": "font-head", "group": "字体", "minimum": true, "value": "font", "emits": ["--sp-font-head"], "aliases": ["fontHead"], "note": "标题字体栈"},
+    {"key": "font-body", "group": "字体", "minimum": true, "value": "font", "emits": ["页面根 font-family"], "aliases": ["fontBody", "font"], "note": "正文字体栈"},
+    {"key": "font-num", "group": "字体", "minimum": false, "value": "font", "emits": ["--sp-font-num"], "aliases": ["fontNum"], "note": "数字/金额字体栈"},
+
+    {"key": "size-title", "group": "字阶", "minimum": true, "value": "length", "emits": ["--sp-size-title"], "default": "19px", "aliases": ["sizeTitle"]},
+    {"key": "size-head", "group": "字阶", "minimum": true, "value": "length", "emits": ["--sp-size-head"], "default": "15.5px", "aliases": ["sizeHead"]},
+    {"key": "size-body", "group": "字阶", "minimum": true, "value": "length", "emits": ["--sp-size-body", "页面根 font-size"], "default": "12.5px", "aliases": ["sizeBody", "size"]},
+    {"key": "size-caption", "group": "字阶", "minimum": true, "value": "length", "emits": ["--sp-size-caption"], "default": "12px", "aliases": ["sizeCaption"]},
+
+    {"key": "weight-head", "group": "字重", "minimum": true, "value": "number", "emits": ["--sp-weight-head"], "default": "600", "aliases": ["weightHead"]},
+    {"key": "weight-body", "group": "字重", "minimum": true, "value": "number", "emits": ["--sp-weight-body"], "default": "400", "aliases": ["weightBody"]},
+
+    {"key": "line-height-head", "group": "行高", "minimum": false, "value": "number", "emits": ["--sp-line-height-head"], "default": "1.55", "aliases": ["lineHeightHead", "lhHead"]},
+    {"key": "line-height-body", "group": "行高", "minimum": true, "value": "number", "emits": ["--sp-line-height-body"], "default": "1.7", "aliases": ["lineHeightBody", "lhBody"]},
+
+    {"key": "radius-sm", "group": "圆角", "minimum": true, "value": "length", "emits": ["--sp-radius-sm"], "default": "8px", "aliases": ["radiusSm"]},
+    {"key": "radius-md", "group": "圆角", "minimum": true, "value": "length", "emits": ["--sp-radius-md", "--radius"], "default": "14px", "aliases": ["radiusMd", "radius"]},
+    {"key": "radius-lg", "group": "圆角", "minimum": true, "value": "length", "emits": ["--sp-radius-lg"], "default": "20px", "aliases": ["radiusLg"]},
+
+    {"key": "space-1", "group": "间距", "minimum": true, "value": "length", "emits": ["--sp-space-1"], "default": "8px", "aliases": ["space1"], "note": "紧凑→宽松四档之一"},
+    {"key": "space-2", "group": "间距", "minimum": true, "value": "length", "emits": ["--sp-space-2", "内容区内边距"], "default": "12px", "aliases": ["space2", "space"]},
+    {"key": "space-3", "group": "间距", "minimum": true, "value": "length", "emits": ["--sp-space-3"], "default": "16px", "aliases": ["space3"]},
+    {"key": "space-4", "group": "间距", "minimum": true, "value": "length", "emits": ["--sp-space-4"], "default": "20px", "aliases": ["space4"]},
+
+    {"key": "size-ctl-sm", "group": "控件高度", "minimum": true, "value": "length", "emits": ["--sp-size-ctl-sm"], "default": "29px", "aliases": ["ctlSm", "sizeCtlSm", "ctl-sm"]},
+    {"key": "size-ctl-md", "group": "控件高度", "minimum": true, "value": "length", "emits": ["--sp-size-ctl-md"], "default": "34px", "aliases": ["ctlMd", "sizeCtlMd", "ctl-md"]},
+    {"key": "size-ctl-lg", "group": "控件高度", "minimum": true, "value": "length", "emits": ["--sp-size-ctl-lg"], "default": "40px", "aliases": ["ctlLg", "sizeCtlLg", "ctl-lg"]},
+
+    {"key": "shadow-sm", "group": "阴影", "minimum": true, "value": "shadow", "emits": ["--sp-shadow-sm"], "default": "0 1px 2px rgba(16,24,40,.04)", "aliases": ["shadowSm"]},
+    {"key": "shadow-md", "group": "阴影", "minimum": true, "value": "shadow", "emits": ["--sp-shadow-md", "--shadow"], "default": "0 1px 2px rgba(16,24,40,.04),0 10px 28px -14px rgba(16,24,40,.18)", "aliases": ["shadowMd", "shadow"]},
+
+    {"key": "border-width", "group": "边框", "minimum": false, "value": "length", "emits": ["--sp-border-width", "卡片与输入框的边框粗细"], "default": "1px", "aliases": ["borderWidth"], "note": "细线风格（如 0.5px 发丝线）靠它表达"},
+
+    {"key": "motion-duration-base", "group": "动效", "minimum": true, "value": "duration", "emits": ["--sp-motion-duration-base"], "default": "280ms", "aliases": ["motionDuration", "duration"]},
+    {"key": "motion-easing-base", "group": "动效", "minimum": true, "value": "easing", "emits": ["--sp-motion-easing-base"], "default": "cubic-bezier(.22,.9,.3,1)", "aliases": ["motionEasing", "easing"]},
+
+    {"key": "density", "group": "布局", "minimum": false, "value": "keyword", "allowed": ["compact", "regular", "loose"], "emits": ["面板「风格令牌」行的密度词（紧凑/适中/舒展）"], "aliases": [], "note": "U2 全量展开时补"},
+    {"key": "grid-cols", "group": "布局", "minimum": false, "value": "integer", "emits": ["--sp-grid-cols"], "aliases": ["gridCols"], "note": "U2 全量展开时补"},
+
+    {"key": "dark", "group": "暗色", "minimum": false, "value": "object", "fields": ["bg", "surface", "text", "muted", "line"], "emits": ["暗色模式各角色色值"], "aliases": [], "note": "暗底必须配浅文字，不做自动反推"}
+  ]
+}

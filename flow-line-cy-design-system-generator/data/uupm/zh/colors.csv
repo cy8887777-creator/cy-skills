@@ -1,0 +1,97 @@
+No,Product Type,Keywords,Primary (Hex),Secondary (Hex),CTA (Hex),Background (Hex),Text (Hex),Border (Hex),Notes
+1,SaaS (通用),"SaaS, 通用",#2563EB,#3B82F6,#F97316,#F8FAFC,#1E293B,#E2E8F0,信任 蓝 + 强调色 对比
+2,轻量 SaaS,"轻量, SaaS",#2563EB,#3B82F6,#F97316,#F8FAFC,#1E293B,#E2E8F0,鲜活 主色 + 白 留白
+3,E-commerce,电商,#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Brand 主色 + success 绿
+4,E-commerce 奢侈品,"电商, 奢侈品",#1C1917,#44403C,#CA8A04,#FAFAF9,#0C0A09,#D6D3D1,高端 配色 + 极简 强调色
+5,服务 Landing 页,"服务, landing, 页",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Brand 主色 + 信任 配色
+6,B2B 服务,"B2B, 服务",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,专业 蓝 + 中性 灰
+7,金融 数据看板,"金融, 数据看板",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 bg + 红/绿 告警 + 信任 蓝
+8,分析 数据看板,"分析, 数据看板",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,冷调→热调 渐变 + 中性 灰
+9,医疗健康 应用,"医疗健康, 应用",#0891B2,#22D3EE,#059669,#ECFEFF,#164E63,#A5F3FC,平静 蓝 + 健康 绿 + 信任
+10,教育 应用,"教育, 应用",#4F46E5,#818CF8,#F97316,#EEF2FF,#1E1B4B,#C7D2FE,俏皮 配色 + 清晰 层级
+11,创意 机构,"创意, 机构",#EC4899,#F472B6,#06B6D4,#FDF2F8,#831843,#FBCFE8,大胆 primaries + 艺术 自由
+12,作品集/个人,"作品集, 个人",#18181B,#3F3F46,#2563EB,#FAFAFA,#09090B,#E4E4E7,Brand 主色 + 艺术 诠释
+13,游戏,游戏,#7C3AED,#A78BFA,#F43F5E,#0F0F23,#E2E8F0,#4C1D95,鲜活 + 霓虹 + 沉浸 配色
+14,政务/公共 服务,"政务, 公共, 服务",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,专业 蓝 + 高 对比
+15,金融科技/加密货币,"金融科技, 加密货币",#F59E0B,#FBBF24,#8B5CF6,#0F172A,#F8FAFC,#334155,深色 科技 配色 + 信任 + 鲜活 accents
+16,社交 媒体 应用,"社交, 媒体, 应用",#2563EB,#60A5FA,#F43F5E,#F8FAFC,#1E293B,#DBEAFE,鲜活 + engagement 配色
+17,Productivity Tool,"productivity, tool",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,清晰 层级 + 功能导向 配色
+18,Design System/Component Library,"design, system, component, library",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,清晰 层级 + code-like structure
+19,AI/Chatbot Platform,"chatbot, platform",#7C3AED,#A78BFA,#06B6D4,#FAF5FF,#1E1B4B,#DDD6FE,中性 + AI 紫 (#6366F1)
+20,NFT/Web3 Platform,"nft, web3, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 + 霓虹 + 金 (#FFD700)
+21,Creator Economy Platform,"creator, economy, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,鲜活 + Brand 配色
+22,Sustainability/ESG Platform,"sustainability, esg, platform",#7C3AED,#A78BFA,#06B6D4,#FAF5FF,#1E1B4B,#DDD6FE,绿 (#228B22) + Earth tones
+23,Remote Work/Collaboration Tool,"remote, work, collaboration, tool",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,平静 蓝 + 中性 灰
+24,Mental 健康 应用,"mental, 健康, 应用",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,平静 Pastels + 信任 配色
+25,宠物 科技 应用,"宠物, 科技, 应用",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,俏皮 + 温暖 配色
+26,智能 Home/IoT 数据看板,"智能, home, iot, 数据看板",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 + Status indicator 配色
+27,EV/Charging Ecosystem,"charging, ecosystem",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Electric 蓝 (#009CD1) + 绿
+28,Subscription 箱线图 服务,"subscription, 箱线图, 服务",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Brand + Excitement 配色
+29,Podcast Platform,"podcast, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 + Audio waveform accents
+30,社交 应用,"社交, 应用",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,温暖 + Romantic (粉/红 渐变)
+31,Micro-Credentials/Badges Platform,"轻量, credentials, badges, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,信任 蓝 + 金 (#FFD700)
+32,Knowledge Base/Documentation,"knowledge, base, documentation",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,干净 层级 + 极简 配色
+33,Hyperlocal 服务,"hyperlocal, 服务",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,位置 markers + 信任 配色
+34,美妆/美容/身心健康 服务,"美妆, 美容, 身心健康, 服务",#10B981,#34D399,#8B5CF6,#ECFDF5,#064E3B,#A7F3D0,柔和 pastels (粉 #FFB6C1 Sage #90EE90) + Cream + 金 accents
+35,奢侈品/高端 Brand,"奢侈品, 高端, brand",#1C1917,#44403C,#CA8A04,#FAFAF9,#0C0A09,#D6D3D1,黑 + 金 (#FFD700) + 白 + 极简 强调色
+36,餐饮/食品 服务,"餐饮, 食品, 服务",#DC2626,#F87171,#CA8A04,#FEF2F2,#450A0A,#FECACA,温暖 配色 (橙 红 棕) + appetizing imagery
+37,健身/Gym 应用,"健身, gym, 应用",#DC2626,#F87171,#16A34A,#FEF2F2,#1F2937,#FECACA,有活力 (橙 #FF6B35 Electric 蓝) + 深色 bg
+38,房产 地产/Property,"房产, 地产, property",#0F766E,#14B8A6,#0369A1,#F0FDFA,#134E4A,#99F6E4,信任 蓝 (#0077B6) + 金 accents + 白
+39,旅行/Tourism 机构,"旅行, tourism, 机构",#EC4899,#F472B6,#06B6D4,#FDF2F8,#831843,#FBCFE8,鲜活 destination 配色 + Sky 蓝 + 温暖 accents
+40,Hotel/Hospitality,"hotel, hospitality",#1E3A8A,#3B82F6,#CA8A04,#F8FAFC,#1E40AF,#BFDBFE,温暖 neutrals + 金 (#D4AF37) + Brand 强调色
+41,婚庆/活动 Planning,"婚庆, 活动, planning",#7C3AED,#A78BFA,#F97316,#FAF5FF,#4C1D95,#DDD6FE,柔和 粉 (#FFD6E0) + 金 + Cream + Sage
+42,法律 服务,"法律, 服务",#1E3A8A,#1E40AF,#B45309,#F8FAFC,#0F172A,#CBD5E1,藏青 蓝 (#1E3A5F) + 金 + 白
+43,保险 Platform,"保险, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,信任 蓝 (#0066CC) + 绿 (security) + 中性
+44,Banking/Traditional 金融,"banking, traditional, 金融",#0F766E,#14B8A6,#0369A1,#F0FDFA,#134E4A,#99F6E4,藏青 (#0A1628) + 信任 蓝 + 金 accents
+45,Online Course/E-learning,"online, course, learning",#0D9488,#2DD4BF,#EA580C,#F0FDFA,#134E4A,#5EEAD4,鲜活 learning 配色 + Progress 绿
+46,Non-profit/Charity,"non, profit, charity",#0891B2,#22D3EE,#F97316,#ECFEFF,#164E63,#A5F3FC,Cause-related 配色 + 信任 + 温暖
+47,音乐 Streaming,"音乐, streaming",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 (#121212) + 鲜活 accents + Album art 配色
+48,视频 Streaming/OTT,"视频, streaming, ott",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 bg + 内容 poster 配色 + Brand 强调色
+49,职位 Board/Recruitment,"职位, board, recruitment",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,专业 蓝 + Success 绿 + 中性
+50,Marketplace (P2P),"marketplace, p2p",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,信任 配色 + Category 配色 + Success 绿
+51,物流/Delivery,"物流, delivery",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,蓝 (#2563EB) + 橙 (tracking) + 绿 (delivered)
+52,Agriculture/Farm 科技,"agriculture, farm, 科技",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Earth 绿 (#4A7C23) + 棕 + Sky 蓝
+53,Construction/Architecture,"construction, architecture",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,灰 (#4A4A4A) + 橙 (safety) + Blueprint 蓝
+54,Automotive/Car Dealership,"automotive, car, dealership",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Brand 配色 + Metallic accents + 深色/Light
+55,摄影 Studio,"摄影, studio",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,黑 + 白 + 极简 强调色
+56,Coworking 留白,"coworking, 留白",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,有活力 配色 + Wood tones + Brand 强调色
+57,Cleaning 服务,"cleaning, 服务",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Fresh 蓝 (#00B4D8) + 干净 白 + 绿
+58,Home 服务 (Plumber/Electrician),"home, 服务, plumber, electrician",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,信任 蓝 + Safety 橙 + 专业 灰
+59,Childcare/Daycare,"childcare, daycare",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,俏皮 pastels + Safe 配色 + 温暖 accents
+60,Senior Care/Elderly,"senior, care, elderly",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,平静 蓝 + 温暖 neutrals + 大 text
+61,Medical Clinic,"medical, clinic",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Medical 蓝 (#0077B6) + 信任 白 + 平静 绿
+62,Pharmacy/Drug Store,"pharmacy, drug, store",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Pharmacy 绿 + 信任 蓝 + 干净 白
+63,Dental Practice,"dental, practice",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Fresh 蓝 + 白 + Smile 黄 强调色
+64,Veterinary Clinic,"veterinary, clinic",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Caring 蓝 + Pet-friendly 配色 + 温暖 accents
+65,Florist/Plant Shop,"florist, plant, shop",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,自然 绿 + Floral pinks/purples + Earth tones
+66,Bakery/Cafe,"bakery, cafe",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,温暖 棕 + Cream + Appetizing accents
+67,咖啡 Shop,"咖啡, shop",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,咖啡 棕 (#6F4E37) + Cream + 温暖 accents
+68,Brewery/Winery,"brewery, winery",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Deep amber/burgundy + 金 + Craft aesthetic
+69,Airline,airline,#7C3AED,#A78BFA,#06B6D4,#FAF5FF,#1E1B4B,#DDD6FE,Sky 蓝 + Brand 配色 + 信任 accents
+70,新闻/媒体 Platform,"新闻, 媒体, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Brand 配色 + 高 对比 + Category 配色
+71,Magazine/博客,"magazine, 博客",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,杂志感 配色 + Brand 主色 + 干净 白
+72,Freelancer Platform,"freelancer, platform",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,专业 蓝 + Success 绿 + 中性
+73,咨询 Firm,"咨询, firm",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,藏青 + 金 + 专业 灰
+74,Marketing 机构,"marketing, 机构",#EC4899,#F472B6,#06B6D4,#FDF2F8,#831843,#FBCFE8,大胆 brand 配色 + 创意 自由
+75,活动 Management,"活动, management",#7C3AED,#A78BFA,#F97316,#FAF5FF,#4C1D95,#DDD6FE,活动 theme 配色 + Excitement accents
+76,Conference/Webinar Platform,"conference, webinar, platform",#0F172A,#334155,#0369A1,#F8FAFC,#020617,#E2E8F0,专业 蓝 + 视频 强调色 + Brand
+77,Membership/社区,"membership, 社区",#7C3AED,#A78BFA,#F97316,#FAF5FF,#4C1D95,#DDD6FE,社区 brand 配色 + Engagement accents
+78,Newsletter Platform,"newsletter, platform",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Brand 主色 + 干净 白 + CTA 强调色
+79,Digital Products/Downloads,"digital, products, downloads",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,产品 category 配色 + Brand + Success 绿
+80,Church/Religious Organization,"church, religious, organization",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,温暖 金 + Deep 紫/蓝 + 白
+81,体育 Team/Club,"体育, team, club",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Team 配色 + 有活力 accents
+82,Museum/画廊,"museum, 画廊",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Art-appropriate neutrals + Exhibition accents
+83,Theater/Cinema,"theater, cinema",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,深色 + Spotlight accents + 金
+84,Language Learning 应用,"language, learning, 应用",#0D9488,#2DD4BF,#EA580C,#F0FDFA,#134E4A,#5EEAD4,俏皮 配色 + Progress indicators + Country flags
+85,Coding Bootcamp,"coding, bootcamp",#3B82F6,#60A5FA,#F97316,#F8FAFC,#1E293B,#E2E8F0,Code editor 配色 + Brand + Success 绿
+86,Cybersecurity Platform,"cybersecurity, security, cyber, hacker",#00FF41,#0D0D0D,#00FF41,#000000,#E0E0E0,#1F1F1F,矩阵 绿 + Deep 黑 + Terminal feel
+87,开发者 Tool / IDE,"开发者, tool, ide, code, dev",#3B82F6,#1E293B,#2563EB,#0F172A,#F1F5F9,#334155,深色 syntax theme 配色 + 蓝 focus
+88,Biotech / Life Sciences,"biotech, science, biology, medical",#0EA5E9,#0284C7,#10B981,#F8FAFC,#0F172A,#E2E8F0,Sterile 白 + DNA 蓝 + Life 绿
+89,留白 科技 / Aerospace,"留白, aerospace, 科技, 未来感",#FFFFFF,#94A3B8,#3B82F6,#0B0B10,#F8FAFC,#1E293B,Deep 留白 黑 + Star 白 + Metallic
+90,Architecture / Interior,"architecture, interior, design, 奢侈品",#171717,#404040,#D4AF37,#FFFFFF,#171717,#E5E5E5,单色 + 金 强调色 + 高 Imagery
+91,Quantum Computing,"quantum, qubit, 科技",#00FFFF,#7B61FF,#FF00FF,#050510,#E0E0FF,#333344,Interference patterns + 霓虹 + Deep 深色
+92,Biohacking / Longevity,"bio, 健康, science",#FF4D4D,#4D94FF,#00E676,#F5F5F7,#1C1C1E,#E5E5EA,Biological 红/蓝 + Clinical 白
+93,Autonomous Systems,"drone, robot, fleet",#00FF41,#008F11,#FF3333,#0D1117,#E6EDF3,#30363D,Terminal 绿 + Tactical 深色
+94,Generative AI Art,"art, gen-ai, 创意",#111111,#333333,#FFFFFF,#FAFAFA,#000000,#E5E5E5,Canvas 中性 + 高 对比
+95,空间 / Vision OS,"空间, 玻璃, vision",#FFFFFF,#E5E5E5,#007AFF,#888888,#000000,#FFFFFF,玻璃 不透明度 20% + System 蓝
+96,Climate 科技,"climate, 绿, energy",#2E8B57,#87CEEB,#FFD700,#F0FFF4,#1A3320,#C6E6C6,Nature 绿 + Solar 黄 + Air 蓝

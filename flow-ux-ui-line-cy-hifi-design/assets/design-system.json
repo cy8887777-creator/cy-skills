@@ -1,0 +1,29 @@
+{
+  "name": "清晰企业应用",
+  "direction": "清楚的信息层级、紧凑表单和统一按钮操作区",
+  "tokens": {"bg":"#eef0f4","surface":"#ffffff","line":"#e4e7ec","line-2":"#eef0f3","text":"#15171c","muted":"#6b7280","muted-2":"#9aa1ad","soft":"#f7f8fa","accent":"#2563eb","accent-soft":"rgba(37,99,235,0.10)","ok":"#12b76a","warn":"#f79009","danger":"#f04438","radius":"14px"},
+  "typography": {"fontFamily":"Microsoft YaHei, PingFang SC, system-ui, sans-serif","baseSize":14,"lineHeight":1.55},
+  "components": {"buttonRadius":9,"buttonMinHeight":40,"fieldRadius":9,"cardPadding":16},
+  "styleTune": {
+    "scope": "风格向导第二步·微调（六字段）；'preset'=跟随所选风格原值（九预设原值保护，custom 只覆盖显式字段）",
+    "registry": "运行时口径登记（chooser normalizeStyleConfig 与本表同源）；工程侧冻结单§7值域一致：10-24/1-2.5/0-48/档位枚举",
+    "fields": {
+      "font": {"kind": "enum", "values": ["preset", "system", "sansCN", "serif", "mono"], "default": "preset", "presetDefault": "Microsoft YaHei, PingFang SC, system-ui, sans-serif", "note": "枚举映射本地字体栈，不加载外部字体"},
+      "fontSize": {"kind": "number", "min": 10, "max": 24, "step": 1, "unit": "px", "default": "preset", "presetDefault": 14},
+      "lineHeight": {"kind": "number", "min": 1, "max": 2.5, "step": 0.05, "unit": "none", "default": "preset", "presetDefault": 1.55},
+      "radius": {"kind": "number", "min": 0, "max": 48, "step": 1, "unit": "px", "default": "preset", "presetDefault": 14},
+      "shadow": {"kind": "enum", "values": ["preset", "none", "soft", "medium", "strong"], "default": "preset", "note": "档位映射：soft=0 2px 8px rgba(15,23,42,.08)；medium=0 6px 18px rgba(15,23,42,.14)；strong=0 12px 32px rgba(15,23,42,.22)"},
+      "space": {"kind": "enum", "values": ["preset", 12, 16, 20], "unit": "px", "default": "preset", "presetDefault": 16, "note": "紧凑12/标准16/宽松20"}
+    },
+    "wiring": {
+      "font": "roots font-family（覆盖 body/工程字体栈）",
+      "fontSize": "roots font-size",
+      "lineHeight": "roots line-height（原硬编码 1.55 改读 style-state.effective）",
+      "radius": "--radius 与卡片/控件/图盒（min(r,22)/(r,16) 钳制保留）",
+      "shadow": "卡片/hero box-shadow",
+      "space": ".mall-content padding/gap（已支持间距族，不新增节点 padding，不改设备几何）"
+    },
+    "boundary": "微调不动 --ui-accent（壳色）与品牌 --accent 之外的 13 个 style 根色变量归 applyStyleConfigOn 管；radius 0-48 超出钳制时按既有 min() 规则收敛"
+  },
+  "contentRules": ["按钮说明具体动作","演示数据明确标记","新增页面沿用同一规范"]
+}

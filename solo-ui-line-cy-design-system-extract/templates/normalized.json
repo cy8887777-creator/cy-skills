@@ -1,0 +1,1342 @@
+{
+  "system": {
+    "name": "跑腿服务用户端",
+    "version": "1.0.0",
+    "date": "2026-10-16",
+    "source": "source\\用户端\\跑腿服务首页\\index.html; source\\用户端\\我的消息\\index.html; source\\用户端\\跑腿订单\\index.html; source\\用户端\\个人中心\\index.html",
+    "source_type": "B1_figma_export"
+  },
+  "tokens": {
+    "primitive": {
+      "blue-500": {
+        "value": "#2196F3",
+        "role": "primary",
+        "usage": "品牌主色：选中态、可点击文字、主图标底、底部标签选中",
+        "prohibition": ""
+      },
+      "blue-450": {
+        "value": "#0D96FB",
+        "role": "primary_tint",
+        "usage": "主按钮渐变浅端",
+        "prohibition": ""
+      },
+      "blue-600": {
+        "value": "#038CFA",
+        "role": "primary",
+        "usage": "首页顶部横幅纯色底",
+        "prohibition": ""
+      },
+      "blue-700": {
+        "value": "#067AFA",
+        "role": "primary",
+        "usage": "主按钮渐变深端",
+        "prohibition": ""
+      },
+      "warning": {
+        "value": "#FF7B28",
+        "role": "functional",
+        "usage": "进行中/等待状态标签文字、强调文字；状态标签底为其 12% 透明色",
+        "prohibition": ""
+      },
+      "orange-600": {
+        "value": "#FC6014",
+        "role": "primary_tint",
+        "usage": "横幅运行状态小圆点",
+        "prohibition": ""
+      },
+      "orange-400": {
+        "value": "#FF8A37",
+        "role": "primary_tint",
+        "usage": "服务图标圆底渐变浅端",
+        "prohibition": ""
+      },
+      "orange-350": {
+        "value": "#FB9C3C",
+        "role": "primary_tint",
+        "usage": "消息图标底渐变浅端",
+        "prohibition": ""
+      },
+      "orange-650": {
+        "value": "#FB721F",
+        "role": "primary_tint",
+        "usage": "消息图标底渐变深端",
+        "prohibition": ""
+      },
+      "success": {
+        "value": "#4CAF50",
+        "role": "functional",
+        "usage": "已完成状态标签文字；标签底为其 12% 透明色",
+        "prohibition": ""
+      },
+      "danger": {
+        "value": "#D44737",
+        "role": "functional",
+        "usage": "删除操作描边（删除图标 1px 描边）",
+        "prohibition": ""
+      },
+      "danger-tint": {
+        "value": "#FCEDEA",
+        "role": "functional",
+        "usage": "删除图标浅红底",
+        "prohibition": ""
+      },
+      "gray-900": {
+        "value": "#20252C",
+        "role": "neutral",
+        "usage": "主标题/正文文字、home 指示条、时间线图标白字反衬",
+        "prohibition": ""
+      },
+      "ink-800": {
+        "value": "#1A1A1A",
+        "role": "neutral",
+        "usage": "状态栏深色图形元素、消息标题（SF Pro 数字场景）",
+        "prohibition": ""
+      },
+      "gray-700": {
+        "value": "#444444",
+        "role": "neutral",
+        "usage": "辅助说明文字（隐藏态元信息）",
+        "prohibition": ""
+      },
+      "gray-600": {
+        "value": "#666666",
+        "role": "neutral",
+        "usage": "次级文字：顶部页签未选中项",
+        "prohibition": ""
+      },
+      "gray-550": {
+        "value": "#626A76",
+        "role": "neutral",
+        "usage": "次按钮文字、分段控件未选中项",
+        "prohibition": ""
+      },
+      "gray-500": {
+        "value": "#999999",
+        "role": "neutral",
+        "usage": "底部标签栏未选中文字",
+        "prohibition": ""
+      },
+      "gray-450": {
+        "value": "#979CA5",
+        "role": "neutral",
+        "usage": "次级说明文字（地址描述、时间、详情值）",
+        "prohibition": ""
+      },
+      "gray-400": {
+        "value": "#8D99A8",
+        "role": "neutral",
+        "usage": "消息预览文字",
+        "prohibition": ""
+      },
+      "gray-350": {
+        "value": "#A8B2BD",
+        "role": "neutral",
+        "usage": "消息时间戳",
+        "prohibition": ""
+      },
+      "gray-320": {
+        "value": "#7E8A99",
+        "role": "neutral",
+        "usage": "隐藏态元信息文字（低频）",
+        "prohibition": ""
+      },
+      "gray-300": {
+        "value": "#73777F",
+        "role": "neutral",
+        "usage": "隐藏态元信息文字（低频）",
+        "prohibition": ""
+      },
+      "gray-50": {
+        "value": "#F6F7F9",
+        "role": "neutral",
+        "usage": "图标占位浅灰底（48px 容器）",
+        "prohibition": ""
+      },
+      "line-100": {
+        "value": "#E9ECF1",
+        "role": "neutral",
+        "usage": "分隔线（1-2px）、描边胶囊边框、骑手标记分隔",
+        "prohibition": ""
+      },
+      "line-200": {
+        "value": "#E2E6EA",
+        "role": "neutral",
+        "usage": "导航胶囊描边、状态栏分隔竖线",
+        "prohibition": ""
+      },
+      "mist-50": {
+        "value": "#F0F7FD",
+        "role": "neutral",
+        "usage": "页面底色（4 页容器实测一致）；横幅→页面过渡渐隐的目标色",
+        "prohibition": ""
+      },
+      "warm-50": {
+        "value": "#FEF7EE",
+        "role": "neutral",
+        "usage": "首页横幅暖白渐变浅端",
+        "prohibition": ""
+      },
+      "warm-25": {
+        "value": "#FFFDFB",
+        "role": "neutral",
+        "usage": "首页横幅暖白渐变深端",
+        "prohibition": ""
+      },
+      "ice-50": {
+        "value": "#F5FBFF",
+        "role": "neutral",
+        "usage": "个人中心资料卡渐变起点（30% 处）",
+        "prohibition": ""
+      },
+      "ice-200": {
+        "value": "#D8EEFF",
+        "role": "neutral",
+        "usage": "个人中心资料卡渐变终点",
+        "prohibition": ""
+      },
+      "white": {
+        "value": "#FFFFFF",
+        "role": "neutral",
+        "usage": "卡片底、反白文字、描边环",
+        "prohibition": ""
+      },
+      "black": {
+        "value": "#000000",
+        "role": "neutral",
+        "usage": "浅底页状态栏时间/图形（消息页）、资料卡名字",
+        "prohibition": ""
+      },
+      "ink-map-body": {
+        "value": "#1F2429",
+        "role": "neutral",
+        "usage": "地图骑手标记身体胶囊",
+        "prohibition": ""
+      },
+      "ink-map-head": {
+        "value": "#21262E",
+        "role": "neutral",
+        "usage": "地图骑手标记头部圆",
+        "prohibition": ""
+      }
+    },
+    "semantic": {
+      "color-text-primary": {
+        "value": "#20252C",
+        "category": "text",
+        "usage": "标题与正文主文字",
+        "prohibition": ""
+      },
+      "color-text-secondary": {
+        "value": "#979CA5",
+        "category": "text",
+        "usage": "次级说明（地址详情、时间、信息值）",
+        "prohibition": ""
+      },
+      "color-text-tertiary": {
+        "value": "#666666",
+        "category": "text",
+        "usage": "页签未选中文字",
+        "prohibition": ""
+      },
+      "color-text-placeholder": {
+        "value": "#626A76",
+        "category": "text",
+        "usage": "占位/未选中控件文字",
+        "prohibition": ""
+      },
+      "color-text-caption": {
+        "value": "#73777F",
+        "category": "text",
+        "usage": "微字注释（12px 级）",
+        "prohibition": ""
+      },
+      "color-text-inverse": {
+        "value": "#FFFFFF",
+        "category": "text",
+        "usage": "深底/彩底上的反白文字",
+        "prohibition": ""
+      },
+      "color-text-brand": {
+        "value": "#2196F3",
+        "category": "text",
+        "usage": "品牌色文字：选中页签、卡片操作链接、tabbar 选中",
+        "prohibition": ""
+      },
+      "color-text-accent": {
+        "value": "#FF7B28",
+        "category": "text",
+        "usage": "强调/进行中文字（与 warning 同值）",
+        "prohibition": ""
+      },
+      "color-text-success": {
+        "value": "#4CAF50",
+        "category": "text",
+        "usage": "完成态文字",
+        "prohibition": ""
+      },
+      "color-bg-shell": {
+        "value": "#F0F7FD",
+        "category": "bg",
+        "usage": "AI 补全：材料 body 为导出兜底色非设计值，壳层与页面同底",
+        "prohibition": ""
+      },
+      "color-bg-page": {
+        "value": "#F0F7FD",
+        "category": "bg",
+        "usage": "页面主区底（4 页容器实测一致）",
+        "prohibition": ""
+      },
+      "color-bg-card": {
+        "value": "#FFFFFF",
+        "category": "bg",
+        "usage": "卡片底",
+        "prohibition": ""
+      },
+      "color-bg-subtle": {
+        "value": "#F6F7F9",
+        "category": "bg",
+        "usage": "浅灰图标占位底",
+        "prohibition": ""
+      },
+      "color-bg-banner": {
+        "value": "#038CFA",
+        "category": "bg",
+        "usage": "首页顶部横幅纯色底",
+        "prohibition": ""
+      },
+      "color-bg-overlay": {
+        "value": "rgba(0,0,0,0.4)",
+        "category": "bg",
+        "usage": "AI 补全：材料无浮层证据，按移动端惯例给默认遮罩",
+        "prohibition": ""
+      },
+      "color-border": {
+        "value": "#E9ECF1",
+        "category": "border",
+        "usage": "默认边框/分隔线色（1-1.92px，全站 19 处实测）",
+        "prohibition": ""
+      },
+      "color-border-default": {
+        "value": "#E9ECF1",
+        "category": "border",
+        "usage": "分隔线与胶囊描边（1-1.92px）",
+        "prohibition": ""
+      },
+      "color-border-strong": {
+        "value": "#E2E6EA",
+        "category": "border",
+        "usage": "导航胶囊描边（白底上更清晰一档）",
+        "prohibition": ""
+      },
+      "color-action-primary": {
+        "value": "#2196F3",
+        "category": "action",
+        "usage": "主操作色：CTA 渐变基色、主按钮系",
+        "prohibition": ""
+      },
+      "color-action-accent": {
+        "value": "#FF7B28",
+        "category": "action",
+        "usage": "强调操作色（拨打/进行中操作）",
+        "prohibition": ""
+      },
+      "focus-ring": {
+        "value": "0 0 0 3px rgba(33,150,243,0.35)",
+        "category": "focus",
+        "usage": "AI 补全：材料为静态导出无焦点证据，按主色 35% 环给默认",
+        "prohibition": ""
+      },
+      "font-family-base": {
+        "value": "\"Noto Sans SC\", \"PingFang SC\", sans-serif",
+        "category": "font_family",
+        "usage": "中文主字体（111 处实测）",
+        "prohibition": ""
+      },
+      "font-family-numeric": {
+        "value": "\"SF Pro\", \"Inter\", sans-serif",
+        "category": "font_family",
+        "usage": "数字/时间/英文（状态栏、金额、消息时间）",
+        "prohibition": ""
+      },
+      "line-height-body": {
+        "value": "1.45",
+        "category": "line_height",
+        "usage": "正文行高（28/40.6、24/34.8 等实测比值）",
+        "prohibition": ""
+      },
+      "line-height-caption": {
+        "value": "1.5",
+        "category": "line_height",
+        "usage": "小字行高（12/16、14/24 实测）",
+        "prohibition": ""
+      },
+      "icon-size-sm": {
+        "value": "24px",
+        "category": "icon",
+        "usage": "行内小图标（地址行、箭头、状态点旁）",
+        "prohibition": ""
+      },
+      "icon-size-md": {
+        "value": "42px",
+        "category": "icon",
+        "usage": "底部标签栏图标（42.31 实测）",
+        "prohibition": ""
+      },
+      "icon-size-lg": {
+        "value": "48px",
+        "category": "icon",
+        "usage": "卡片内功能图标（消息图标底内）",
+        "prohibition": ""
+      },
+      "color-text-secondary-readable": {
+        "value": "#6E747D",
+        "role": "text",
+        "usage": "AI 补全：次级可读文字达标替代档（4.71:1 ✓）；实测稿未出现，待设计确认",
+        "prohibition": ""
+      }
+    },
+    "component": {
+      "button-bg-primary": {
+        "value": "linear-gradient(82.09deg, #0D96FB 0%, #067AFA 100%)",
+        "owner": "Button",
+        "usage": "卡片尾主操作钮（160×56，订单页×3 实测）",
+        "prohibition": ""
+      },
+      "button-bg-primary-hero": {
+        "value": "linear-gradient(180deg, #0D96FB 0%, #067AFA 100%)",
+        "owner": "Button",
+        "usage": "首页大主按钮（162×64）",
+        "prohibition": ""
+      },
+      "button-text-primary": {
+        "value": "#FFFFFF",
+        "owner": "Button",
+        "usage": "主按钮文字反白",
+        "prohibition": ""
+      },
+      "button-bg-secondary": {
+        "value": "#FFFFFF",
+        "owner": "Button",
+        "usage": "次按钮白底胶囊（文字 #626A76）",
+        "prohibition": ""
+      },
+      "button-bg-danger": {
+        "value": "#D44737",
+        "owner": "Button",
+        "usage": "AI 补全：材料无危险按钮，按 danger 基色给占位",
+        "prohibition": ""
+      },
+      "tag-bg-status-accent": {
+        "value": "rgba(255,123,40,0.12)",
+        "owner": "Tag",
+        "usage": "进行中/等待标签底（104×48 r12）",
+        "prohibition": ""
+      },
+      "tag-text-status-accent": {
+        "value": "#FF7B28",
+        "owner": "Tag",
+        "usage": "进行中/等待标签文字",
+        "prohibition": ""
+      },
+      "tag-bg-status-success": {
+        "value": "rgba(76,175,80,0.12)",
+        "owner": "Tag",
+        "usage": "已完成标签底",
+        "prohibition": ""
+      },
+      "tag-text-status-success": {
+        "value": "#4CAF50",
+        "owner": "Tag",
+        "usage": "已完成标签文字",
+        "prohibition": ""
+      },
+      "tag-bg-brand": {
+        "value": "rgba(33,150,243,0.12)",
+        "owner": "Tag",
+        "usage": "AI 补全：品牌 tint 标签底按系统 12% 惯例推（材料未出现）",
+        "prohibition": ""
+      },
+      "card-bg": {
+        "value": "#FFFFFF",
+        "owner": "Card",
+        "usage": "卡片底（全站一致）",
+        "prohibition": ""
+      },
+      "card-shadow": {
+        "value": "0px 4px 14px 0px rgba(20, 90, 180, 0.051)",
+        "owner": "Card",
+        "usage": "卡片常态阴影（13 处实测）",
+        "prohibition": ""
+      },
+      "card-radius": {
+        "value": "24px",
+        "owner": "Card",
+        "usage": "卡片圆角（全站主档）",
+        "prohibition": ""
+      },
+      "tabbar-active": {
+        "value": "#2196F3",
+        "owner": "Tabs",
+        "usage": "底部标签栏选中文字（700）",
+        "prohibition": ""
+      },
+      "tabbar-inactive": {
+        "value": "#999999",
+        "owner": "Tabs",
+        "usage": "底部标签栏未选中文字（400）",
+        "prohibition": ""
+      },
+      "icon-tile-accent": {
+        "value": "linear-gradient(180deg, #FF8A37 0%, #FF7825 100%)",
+        "owner": "List",
+        "usage": "服务图标圆底渐变（50px 圆）",
+        "prohibition": ""
+      },
+      "icon-tile-warm": {
+        "value": "linear-gradient(180deg, #FB9C3C 0%, #FB721F 100%)",
+        "owner": "List",
+        "usage": "消息图标底渐变（104px r32）",
+        "prohibition": ""
+      },
+      "gradient-banner-warm": {
+        "value": "linear-gradient(90deg, #FEF7EE 0%, #FFFDFB 100%)",
+        "owner": "Card",
+        "usage": "首页横幅暖白底（r24）",
+        "prohibition": ""
+      },
+      "gradient-card-profile": {
+        "value": "linear-gradient(151.48deg, #F5FBFF 30%, #D8EEFF 100%)",
+        "owner": "Card",
+        "usage": "个人中心资料卡渐变底（+白描边）",
+        "prohibition": ""
+      },
+      "gradient-overlay-page": {
+        "value": "linear-gradient(180deg, rgba(240,247,253,0) 0%, rgba(240,247,253,1) 83%)",
+        "owner": "页面横幅",
+        "usage": "横幅图→页面底的渐隐过渡遮罩（首页/个人中心实测）",
+        "prohibition": ""
+      },
+      "marker-dot-bg": {
+        "value": "linear-gradient(180deg, #1292FD 0%, #199CFC 100%)",
+        "owner": "Badge",
+        "usage": "地图骑手定位点渐变（19.92px 圆+白环）",
+        "prohibition": ""
+      },
+      "navbar-pill-bg": {
+        "value": "rgba(255,255,255,0.85)",
+        "owner": "Button",
+        "usage": "导航右侧胶囊半透明白底（157.69×57.69 全胶囊）",
+        "prohibition": ""
+      }
+    },
+    "metric": {
+      "space-1": {
+        "value": "4px",
+        "category": "spacing",
+        "usage": "微间距：图标与文字缝隙"
+      },
+      "space-2": {
+        "value": "8px",
+        "category": "spacing",
+        "usage": "行内间距：时间线标题与描述"
+      },
+      "space-3": {
+        "value": "12px",
+        "category": "spacing",
+        "usage": "小间距"
+      },
+      "space-4": {
+        "value": "16px",
+        "category": "spacing",
+        "usage": "行间距、地址行内边距"
+      },
+      "space-5": {
+        "value": "20px",
+        "category": "spacing",
+        "usage": "时间线图标与文字横向间距"
+      },
+      "space-6": {
+        "value": "24px",
+        "category": "spacing",
+        "usage": "卡内区块间距、页面左右边距（主力档 ×19）"
+      },
+      "space-8": {
+        "value": "32px",
+        "category": "spacing",
+        "usage": "区块间距、卡片纵向大间距"
+      },
+      "space-10": {
+        "value": "40px",
+        "category": "spacing",
+        "usage": "导航栏横向内边距"
+      },
+      "space-12": {
+        "value": "64px",
+        "category": "spacing",
+        "usage": "顶栏图标组间距（63px 实测就近）"
+      },
+      "radius-xs": {
+        "value": "8px",
+        "category": "radius",
+        "usage": "小容器：图标占位底"
+      },
+      "radius-sm": {
+        "value": "12px",
+        "category": "radius",
+        "usage": "状态标签底"
+      },
+      "radius-md": {
+        "value": "22px",
+        "category": "radius",
+        "usage": "菜单行图标底"
+      },
+      "radius-lg": {
+        "value": "24px",
+        "category": "radius",
+        "usage": "卡片/信息卡/分组容器/首页横幅底（全站主档）"
+      },
+      "radius-xl": {
+        "value": "32px",
+        "category": "radius",
+        "usage": "消息通知图标底/个人中心大图标底"
+      },
+      "radius-pill": {
+        "value": "999px",
+        "category": "radius",
+        "usage": "全胶囊惯例：主按钮/导航胶囊/进度条/小操作钮/地图标记（源码实现值不定型，统一写 999px）"
+      },
+      "radius-round": {
+        "value": "50%",
+        "category": "radius",
+        "usage": "正圆：头像、圆点"
+      },
+      "shadow-sm": {
+        "value": "0px 4px 8px 0px rgba(7, 126, 250, 0.190)",
+        "category": "shadow",
+        "usage": "CTA 主按钮投影"
+      },
+      "shadow-md": {
+        "value": "0px 4px 14px 0px rgba(20, 90, 180, 0.051)",
+        "category": "shadow",
+        "usage": "卡片常态投影"
+      },
+      "shadow-lg": {
+        "value": "0px 10px 22px 0px rgba(20, 90, 180, 0.180)",
+        "category": "shadow",
+        "usage": "悬浮卡投影（地图价格卡）"
+      },
+      "shadow-ring-sm": {
+        "value": "0 0 0 2px #FFFFFF",
+        "category": "shadow",
+        "usage": "地图标记白描边环"
+      },
+      "shadow-ring-lg": {
+        "value": "0 0 0 3px #FFFFFF, 0px 4px 8px 0px rgba(24, 150, 252, 0.280)",
+        "category": "shadow",
+        "usage": "骑手定位点白环+投影"
+      },
+      "font-size-caption": {
+        "value": "12px",
+        "category": "font_size",
+        "usage": "微字注释"
+      },
+      "font-size-footnote": {
+        "value": "14px",
+        "category": "font_size",
+        "usage": "脚注/元信息"
+      },
+      "font-size-secondary": {
+        "value": "22px",
+        "category": "font_size",
+        "usage": "次级信息、卡片尾提示"
+      },
+      "font-size-body": {
+        "value": "24px",
+        "category": "font_size",
+        "usage": "正文（主力档 ×38）"
+      },
+      "font-size-body-lg": {
+        "value": "26px",
+        "category": "font_size",
+        "usage": "地址行、卡片操作链接"
+      },
+      "font-size-title": {
+        "value": "28px",
+        "category": "font_size",
+        "usage": "标题/重点正文（×26）"
+      },
+      "font-size-status": {
+        "value": "30px",
+        "category": "font_size",
+        "usage": "状态栏时间、菜单行文字"
+      },
+      "font-size-heading": {
+        "value": "32px",
+        "category": "font_size",
+        "usage": "区块大标题、消息标题、金额"
+      },
+      "font-size-display": {
+        "value": "36px",
+        "category": "font_size",
+        "usage": "页面大标题（导航栏居中标题）"
+      },
+      "font-size-tabbar": {
+        "value": "21.15px",
+        "category": "font_size",
+        "usage": "底部标签栏标签文字（21.15/21.12 实测，tabbar 专用）"
+      },
+      "weight-400": {
+        "value": "400",
+        "category": "font_weight",
+        "usage": "正文/说明（×67）"
+      },
+      "weight-500": {
+        "value": "500",
+        "category": "font_weight",
+        "usage": "按钮文字/次强调（×19）"
+      },
+      "weight-600": {
+        "value": "600",
+        "category": "font_weight",
+        "usage": "状态栏时间/分段控件选中（×5）"
+      },
+      "weight-700": {
+        "value": "700",
+        "category": "font_weight",
+        "usage": "标题/选中态/状态标签（×40）"
+      },
+      "padding-card": {
+        "value": "24px",
+        "category": "padding",
+        "usage": "卡片四周内边距"
+      },
+      "padding-card-h": {
+        "value": "28px",
+        "category": "padding",
+        "usage": "通知卡/菜单行横向内边距"
+      },
+      "padding-section": {
+        "value": "32px",
+        "category": "padding",
+        "usage": "区块内边距（资料卡/图标底容器）"
+      },
+      "padding-page-x": {
+        "value": "24px",
+        "category": "padding",
+        "usage": "内容区左右边距"
+      },
+      "stroke-hairline": {
+        "value": "1px",
+        "category": "stroke_width",
+        "usage": "细描边（胶囊/删除图标）"
+      },
+      "stroke-divider": {
+        "value": "1.5px",
+        "category": "stroke_width",
+        "usage": "卡内分隔线"
+      },
+      "stroke-border": {
+        "value": "1.92px",
+        "category": "stroke_width",
+        "usage": "导航胶囊/底栏上缘/横幅描边"
+      },
+      "stroke-thick": {
+        "value": "2.88px",
+        "category": "stroke_width",
+        "usage": "状态栏圆环描边"
+      },
+      "opacity-tint": {
+        "value": "0.12",
+        "category": "opacity",
+        "usage": "状态标签 tint 底透明度"
+      },
+      "opacity-pill": {
+        "value": "0.85",
+        "category": "opacity",
+        "usage": "导航胶囊白底透明度"
+      },
+      "z-dropdown": {
+        "value": "10",
+        "category": "z_index",
+        "usage": "AI 补全：悬浮元素（价格卡/骑手标记）"
+      },
+      "z-modal": {
+        "value": "100",
+        "category": "z_index",
+        "usage": "AI 补全：模态浮层"
+      },
+      "z-toast": {
+        "value": "1000",
+        "category": "z_index",
+        "usage": "AI 补全：轻提示"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Button",
+      "variants": [
+        "主按钮（蓝渐变胶囊+品牌蓝投影）",
+        "次按钮（白底胶囊）",
+        "文字操作钮（品牌蓝文字）"
+      ],
+      "states": [
+        "default",
+        "pressed",
+        "disabled"
+      ],
+      "key_specs": {
+        "高": "56px（卡片尾）/64px（首页主钮）",
+        "圆角": "999px 胶囊",
+        "主底": "linear-gradient(82.09deg,#0D96FB,#067AFA)",
+        "文字": "24-28px · 500-700 · #FFFFFF",
+        "投影": "0 4px 8px rgba(7,126,250,0.19)",
+        "来源标注": "已提取（4 页 6 处实测）；pressed/disabled 为 AI 补全惯例"
+      }
+    },
+    {
+      "name": "Tag",
+      "variants": [
+        "状态-进行中/等待（橙 tint）",
+        "状态-已完成（绿 tint）"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "尺寸": "104×48px",
+        "圆角": "12px",
+        "底": "同色 12% 透明 tint",
+        "文字": "24px · 700 · 同色实色",
+        "来源标注": "已提取（订单页 5 处）"
+      }
+    },
+    {
+      "name": "Card",
+      "variants": [
+        "订单卡（信息+时间线+操作）",
+        "通知卡（图标底+标题+预览）",
+        "资料卡（渐变底+头像）",
+        "菜单行卡（72px 图标+箭头）",
+        "横幅卡（暖白渐变）"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "圆角": "24px",
+        "内边距": "24px（横排卡 28px）",
+        "阴影": "0 4px 14px rgba(20,90,180,0.051)",
+        "卡间距": "24px",
+        "来源标注": "已提取（4 页 15+ 处）"
+      }
+    },
+    {
+      "name": "Avatar",
+      "variants": [
+        "用户头像（128px 正圆+白环）",
+        "骑手头像（54px）",
+        "图标圆底（44/50/104px，渐变或实色）"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "圆": "50%",
+        "白环": "2px 内衬（padding 实现）",
+        "来源标注": "已提取（个人中心/首页）"
+      }
+    },
+    {
+      "name": "Tabs",
+      "variants": [
+        "分段选择器（拼合胶囊）",
+        "文字页签+下划线指示器",
+        "底部标签栏"
+      ],
+      "states": [
+        "default",
+        "selected"
+      ],
+      "key_specs": {
+        "选中": "#2196F3 · 700",
+        "未选": "#666666/#999999 · 400",
+        "指示条": "46×5.77px r3.85 主色",
+        "分段器": "左右半圆拼合 r24（选中蓝底白字/白底灰字）",
+        "底部栏": "图标 42px+标签 21px，上缘 1.92px 分隔线",
+        "来源标注": "已提取（订单页/首页/消息页/个人中心）"
+      }
+    },
+    {
+      "name": "Badge",
+      "variants": [
+        "运行状态脉冲点（14px）",
+        "地图骑手定位标记"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "点": "#FC6014 圆点",
+        "骑手标记": "30px 深色圆+渐变蓝点+白环投影",
+        "来源标注": "已提取（首页）"
+      }
+    },
+    {
+      "name": "List",
+      "variants": [
+        "设置菜单行（120px 高）",
+        "服务列表行（图标底+双行文字+胶囊钮）"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "菜单行": "120px · 白卡 r24 · 图标 72px r22 · 箭头 20×28",
+        "服务行": "图标底 50px 圆 + 标题 28/700 + 副文 22/400 + 胶囊钮 88×46",
+        "来源标注": "已提取（个人中心/首页）"
+      }
+    },
+    {
+      "name": "Descriptions",
+      "variants": [
+        "label-value 信息行（订单详情）"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "行高": "35px",
+        "分隔": "1.5px #E9ECF1",
+        "文字": "24px · 400 · #20252C",
+        "来源标注": "已提取（订单页）"
+      }
+    },
+    {
+      "name": "Input",
+      "variants": [
+        "地址输入行（图标+文字+清除）"
+      ],
+      "states": [
+        "default",
+        "disabled"
+      ],
+      "key_specs": {
+        "高": "48px",
+        "圆角": "8px",
+        "底": "#F6F7F9 占位",
+        "来源标注": "AI 补全（材料中该行容器为隐藏态，规格按容器实测推）"
+      }
+    },
+    {
+      "name": "Icon",
+      "variants": [
+        "线性图标（Lucide 风格命名：house/map-pin/user-round/receipt-text/message-square/chevron-*）",
+        "面性彩色图标（服务分类）"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "线性行内": "24px",
+        "底部栏": "42px",
+        "卡片功能": "48px",
+        "来源标注": "已提取（52 枚 svg 实测）"
+      }
+    },
+    {
+      "name": "Switch",
+      "variants": [
+        "开关"
+      ],
+      "states": [
+        "default",
+        "disabled"
+      ],
+      "key_specs": {
+        "尺寸": "88×52 胶囊（1x 44×26）",
+        "选中底": "品牌蓝",
+        "滑块": "42px 白圆 + 投影",
+        "来源标注": "AI 补全（材料无表单页，按系统 token 推断）"
+      }
+    },
+    {
+      "name": "Checkbox",
+      "variants": [
+        "复选框"
+      ],
+      "states": [
+        "default",
+        "selected",
+        "disabled"
+      ],
+      "key_specs": {
+        "尺寸": "40px r8",
+        "选中": "品牌蓝底白勾",
+        "来源标注": "AI 补全"
+      }
+    },
+    {
+      "name": "Modal",
+      "variants": [
+        "确认对话框"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "白卡": "r24 居中 · 遮罩 rgba(0,0,0,.4)",
+        "按钮": "次（描边）+ 主（蓝渐变胶囊）",
+        "来源标注": "AI 补全"
+      }
+    },
+    {
+      "name": "Toast",
+      "variants": [
+        "文字轻提示"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "形态": "深色半透明胶囊 r12 · 顶部居中 · 1.5s 自散",
+        "来源标注": "AI 补全"
+      }
+    },
+    {
+      "name": "Alert",
+      "variants": [
+        "成功",
+        "警告",
+        "危险"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "形态": "tint 底 + 同色文字（与状态标签同语义）",
+        "来源标注": "AI 补全"
+      }
+    },
+    {
+      "name": "Empty",
+      "variants": [
+        "通用空态"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "构成": "占位图形 + 说明 + 次按钮（描边胶囊）",
+        "来源标注": "AI 补全"
+      }
+    },
+    {
+      "name": "Loading",
+      "variants": [
+        "行内加载"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "构成": "品牌蓝 spinner 32px + 文字 24px 灰",
+        "来源标注": "AI 补全"
+      }
+    },
+    {
+      "name": "Progress",
+      "variants": [
+        "线性进度条"
+      ],
+      "states": [
+        "default"
+      ],
+      "key_specs": {
+        "轨道": "高 16 胶囊 #E9F2FB",
+        "填充": "品牌蓝渐变",
+        "来源标注": "AI 补全"
+      }
+    }
+  ],
+  "patterns": {
+    "page-skeleton": "状态栏(88px) → 导航栏(88px，蓝底页反白/浅底页深字) → 内容区(左右边距 24px，卡片纵列 gap 24px) → 底部标签栏(116px 白底+上缘分隔线) → home 指示条(38px 安全区)；页面底 #F0F7FD",
+    "status-color-semantics": "蓝 = 品牌/选中/可操作；橙 = 进行中/等待/强调；绿 = 已完成；红 = 删除/危险。状态标签一律『同色 12% tint 底 + 同色实色 24px/700 文字』",
+    "gradient-strategy": "渐变只用于：主按钮底、功能图标圆底、装饰横幅/资料卡底、图片→页面底渐隐遮罩；卡片与控件常态一律纯色",
+    "shadow-strategy": "阴影全部带蓝调（rgba(7,126,250,*) / rgba(20,90,180,*)），禁用纯黑阴影；悬浮元素 = 强阴影 + 白色描边环组合",
+    "spacing-rhythm": "4pt 网格，主档 8/12/16/20/24/32/40；卡片间 gap 24、区块间 gap 32、页面左右边距 24；低频散值（5.77/11.54/13.46/21.15/23.08/63px）就近归档不立档",
+    "elevation-map": "地图场景元素（价格卡/骑手标记）用高投影 + 白环悬浮于地图之上，z 轴高于一切卡片",
+    "typography-mix": "中文用 Noto Sans SC，数字/时间/金额用 SF Pro；标题 700、按钮 500-700、正文 400；行高正文 1.45、小字 1.5"
+  },
+  "raw_evidence": {
+    "css_sources_loaded": 4,
+    "css_sources_skipped": [
+      "远程样式未加载（B-2 先 fetch 落盘）: https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=SF+Pro:wght@300;400;500;600;700;800&display=swap"
+    ],
+    "class_freq": {},
+    "data_figma_names": [
+      "18:20",
+      "1分钟内到达",
+      "9:41",
+      "Container",
+      "Container:margin",
+      "Frame",
+      "Frame 1",
+      "Frame 11",
+      "Frame 12",
+      "Frame 13",
+      "Frame 14",
+      "Frame 15",
+      "Frame 2",
+      "Frame 9",
+      "Group 3",
+      "Group 4",
+      "Group 5",
+      "Icon",
+      "Italic Text",
+      "Mask group",
+      "Rectangle 1",
+      "Rectangle 11",
+      "Rectangle 3",
+      "Rectangle 4",
+      "Rectangle 5",
+      "Rectangle 7",
+      "Rectangle 8",
+      "Rectangle 9",
+      "Text",
+      "chevron-down",
+      "chevron-right",
+      "ds-button__label",
+      "ds-card__description",
+      "ds-card__detail",
+      "ds-card__header",
+      "ds-card__illustration",
+      "ds-card__metadata",
+      "ds-card__price",
+      "ds-card__thumbnail",
+      "ds-card__title",
+      "ds-tabbar__home-indicator",
+      "ds-tabbar__item",
+      "ds-tabbar__item--selected",
+      "ds-tabbar__items",
+      "ds-tabbar__label",
+      "ds-tabbar__safe-area",
+      "ellipsis",
+      "house",
+      "map-pin",
+      "message-square",
+      "receipt-text",
+      "user-round",
+      "个人中心",
+      "个人中心内容",
+      "个人信息",
+      "个人服务菜单",
+      "代驾服务",
+      "代驾订单",
+      "位置选择",
+      "信息分隔线"
+    ],
+    "inline_styles_count": 2,
+    "img_asset_refs": {
+      "57-914.png": 1,
+      "49-564.png": 1,
+      "52-762.png": 1,
+      "59-6152.png": 1,
+      "59-6135.png": 1,
+      "67-6165.png": 1
+    },
+    "render_mode_stats": {
+      "img_elements": 6,
+      "bg_image_refs": 0,
+      "style_class_candidates": 426
+    },
+    "declaration_rules_scanned": 6189,
+    "gradients": {
+      "linear-gradient(180deg, rgba(240, 247, 253, 0.000) 0%, rgba(240, 247, 253, 1.000) 83%)": 2,
+      "linear-gradient(90deg, rgba(254, 247, 238, 1.000) 0%, rgba(255, 253, 251, 1.000) 100%)": 1,
+      "linear-gradient(180deg, rgba(13, 150, 251, 1.000) 0%, rgba(6, 122, 250, 1.000) 100%)": 1,
+      "linear-gradient(180deg, rgba(18, 146, 253, 1.000) 0%, rgba(26, 152, 252, 1.000) 100%)": 1,
+      "linear-gradient(180deg, rgba(255, 138, 55, 1.000) 0%, rgba(255, 120, 37, 1.000) 100%)": 1,
+      "linear-gradient(180deg, rgba(251, 156, 60, 1.000) 0%, rgba(251, 114, 31, 1.000) 100%)": 1,
+      "linear-gradient(82.09deg, rgba(13, 150, 251, 1.000) 0%, rgba(6, 122, 250, 1.000) 100%)": 3,
+      "linear-gradient(151.48deg, rgba(245, 251, 255, 1.000) 30%, rgba(216, 238, 255, 1.000) 100%)": 1
+    },
+    "colors": {
+      "rgba(255, 255, 255, 1.000)": 51,
+      "rgba(33, 150, 243, 1.000)": 21,
+      "rgba(98, 106, 118, 1.000)": 4,
+      "rgba(153, 153, 153, 1.000)": 13,
+      "#111": 8,
+      "rgba(233, 236, 241, 1.000)": 19,
+      "rgba(151, 156, 165, 1.000)": 17,
+      "transparent": 3,
+      "rgba(32, 37, 44, 1.000)": 36,
+      "rgba(240, 247, 253, 1.000)": 4,
+      "rgba(3, 140, 250, 1.000)": 1,
+      "rgba(255, 123, 40, 1.000)": 10,
+      "rgba(252, 96, 20, 1.000)": 1,
+      "rgba(31, 36, 41, 1.000)": 1,
+      "rgba(33, 38, 46, 1.000)": 1,
+      "rgba(126, 138, 153, 1.000)": 1,
+      "rgba(0, 0, 0, 1.000)": 4,
+      "rgba(26, 26, 26, 1.000)": 6,
+      "rgba(168, 178, 189, 1.000)": 2,
+      "rgba(141, 153, 168, 1.000)": 3,
+      "rgba(51, 51, 51, 1.000)": 1,
+      "rgba(68, 68, 68, 1.000)": 8,
+      "rgba(102, 102, 102, 1.000)": 5,
+      "rgba(246, 247, 249, 1.000)": 5,
+      "rgba(255, 123, 40, 0.120)": 4,
+      "rgba(255, 255, 255, 0.850)": 1,
+      "rgba(226, 230, 234, 1.000)": 1,
+      "rgba(252, 237, 234, 1.000)": 1,
+      "rgba(115, 119, 127, 1.000)": 2,
+      "rgba(76, 175, 80, 0.120)": 1,
+      "rgba(76, 175, 80, 1.000)": 1
+    },
+    "font_sizes": {
+      "28px": 26,
+      "21.15px": 12,
+      "26px": 15,
+      "22px": 8,
+      "23.08px": 2,
+      "30px": 9,
+      "20px": 1,
+      "32px": 5,
+      "36px": 2,
+      "24px": 38,
+      "14px": 6,
+      "12px": 4,
+      "21.12px": 4
+    },
+    "line_heights": {
+      "40.6px": 18,
+      "30.67px": 12,
+      "31.9px": 8,
+      "37.7px": 2,
+      "33.46px": 2,
+      "36.31px": 4,
+      "31.2px": 6,
+      "23.87px": 1,
+      "38.19px": 4,
+      "31.03px": 2,
+      "33.41px": 8,
+      "50.4px": 1,
+      "34.8px": 20,
+      "28.8px": 15,
+      "24px": 9,
+      "32px": 5,
+      "16px": 4,
+      "44px": 5,
+      "28.16px": 4,
+      "48px": 1,
+      "52px": 1
+    },
+    "radii": {
+      "190.38px": 12,
+      "24px": 16,
+      "50%": 6,
+      "0px 0px 0px 0px": 2,
+      "max(0px, calc(24px - 0px))": 2,
+      "50px": 2,
+      "0px": 2,
+      "100px": 11,
+      "60px": 1,
+      "22px": 6,
+      "27px": 1,
+      "26.92px": 1,
+      "3.85px": 1,
+      "5.77px": 3,
+      "32px": 2,
+      "12px": 10,
+      "8px": 5,
+      "3.5px": 3,
+      "29px": 1,
+      "13px": 1,
+      "5px": 1,
+      "24px 0px 0px 24px": 1,
+      "0px 24px 24px 0px": 1,
+      "4px": 1,
+      "max(0px, calc(0px - 0px))": 1,
+      "64px": 1,
+      "max(0px, calc(64px - 2px))": 1,
+      "3.52px": 1
+    },
+    "shadows": {
+      "0px 4px 8px 0px rgba(7, 126, 250, 0.190)": 4,
+      "0 0 0 3px rgba(255, 255, 255, 1.000), 0px 4px 8px 0px rgba(24, 150, 252, 0.280)": 1,
+      "0 0 0 2px rgba(255, 255, 255, 1.000)": 1,
+      "0px 10px 22px 0px rgba(20, 90, 180, 0.180)": 1,
+      "0px 4px 14px 0px rgba(20, 90, 180, 0.050)": 2,
+      "0px 4px 14px 0px rgba(20, 90, 180, 0.051)": 11
+    },
+    "spacings": {
+      "5.77px": 12,
+      "13.46px": 3,
+      "24px": 19,
+      "23.08px": 2,
+      "0": 4,
+      "0 auto": 4,
+      "11.54px": 1,
+      "21.15px": 3,
+      "16px": 11,
+      "8px": 11,
+      "12px": 1,
+      "63px": 3,
+      "20px": 10,
+      "4px": 5,
+      "32px": 6,
+      "64px": 1,
+      "6px": 1,
+      "40px": 1,
+      "3.3px": 4
+    },
+    "paddings": {
+      "0px": 3,
+      "0px 44px 0px 52px": 4,
+      "0px 30.77px 0px 30.77px": 1,
+      "16px 24px 20px 24px": 1,
+      "0px 24px 0px 24px": 2,
+      "16px 0px 12px 0px": 1,
+      "14px 24px 14px 38px": 1,
+      "4px 0px 0px 0px": 1,
+      "0px 24px 32.69px 24px": 1,
+      "23.08px 0px 28.85px 0px": 1,
+      "30.77px 0px 0px 0px": 1,
+      "32px 28px 32px 28px": 2,
+      "14px 0px 0px 0px": 2,
+      "24px 24px 24px 24px": 6,
+      "0px 16px 0px 16px": 5,
+      "8px 0px 0px 0px": 5,
+      "16px 40px 16px 40px": 2,
+      "0px 40px 0px 40px": 1,
+      "32px 32px 32px 32px": 2,
+      "0px 0px 40px 0px": 1,
+      "0px 28px 0px 28px": 5,
+      "14.08px 0px 14.08px 0px": 4,
+      "52px 24px 0px 24px": 1,
+      "2px": 1,
+      "0px 0px 14.08px 0px": 1
+    },
+    "borders": {
+      "1.92px solid rgba(233, 236, 241, 1.000)": 5,
+      "2.88px solid rgba(255, 255, 255, 1.000)": 1,
+      "0.5px solid rgba(255, 255, 255, 1.000)": 1,
+      "2.88px solid rgba(0, 0, 0, 1.000)": 2,
+      "1px solid rgba(226, 230, 234, 1.000)": 1,
+      "2px solid rgba(26, 26, 26, 1.000)": 1,
+      "1px solid rgba(212, 71, 55, 1.000)": 1,
+      "1px solid rgba(255, 255, 255, 1.000)": 1
+    },
+    "opacities": {
+      "0": 1
+    }
+  },
+  "token_count_summary": {
+    "primitive": 35,
+    "semantic": 29,
+    "component": 22,
+    "metric": 48,
+    "total": 134
+  }
+}

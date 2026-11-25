@@ -1,0 +1,239 @@
+{
+  "generatedAt": "2026-10-23T12:40:48.817Z",
+  "target": "C:\\Users\\admin\\.claude\\skills\\design-system-generator\\examples\\workbench.html",
+  "summary": {
+    "total": 6,
+    "bySeverity": {
+      "blocker": 0,
+      "high": 1,
+      "medium": 2,
+      "low": 3,
+      "info": 0
+    },
+    "byDimension": {
+      "a11y": {
+        "total": 1,
+        "worst": "high"
+      },
+      "typography": {
+        "total": 2,
+        "worst": "medium"
+      },
+      "interaction": {
+        "total": 1,
+        "worst": "low"
+      },
+      "spacing": {
+        "total": 1,
+        "worst": "low"
+      },
+      "color": {
+        "total": 1,
+        "worst": "low"
+      }
+    }
+  },
+  "findings": [
+    {
+      "id": "a11y/color-contrast",
+      "rule": "WCAG 1.4.3 对比度（最低）",
+      "dimension": "a11y",
+      "severity": "high",
+      "selector": "div > div:nth-of-type(2) > span:nth-of-type(1)",
+      "measured": "2.38:1（rgb(255, 255, 255) on rgb(7, 193, 96)，11px）",
+      "expected": "≥ 4.5:1",
+      "message": "18 处文本对比度不足：div > div:nth-of-type(2) > span:nth-of-type(1) 2.38:1；div > div:nth-of-type(2) > span:nth-of-type(1) 2.38:1；div.stepside:nth-of-type(1) > div.step.todo:nth-of-type(10) > span.st 2.4:1；div.ccard:nth-of-type(1) > div.chead:nth-of-type(1) > span.cno:nth-of-type(1) 2.46:1；div.ccard:nth-of-type(2) > div.chead:nth-of-type(1) > span.cno 2.46:1",
+      "fix": {
+        "kind": "contrast",
+        "targets": [
+          {
+            "selector": "div > div:nth-of-type(2) > span:nth-of-type(1)",
+            "css": "color: #3b3b3b; /* 2.38:1 → 4.7:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.stepside:nth-of-type(1) > div.step.todo:nth-of-type(10) > span.st",
+            "css": "color: #000000; /* 2.4:1 → 1.61:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.ccard:nth-of-type(1) > div.chead:nth-of-type(1) > span.cno:nth-of-type(1)",
+            "css": "color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.ccard:nth-of-type(2) > div.chead:nth-of-type(1) > span.cno",
+            "css": "color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.ccard:nth-of-type(3) > div.chead:nth-of-type(1) > span.cno",
+            "css": "color: #66696f; /* 2.46:1 → 4.91:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(1) > div.cact:nth-of-type(3)",
+            "css": "color: #66696f; /* 2.76:1 → 5.5:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(2) > div.cact:nth-of-type(3)",
+            "css": "color: #66696f; /* 2.76:1 → 5.5:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(3) > div.cact:nth-of-type(3)",
+            "css": "color: #66696f; /* 2.76:1 → 5.5:1（判据 4.5:1） */"
+          },
+          {
+            "selector": "div.step.todo:nth-of-type(10) > div.stx > div.stt:nth-of-type(1)",
+            "css": "color: #000000; /* 2.87:1 → 1.35:1（判据 4.5:1） */"
+          }
+        ],
+        "note": "建议色是按当前色算出来的达标值（逐步加深直到越过判据线）。能用设计令牌（如 --color-text-muted）替代硬编码色值时优先用令牌，并把令牌本身提到达标值，而不是逐处覆盖。"
+      },
+      "count": 18,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    },
+    {
+      "id": "typography/font-size-floor",
+      "rule": "正文字号下限",
+      "dimension": "typography",
+      "severity": "medium",
+      "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(3) > div.cact:nth-of-type(3)",
+      "measured": "11px",
+      "expected": "≥ 12px（正文建议 ≥ 14px）",
+      "message": "3 处文本小于 12px，最小 11px：div.cands:nth-of-type(2) > div.ccard:nth-of-type(1) > div.cact:nth-of-type(3)；div.cands:nth-of-type(2) > div.ccard:nth-of-type(2) > div.cact:nth-of-type(3)；div.cands:nth-of-type(2) > div.ccard:nth-of-type(3) > div.cact:nth-of-type(3)",
+      "fix": {
+        "kind": "css",
+        "targets": [
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(1) > div.cact:nth-of-type(3)",
+            "css": "font-size: 14px; /* 由 11px 提升 */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(2) > div.cact:nth-of-type(3)",
+            "css": "font-size: 14px; /* 由 11px 提升 */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(3) > div.cact:nth-of-type(3)",
+            "css": "font-size: 14px; /* 由 11px 提升 */"
+          }
+        ],
+        "note": "若为法律/次要标注等确需小字的场景，请在小字之上补足对比度（≥4.5:1）作为补偿。"
+      },
+      "count": 3,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    },
+    {
+      "id": "typography/line-height",
+      "rule": "WCAG 1.4.12 文本间距（行高）",
+      "dimension": "typography",
+      "severity": "medium",
+      "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(3) > p.cdesc",
+      "measured": "line-height 1.2（14.4px / 12px）",
+      "expected": "段落行高 ≥ 1.5；绝对下限 1.3",
+      "message": "5 处多行文本行高过紧，最紧 1.2：body > div.top:nth-of-type(1) > b；div.wb > div.carea:nth-of-type(2) > p.curhint；div.cands:nth-of-type(2) > div.ccard:nth-of-type(1) > p.cdesc；div.cands:nth-of-type(2) > div.ccard:nth-of-type(2) > p.cdesc",
+      "fix": {
+        "kind": "css",
+        "targets": [
+          {
+            "selector": "body > div.top:nth-of-type(1) > b",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          },
+          {
+            "selector": "div.wb > div.carea:nth-of-type(2) > p.curhint",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(1) > p.cdesc",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(2) > p.cdesc",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          },
+          {
+            "selector": "div.cands:nth-of-type(2) > div.ccard:nth-of-type(3) > p.cdesc",
+            "css": "line-height: 1.5; /* 由 1.2 提升 */"
+          }
+        ],
+        "note": "行高用无单位数值（1.5）而非 px，避免子元素继承后被固定死。"
+      },
+      "count": 5,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    },
+    {
+      "id": "a11y/tap-target-guidance",
+      "rule": "点击目标（平台建议 44×44）",
+      "dimension": "interaction",
+      "severity": "low",
+      "selector": null,
+      "measured": "6 个目标 24–44px",
+      "expected": "触屏场景 ≥ 44×44px（Apple HIG / Material）",
+      "message": "未达平台建议值（未违反 WCAG AA）：div.top:nth-of-type(1) > span.rawlinks:nth-of-type(5) > a:nth-of-type(1)(103.56×27)；div.top:nth-of-type(1) > span.rawlinks:nth-of-type(5) > a:nth-of-type(2)(103.56×27)；div.top:nth-of-type(1) > span.rawlinks:nth-of-type(5) > a:nth-of-type(3)(91.56×27)；div.top:nth-of-type(1) > span.rawlinks:nth-of-type(5) > a:nth-of-type(4)(79.56×27)",
+      "fix": {
+        "kind": "css",
+        "css": "/* 触屏断点内统一放大命中区 */\n@media (pointer: coarse) {\n  div.top:nth-of-type(1) > span.rawlinks:nth-of-type(5) > a:nth-of-type(1) {\n    min-height: 44px;\n  }\n}",
+        "note": "只在粗指针（触屏）下放大，桌面端保持信息密度。"
+      },
+      "count": 6,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    },
+    {
+      "id": "spacing/scale",
+      "rule": "间距基准网格",
+      "dimension": "spacing",
+      "severity": "low",
+      "selector": null,
+      "measured": "16 种间距值，其中 10 种非 4 的倍数",
+      "expected": "≥ 2/3 的间距值落在 4px（或 8px）网格上",
+      "message": "间距缺少基准网格，视觉节奏会显得随意：非网格值 2px、3px、5px、6px、9px、10px、11px、14px",
+      "fix": {
+        "kind": "token",
+        "css": ":root {\n  --space-1: 4px;\n  --space-2: 8px;\n  --space-3: 12px;\n  --space-4: 16px;\n  --space-6: 24px;\n  --space-8: 32px;\n}",
+        "note": "先定义阶梯，再把散落值吸附到最近的阶梯（13px → 12px，27px → 24px）。"
+      },
+      "count": 10,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    },
+    {
+      "id": "color/palette-size",
+      "rule": "文本色数量",
+      "dimension": "color",
+      "severity": "low",
+      "selector": null,
+      "measured": "17 种文本色",
+      "expected": "≤ 6–8 种（含语义色）",
+      "message": "文本色过多会削弱层级表达：rgb(232, 236, 242)、rgb(143, 183, 232)、rgb(32, 37, 44)、rgb(185, 194, 206)、rgb(125, 195, 131)、rgb(255, 255, 255)、rgb(95, 107, 123)、rgb(122, 130, 142)、rgb(151, 156, 165)、rgb(27, 102, 201)",
+      "fix": {
+        "kind": "token",
+        "css": ":root {\n  --text-primary: #1a202c;\n  --text-secondary: #4a5568;\n  --text-muted: #718096;\n  --accent: #2b6cb0;\n  --danger: #c53030;\n  --success: #2f855a;\n}",
+        "note": "色板收敛到\"层级 + 语义\"两类；数量本身不是错，无体系才是。"
+      },
+      "count": 1,
+      "viewports": [
+        "w1440",
+        "w390"
+      ]
+    }
+  ],
+  "viewports": [
+    {
+      "label": "w1440",
+      "count": 6
+    },
+    {
+      "label": "w390",
+      "count": 6
+    }
+  ]
+}

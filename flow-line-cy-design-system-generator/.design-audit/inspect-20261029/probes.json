@@ -1,0 +1,137 @@
+{
+  "product": {
+    "pageHeight": 10782,
+    "grid": {
+      "size": "24px 24px, 24px 24px",
+      "bg": "linear-gradient(rgba(76, 111, 255, 0.043) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(90de",
+      "pos": "fixed",
+      "z": "0"
+    },
+    "sidebar": {
+      "bg": "rgb(35, 40, 59)",
+      "w": 256,
+      "navCount": 14,
+      "first": "01设计价值观VALUES",
+      "last": "14设计禁令PROHIBITIONS"
+    },
+    "hero": {
+      "tag": "SPEC SHEET",
+      "metaCells": 4,
+      "metaKeys": [
+        "VERSION",
+        "PLATFORM",
+        "STYLE",
+        "BASE"
+      ],
+      "h1ff": "\"Noto Serif SC\", \"Songti SC\", serif",
+      "h1size": "46px",
+      "serifInstalled": true
+    },
+    "chNums": "0102030405060708091011121314",
+    "chNum": {
+      "strokeW": "1.5px",
+      "strokeC": "rgb(226, 230, 242)",
+      "fill": "rgba(0, 0, 0, 0)",
+      "ff": "\"Noto Serif SC\", \"Songti SC\", serif"
+    },
+    "chHeads": 14,
+    "chIntros": 14,
+    "specLabel": {
+      "content": "\"\"",
+      "h": "1px",
+      "bg": "rgb(226, 230, 242)",
+      "flex": "1 1 0%"
+    },
+    "swatch": {
+      "n": 13,
+      "tag": "BUTTON",
+      "cursor": "pointer"
+    },
+    "ch11": {
+      "stages": 6,
+      "stageBgImg": "linear-gradient(135deg, rgb(238, 241, 255) 0%, rgb(234, 244, 239) 55%, rgb(253, 243, 229) 100%)",
+      "realButtons": 0,
+      "realInputs": 0,
+      "spanButtons": 0,
+      "glassN": 2,
+      "glassInfo": [
+        "blur(12px) | rgba(255, 255, 255, 0.66) | 工作台自举当前步素材入口 ↗",
+        "blur(10px) | rgba(255, 255, 255, 0.66) | 玻璃卡（容器层）信息区已退纯"
+      ],
+      "focBorder": "rgba(255, 255, 255, 0.85)",
+      "focShadow": "rgba(76, 111, 255, 0.15) 0px 0px 0px 3px",
+      "tagchips": 0
+    },
+    "footer": false,
+    "title": "工作台自举 · 设计系统"
+  },
+  "case": {
+    "pageHeight": 29672,
+    "grid": {
+      "size": "24px 24px, 24px 24px",
+      "bg": "linear-gradient(rgba(0, 0, 0, 0) 1px, rgba(0, 0, 0, 0) 1px), linear-gradient(90deg, rgba(0"
+    },
+    "sidebar": {
+      "bg": "rgb(32, 37, 44)",
+      "navCount": 15
+    },
+    "heroMeta": [
+      "提取来源 SOURCE",
+      "提取日期 DATE",
+      "TOKEN 总数",
+      "组件 COMPONENTS"
+    ],
+    "chapters": [
+      "设计价值观/DESIGN VALUES",
+      "布局/LAYOUT",
+      "多端适配/RESPONSIVE",
+      "设计要求/REQUIREMENTS",
+      "颜色/COLOR",
+      "字体/TYPOGRAPHY",
+      "间距/SPACING",
+      "圆角/RADIUS",
+      "阴影/SHADOW",
+      "动效/MOTION",
+      "组件库/COMPONENTS",
+      "图标/ICONS",
+      "素材资产/ASSETS",
+      "设计禁令/DON'T LIST",
+      "变更日志/CHANGELOG"
+    ],
+    "ch11Cards": [
+      "1. 按钮组",
+      "2. 标签组",
+      "3. 页签组",
+      "4. 卡片组",
+      "5. 头像组",
+      "6. 徽标组",
+      "7. 列表组",
+      "8. 描述列表组",
+      "9. 输入组",
+      "10. 开关组",
+      "11. 复选组",
+      "12. 对话框组",
+      "13. 轻提示组",
+      "16. 提示条组",
+      "17. 空态组",
+      "15. 加载组",
+      "14. 进度组"
+    ],
+    "ch11RealButtons": 54,
+    "ch11RealInputs": 0,
+    "tables": 8,
+    "phones": 10,
+    "footer": "跑腿服务用户端 v1.1.0 · design-system-extract 提取产物 · 数值以实测为准\n    双产物体系：本页（system-spec，人看） + system-rules.md（AI 读规则） · 15 章 · To",
+    "motion": 0,
+    "assets": 5,
+    "glassN": 0,
+    "fontDisplay": "Inter, \"Noto Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "serifCheck": true,
+    "swatch": {
+      "n": 35,
+      "tag": "BUTTON",
+      "dataHex": "#2196F3"
+    },
+    "title": "跑腿服务用户端 · 设计系统"
+  }
+}

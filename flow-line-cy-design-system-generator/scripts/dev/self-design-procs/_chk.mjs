@@ -1,0 +1,10 @@
+﻿import fs from 'node:fs';
+const s = fs.readFileSync('workbench.html', 'utf8');
+const c = JSON.parse(fs.readFileSync('chain.json', 'utf8'));
+const chapters = (s.match(/class="chapter"/g) || []).length;
+console.log('workbench 大小:', s.length);
+console.log('预览章节数:', chapters, '（应 14）');
+console.log('28 大卡在预览:', s.includes('28 组全量大卡'));
+console.log('stt 衬线保持:', s.includes("serif;font-weight:600"));
+console.log('pvtoc 白底保持:', s.includes('.pvtoc{width:250px;background:#fff'));
+console.log('chain 14 章非空:', Object.values(c.overview).filter(v => v && String(v).length > 50).length);

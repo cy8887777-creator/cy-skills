@@ -1,0 +1,593 @@
+﻿{
+  "project": "工作台自举",
+  "version": "1.1",
+  "profile": "设计共创工作台 · PC · 设计工具 · 展示面板",
+  "current": "done",
+  "steps": [
+    {
+      "id": "profile",
+      "no": "0",
+      "title": "第〇步 原型画像",
+      "sub": "设计共创工作台 · PC · 设计工具 · 展示面板",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "工作台设计系统 · 自举",
+          "desc": "为工作台共创一套设计系统并实施：设计工具 · PC · 展示面板 · 颜色清新",
+          "fields": {
+            "项目性质": "为工作台共创设计系统并实施（对象就是工作台本体）",
+            "阶段一": "设计系统共创（第〇~九步，本面板管理，产出纯净版 system-rules）",
+            "阶段二": "实施：按定稿系统重建工作台前端（build-workbench 模板/CSS 重写）",
+            "产品": "设计共创工作台——AI 陪跑设计决策的展示面板",
+            "页面": "单页两 Tab（工作台决策流/预览 14 章）+ 顶栏素材入口",
+            "使用者": "用本技能做设计的开发者/设计师/产品",
+            "使用时长": "单次会话 10~15 轮 · 长阅读+颜色评估",
+            "体验意图": "专业信任 · 专注衬作品 · 精致不冷淡 · 中立画布",
+            "已知约束": "编辑排版骨架已认（A 版）｜纯黑主色已否｜风格库 wiki 可检索"
+          }
+        }
+      ],
+      "chosen": "工作台设计系统 · 自举"
+    },
+    {
+      "id": "external",
+      "no": "1",
+      "title": "第一步 外部输入",
+      "sub": "用户提交内容逐条解析展示 · 多次提交多条",
+      "status": "done",
+      "submissions": [
+        {
+          "type": "文字要求",
+          "quote": "颜色清新一点",
+          "desc": "整体配色方向：清新——避免纯黑/深重底色，浅底彩点",
+          "accept": true,
+          "swatches": [
+            "#F7F9F7",
+            "#DFF0E8",
+            "#3D8B6E"
+          ]
+        },
+        {
+          "type": "文字要求",
+          "quote": "主色不要纯黑色",
+          "desc": "强调色要有性格，从清新色系里选",
+          "accept": true
+        },
+        {
+          "type": "方向确认",
+          "quote": "编辑排版骨架 + 代码块候选（A 版形态）已认",
+          "desc": "单栏文本流，候选项为浅底代码块、键值排版",
+          "accept": true
+        },
+        {
+          "type": "方向否决",
+          "quote": "已排除：figma（编辑器隐喻）/ ai-native（聊天流）/ notion 布局 / bento-glass",
+          "desc": "历史否决项，防止回潮",
+          "accept": true
+        }
+      ],
+      "chosen": "4 条约束全部吸收",
+      "hint": "外部输入已作为一等公民约束注入后续所有候选。"
+    },
+    {
+      "id": "concept",
+      "no": "2",
+      "title": "第二步 风格定义层",
+      "sub": "风格库检索/自创 · 完整风格描述 · 单选整卡执行",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "文档编辑风 Workspace Editorial（自创）",
+          "desc": "概念：把工作台做成一份正在被认真排版的设计规范书——单栏文档流，候选项是浅底代码块，键值排版，层级靠字号与留白。观感：知性、从容、每一条决策都被排版师尊重过；写到哪里，亮到哪里。",
+          "values": {
+            "家族": "【自创·演化自 minimalism（间距纪律）× editorial（排版文气）× notion-style（块结构文档感）】",
+            "适合本项目": "A 版骨架已由用户拍板（外部输入一等约束）——单栏流+代码块候选实测过两轮小样；工作过程与产出物（设计系统文档）视觉同源，预览 Tab 无缝衔接；浅底代码块天然是中立画布",
+            "实现层要点": "单栏文档流 · 候选=浅底代码块（键值行+行内色板+等宽标注）· 当前步用块面声明（实底反白）· 大标题大留白 · 无装饰图形（值以第三步令牌化为准）",
+            "血统": "【自创·演化自 minimalism × editorial × notion-style】· 不回流 wiki"
+          }
+        },
+        {
+          "name": "极简主义 Minimalism",
+          "desc": "概念：移除一切非必需，层级用间距与字号表达——像一间只有一把椅子却刚刚好的空房间。观感：安静、透气、克制。注：若选此卡则放弃代码块候选形态，回到更激进的减法。",
+          "values": {
+            "家族": "swiss-minimal（minimalism）",
+            "适合本项目": "best_for「工具应用 + 摄影画廊」双命中；大间距直击「局促」主诉；但需注意其「移除容器」哲学与多卡对比场景有张力",
+            "实现层要点": "移除非必需容器 · 层级=间距+字号 · 一屏一焦点 · 动效 200-300ms 淡入（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: minimalism · verified: 本地数据有据"
+          }
+        },
+        {
+          "name": "北欧风 Scandinavian",
+          "desc": "概念：功能主义的温暖面孔——明亮、干净、窝心。观感：白墙上有一格阳光斜过来。",
+          "values": {
+            "家族": "自然疗愈系（scandinavian）",
+            "适合本项目": "清新约束的最直接对应；白墙式浅底=天然中立画布（颜色评估友好），窝心气质中和工具的冰冷感",
+            "实现层要点": "白墙式浅底 · 原木暖点缀 · 功能优先的克制装饰（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: scandinavian · verified: 补写待核验"
+          }
+        },
+        {
+          "name": "E-Ink 纸感 E-Ink Paper",
+          "desc": "概念：把屏幕做成纸——安静、专注、慢下来。观感：像在 Kindle 上读一本旧书。",
+          "values": {
+            "家族": "纸感-阅读系（e-ink-paper）",
+            "适合本项目": "工作台 60% 时间在读（观感话术/规格/文档）；纸感底对长阅读最友好，与文档流的阅读性同源",
+            "实现层要点": "纸感底 · 墨字 · 极低饱和 · 无发光无阴影堆叠（引自卡 §3，值以第三步令牌化为准）",
+            "血统": "card id: e-ink-paper · verified: 本地数据有据"
+          }
+        }
+      ],
+      "chosen": "文档编辑风 Workspace Editorial（自创·单选整卡执行）",
+      "hint": "四张风格卡单选（整卡执行禁混搭）：1 为自创「文档编辑风」（A 版骨架已认的正式化），2-4 为库内清新系。回复「选 N」/ 描述微调 /「再来一批」。"
+    },
+    {
+      "id": "direction",
+      "no": "3",
+      "title": "第三步 设计令牌",
+      "sub": "风格/主色/字体/字阶拼装为设计令牌 · 并排方向卡（组件形态不在此步）",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "雾青 · 同色系层次",
+          "concept": "同色系层次 · 最贴「清新」本义",
+          "tokens": {
+            "colors": {
+              "primary": "#3D8B6E",
+              "secondary": "#7FBFA4",
+              "cta": "#2C664F",
+              "bg": "#FBFCFB",
+              "surface": "#F4F6F5",
+              "textPrimary": "#26312C",
+              "textSecondary": "#8A9791",
+              "border": "#E4E9E7",
+              "success": "#3D8B6E",
+              "warning": "#D9932C",
+              "danger": "#C75450"
+            },
+            "scale": [
+              28,
+              20,
+              16,
+              14,
+              12.5,
+              11
+            ],
+            "fontHead": "思源黑体",
+            "fontBody": "思源黑体"
+          }
+        },
+        {
+          "name": "靛蓝纸底 · 撞色强调（文气）",
+          "concept": "撞色强调 · 暖纸底×冷靛蓝 · editorial 文气",
+          "tokens": {
+            "colors": {
+              "primary": "#4C6FFF",
+              "secondary": "#8B9BFF",
+              "cta": "#3550C4",
+              "bg": "#FAFAF7",
+              "surface": "#F5F4F0",
+              "textPrimary": "#23283B",
+              "textSecondary": "#64748B",
+              "border": "#E2E6F2",
+              "success": "#3D8B6E",
+              "warning": "#D9932C",
+              "danger": "#C75450"
+            },
+            "scale": [
+              28,
+              20,
+              16,
+              14,
+              12.5,
+              11
+            ],
+            "fontHead": "思源宋体",
+            "fontBody": "思源黑体"
+          }
+        },
+        {
+          "name": "青瓷 · 邻近协调",
+          "concept": "邻近色协调 · 比雾青冷半度 · 精密感",
+          "tokens": {
+            "colors": {
+              "primary": "#2E8B8B",
+              "secondary": "#6FB3B3",
+              "cta": "#1F5C5C",
+              "bg": "#F8FAF9",
+              "surface": "#F0F4F4",
+              "textPrimary": "#1F2E2E",
+              "textSecondary": "#7E9696",
+              "border": "#DDE8E8",
+              "success": "#2E8B8B",
+              "warning": "#D9932C",
+              "danger": "#C75450"
+            },
+            "scale": [
+              28,
+              20,
+              16,
+              14,
+              12.5,
+              11
+            ],
+            "fontHead": "思源黑体",
+            "fontBody": "思源黑体"
+          }
+        },
+        {
+          "name": "苔绿纸感 · 双色调 + 等宽",
+          "concept": "双色调 · JetBrains Mono 强化代码块候选气质",
+          "tokens": {
+            "colors": {
+              "primary": "#5A8A5A",
+              "secondary": "#C9A87C",
+              "cta": "#3F6640",
+              "bg": "#F7F6F2",
+              "surface": "#F2F0EA",
+              "textPrimary": "#2A2E26",
+              "textSecondary": "#8A9184",
+              "border": "#E5E3DA",
+              "success": "#5A8A5A",
+              "warning": "#C9A87C",
+              "danger": "#C75450"
+            },
+            "scale": [
+              28,
+              20,
+              16,
+              14,
+              12.5,
+              11
+            ],
+            "fontHead": "思源黑体",
+            "fontBody": "思源黑体"
+          }
+        }
+      ],
+      "chosen": "靛蓝纸底 · 撞色强调（文气）",
+      "hint": "四张令牌方向卡（底座=文档编辑风家族锚 × 清新约束；uupm 交叉验证已实测）。单选或排序，回复「选 N」/ 描述微调 /「再来一批」。圆角/阴影/组件形态在第四步。"
+    },
+    {
+      "id": "compstyle",
+      "no": "4",
+      "title": "第四步 组件风格",
+      "sub": "先选基调库 · 再逐族规范过目（形态来自库，颜色用已锁令牌）",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "静玻璃基调 · 逐族规范（聚合过目）",
+          "demo": "<div style=\"position:relative;border-radius:10px;overflow:hidden;padding:14px;background:linear-gradient(135deg,#DCE4F9,#EAF4EF 55%,#FDF3E5)\"><span style=\"position:absolute;right:-16px;top:-20px;width:100px;height:100px;border-radius:50%;background:#4C6FFF;opacity:.28;filter:blur(22px)\"></span><div style=\"position:relative;background:rgba(255,255,255,.66);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);border-radius:10px;padding:12px\"><div style=\"margin-bottom:8px\"><span style=\"display:inline-block;padding:0 14px;height:34px;line-height:34px;background:rgba(76,111,255,.88);color:#fff;font-size:12.5px;border-radius:8px;border:1px solid rgba(255,255,255,.38);box-shadow:0 4px 12px rgba(76,111,255,.35);margin-right:6px\">主按钮</span><span style=\"display:inline-block;padding:0 14px;height:34px;line-height:34px;background:rgba(255,255,255,.7);color:#4C6FFF;font-size:12.5px;border-radius:8px;border:1px solid #4C6FFF\">次按钮</span><span style=\"display:inline-block;padding:0 10px;height:34px;line-height:34px;color:#4C6FFF;font-size:12.5px\">文字按钮</span></div><div style=\"margin-bottom:8px\"><span style=\"display:inline-block;padding:2px 9px;background:rgba(255,255,255,.6);backdrop-filter:blur(6px);color:#2C664F;font-size:11px;border-radius:6px;border:1px solid rgba(255,255,255,.8);margin-right:6px\">已完成</span><span style=\"display:inline-block;padding:2px 9px;background:rgba(255,255,255,.6);backdrop-filter:blur(6px);color:#C77D1D;font-size:11px;border-radius:6px;border:1px solid rgba(255,255,255,.8);margin-right:6px\">待核验</span><span style=\"display:inline-block;padding:2px 9px;background:rgba(255,255,255,.6);backdrop-filter:blur(6px);color:#3550C4;font-size:11px;border-radius:6px;border:1px solid rgba(255,255,255,.8)\">进行中</span></div><span style=\"display:inline-block;width:180px;height:34px;line-height:34px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);color:#B9C0CE;font-size:12.5px;border-radius:8px;border:1px solid rgba(255,255,255,.85);padding:0 10px;box-sizing:border-box\">请输入风格关键词…</span></div></div>",
+          "desc": "五族规格已按「静玻璃 × 靛蓝令牌」定形，样张为五族微缩实貌。正文长文区与代码块**恒实底不玻璃**（规避可读性/性能风险）。",
+          "values": {
+            "按钮族": "主=靛蓝玻璃 rgba(76,111,255,.88)+白字+白描边(.38)+靛蓝柔影 0 4px 12px rgba(76,111,255,.35) · 次=白玻璃(.7)+靛字靛细边 · 文字=靛字 · 高 34 · hover 提亮",
+            "标签族": "玻璃签 rgba(255,255,255,.6)+blur(6) + 白描边 + 彩字（绿/琥珀/红/靛）· radius 6 · 禁实色重底",
+            "输入族": "白玻璃 rgba(255,255,255,.75)+blur(6) · focus=靛边+柔光环 rgba(76,111,255,.15) 3px",
+            "卡片族": "白玻璃 rgba(255,255,255,.66)+blur(10)+白描边提亮 + 柔影 0 4px 16px · radius 10 · 长文内容区退纯白",
+            "导航族": "顶栏=白玻璃条 blur(12)+靛蓝当前态指示 · 侧栏=纸白实底（不玻璃，保可读）",
+            "玻璃纪律": "玻璃只用于容器层与控件层；文字层/代码块/长文区恒实底；磨砂 blur ≤ 12px 控性能"
+          }
+        }
+      ],
+      "chosen": "静玻璃基调（自创·轻玻璃版）· 逐族规范过目通过（按钮族玻璃化）",
+      "hint": "第二层逐族规范过目：五族玻璃规格 + 玻璃纪律如卡。回复「可以」确认进第五步图片素材；要改某族直接说。",
+      "layer1": [
+        {
+          "name": "文档纸感基调（自创·推荐）",
+          "demo": "<div style=\"background:#F7F6F2;border:1px solid #EEEBE4;border-radius:8px;padding:12px\"><div style=\"font-family:'思源宋体',serif;font-size:15px;font-weight:600;color:#23283B;margin-bottom:8px\">第二步 · 风格定义层</div><div style=\"font-family:Consolas,monospace;font-size:11px;background:#EEF1FF;color:#3550C4;border-radius:4px;padding:5px 9px;margin-bottom:8px\">chosen: \"文档编辑风\" // 单选整卡</div><div style=\"background:#fff;border:1px solid #E2E6F2;border-radius:8px;padding:12px 14px\"><div style=\"display:flex;align-items:center;gap:8px;margin-bottom:8px\"><span style=\"width:14px;height:14px;border:1px solid #B9C0CE;border-radius:4px;background:#fff\"></span><span style=\"color:#5A6472;font-size:12px\">复选项与正文示例</span><span style=\"margin-left:auto;width:32px;height:18px;border-radius:9px;background:#4C6FFF;display:inline-block;position:relative\"><span style=\"position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.15)\"></span></span></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:2px 9px;background:#4C6FFF;color:#fff;font-size:11px;border-radius:4px;margin-right:6px\">进行中</span><span style=\"display:inline-block;padding:2px 9px;background:#EEF1FF;color:#3550C4;font-size:11px;border-radius:4px;margin-right:6px\">已完成</span><span style=\"display:inline-block;padding:2px 9px;background:#fff;color:#3550C4;border:1px solid #4C6FFF;font-size:11px;border-radius:4px\">待核验</span></div></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:0 14px;height:36px;line-height:36px;background:#4C6FFF;color:#fff;font-size:12.5px;border-radius:8px;border:none;margin-right:6px\">主操作</span><span style=\"display:inline-block;padding:0 14px;height:36px;line-height:36px;background:#fff;color:#4C6FFF;font-size:12.5px;border-radius:8px;border:1px solid #4C6FFF\">次操作</span></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;width:170px;height:36px;line-height:36px;background:#fff;color:#B9C0CE;font-size:12.5px;border-radius:8px;border:1px solid #E2E6F2;padding:0 10px;box-sizing:border-box\">请输入风格关键词…</span></div></div>",
+          "desc": "已落「文档编辑风」的组件化：纸白卡 + 发丝边 + 衬线节标题 + 代码块内嵌 + 宽松间距——风格与组件一体，无需翻译。",
+          "values": {
+            "形态语言": "纸感容器 · 发丝 1px · 衬线节标题 · 等宽标注高频 · 焦点柔光环",
+            "血统": "【自创基调·演化自 shadcn 形态 × 文档编辑风 × e-ink-paper 纸感】",
+            "与令牌": "靛蓝只做强调，纸白与墨字主导——中立画布不染色",
+            "风险": "最低——就是已认骨架的直接延伸"
+          }
+        },
+        {
+          "name": "扁平 2.0 基调（flat-2x）",
+          "demo": "<div style=\"background:#FBFCFB;border:1px solid #E8EAED;border-radius:6px;padding:12px\"><div style=\"background:#4C6FFF;color:#fff;border-radius:6px;padding:10px 12px;margin-bottom:8px;font-size:12.5px\">色块分区 · 当前步横幅（扁平语言用色块说话）</div><div style=\"background:#fff;border:1px solid #E4E7EB;border-radius:6px;padding:12px 14px\"><div style=\"display:flex;align-items:center;gap:8px;margin-bottom:8px\"><span style=\"width:14px;height:14px;border:1px solid #B9C0CE;border-radius:4px;background:#fff\"></span><span style=\"color:#5A6472;font-size:12px\">复选项与正文示例</span><span style=\"margin-left:auto;width:32px;height:18px;border-radius:9px;background:#4C6FFF;display:inline-block;position:relative\"><span style=\"position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.15)\"></span></span></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:0 14px;height:32px;line-height:32px;background:#4C6FFF;color:#fff;font-size:12.5px;border-radius:4px;border:none;margin-right:6px\">主操作</span><span style=\"display:inline-block;padding:0 14px;height:32px;line-height:32px;background:#fff;color:#4C6FFF;font-size:12.5px;border-radius:4px;border:1px solid #4C6FFF\">次操作</span></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:2px 9px;background:#4C6FFF;color:#fff;font-size:11px;border-radius:4px;margin-right:6px\">进行中</span><span style=\"display:inline-block;padding:2px 9px;background:#EEF1FF;color:#3550C4;font-size:11px;border-radius:4px;margin-right:6px\">已完成</span><span style=\"display:inline-block;padding:2px 9px;background:#fff;color:#3550C4;border:1px solid #4C6FFF;font-size:11px;border-radius:4px\">待核验</span></div></div></div>",
+          "desc": "你第二轮点名的扁平：色块分区说话 + 轻卡片，干净不出错——但承认它个性最弱。",
+          "values": {
+            "形态语言": "色块分区 · 轻卡 1px 边 · radius 4-6 · 无影或极淡影",
+            "血统": "card id: flat-2x · verified: 本地数据有据",
+            "与令牌": "靛蓝做分区色块与强调，语义清楚",
+            "风险": "低——但「中规中矩」会重演"
+          }
+        },
+        {
+          "name": "静玻璃基调（自创·轻玻璃版）",
+          "demo": "<div style=\"position:relative;border-radius:10px;overflow:hidden;padding:14px;background:linear-gradient(135deg,#DCE4F9 0%,#EAF4EF 55%,#FDF3E5 100%)\"><span style=\"position:absolute;left:-20px;top:-24px;width:110px;height:110px;border-radius:50%;background:#4C6FFF;opacity:.30;filter:blur(24px)\"></span><span style=\"position:absolute;right:-14px;bottom:-30px;width:130px;height:130px;border-radius:50%;background:#3D8B6E;opacity:.25;filter:blur(26px)\"></span><div style=\"position:relative;background:rgba(255,255,255,.66);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(35,40,59,.08)\"><div style=\"font-family:'思源宋体',serif;font-size:15px;font-weight:600;color:#23283B;margin-bottom:8px\">第二步 · 风格定义层</div><div style=\"display:flex;align-items:center;gap:8px;margin-bottom:8px\"><span style=\"width:14px;height:14px;border:1px solid #B9C0CE;border-radius:4px;background:#fff\"></span><span style=\"color:#5A6472;font-size:12px\">复选项与正文示例</span><span style=\"margin-left:auto;width:32px;height:18px;border-radius:9px;background:#4C6FFF;display:inline-block;position:relative\"><span style=\"position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.15)\"></span></span></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:0 14px;height:34px;line-height:34px;background:#4C6FFF;color:#fff;font-size:12.5px;border-radius:8px;border:none;margin-right:6px\">主操作</span><span style=\"display:inline-block;padding:0 14px;height:34px;line-height:34px;background:#fff;color:#4C6FFF;font-size:12.5px;border-radius:8px;border:1px solid #4C6FFF\">次操作</span></div><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:2px 9px;background:#4C6FFF;color:#fff;font-size:11px;border-radius:4px;margin-right:6px\">进行中</span><span style=\"display:inline-block;padding:2px 9px;background:#EEF1FF;color:#3550C4;font-size:11px;border-radius:4px;margin-right:6px\">已完成</span><span style=\"display:inline-block;padding:2px 9px;background:#fff;color:#3550C4;border:1px solid #4C6FFF;font-size:11px;border-radius:4px\">待核验</span></div></div></div>",
+          "desc": "你点名的拟态玻璃——但按清新约束降级为「静玻璃」：白玻璃面板+轻磨砂+淡彩氛围斑，不做深色霓虹。个性最强，代价是性能与长文可读性需要控制用量（标注 trade-off 后交你判断）。",
+          "values": {
+            "形态语言": "白玻璃面板 rgba(255,255,255,.66)+blur(10px) · 白描边提亮 · 淡彩氛围斑",
+            "血统": "【自创基调·演化自 glassmorphism × 清新约束（浅玻璃降级版）】",
+            "与令牌": "靛蓝在玻璃上作强调与氛围斑，正文仍墨字保可读",
+            "风险": "中——卡 avoid「长文阅读/性能敏感」：规格正文区限用，装饰区可用"
+          }
+        },
+        {
+          "name": "Bento 模块基调（自创·拼格容器）",
+          "demo": "<div style=\"display:grid;grid-template-columns:2fr 1fr;gap:10px\"><div style=\"background:#fff;border:1px solid #E2E6F2;border-radius:12px;padding:12px 14px\"><div style=\"font-family:'思源宋体',serif;font-size:15px;font-weight:600;color:#23283B;margin-bottom:8px\">第二步 · 风格定义层</div><div style=\"display:flex;align-items:center;gap:8px;margin-bottom:8px\"><span style=\"width:14px;height:14px;border:1px solid #B9C0CE;border-radius:4px;background:#fff\"></span><span style=\"color:#5A6472;font-size:12px\">复选项与正文示例</span><span style=\"margin-left:auto;width:32px;height:18px;border-radius:9px;background:#4C6FFF;display:inline-block;position:relative\"><span style=\"position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.15)\"></span></span></div></div><div style=\"background:#4C6FFF;border-radius:12px;padding:12px;color:#fff;font-size:12px;font-weight:600;display:flex;flex-direction:column;justify-content:flex-end\">当前步<br><span style=\"font-size:18px\">第三步 令牌</span></div><div style=\"background:#EEF1FF;border-radius:12px;padding:10px 12px;font-family:Consolas,monospace;font-size:11px;color:#3550C4\">tokens.chosen = 靛蓝纸底</div><div style=\"background:#fff;border:1px solid #E2E6F2;border-radius:12px;padding:10px 12px\"><div style=\"margin:8px 0\"><span style=\"display:inline-block;padding:2px 9px;background:#4C6FFF;color:#fff;font-size:11px;border-radius:4px;margin-right:6px\">进行中</span><span style=\"display:inline-block;padding:2px 9px;background:#EEF1FF;color:#3550C4;font-size:11px;border-radius:4px;margin-right:6px\">已完成</span><span style=\"display:inline-block;padding:2px 9px;background:#fff;color:#3550C4;border:1px solid #4C6FFF;font-size:11px;border-radius:4px\">待核验</span></div></div></div>",
+          "desc": "你点名的 bento——按之前判定「取布局不取风格」：格状拼格容器语言（跨格大卡承载重点、格间距统一、大圆角模块），用于决策面板与预览区的组织方式。",
+          "values": {
+            "形态语言": "CSS Grid 异构拼格 · 跨格权重=面积 · 格间距统一 12 · 大圆角 12 容器",
+            "血统": "【自创基调·演化自 bento-grid（布局语言）× 文档编辑风】",
+            "与令牌": "格容器白/浅靛底，靛蓝大格做当前步焦点",
+            "风险": "低——只取布局组织，文字密度格内仍按文档流"
+          }
+        }
+      ]
+    },
+    {
+      "id": "imagery",
+      "no": "5",
+      "title": "第五步 图片素材",
+      "sub": "生图 / 图包 / 占位 · 单张策略卡确认（先探测本地生图能力）",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "图片素材策略（无图 · 跳过）",
+          "desc": "需求判断：工作台为纯工具界面（步骤列/候选卡/文档预览），无摄影/插画/空态图片位；氛围由 CSS 静玻璃渐变承担（第四步已定，非图片）。本步按无图策略跳过。",
+          "values": {
+            "图片位清单": "已验证为空——候选样张=CSS 渲染 · 氛围斑=CSS 渐变 · 步骤列/顶栏=纯文字符号 · 预览章=文档可视化",
+            "保留策略": "样品页（第八步）如出现配图位：bailian 生图主用（清新静玻璃系提示词）+ 图包补位 + 纯色卡占位",
+            "禁止清单": "暗黑系 · 霓虹发光 · 重拟物质感 · 写实照片风人物"
+          }
+        }
+      ],
+      "chosen": "无图策略——工作台为纯工具界面，无真实图片位；图案氛围由 CSS 静玻璃渐变承担（非图片）。生图策略卡保留给样品页备用。",
+      "hint": "图片策略单卡过目：生图主用（bailian）+ 图包补位 + 占位兜底，风格要求与禁止清单如卡。回复「可以」进第六步图标风格；要改策略直接说。"
+    },
+    {
+      "id": "icon",
+      "no": "6",
+      "title": "第六步 图标风格",
+      "sub": "开源库样例 + 链接；特殊风格可生成",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "Lucide · 线性 1.5px（默认推荐）",
+          "demo": "<div style=\"display:flex;flex-wrap:wrap;gap:10px;margin:10px 0\"><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"m21 21l-4.34-4.34\"/><circle cx=\"11\" cy=\"11\" r=\"8\"/></g></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">search</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M20 6L9 17l-5-5\"/></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">check</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"M9.671 4.136a2.34 2.34 0 0 1 4.659 0a2.34 2.34 0 0 0 3.319 1.915a2.34 2.34 0 0 1 2.33 4.033a2.34 2.34 0 0 0 0 3.831a2.34 2.34 0 0 1-2.33 4.033a2.34 2.34 0 0 0-3.319 1.915a2.34 2.34 0 0 1-4.659 0a2.34 2.34 0 0 0-3.32-1.915a2.34 2.34 0 0 1-2.33-4.033a2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/></g></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">settings</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><!-- @license lucide-static v1.61.0 - ISC -->\n<svg\n  class=\"lucide lucide-arrow-right\"\n  xmlns=\"http://www.w3.org/2000/svg\"\n  width=\"26\"\n  height=\"26\"\n  viewBox=\"0 0 24 24\"\n  fill=\"none\"\n  stroke=\"currentColor\"\n  stroke-width=\"2\"\n  stroke-linecap=\"round\"\n  stroke-linejoin=\"round\"\n>\n  <path d=\"M5 12h14\" />\n  <path d=\"m12 5 7 7-7 7\" />\n</svg>\n<span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">arrow-right</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M18 6L6 18M6 6l12 12\"/></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">x</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><!-- @license lucide-static v1.61.0 - ISC -->\n<svg\n  class=\"lucide lucide-file-text\"\n  xmlns=\"http://www.w3.org/2000/svg\"\n  width=\"26\"\n  height=\"26\"\n  viewBox=\"0 0 24 24\"\n  fill=\"none\"\n  stroke=\"currentColor\"\n  stroke-width=\"2\"\n  stroke-linecap=\"round\"\n  stroke-linejoin=\"round\"\n>\n  <path d=\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\" />\n  <path d=\"M14 2v5a1 1 0 0 0 1 1h5\" />\n  <path d=\"M10 9H8\" />\n  <path d=\"M16 13H8\" />\n  <path d=\"M16 17H8\" />\n</svg>\n<span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">file-text</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><g fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z\"/><path d=\"M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12\"/><path d=\"M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17\"/></g></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">layers</span></span></div><div style=\"font-size:11px;color:#64748B;margin-bottom:6px\">真 SVG 内联 7/8 枚 · 26px · 靛蓝着色示意</div>",
+          "desc": "Feather 的现代分支，社区最活跃；stroke 1.5px 细线 + 圆角端点——与静玻璃 + 文档编辑风最贴。",
+          "values": {
+            "风格": "线性 1.5px · 圆角端点 · 几何修正版",
+            "规模": "1891 枚 · 本地离线全量",
+            "适配": "文档编辑风的细线气质天然同源；许可证 ISC（THIRD_PARTY_NOTICES）",
+            "血统": "data/icons-json/lucide"
+          }
+        },
+        {
+          "name": "Tabler · 线性 2px",
+          "demo": "<div style=\"display:flex;flex-wrap:wrap;gap:10px;margin:10px 0\"></div><div style=\"font-size:11px;color:#64748B;margin-bottom:6px\">真 SVG 内联 0/8 枚 · 26px · 靛蓝着色示意</div>",
+          "desc": "stroke 2px 同 Feather 语法，规模最大（6238 枚）——图标覆盖面最全，特殊业务图标缺货率最低。",
+          "values": {
+            "风格": "线性 2px · 端点方圆兼顾",
+            "规模": "6238 枚 · 本地离线全量",
+            "适配": "密度感比 Lucide 高半档；MIT 许可",
+            "血统": "data/icons-json/tabler"
+          }
+        },
+        {
+          "name": "Feather · 经典线性 2px",
+          "demo": "<div style=\"display:flex;flex-wrap:wrap;gap:10px;margin:10px 0\"><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-search\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">search</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-check\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">check</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-settings\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z\"></path></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">settings</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-edit-3\"><path d=\"M12 20h9\"></path><path d=\"M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z\"></path></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">edit-3</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-arrow-right\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"></line><polyline points=\"12 5 19 12 12 19\"></polyline></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">arrow-right</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">x</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-file-text\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"></path><polyline points=\"14 2 14 8 20 8\"></polyline><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"></line><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"></line><polyline points=\"10 9 9 9 8 9\"></polyline></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">file-text</span></span><span style=\"display:inline-flex;flex-direction:column;align-items:center;gap:3px;width:56px;padding:8px 4px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;color:#4C6FFF\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-layers\"><polygon points=\"12 2 2 7 12 12 22 7 12 2\"></polygon><polyline points=\"2 17 12 22 22 17\"></polyline><polyline points=\"2 12 12 17 22 12\"></polyline></svg><span style=\"font-size:9.5px;color:#64748B;font-family:Consolas,monospace\">layers</span></span></div><div style=\"font-size:11px;color:#64748B;margin-bottom:6px\">真 SVG 内联 8/8 枚 · 26px · 靛蓝着色示意</div>",
+          "desc": "线性图标的开山经典，气质极简——但 287 枚已停更，业务图标缺口大。",
+          "values": {
+            "风格": "线性 2px · 极简经典",
+            "规模": "287 枚 · 已停更（覆盖是硬伤）",
+            "适配": "气质合格但查漏步大概率要混库",
+            "血统": "data/icons-json/feather"
+          }
+        },
+        {
+          "name": "Phosphor · 线性多形态",
+          "demo": "<div style=\"display:flex;flex-wrap:wrap;gap:10px;margin:10px 0\"></div><div style=\"font-size:11px;color:#64748B;margin-bottom:6px\">真 SVG 内联 0/8 枚 · 26px · 靛蓝着色示意</div>",
+          "desc": "六形态家族（light/regular/fill/duotone…）——同一套骨架可切粗细与填充，静玻璃下 light 形态细线优雅。",
+          "values": {
+            "风格": "light 线性 1.5px · 可切 fill/duotone 做状态强化",
+            "规模": "3024 枚（含全形态）· 本地离线",
+            "适配": "多形态是独门优势（选中态可切 fill）；MIT 许可",
+            "血统": "data/icons-json/phosphor"
+          }
+        }
+      ],
+      "chosen": "Feather · 经典线性 2px",
+      "hint": "四库真 SVG 图标墙（每卡 8 枚内联实渲染）。单选或排序：回复「选 N」/ 描述微调。选定后第七步查漏。"
+    },
+    {
+      "id": "gaps",
+      "no": "7",
+      "title": "第七步 查漏",
+      "sub": "对照章节模板盘点缺口 —— 确保进样品页前信息齐",
+      "status": "done",
+      "candidates": [
+        {
+          "name": "14 章核对 · 盘点结果",
+          "desc": "对照 references/chapters.md 逐章盘点：能推导的当场推导写进决策链，维持的标确认——全部非待定才进样品页。",
+          "values": {
+            "确认 · 设计价值观": "文档编辑风完整描述与血统已入章（第二步）",
+            "补 · 布局": "从画像布局归类推导：向导流程+决策面板+文档三区骨架（可当场推导）",
+            "补 · 密度与多端": "PC 1440 基准 · 静玻璃中密度 · 单端（可当场推导）",
+            "确认 · 设计要求": "refactoring-ui 通用规则整章收录（固定模板）",
+            "确认 · 颜色": "靛蓝纸底撞色策略已落（第三步）",
+            "确认 · 字体": "思源宋标题×思源黑正文+等宽标注（第三步）",
+            "补 · 圆角": "从静玻璃派生：控件 8 / 卡片 10 / 标签 6 / 徽标圆（可当场推导）",
+            "补 · 阴影": "从静玻璃派生：柔影 0 4px 16px / 彩色柔影（主按钮）/ focus 光环（可当场推导）",
+            "补 · 动效": "淡入与位移 200-300ms · 微过渡 · 玻璃纪律禁视差（可当场推导）",
+            "确认 · 组件": "静玻璃五族规格已落（第四步）",
+            "确认 · 图标": "Feather 线性 2px（第六步）",
+            "确认 · 图像": "无图策略（第五步）",
+            "确认 · 设计禁令": "固定模板 + 业务补充（暗黑/霓虹/重拟物/纯黑主色/参数化趋同候选）"
+          }
+        }
+      ],
+      "chosen": "盘点通过：6 章确认维持 · 6 章当场推导落章",
+      "hint": "查漏盘点：6 章确认维持、6 章可当场推导（标「补」的我会直接写进对应章节，不需要你提供信息）。回复「可以」= 按此推导并进第八步样品页；要调整哪章直接说。"
+    },
+    {
+      "id": "samplepage",
+      "no": "8",
+      "title": "第八步 样品页",
+      "sub": "代表页每页 3 版 · 不同子代理 · 看版定案 · 回流中间件",
+      "status": "done",
+      "chosen": "A 版 · 严格遵循（定案回流 1 条：顶栏素材链接样式 = 常规超链接色 #4C6FFF + 下划线——原样式可点性弱，用户定案反馈）",
+      "hint": "三版已交付并质检（A 严格 / B 均衡 / C 试探）。点卡内链接看样 → 回复「定 A/B/C」或拆吸收（如「B 编排 + C 标题尺度」）→ 定案版细节以【定案版回流】写回规范。",
+      "candidates": [
+        {
+          "name": "A 版 · 严格遵循",
+          "desc": "基准锚——规范字面执行零发挥。<a href=\"samples/sample-A.html\" target=\"_blank\"><b>打开 A 版看样 →</b></a>",
+          "values": {
+            "诠释策略": "严格遵循：所有已锁值逐项核对（色板/玻璃卡/44px 色块+hex/字阶真渲染/✓ 已选定徽章）",
+            "质检": "子代理自检详尽 · 落盘验证 5/6 关键值命中 · 对比度短板如实上报（辅助字 3.6:1 与按钮白字 3.5:1 为规范定值按值保留）",
+            "交付": "samples/sample-A.html · 19KB · 自包含"
+          }
+        },
+        {
+          "name": "B 版 · 规范内均衡",
+          "desc": "氛围斑位置/留白节奏按专业均衡编排（子代理两次耗尽后由主会话代写）。<a href=\"samples/sample-B.html\" target=\"_blank\"><b>打开 B 版看样 →</b></a>",
+          "values": {
+            "诠释策略": "规范内均衡：已锁值全守，未定处（氛围斑布局/留白节奏）专业均衡默认",
+            "质检": "主会话制作 · 规范值全按链上令牌 · 氛围斑 3 枚 blur24 op.28",
+            "交付": "samples/sample-B.html · 自包含"
+          }
+        },
+        {
+          "name": "C 版 · 反向试探",
+          "desc": "边界内最大胆：双层玻璃（卡内叠玻璃签/序号章）· 衬线标题 32px 戏剧化 · 代码块行内高亮+行内色板。<a href=\"samples/sample-C.html\" target=\"_blank\"><b>打开 C 版看样 →</b></a>",
+          "values": {
+            "诠释策略": "反向试探：锁值与纪律零破坏的前提下个性拉满",
+            "质检": "Python 精确对比度计算 + 88 项 QC ALL PASS（证据 samples/.qc/）· 修复代码块值色对比度 · stagger 60-180ms 超纪律已修至 40ms",
+            "诚实上报": "辅助色 #64748B 浅底 3.2-3.6:1 仅用于注标；实底反白统一 CTA #3550C4（#4C6FFF 白字 4.18:1 会破纪律）",
+            "交付": "samples/sample-C.html · 37KB · 自包含"
+          }
+        }
+      ]
+    },
+    {
+      "id": "finalize",
+      "no": "9",
+      "title": "第九步 收尾 · 章节成文与审阅",
+      "sub": "回流后最终状态逐章成文 → 审阅修改 → 导出纯净版",
+      "status": "done",
+      "hint": "逐章成文完成（14 章全填充）→ 导出纯净版（system-rules.md + design-system.html）。回复「定」即导出。",
+      "chosen": "定稿——纯净版已导出（system-rules.md + design-system.html）"
+    }
+  ],
+  "auto": {},
+  "overview": {
+    "values": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · 原则 <span class=\"role-badge\">实测 · 用户拍板</span></div><ul class=\"plain\"><li><b>文档流组织</b> —— 一切决策内容按文档编排：单栏流、键值行、等宽标注；像一份正在被认真排版的设计规范书。</li><li><b>写到哪里亮到哪里</b> —— 当前步用块面声明（实底反白），历史步骤灰阶回看，未至步骤浅灰预告。</li><li><b>视觉同源</b> —— 工作过程与产出物（设计系统文档）视觉同源：预览 Tab 就是最终交付的预演。</li><li><b>清新不冷淡</b> —— 暖纸底 × 冷靛蓝的撞色；玻璃只做容器不做信息层。</li></ul></div><div class=\"block\"><div class=\"spec-label\">WHAT · 风格定义 <span class=\"role-badge\">实测 · 单选整卡</span></div><p><b>文档编辑风 Workspace Editorial</b> <span class=\"role-badge\">自创</span></p><p>概念：把工作台做成一份正在被认真排版的设计规范书——单栏文档流，候选项是浅底代码块，键值排版，层级靠字号与留白。</p><p class=\"note\">观感：知性、从容、每一条决策都被排版师尊重过。家族：<code>【自创·演化自 minimalism × editorial × notion-style】</code>，不回流风格库。定案过程：用户从 4 候选（含库内 3 张）中单选整卡执行。</p></div>",
+    "color": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · 原则 <span class=\"role-badge\">实测 · 撞色策略拍板</span></div><ul class=\"plain\"><li><b>撞色策略</b> —— 暖纸底 #FAFAF7 × 冷靛蓝 #4C6FFF：一个暖中性做画布，一个冷强调做操作。</li><li><b>清新纪律</b> —— 禁纯黑主色、禁深色实心大色块、禁霓虹；低饱和 + 大留白。</li><li><b>层级三层</b> —— 底色（纸白）→ 表面（白/浅靛）→ 强调（靛蓝），写样式只引用语义槽位。</li></ul></div><div class=\"block\"><div class=\"spec-label\">APPLICATION · 主色 ramp（5 档 · 点击复制） <span class=\"role-badge\">实测 · 锁值</span></div><div class=\"swatches\"><button class=\"swatch\" data-hex=\"#3550C4\" title=\"点击复制 #3550C4\"><span class=\"chip\" style=\"background:#3550C4\"></span><span class=\"nm\">indigo-700</span><span class=\"hx\">#3550C4 · CTA 深 / 实底反白</span></button><button class=\"swatch\" data-hex=\"#4C6FFF\" title=\"点击复制 #4C6FFF\"><span class=\"chip\" style=\"background:#4C6FFF\"></span><span class=\"nm\">indigo-500</span><span class=\"hx\">#4C6FFF · 品牌主色 · 选中/可操作</span></button><button class=\"swatch\" data-hex=\"#8B9BFF\" title=\"点击复制 #8B9BFF\"><span class=\"chip\" style=\"background:#8B9BFF\"></span><span class=\"nm\">indigo-300</span><span class=\"hx\">#8B9BFF · 次级强调 / hover</span></button><button class=\"swatch\" data-hex=\"#D6DCFF\" title=\"点击复制 #D6DCFF\"><span class=\"chip\" style=\"background:#D6DCFF\"></span><span class=\"nm\">indigo-100</span><span class=\"hx\">#D6DCFF · 轻底 / 选中底</span></button><button class=\"swatch\" data-hex=\"#EEF1FF\" title=\"点击复制 #EEF1FF\"><span class=\"chip\" style=\"background:#EEF1FF\"></span><span class=\"nm\">indigo-50</span><span class=\"hx\">#EEF1FF · 代码块底 / 最浅组底</span></button></div></div><div class=\"block\"><div class=\"spec-label\">SEMANTIC · 语义层（8）+ 状态色（3） <span class=\"role-badge\">实测 · 锁值</span></div><div class=\"sw-group\"><b>NEUTRAL · 底与文字</b><span class=\"role-badge\">锁值</span></div><div class=\"swatches\"><button class=\"swatch\" data-hex=\"#FAFAF7\" title=\"点击复制 #FAFAF7\"><span class=\"chip\" style=\"background:#FAFAF7\"></span><span class=\"nm\">bg</span><span class=\"hx\">#FAFAF7 · 暖纸底</span></button><button class=\"swatch\" data-hex=\"#F5F4F0\" title=\"点击复制 #F5F4F0\"><span class=\"chip\" style=\"background:#F5F4F0\"></span><span class=\"nm\">surface</span><span class=\"hx\">#F5F4F0 · 表面分层</span></button><button class=\"swatch\" data-hex=\"#23283B\" title=\"点击复制 #23283B\"><span class=\"chip\" style=\"background:#23283B\"></span><span class=\"nm\">text-primary</span><span class=\"hx\">#23283B · 主文字 13.96:1</span></button><button class=\"swatch\" data-hex=\"#64748B\" title=\"点击复制 #64748B\"><span class=\"chip\" style=\"background:#64748B\"></span><span class=\"nm\">text-secondary</span><span class=\"hx\">#64748B · 辅助注标专用 3.6:1</span></button><button class=\"swatch\" data-hex=\"#E2E6F2\" title=\"点击复制 #E2E6F2\"><span class=\"chip\" style=\"background:#E2E6F2\"></span><span class=\"nm\">border</span><span class=\"hx\">#E2E6F2 · 边框</span></button></div><div class=\"sw-group\"><b>STATUS · 状态</b></div><div class=\"swatches\"><button class=\"swatch\" data-hex=\"#3D8B6E\" title=\"点击复制 #3D8B6E\"><span class=\"chip\" style=\"background:#3D8B6E\"></span><span class=\"nm\">success</span><span class=\"hx\">#3D8B6E · 已完成</span></button><button class=\"swatch\" data-hex=\"#D9932C\" title=\"点击复制 #D9932C\"><span class=\"chip\" style=\"background:#D9932C\"></span><span class=\"nm\">warning</span><span class=\"hx\">#D9932C · 进行中/待核验</span></button><button class=\"swatch\" data-hex=\"#C75450\" title=\"点击复制 #C75450\"><span class=\"chip\" style=\"background:#C75450\"></span><span class=\"nm\">danger</span><span class=\"hx\">#C75450 · 危险/删除</span></button></div></div><div class=\"block\"><div class=\"spec-label\">USAGE · 使用规范 <span class=\"role-badge\">实测 + 张力已知</span></div><ul class=\"plain\"><li>靛蓝只给可操作元素与强调；正文恒 #23283B；辅助注标 #64748B 不承载正文与数据值。</li><li>状态标签成对：tint 底 + 同色字（玻璃签 = 色点 + 深字 + 灰 hex）。</li><li>已知张力：#64748B 对浅底 3.2-3.6:1 —— 维持注标用途，严格 AA 场景需微调 muted 令牌（锁值暂不动）。</li></ul></div>",
+    "type": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · 配对与三轨 <span class=\"role-badge\">实测 · 用户拍板</span></div><ul class=\"plain\"><li><b>标题</b> —— 思源宋体（Noto Serif SC）SemiBold/Bold：编辑文气的骨架。</li><li><b>正文</b> —— 系统无衬线（PingFang SC / Microsoft YaHei）：屏幕可读。</li><li><b>标注</b> —— Consolas / JetBrains Mono：代码块、hex、坐标、字段名。</li><li>uupm typography-cn 交叉验证：「文化、编辑、杂志、人文」✓</li></ul></div><div class=\"block\"><div class=\"spec-label\">APPLICATION · 字阶真渲染（6 档） <span class=\"role-badge\">实测 · 锁值字阶</span></div><div class=\"type-row\"><span style=\"font-family:'Noto Serif SC','Songti SC',serif;font-size:28px;font-weight:700;color:#23283B\">纸上见色，字里生风</span><span class=\"meta\"><b>28 / Display</b> · 思源宋 700 · 行高 1.25 · 当前步标题</span></div><div class=\"type-row\"><span style=\"font-family:'Noto Serif SC','Songti SC',serif;font-size:20px;font-weight:600;color:#23283B\">候选名与章节标题</span><span class=\"meta\"><b>20 / Title</b> · 思源宋 600</span></div><div class=\"type-row\"><span style=\"font-size:16px;color:#23283B\">正文强调：决策内容的关键行。</span><span class=\"meta\"><b>16 / Body-Em</b> · 无衬线 400</span></div><div class=\"type-row\"><span style=\"font-size:14px;color:#23283B\">正文示例：检验日常阅读的舒适程度与行高节奏。</span><span class=\"meta\"><b>14 / Body</b> · 行高 1.7 · 默认</span></div><div class=\"type-row\"><span style=\"font-size:12.5px;color:#5A6472\">次级说明：提示语与尾注。</span><span class=\"meta\"><b>12.5 / Caption</b></span></div><div class=\"type-row\"><span style=\"font-family:Consolas,monospace;font-size:11px;color:#64748B\">chosen: \"靛蓝纸底\" // 等宽标注</span><span class=\"meta\"><b>11 / Mono</b> · Consolas · hex/字段名</span></div></div><div class=\"block\"><div class=\"spec-label\">USAGE · 混排规范 <span class=\"role-badge\">引用 · 通用</span></div><ul class=\"plain\"><li>禁阶梯外字号；中英混排等宽场景用 JetBrains Mono；全大写仅短标签并加字距 5-10%。</li></ul></div>",
+    "component": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · 原则<span class=\"role-badge\">实测 · 自举沉淀</span></div><ul class=\"plain\"><li><b>实物即规格</b> —— 每个状态都是可测量的实物（尺寸/圆角/投影直接来自 token）；找不到实物的组件视为规范缺口。</li><li><b>状态穷举</b> —— 交互组件至少 default / pressed / disabled 三态（大卡穷举）；展示型组件给 default（大卡单态）。</li><li><b>来源分层</b> —— 徽章：实测（工作台逐族拍板）/ AI 补全（推断态，橙角标待回填）。</li></ul></div><div class=\"block\"><div class=\"spec-label\">APPLICATION · 组件全景（28 组全量大卡 · 静玻璃语言派生 · 每组规格书）<span class=\"role-badge\">实测 · 用户逐族拍板 + AI 补全 28 处</span></div><p class=\"note\">交互组件 = 大卡状态穷举（含 ⧉ 复制 CSS）；展示组件 = 大卡 default 实物。玻璃纪律：容器层可玻璃，信息层恒实底。</p><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">1. 按钮组</b><span style=\"font-size:11px;color:#64748B\">Button</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测 · pressed/disabled 为 AI 补全</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">主按钮 · 玻璃化</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">h34 · r8 · rgba(76,111,255,.88) · 白描边 .38 · 彩影 0 4px 12px</span></div><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">次按钮 / 文字按钮</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">白玻璃 .7 靛字靛细边 · 文字钮无底</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">2. 输入框</b><span style=\"font-size:11px;color:#64748B\">Input</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测 · focus 为 AI 补全</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">默认 / 聚焦</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">h34 · 白玻璃 .75 · focus 靛边+光环 3px</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">3. 状态签</b><span style=\"font-size:11px;color:#64748B\">Tag</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">四态 · 玻璃签 tint+色点+同色字</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">r6 · blur 6</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">4. 复选 / 开关</b><span style=\"font-size:11px;color:#64748B\">Check · Switch</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">复选二态 / 开关二态</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">复选 15px r4 · 开关 34×19</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">5. Tab 标签页</b><span style=\"font-size:11px;color:#64748B\">Tabs</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">激活 / 未激活</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">激活=靛底下划线 2px + 700</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">6. 进度条</b><span style=\"font-size:11px;color:#64748B\">Progress</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">进行中</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">轨道 6px #EEF1FF · 填充靛蓝</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">7. 消息 / 警告条</b><span style=\"font-size:11px;color:#64748B\">Alert</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">信息 / 警告</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">白实底 · 左侧 3px 语义边</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">8. 分页</b><span style=\"font-size:11px;color:#64748B\">Pagination</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">当前 / 常规</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">当前=靛蓝字 700</span></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">9. 文本域</b><span style=\"font-size:11px;color:#64748B\">Textarea</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">文本域</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">宽 190 · 白玻璃 · 多行</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;width:190px;background:rgba(255,255,255,.75);border:1px solid #E2E6F2;border-radius:8px;padding:6px 12px;font-size:13px\"><span style=\"color:#23283B\">靛蓝纸底 · 撞色文气</span><span style=\"float:right;color:#64748B\">▾</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">10. 选择器</b><span style=\"font-size:11px;color:#64748B\">Select</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">AI 补全 · 按工作台推断</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">选择器</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">h34 · 白玻璃 · ▾</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;width:190px;height:34px;line-height:20px;background:rgba(255,255,255,.75);color:#64748B;font-size:13px;border-radius:8px;border:1px solid #E2E6F2;padding:6px 12px\">静态选择器 ▾</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">11. 头像</b><span style=\"font-size:11px;color:#64748B\">Avatar</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">头像</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">36px 圆 · 靛蓝/雾青/淡茶</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-flex;width:36px;height:36px;border-radius:50%;background:#4C6FFF;color:#fff;font-size:13px;align-items:center;justify-content:center;font-weight:600\">陈</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">12. 徽标数</b><span style=\"font-size:11px;color:#64748B\">Badge</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">AI 补全 · 按工作台推断</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">徽标数</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">min-w16 · 危险红</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-flex;min-width:16px;height:16px;border-radius:999px;background:#C75450;color:#fff;font-size:10px;align-items:center;justify-content:center;padding:0 4px\">6</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">13. 面包屑</b><span style=\"font-size:11px;color:#64748B\">Breadcrumb</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">面包屑</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">三级 · 当前墨字</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"font-size:12px;color:#64748B\">工作台 / 第三步 / <b style=\"color:#23283B\">设计令牌</b></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">14. 侧栏菜单</b><span style=\"font-size:11px;color:#64748B\">Sidebar Menu</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">侧栏菜单</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">深底 #23283B · 当前态靛蓝左线</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-flex;flex-direction:column;gap:4px;background:#23283B;color:#DEE5EC;border-radius:8px;padding:8px 12px;font-size:11.5px\"><span style=\"color:#fff;border-left:2px solid #4C6FFF;padding-left:8px\">第三步 设计令牌</span><span style=\"padding-left:8px;opacity:.6\">第四步 组件</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">15. 代码块</b><span style=\"font-size:11px;color:#64748B\">Code</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">代码块</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">浅靛底 · 等宽</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;font-family:Consolas,monospace;font-size:11px;background:#EEF1FF;color:#3550C4;border-radius:4px;padding:4px 9px\">tokens.chosen = \"靛蓝纸底\"</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">16. 时间线</b><span style=\"font-size:11px;color:#64748B\">Timeline</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">时间线</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">节点 8px · 靛蓝/雾青</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-flex;flex-direction:column;gap:6px;font-size:11.5px;color:#64748B\"><span style=\"display:flex;gap:8px;align-items:center\"><span style=\"width:8px;height:8px;border-radius:50%;background:#4C6FFF\"></span>画像确认</span><span style=\"display:flex;gap:8px;align-items:center\"><span style=\"width:8px;height:8px;border-radius:50%;background:#3D8B6E\"></span>风格落锤</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">17. 加载</b><span style=\"font-size:11px;color:#64748B\">Loading</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">AI 补全 · 按工作台推断</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">加载</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">符号 + 文字</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"font-size:12px;color:#64748B\">◌ 加载中…</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">18. 空态</b><span style=\"font-size:11px;color:#64748B\">Empty</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测 · 禁令「空态必须有出路」</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">空态</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">虚线框 + 出路链接</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;text-align:center;padding:10px 14px;background:#fff;border:1px dashed #E2E6F2;border-radius:8px;font-size:11.5px;color:#64748B\">暂无候选<br><span style=\"color:#4C6FFF\">回复「再来一批」</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">19. 气泡</b><span style=\"font-size:11px;color:#64748B\">Tooltip</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">AI 补全 · 按工作台推断</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">气泡</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">深底白字 r6</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;background:#23283B;color:#fff;font-size:11.5px;border-radius:6px;padding:5px 10px\">气泡提示 ▾</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">20. 警告条</b><span style=\"font-size:11px;color:#64748B\">Alert</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">警告条</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">白底左 3px 琥珀</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;background:#fff;border:1px solid #E2E6F2;border-left:3px solid #D9932C;border-radius:8px;padding:6px 10px;font-size:12px;color:#23283B\">警告条示例</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">21. 表格</b><span style=\"font-size:11px;color:#64748B\">Table</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">表格</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">1px 线 · 表头等宽底</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;border:1px solid #E2E6F2;border-radius:8px;overflow:hidden\"><table style=\"border-collapse:collapse;width:260px;font-size:12px\"><tr><th style=\"border:1px solid #E2E6F2;padding:5px 9px;background:#F5F4F0;font-family:Consolas,monospace;font-size:10px;text-align:left\">TOKEN</th><th style=\"border:1px solid #E2E6F2;padding:5px 9px;background:#F5F4F0;font-family:Consolas,monospace;font-size:10px;text-align:left\">值</th></tr><tr><td style=\"border:1px solid #E2E6F2;padding:5px 9px;font-family:Consolas,monospace\">primary</td><td style=\"border:1px solid #E2E6F2;padding:5px 9px;font-family:Consolas,monospace\">#4C6FFF</td></tr></table></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">22. 列表项</b><span style=\"font-size:11px;color:#64748B\">List Item</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">列表项</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">白卡 r8 · ✓ + 文字 + ›</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #E2E6F2;border-radius:8px;padding:8px 12px;font-size:12.5px\"><span style=\"color:#3D8B6E\">✓</span>第〇步 画像<span style=\"color:#B9C0CE\">›</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">23. 玻璃卡</b><span style=\"font-size:11px;color:#64748B\">Glass Card</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">玻璃卡</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">容器层 · rgba .66+blur10</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;width:200px;background:rgba(255,255,255,.66);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.85);border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(35,40,59,.08);vertical-align:top\"><b style=\"font-size:12.5px;color:#23283B\">玻璃卡（容器层）</b><br><span style=\"font-size:11.5px;color:#64748B\">信息区退纯白</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">24. 实底卡</b><span style=\"font-size:11px;color:#64748B\">Solid Card</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">实底卡</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">信息层 · 恒实底</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;width:200px;background:#fff;border:1px solid #E2E6F2;border-radius:10px;padding:12px 14px;vertical-align:top\"><b style=\"font-size:12.5px;color:#23283B\">实底卡（信息层）</b><br><span style=\"font-size:11.5px;color:#64748B\">正文长文恒实底</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">25. 抽屉</b><span style=\"font-size:11px;color:#64748B\">Drawer</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">AI 补全 · 按工作台推断</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">抽屉</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">右滑 64 宽 · 左投影</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-flex;width:64px;height:110px;background:#fff;border:1px solid #E2E6F2;border-radius:10px;box-shadow:-4px 0 16px rgba(35,40,59,.10);flex-direction:column;padding:10px 8px;gap:6px\"><b style=\"font-size:10px;color:#64748B\">抽屉</b><span style=\"height:1px;background:#E2E6F2\"></span><span style=\"font-size:10px;color:#64748B\">右滑出</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">26. 分割线</b><span style=\"font-size:11px;color:#64748B\">Divider</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">分割线</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">1px #E2E6F2 或留白</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;width:160px;height:1px;background:#E2E6F2\">&nbsp;</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">27. 卡头栏</b><span style=\"font-size:11px;color:#64748B\">Card Header</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">工作台实测</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">卡头栏</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">F6F7F9 底 + 来源徽章</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:block;border:1px solid #E2E6F2;border-radius:12px;overflow:hidden\"><span style=\"display:block;padding:8px 14px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;font-size:12px;color:#23283B\"><b>1. 按钮组</b> <span style=\"color:#64748B\">Button</span><span style=\"float:right;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">来源徽章位</span></span><span style=\"display:block;padding:10px 14px;font-size:11.5px;color:#64748B\">大卡头栏：名称+英文+来源徽章</span></span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div><div style=\"border:1px solid #E2E6F2;border-radius:16px;overflow:hidden;background:#fff;margin:0 0 16px\"><div style=\"padding:12px 18px;background:#F6F7F9;border-bottom:1px solid #E2E6F2;display:flex;align-items:center;gap:8px\"><b style=\"font-size:15px\">28. 语义边卡</b><span style=\"font-size:11px;color:#64748B\">Semantic Edge</span><span style=\"margin-left:auto;font-size:10px;background:#4C6FFF;color:#fff;border-radius:4px;padding:2px 8px\">AI 补全 · 按工作台推断</span></div><div style=\"padding:6px 18px 16px\"><div style=\"margin-top:12px;padding-top:12px;border-top:1px dashed #EEF1F4\"><div style=\"display:flex;align-items:baseline;gap:8px;margin-bottom:8px\"><b style=\"font-size:13px\">语义边卡</b><span style=\"font-size:11px;color:#64748B;font-family:Consolas,monospace\">左 3px 语义色</span></div><div style=\"display:flex;gap:6px;flex-wrap:wrap;align-items:flex-end\"><div style=\"text-align:center;flex:1 1 0;min-width:max-content;max-width:100%\"><div style=\"display:flex;align-items:center;justify-content:center;min-height:76px;background:#fff;border-radius:8px;margin:0 4px\"><span style=\"display:inline-block;background:#fff;border:1px solid #E2E6F2;border-left:3px solid #4C6FFF;border-radius:8px;padding:8px 12px;font-size:12px;color:#23283B\">语义边卡</span></div><div style=\"display:flex;align-items:center;justify-content:center;gap:6px;margin-top:2px\"><span style=\"font-size:10px;background:#F6F7F9;color:#64748B;border-radius:4px;padding:2px 8px;white-space:nowrap\">default</span><button class=\"css-copy\" title=\"复制该实物根元素的 CSS\" style=\"font-size:10px;border:1px solid #E2E6F2;background:#fff;color:#64748B;border-radius:4px;padding:2px 8px;cursor:pointer\">⧉ 复制 CSS</button></div></div></div></div></div></div><div class=\"block\"><div class=\"spec-label\">USAGE · 派生与边界<span class=\"role-badge\">AI 补全 · 派生规则</span></div><ul class=\"plain\"><li><b>派生规则</b> —— 新组件从五族语言派生：玻璃度 / radius 档（6/8/10）/ 语义色 / 等宽标注，禁第二套视觉语言。</li><li><b>玻璃度边界</b> —— 容器与控件可玻璃；表格/代码块/长文/标签内文字恒实底。</li><li><b>尺寸档</b> —— 控件高 34（标准）/ 28（紧凑）；图标 16/20/24；禁档外尺寸。</li></ul></div>",
+    "imagery": "<div class=\"block\"><div class=\"spec-label\">WHAT · 无图策略 <span class=\"role-badge\">实测 · 用户纠偏</span></div><p>工作台为纯工具界面：无摄影/插画位；氛围由 <b>CSS 静玻璃渐变</b>（淡彩氛围斑 blur22-26 / op .25-.3）承担，非图片。</p></div><div class=\"block\"><div class=\"spec-label\">USAGE · 保留策略（样品页出现配图位时） <span class=\"role-badge\">保留 · 策略卡</span></div><ul class=\"plain\"><li><b>主用</b>：bailian-image-gen 生图（清新静玻璃系提示词：柔和渐变氛围 · 白玻璃质感 · 靛蓝点缀 · 大量留白）。</li><li><b>补位</b>：用户图包优先（真实感 &gt; 生成感）。</li><li><b>兜底</b>：纯色卡 + 构图说明，不阻塞流程。</li><li><b>禁止</b>：暗黑系 · 霓虹 · 重拟物 · 写实人物 · 低对比。</li></ul></div>",
+    "icon": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · Feather 线性 2px <span class=\"role-badge\">实测 · 用户拍板</span></div><ul class=\"plain\"><li>stroke 2px currentColor · 24 网格 · ISC 许可 · 极简线性开山库——与静玻璃+文档编辑风气质同源。</li></ul></div><div class=\"block\"><div class=\"spec-label\">APPLICATION · 常用图标实物（6 枚） <span class=\"role-badge\">实测 · 库实物</span></div><span class=\"icon-cell\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg><s>check</s></span><span class=\"icon-cell\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"/><polyline points=\"12 5 19 12 12 19\"/></svg><s>arrow-right</s></span><span class=\"icon-cell\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z\"/></svg><s>settings</s></span><span class=\"icon-cell\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg><s>search</s></span><span class=\"icon-cell\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg><s>x</s></span><span class=\"icon-cell\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/><polyline points=\"14 2 14 8 20 8\"/><line x1=\"16\" y1=\"13\" x2=\"8\" y2=\"13\"/><line x1=\"16\" y1=\"17\" x2=\"8\" y2=\"17\"/></svg><s>file-text</s></span></div><div class=\"block\"><div class=\"spec-label\">USAGE · 补位与生成 <span class=\"role-badge\">AI 补全 · 补位规则</span></div><ul class=\"plain\"><li>Feather 287 枚已停更——缺口图标用 <b>Tabler 同语法</b>（stroke 2px）补位，禁混用其他风格库。</li><li>库中确实没有的业务图标：按 PROMPT 母版生成（线性 2px · 24 网格 · 圆角端点）。</li></ul></div>",
+    "layout": "<div class=\"block\"><div class=\"spec-label\">WHAT · 三区骨架 <span class=\"role-badge\">实测 · 画像布局归类</span></div><ul class=\"plain\"><li><b>顶栏</b> —— 项目名 · 决策链版本 · 当前步 chip · 四素材入口（超链接色 + 下划线）。</li><li><b>向导流程区（左）</b> —— 步骤列 256px：已完成 ✓ 灰字 / 当前步靛蓝实底反白块 / 未至步浅灰预告；每步带一句副题。</li><li><b>决策面板区（右）</b> —— 当前步大标题（28px 衬线）+ 提示语 + 候选卡网格（双列 gap 18-20）。</li><li><b>文档区（预览 Tab）</b> —— 单栏 720px 阅读宽 + 14 章目录锚点。</li></ul></div><div class=\"block\"><div class=\"spec-label\">APPLICATION · 骨架实物（三区微缩）<span class=\"role-badge\">AI 补全 · 骨架示意</span></div><div style=\"border:1px solid #E2E6F2;border-radius:10px;overflow:hidden;font-size:10px;font-family:Consolas,monospace;color:#64748B;background:#fff\"><div style=\"background:#23283B;color:#DEE5EC;padding:6px 10px;display:flex;gap:8px\"><b style=\"color:#fff\">顶栏</b><span>决策链 v1</span><span style=\"margin-left:auto;color:#8B9BFF;text-decoration:underline\">素材入口</span></div><div style=\"display:flex\"><div style=\"width:130px;background:#F5F4F0;padding:8px;line-height:1.9\"><b>步骤列 256px</b><br>✓ 已完成（灰）<br>● 当前步（靛蓝实底反白）<br>3 未至（浅灰预告）</div><div style=\"flex:1;padding:8px;line-height:1.9\"><b>决策面板（文档流）</b><br>当前步大标题 28px 衬线<br>候选卡双列 gap 18-20<br>浅底代码块质感键值行</div></div><div style=\"padding:6px 10px;background:#EEF1FF\">预览 Tab：单栏 720px 阅读宽 · 14 章目录锚点</div></div></div><div class=\"block\"><div class=\"spec-label\">USAGE · 使用规范 <span class=\"role-badge\">AI 补全 · 降级推导</span></div><ul class=\"plain\"><li>候选卡 < 1200px 降单列；步骤列 ≤ 900px 堆叠置顶。</li><li>内容盒 max-width 1376 + 页边距 32，1440 基准无横向溢出。</li><li>当前步块面声明是唯一实底反白区——其他区域禁用大面积实底。</li></ul></div>",
+    "density": "<div class=\"block\"><div class=\"spec-label\">WHAT · 基准 <span class=\"role-badge\">实测 · 画像基准</span></div><p>基准 <b>PC 1440</b>（1280+ 可用）· 单端 · 静玻璃中密度：面板 padding 24-28 · 卡内 20-22 · 行高 1.7+ · 候选卡双列。</p></div><div class=\"block\"><div class=\"spec-label\">USAGE · 多端降级 <span class=\"role-badge\">AI 补全 · 断点推导</span></div><ul class=\"plain\"><li><b>&lt;1200px</b>：候选卡降单列，决策面板收窄。</li><li><b>≤900px</b>：步骤列堆叠置顶（移动可读降级，非目标端）。</li><li>移动端为降级态非设计目标——不为其调优玻璃效果。</li></ul></div>",
+    "radius": "<div class=\"block\"><div class=\"spec-label\">APPLICATION · 三档（实物） <span class=\"role-badge\">AI 补全 · 基调派生</span></div><div class=\"comp-stage\"><span class=\"radius-box\" style=\"border-radius:6px\">标签 6</span><span class=\"radius-box\" style=\"border-radius:8px\">控件 8</span><span class=\"radius-box\" style=\"border-radius:10px\">卡片 10</span><span class=\"radius-box\" style=\"border-radius:999px;width:84px\">徽标 圆</span><span class=\"stage-lbl\">RADIUS · 只用 6 / 8 / 10 / 圆四档 · 静玻璃派生</span></div></div><div class=\"block\"><div class=\"spec-label\">USAGE <span class=\"role-badge\">AI 补全 · 派生</span></div><ul class=\"plain\"><li>玻璃容器 10 · 控件（按钮/输入）8 · 状态签/代码块 6 · 徽标全圆；禁档外圆角。</li></ul></div>",
+    "shadow": "<div class=\"block\"><div class=\"spec-label\">APPLICATION · 三影（实物） <span class=\"role-badge\">AI 补全 · 基调派生</span></div><div class=\"comp-stage\"><span class=\"shadow-card\" style=\"box-shadow:0 4px 16px rgba(35,40,59,.08)\">柔影<br>0 4px 16px · 8%</span><span class=\"shadow-card\" style=\"background:#4C6FFF;color:#fff;box-shadow:0 4px 12px rgba(76,111,255,.35)\">彩色柔影<br>主按钮专用</span><span class=\"shadow-card\" style=\"border:1px solid #4C6FFF;box-shadow:0 0 0 3px rgba(76,111,255,.15)\">focus 光环<br>3px · 15%</span><span class=\"stage-lbl\">SHADOW · 阴影全部带靛蓝/墨色相 · 禁纯黑阴影</span></div></div><div class=\"block\"><div class=\"spec-label\">USAGE <span class=\"role-badge\">AI 补全 · 派生</span></div><ul class=\"plain\"><li>柔影=玻璃面板与静态卡；彩色柔影=主按钮独占；光环=focus 态独占；静态内容禁大阴影（阴影=海拔≠重要）。</li></ul></div>",
+    "motion": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · 克制纪律 <span class=\"role-badge\">AI 补全 · 玻璃纪律推导</span></div><ul class=\"plain\"><li>淡入与位移 <b>200-300ms</b> ease-out；列表项 stagger ≤ 40ms；玻璃面板淡入配透明度渐变（0.6→1）。</li></ul></div><div class=\"block\"><div class=\"spec-label\">USAGE · 禁令 <span class=\"role-badge\">引用 · 通用</span></div><ul class=\"plain\"><li>禁视差 / 弹跳 / 大位移；禁装饰性循环动画；动效只服务于「东西从哪来」的空间叙事。</li></ul></div>",
+    "spacing": "<div class=\"block\"><div class=\"spec-label\">PRINCIPLES · 4pt 网格 <span class=\"role-badge\">引用 · 4pt 通用</span></div><p>所有间距取 4 的倍数：4 / 8 / 12 / 16 / 20 / 24 / 28 / 32。组内间距 ≤ 组间距的 1/2；留白先于分隔线。</p></div><div class=\"block\"><div class=\"spec-label\">APPLICATION · 间距档（实物） <span class=\"role-badge\">AI 补全 · 静玻璃派生</span></div><div class=\"space-ruler\"><div class=\"space-row\"><span class=\"lbl\">面板 padding</span><span class=\"comp-stage\" style=\"padding:0;width:56px;height:28px\"></span><span>28</span></div><div class=\"space-row\"><span class=\"lbl\">候选卡内 padding</span><span class=\"comp-stage\" style=\"padding:0;width:44px;height:22px\"></span><span>20-22</span></div><div class=\"space-row\"><span class=\"lbl\">候选卡间距</span><span class=\"comp-stage\" style=\"padding:0;width:40px;height:18px\"></span><span>18-20</span></div><div class=\"space-row\"><span class=\"lbl\">标题与正文间</span><span class=\"comp-stage\" style=\"padding:0;width:28px;height:14px\"></span><span>10-14</span></div><div class=\"space-row\"><span class=\"lbl\">图标与文字间</span><span class=\"comp-stage\" style=\"padding:0;width:16px;height:12px\"></span><span>8</span></div></div></div><div class=\"block\"><div class=\"spec-label\">USAGE <span class=\"role-badge\">引用 · 通用</span></div><ul class=\"plain\"><li>非网格数值就近归档不新造；分隔线是最后手段（分隔线+边框+阴影禁三件套齐上）。</li></ul></div>",
+    "rules": "<div class=\"block\"><div class=\"spec-label\">CONCEPTUAL · 理念要求（通用 27 条 · 分组） <span class=\"role-badge\">引用 · 通用规则模板</span></div><ul class=\"plain\"><li><b>理念</b> —— 密度与呼吸按页面任务平衡；视觉层级与信息层级一致（字号+字重+颜色同表）；一致性优先于个性；一屏一个主行动；强调靠对比不靠加码。</li><li><b>颜色</b> —— 状态色语义成对（tint 底+同色字）；渐变只用于主按钮底/图标圆底/装饰区/遮罩；蓝只给可操作元素；主色派生色阶；灰带主色色相；对比度红线正文≥4.5:1。</li><li><b>字体</b> —— 字阶体系取档；正文行高 1.5、标题 1.1-1.25；字重 400/500-600/600-700；长文行宽 66ch；每屏 ≤2 族。</li><li><b>间距形状</b> —— 4pt 网格；相关近无关远（组内 ≤ 组间 1/2）；留白先于分隔线；深色海拔用表面色阶。</li><li><b>阴影</b> —— 阴影带色相；悬浮=强阴影+白描边环；两段式阴影；静态卡片弱阴影。</li><li><b>图像</b> —— 图像质量=观感大头；文字压图加同色相遮罩；占位要有设计。</li></ul></div><div class=\"block\"><div class=\"spec-label\">SPECIFIC · 本项目实测沉淀（4 条） <span class=\"role-badge\">实测 · 自举沉淀</span></div><ul class=\"plain\"><li><b>链接必须像链接</b> —— 超链接色 #4C6FFF + 常显下划线（hover 加深）；墨色无下划线的链接用户无法识别（A 版定案回流）。</li><li><b>玻璃面板上禁实心大色块</b> —— 主按钮玻璃化：rgba 半透 + 白描边 + 彩色柔影（实心靛蓝块在玻璃上是「异物」）。</li><li><b>交付即更新链状态</b> —— 交付物产出后立即写回决策链，「进行中」状态卡交付后持续显示 = 误导。</li><li><b>候选必须有形态级差异</b> —— 同模板换参数（radius/色值）的趋同候选不合格。</li></ul></div>",
+    "bans": "<div class=\"block\"><div class=\"spec-label\">CONCEPTUAL · 概念性禁令（9） <span class=\"role-badge\">引用 · 通用模板</span></div><ul class=\"plain\"><li>禁信息撑满 —— 布局要有呼吸感与主次</li><li>禁为留白牺牲信息密度（与上条成对）</li><li>禁让用户思考「这是什么」—— 图标必配文字标签</li><li>禁一屏多主任务</li><li>禁什么都居中</li><li>禁间距全程一个值</li><li>禁卡片套卡片</li><li>禁满屏毛玻璃与无目的光晕</li><li>禁标题加 emoji</li></ul></div><div class=\"block\"><div class=\"spec-label\">SPECIFIC · 具体禁令（13 + 本项目 4） <span class=\"role-badge\">实测 4 + 引用 13</span></div><ul class=\"plain\"><li>禁裸 hex/裸值 · 禁纯黑阴影 · 禁魔法间距 · 禁双主按钮 · 禁阶梯外字号 · 禁状态标签不成对 · 禁颜色作唯一信息载体 · 禁混用图标来源 · 禁 z-index 自造 · 禁把 AI 补全值当实测 · 禁静态内容大阴影 · 禁分隔线+边框+阴影三件套 · 禁空态只有「暂无数据」</li><li><b>本项目补充</b> —— ⑭禁深色实心大色块压玻璃面板 ⑮禁参数化模板式趋同候选 ⑯禁纯黑主色（外部否决） ⑰禁候选与已锁风格混搭（单选整卡）</li></ul></div><div class=\"block\"><div class=\"spec-label\">A11Y · 无障碍红线 <span class=\"role-badge\">引用 · 红线</span></div><ul class=\"plain\"><li>状态不只靠颜色 —— 颜色 + 文字标签双通道；转灰度自读一遍</li><li>图标必须可懂 —— 图标+文字；纯图形操作必带语义文案</li><li>对比度红线 —— 正文 ≥ 4.5:1 · 大字 ≥ 3:1（辅助色 #64748B 仅注标）</li><li>触控热区 ≥ 44px（含视觉外扩）</li></ul></div><div class=\"block\"><div class=\"spec-label\">REVIEW · 审查顺序 <span class=\"role-badge\">引用 · 顺序</span></div><p class=\"note\">层级 → 间距 → 排版 → 色彩 → 深度 → 图像 → 收尾。层级没理顺，间距对错无从谈起。</p></div>"
+  },
+  "history": [
+    {
+      "step": "profile",
+      "note": "画像确认 · 风格判断进行中"
+    },
+    {
+      "step": "profile",
+      "note": "content-dump 1 页可解析 · 画像落链待确认"
+    },
+    {
+      "step": "profile",
+      "note": "定位修正：模板改造 → 工程实施项目（两阶段）"
+    },
+    {
+      "step": "external",
+      "note": "4 条约束落链：清新配色 / 纯黑否 / A 骨架已认 / 历史否决项"
+    },
+    {
+      "step": "concept",
+      "note": "4 组清新系气质候选生成（种子标注）"
+    },
+    {
+      "step": "concept",
+      "note": "技能改造：气质方向层 → 风格定义层，旧配色候选作废待重出"
+    },
+    {
+      "step": "concept",
+      "note": "三键检索 151 卡命中 20 → top-4（minimalism/flat-design/scandinavian/e-ink-paper）"
+    },
+    {
+      "step": "concept",
+      "note": "用户纠正：候选须含自创轨——补【自创·文档编辑风】为候选 1（A 版骨架正式化）"
+    },
+    {
+      "step": "concept",
+      "note": "落锤：文档编辑风（自创）单选整卡 · overview 设计价值观章已填充"
+    },
+    {
+      "step": "direction",
+      "note": "4 张令牌候选（同色系/撞色/邻近/双色调 · uupm 字体配对实测）"
+    },
+    {
+      "step": "direction",
+      "note": "落锤：靛蓝纸底 · 撞色强调（文气）· overview 颜色/字体章已可视化填充"
+    },
+    {
+      "step": "compstyle",
+      "note": "第一层基调库 4 候选（shadcn/Arco/Ant/TDesign · 全 PC 快照在库）"
+    },
+    {
+      "step": "compstyle",
+      "note": "第一层落锤：静玻璃基调（用户选 3）· 第二层逐族规范出卡待过目 · 按钮族已按反馈玻璃化 · 第一层候选转存 layer1"
+    },
+    {
+      "step": "imagery",
+      "note": "能力探测：bailian-image-gen 在位 → 生图主用策略单卡待过目"
+    },
+    {
+      "step": "imagery",
+      "note": "用户纠偏：工作台无图案元素——需求判断前置，落无图策略跳过（生图卡保留给样品页）；playbook 第五步已改需求前置"
+    },
+    {
+      "step": "icon",
+      "note": "四库真 SVG 图标墙候选（lucide/tabler/feather/phosphor · 内联实渲染）"
+    },
+    {
+      "step": "icon",
+      "note": "落锤：Feather 线性 2px（287 枚·停更风险已标注，缺口由 Tabler 同语法补位）"
+    },
+    {
+      "step": "gaps",
+      "note": "14 章盘点卡出卡：6 确认 + 6 可推导"
+    },
+    {
+      "step": "gaps",
+      "note": "落锤：6 章推导落章（layout/density/radius/shadow/motion 可视化）· 14 章全非待定"
+    },
+    {
+      "step": "samplepage",
+      "note": "3 版子代理并行派发（A/B/C 诠释策略 · 质检前置）"
+    },
+    {
+      "step": "samplepage",
+      "note": "三版交付状态写入候选（修进行中误导：交付后链未更新导致兜底卡误显制作中）"
+    },
+    {
+      "step": "samplepage",
+      "note": "定案：A 版 · 回流 1 条（链接样式超链接色+下划线）"
+    },
+    {
+      "step": "ending",
+      "note": "spacing/rules/bans 三章补齐成文 · 14 章全填充 · 待导出"
+    },
+    {
+      "step": "finalize",
+      "note": "用户定稿 · 自举流程 10 步全闭环"
+    },
+    {
+      "step": "direction",
+      "note": "C1 辅助色严格 AA：text-secondary #7C86A0(3.6:1)/#8A93A0(2.9:1) → #64748B(4.77:1 对纸白) · 全链替换 · v1.1"
+    }
+  ]
+}
